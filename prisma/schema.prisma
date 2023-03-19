@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id          String        @id @default(auto()) @map("_id") @db.ObjectId
+  slug        String        @unique
+  fullTitle   String
+  title       String
+  description String
+  startTime   DateTime
+  endTime     DateTime
+  keyTags     KeyTag[]
+  status      ProjectStatus
+}
+
+enum KeyTag {
+  ReactJS
+  NestJS
+  NextJS
+  SCL
+  STL
+  LAD
+  Python
+  CSharp
+  CPlusPlus
+  Electronics
+  Robotics
+}
+
+enum ProjectStatus {
+  IN_PROGRESS
+  DROPPED
+  FINISHED
+  PROTOTYPE
+  UNDEFINED
+}
