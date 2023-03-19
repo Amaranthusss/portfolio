@@ -13,3 +13,5 @@ The first concept of the portfolio web application.
 In the project directory, you can run:
 
 ### `yarn dev`
+
+### `yarn prisma generate` - You need to re-run the prisma generate command after every change that's made to your Prisma schema to update the generated Prisma Client code.
