@@ -11,9 +11,7 @@ import { Project } from '@prisma/client'
 const Home = (): JSX.Element => {
   const createOneProject = trpc.project.createOneProject.useMutation()
 
-  const findManyProject = trpc.project.findManyProject.useQuery({
-    where: { status: { not: 'DROPPED' } },
-  })
+  const findManyProject = trpc.project.findManyProject.useQuery({})
 
   if (findManyProject.isLoading) {
     return <Spin size={'large'} />
@@ -57,7 +55,7 @@ const Home = (): JSX.Element => {
                   findManyProject.data,
                   ({ title, description, id }: Project): JSX.Element => {
                     return (
-                      <Typography.Paragraph type={'success'}>
+                      <Typography.Paragraph type={'success'} key={id}>
                         {title}&nbsp;[{id}]&nbsp;:&nbsp;{description}
                       </Typography.Paragraph>
                     )
@@ -75,12 +73,13 @@ const Home = (): JSX.Element => {
                 createOneProject.mutateAsync({
                   data: {
                     description: 'description',
-                    endTime: moment().toDate(),
-                    startTime: moment().toDate(),
+                    endTime: moment().toDate().toISOString(),
+                    startTime: moment().toDate().toISOString(),
                     fullTitle: 'full-title',
                     slug: 'slug-test',
-                    status: 'PROTOTYPE',
+                    status: 'prototype',
                     title: 'title',
+                    image: 'imageBase64',
                     keyTags: ['NextJS'],
                   },
                 })
