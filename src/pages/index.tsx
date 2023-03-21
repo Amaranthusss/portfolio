@@ -1,16 +1,13 @@
-import { Button, Card, Space, Spin, Typography } from 'antd'
+import { Card, Space, Spin, Typography } from 'antd'
+import ProjectCreator from '@/components/common/ProjectCreator/ProjectCreator'
 import Head from 'next/head'
 
-import moment from 'moment'
-import _ from 'lodash'
-
 import { trpc } from '../utils/trpc'
+import _ from 'lodash'
 
 import { Project } from '@prisma/client'
 
 const Home = (): JSX.Element => {
-  const createOneProject = trpc.project.createOneProject.useMutation()
-
   const findManyProject = trpc.project.findManyProject.useQuery({})
 
   if (findManyProject.isLoading) {
@@ -41,7 +38,9 @@ const Home = (): JSX.Element => {
           size={'middle'}
           style={{ display: 'flex' }}
         >
-          <Card title={'Projects:'}>
+          <ProjectCreator />
+
+          <Card title={'Projects at the database:'}>
             <div
               style={{
                 maxHeight: 500,
@@ -63,30 +62,6 @@ const Home = (): JSX.Element => {
                 )
               )}
             </div>
-          </Card>
-
-          <Card title={'Back-end tester:'}>
-            <Button
-              type={'primary'}
-              style={{ width: '100%' }}
-              onClick={(): void => {
-                createOneProject.mutateAsync({
-                  data: {
-                    description: 'description',
-                    endTime: moment().toDate().toISOString(),
-                    startTime: moment().toDate().toISOString(),
-                    fullTitle: 'full-title',
-                    slug: 'slug-test',
-                    status: 'prototype',
-                    title: 'title',
-                    image: 'imageBase64',
-                    keyTags: ['NextJS'],
-                  },
-                })
-              }}
-            >
-              Create a new project
-            </Button>
           </Card>
         </Space>
       </main>
