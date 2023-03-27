@@ -1,0 +1,27 @@
+$formWidth: 500px;
+$formGap: 20px;
+
+.form {
+  max-width: $formWidth;
+}
+
+.form .inputs {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $formGap;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 400px;
+	margin-block: 12px;
+}
+
+.form .formItem {
+  flex: 1;
+  min-width: calc($formWidth / 2 - $formGap);
+}
+
+.form .submit {
+  flex: 1;
+  min-width: $formWidth;
+}

@@ -1,3 +1,5 @@
+//@ts-nocheck Ignored file, can be used in the future
+
 import { createProject, getProjects } from '@/lib/prisma/projects'
 
 import type { NextApiHandler, NextApiRequest, NextApiResponse } from 'next'

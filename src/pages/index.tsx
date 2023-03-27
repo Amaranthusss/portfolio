@@ -1,9 +1,17 @@
-import { Button, ConfigProvider } from 'antd'
+import { Button, Card } from 'antd'
 import Head from 'next/head'
 
+import { useRouter } from 'next/router'
+
+import _ from 'lodash'
+
+import { NextRouter } from 'next/router'
+
 const Home = (): JSX.Element => {
+  const router: NextRouter = useRouter()
+
   return (
-    <ConfigProvider theme={{ token: { colorPrimary: 'gray' } }}>
+    <>
       <Head>
         <title>Portfolio - Oskar Szkurłat</title>
 
@@ -21,9 +29,19 @@ const Home = (): JSX.Element => {
       </Head>
 
       <main>
-        <Button type={'primary'}>Ant Design Button</Button>
+        <Card title={'Portfolio - Oskar Szkurłat'}>
+          <Button
+            style={{ width: '100%' }}
+            type={'primary'}
+            onClick={(): void => {
+              router.push('/admin')
+            }}
+          >
+            Admin panel
+          </Button>
+        </Card>
       </main>
-    </ConfigProvider>
+    </>
   )
 }
 
