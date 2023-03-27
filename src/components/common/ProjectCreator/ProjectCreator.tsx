@@ -1,3 +1,4 @@
+import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { Button, Card, Form } from 'antd'
 import Inputs from './Inputs/Inputs'
 
@@ -7,11 +8,16 @@ import { nanoid } from 'nanoid'
 import { trpc } from '@/utils/trpc'
 import _ from 'lodash'
 
+import { useRouter } from 'next/router'
+
+import { NextRouter } from 'next/router'
 import { IFormData } from './ProjectCreator.interface'
 
 import styles from './ProjectCreator.module.scss'
 
 const ProjectCreator = (): JSX.Element => {
+  const router: NextRouter = useRouter()
+
   const createOneProject = trpc.project.createOneProject.useMutation()
 
   const [form] = Form.useForm()
@@ -32,7 +38,18 @@ const ProjectCreator = (): JSX.Element => {
   )
 
   return (
-    <Card title={'Project Creator:'}>
+    <Card
+      title={'Project Creator:'}
+      extra={
+        <Button
+          icon={<AiOutlineCloseCircle size={32} />}
+          type={'text'}
+          onClick={(): void => {
+            router.push('/')
+          }}
+        />
+      }
+    >
       <Form form={form} onFinish={onFinish} className={styles.form}>
         <Inputs />
 
