@@ -1,17 +1,17 @@
-import { mapProject } from "@/lib/mappers/mapProject";
+import { mapProfile } from "@/lib/mappers/mapProfile";
 import prisma from "@/lib/prisma";
 
-import type { ProjectDTO } from "@/models/projectDto";
+import type { ProfileDTO } from "@/models/profileDto";
 
 import { currentLocale } from "@/lib/config";
 
-export async function getProjects(): Promise<ProjectDTO[]> {
-	const db = await prisma.project.findMany({
+export async function getProfiles(): Promise<ProfileDTO[]> {
+	const db = await prisma.profile.findMany({
 		include: {
 			translations: { where: { locale: currentLocale }, take: 1 },
 			skills: { include: { skill: { include: { translations: { where: { locale: currentLocale }, take: 1 } } } } },
 		},
 	});
 
-	return db.map(mapProject);
+	return db.map(mapProfile);
 };

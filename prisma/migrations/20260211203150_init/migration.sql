@@ -69,8 +69,10 @@ CREATE TABLE "ProjectSkill" (
 -- CreateTable
 CREATE TABLE "EducationStep" (
     "id" SERIAL NOT NULL,
+    "slug" TEXT NOT NULL,
     "startDate" TIMESTAMP(3) NOT NULL,
     "endDate" TIMESTAMP(3),
+    "isCurrent" BOOLEAN,
     "grade" DOUBLE PRECISION,
     "withHonors" BOOLEAN NOT NULL DEFAULT false,
 
@@ -82,8 +84,10 @@ CREATE TABLE "EducationStepTranslation" (
     "id" SERIAL NOT NULL,
     "educationStepId" INTEGER NOT NULL,
     "locale" "Locale" NOT NULL,
-    "title" TEXT NOT NULL,
-    "institution" TEXT,
+    "institution" TEXT NOT NULL,
+    "degree" TEXT,
+    "projectTitle" TEXT,
+    "fieldOfStudy" TEXT,
     "description" TEXT,
 
     CONSTRAINT "EducationStepTranslation_pkey" PRIMARY KEY ("id")
@@ -100,6 +104,7 @@ CREATE TABLE "EducationSkill" (
 -- CreateTable
 CREATE TABLE "ExperienceStep" (
     "id" SERIAL NOT NULL,
+    "slug" TEXT NOT NULL,
     "startDate" TIMESTAMP(3) NOT NULL,
     "endDate" TIMESTAMP(3),
     "isCurrent" BOOLEAN NOT NULL DEFAULT false,
@@ -116,7 +121,9 @@ CREATE TABLE "ExperienceStepTranslation" (
     "locale" "Locale" NOT NULL,
     "position" TEXT NOT NULL,
     "company" TEXT NOT NULL,
+    "location" TEXT NOT NULL,
     "description" TEXT,
+    "duties" TEXT[],
 
     CONSTRAINT "ExperienceStepTranslation_pkey" PRIMARY KEY ("id")
 );
@@ -132,6 +139,7 @@ CREATE TABLE "ExperienceSkill" (
 -- CreateTable
 CREATE TABLE "Certification" (
     "id" SERIAL NOT NULL,
+    "slug" TEXT NOT NULL,
     "credentialID" TEXT,
     "issueDate" TIMESTAMP(3) NOT NULL,
     "logoUrl" TEXT NOT NULL,
@@ -146,6 +154,7 @@ CREATE TABLE "CertificationTranslation" (
     "certificationId" INTEGER NOT NULL,
     "locale" "Locale" NOT NULL,
     "title" TEXT NOT NULL,
+    "description" TEXT,
     "provider" TEXT,
 
     CONSTRAINT "CertificationTranslation_pkey" PRIMARY KEY ("id")
@@ -162,7 +171,7 @@ CREATE TABLE "CertificationSkill" (
 -- CreateTable
 CREATE TABLE "Profile" (
     "id" SERIAL NOT NULL,
-    "key" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
 
     CONSTRAINT "Profile_pkey" PRIMARY KEY ("id")
 );
@@ -201,16 +210,25 @@ CREATE UNIQUE INDEX "Skill_key_key" ON "Skill"("key");
 CREATE UNIQUE INDEX "SkillTranslation_skillId_locale_key" ON "SkillTranslation"("skillId", "locale");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "EducationStep_slug_key" ON "EducationStep"("slug");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "EducationStepTranslation_educationStepId_locale_key" ON "EducationStepTranslation"("educationStepId", "locale");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "ExperienceStep_slug_key" ON "ExperienceStep"("slug");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "ExperienceStepTranslation_experienceStepId_locale_key" ON "ExperienceStepTranslation"("experienceStepId", "locale");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Certification_slug_key" ON "Certification"("slug");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "CertificationTranslation_certificationId_locale_key" ON "CertificationTranslation"("certificationId", "locale");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Profile_key_key" ON "Profile"("key");
+CREATE UNIQUE INDEX "Profile_slug_key" ON "Profile"("slug");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "ProfileTranslation_profileId_locale_key" ON "ProfileTranslation"("profileId", "locale");

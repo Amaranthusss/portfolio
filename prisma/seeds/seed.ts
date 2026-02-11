@@ -1,11 +1,10 @@
 import { PrismaClient } from "@/app/generated/prisma/client";
 import { PrismaPg } from '@prisma/adapter-pg';
 
-import type { Prisma, SkillKey } from "@/app/generated/prisma/client";
-
-import { projectTranslations } from "./constants/projectTranslations";
-import { skillTranslations } from "./constants/skillTranslations";
-import { projectSkills } from "./constants/projectSkills";
+import { experienceSteps } from "./constants/experienceSteps";
+import { educationSteps } from "./constants/educationSteps";
+import { certifications } from "./constants/certifications";
+import { profiles } from "./constants/profiles";
 import { projects } from "./constants/projects";
 import { skills } from "./constants/skills";
 import 'dotenv/config';
@@ -17,90 +16,99 @@ const adapter: PrismaPg = new PrismaPg({
 const prisma: PrismaClient = new PrismaClient({ adapter });
 
 export async function main() {
-	/* ============================
-		 SKILLS (ENUM → TABLE)
-	============================ */
+	for (const skill of skills) {
+		await prisma.skill.upsert({
+			where: { key: skill.key },
+			update: {
+				translations: {
+					deleteMany: {},
+					create: skill.translations?.create ?? [],
+				},
+			},
+			create: skill,
+		});
+	}
 
-	await prisma.skill.createMany({ data: skills, skipDuplicates: true });
+	for (const profile of profiles) {
+		await prisma.profile.upsert({
+			where: { slug: profile.slug },
+			update: {
+				skills: {
+					deleteMany: {},
+					create: profile.skills?.create ?? [],
+				},
+				translations: {
+					deleteMany: {},
+					create: profile.translations?.create ?? [],
+				},
+			},
+			create: profile,
+		});
+	};
 
-	const skillMap = await prisma.skill.findMany({ select: { id: true, key: true } });
-	const skillIdByKey = new Map<SkillKey, number>(skillMap.map((s) => [s.key, s.id]));
+	for (const project of projects) {
+		await prisma.project.upsert({
+			where: { slug: project.slug },
+			update: {},
+			create: project,
+		});
+	};
 
-	/* ============================
-		 SKILL TRANSLATIONS
-	============================ */
+	for (const certification of certifications) {
+		await prisma.certification.upsert({
+			where: { slug: certification.slug },
+			update: {
+				skills: {
+					deleteMany: {},
+					create: certification.skills?.create ?? [],
+				},
+				translations: {
+					deleteMany: {},
+					create: certification.translations?.create ?? [],
+				},
+			},
+			create: certification,
+		});
+	};
 
-	const skillTranslationsData: Prisma.SkillTranslationCreateManyInput[] =
-		skillTranslations.map(
-			(skillTranslation: Prisma.SkillTranslationCreateInput): Prisma.SkillTranslationCreateManyInput => {
-				const skillkey: SkillKey = skillTranslation.skill.connect!.key!
+	for (const step of experienceSteps) {
+		await prisma.experienceStep.upsert({
+			where: { slug: step.slug },
+			update: {
+				skills: {
+					deleteMany: {},
+					create: step.skills?.create ?? [],
+				},
+				translations: {
+					deleteMany: {},
+					create: step.translations?.create ?? [],
+				},
+			},
+			create: step,
+		});
+	}
 
-				return {
-					skillId: skillIdByKey.get(skillkey)!,
-					locale: skillTranslation.locale,
-					name: skillTranslation.name,
-					shortName: skillTranslation.shortName,
-					description: skillTranslation.description,
-				}
-			}
-		);
+	for (const step of educationSteps) {
+		await prisma.educationStep.upsert({
+			where: { slug: step.slug },
+			update: {
+				skills: { deleteMany: {}, create: step.skills?.create ?? [] },
+				translations: { deleteMany: {}, create: step.translations?.create ?? [] },
+				startDate: step.startDate,
+				endDate: step.endDate,
+				grade: step.grade,
+				withHonors: step.withHonors ?? false,
+			},
+			create: step,
+		});
+	}
 
-	await prisma.skillTranslation.createMany({ data: skillTranslationsData, skipDuplicates: true });
-
-	/* ============================
-		 PROJECTS
-	============================ */
-
-	await prisma.project.createMany({ data: projects, skipDuplicates: true });
-
-	const projectsFromDb = await prisma.project.findMany({
-		select: { id: true, slug: true },
-	});
-
-	const projectIdBySlug = new Map(
-		projectsFromDb.map(p => [p.slug, p.id])
-	);
-
-	/* ============================
-		 PROJECT SKILLS
-	============================ */
-
-	const projectSkillsData: Prisma.ProjectSkillCreateManyInput[] = projectSkills.map(ps => {
-		const skillKey: SkillKey = ps.skill.connect!.key!;
-		const projectSlug: string = ps.project.connect!.slug!;
-
-		return {
-			skillId: skillIdByKey.get(skillKey)!,
-			projectId: projectIdBySlug.get(projectSlug)!,
-		};
-	});
-
-	await prisma.projectSkill.createMany({ data: projectSkillsData, skipDuplicates: true });
-
-	/* ============================
-		 PROJECT TRANSLATIONS
-	============================ */
-
-	const projectTranslationsData: Prisma.ProjectTranslationCreateManyInput[] = projectTranslations.map(
-		(pt): Prisma.ProjectTranslationCreateManyInput => {
-			const projectSlug: string = pt.project.connect!.slug!;
-
-			return {
-				projectId: projectIdBySlug.get(projectSlug)!,
-				locale: pt.locale,
-				name: pt.name,
-				description: pt.description,
-			};
-		}
-	);
-
-	await prisma.projectTranslation.createMany({ data: projectTranslationsData, skipDuplicates: true });
 }
 
 
 main()
-	.catch((e) => {
+	.catch((e: Error): void => {
 		console.error(e);
 		process.exit(1);
 	})
-	.finally(() => prisma.$disconnect());
+	.finally((): Promise<void> => prisma.$disconnect());
