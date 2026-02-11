@@ -1,66 +1,64 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { getProjects } from "./services/getProjects";
+import { getSkills } from "./services/getSkills";
 
-export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+import type { ProjectDTO } from "@/lib/dtos/projectDto";
+import type { SkillDTO } from "@/lib/dtos/skillDto";
+
+import { Category } from "./generated/prisma";
+
+import styles from "./page.module.scss";
+
+export default async function Home() {
+	const skills: SkillDTO[] = await getSkills();
+	const projects: ProjectDTO[] = await getProjects();
+
+	return (
+		<main className={styles.page}>
+			<div className={styles.card}>
+				<span className={styles.label}>
+					Kategorie
+				</span>
+
+				<ul className={styles.list}>
+					{Object.keys(Category).map((key: string) => (
+						<li key={key}>
+							•&nbsp;{key}
+						</li>
+					))}
+				</ul>
+			</div>
+
+			<div className={styles.card}>
+				<span className={styles.label}>
+					Umiejętności
+				</span>
+
+				<ul className={styles.list}>
+					{skills.map((skill: SkillDTO) => (
+						<li key={skill.id}>
+							•&nbsp;{skill.name}
+						</li>
+					))}
+				</ul>
+			</div>
+
+			<div className={styles.card}>
+				<span className={styles.label}>
+					Projekty
+				</span>
+
+				<ul className={styles.list}>
+					{projects.map((project: ProjectDTO) => (
+						<li key={project.id}>
+							•&nbsp;<b>{project.name}</b>
+							<div style={{marginLeft: 24}}>Kategoria: {project.category}</div>
+							<div style={{marginLeft: 24}}>Data rozpoczęcia: {project.startDate?.toLocaleDateString() ?? '-'}</div>
+							<div style={{marginLeft: 24}}>Data zakończenia: {project.endDate?.toLocaleDateString() ?? '-'}</div>
+							<div style={{marginLeft: 24}}>Umiejętności: {project.skills.map(s => s.name).join(', ')}</div>
+						</li>
+					))}
+				</ul>
+			</div>
+		</main>
+	);
 }

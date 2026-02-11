@@ -1,0 +1,358 @@
+// ==============================
+// Generator & Datasource
+// ==============================
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ==============================
+// ENUMS
+// ==============================
+
+enum Locale {
+  pl
+  en
+}
+
+enum SkillKey {
+  // * Programming languages
+  TS
+  LabView
+  Python
+  CSharp
+  CPlusPlus
+  Java
+  MMF2Dev
+  CADCAM
+  SCL
+  STL
+  LAD
+
+  // * C# frameworks
+  DotNet
+  Blazor
+
+  // * JavaScript frameworks
+  Angular
+  ReactJS
+  CRA
+  Vite
+  NextJS
+  ExpressJS
+  NestJS
+  NodeJS
+
+  // * JavaScript core libraries
+  Leaflet
+  Sanity
+  ThreeJS
+  PdfMake
+  YukaJS
+  Zustand
+  Redux
+  J5
+
+  // * UI components
+  AntDReact
+  AntDBlazor
+  Bootstrap
+  MaterialUI
+  DevExtremeReact
+  DevExtremeAngular
+
+  // * Databases
+  PostgreSQL
+  MongoDB
+  SQLite
+
+  // * Technologies
+  AWS
+  GCP
+  GRPC
+  GraphQL
+  VPS
+
+  // * Operating systems
+  Docker
+  Linux
+
+  // * PLC programming
+  TiaPortal
+  PLCProgramming
+  FactoryIO
+
+  // * Communication technologies
+  CommunicationTCPIP
+  ModbusProtocol
+  IQRF
+
+  // * Mechatronics, electronics, robotics
+  Eagle
+  Fusion360
+  AGV
+  Fanuc
+  Kuka
+
+  // * General skills
+  AI
+  Print3D
+  Microservices
+}
+
+enum Category {
+  Mechatronics
+  Hobby
+  IT
+}
+
+enum EmploymentType {
+  FullTime
+  HalfTime
+  QuarterTime
+  SelfEmployed
+  Internship
+  Freelance
+  Apprenticeship
+}
+
+enum LocationType {
+  OnSite
+  Remote
+  Hybrid
+}
+
+// ==============================
+// PROJECTS
+// ==============================
+
+model Project {
+  id        Int       @id @default(autoincrement())
+  slug      String    @unique
+  category  Category
+  startDate DateTime?
+  endDate   DateTime?
+  isCurrent Boolean   @default(false)
+
+  skills       ProjectSkill[]
+  translations ProjectTranslation[]
+
+  createdAt DateTime @default(now())
+
+  @@index([category])
+}
+
+model ProjectTranslation {
+  id        Int    @id @default(autoincrement())
+  projectId Int
+  locale    Locale
+
+  name        String
+  subname     String?
+  description String?
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, locale])
+}
+
+// ==============================
+// SKILLS
+// ==============================
+
+model Skill {
+  id  Int      @id @default(autoincrement())
+  key SkillKey @unique
+
+  projects        ProjectSkill[]
+  certifications  CertificationSkill[]
+  educationSteps  EducationSkill[]
+  experienceSteps ExperienceSkill[]
+  profiles        ProfileSkill[]
+  translations    SkillTranslation[]
+}
+
+model SkillTranslation {
+  id      Int    @id @default(autoincrement())
+  skillId Int
+  locale  Locale
+
+  name        String
+  shortName   String?
+  description String?
+
+  skill Skill @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@unique([skillId, locale])
+}
+
+// ==============================
+// PROJECT ↔ SKILL
+// ==============================
+
+model ProjectSkill {
+  projectId Int
+  skillId   Int
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  skill   Skill   @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, skillId])
+}
+
+// ==============================
+// EDUCATION
+// ==============================
+
+model EducationStep {
+  id         Int       @id @default(autoincrement())
+  startDate  DateTime
+  endDate    DateTime?
+  grade      Float?
+  withHonors Boolean   @default(false)
+
+  skills       EducationSkill[]
+  translations EducationStepTranslation[]
+}
+
+model EducationStepTranslation {
+  id              Int    @id @default(autoincrement())
+  educationStepId Int
+  locale          Locale
+
+  title       String
+  institution String?
+  description String?
+
+  educationStep EducationStep @relation(fields: [educationStepId], references: [id], onDelete: Cascade)
+
+  @@unique([educationStepId, locale])
+}
+
+model EducationSkill {
+  educationStepId Int
+  skillId         Int
+
+  educationStep EducationStep @relation(fields: [educationStepId], references: [id], onDelete: Cascade)
+  skill         Skill         @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@id([educationStepId, skillId])
+}
+
+// ==============================
+// EXPERIENCE
+// ==============================
+
+model ExperienceStep {
+  id        Int       @id @default(autoincrement())
+  startDate DateTime
+  endDate   DateTime?
+  isCurrent Boolean   @default(false)
+
+  employmentType EmploymentType
+  locationType   LocationType
+
+  skills       ExperienceSkill[]
+  translations ExperienceStepTranslation[]
+}
+
+model ExperienceStepTranslation {
+  id               Int    @id @default(autoincrement())
+  experienceStepId Int
+  locale           Locale
+
+  position    String
+  company     String
+  description String?
+
+  experienceStep ExperienceStep @relation(fields: [experienceStepId], references: [id], onDelete: Cascade)
+
+  @@unique([experienceStepId, locale])
+}
+
+model ExperienceSkill {
+  experienceStepId Int
+  skillId          Int
+
+  experienceStep ExperienceStep @relation(fields: [experienceStepId], references: [id], onDelete: Cascade)
+  skill          Skill          @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@id([experienceStepId, skillId])
+}
+
+// ==============================
+// CERTIFICATIONS
+// ==============================
+
+model Certification {
+  id           Int      @id @default(autoincrement())
+  credentialID String?
+  issueDate    DateTime
+  logoUrl      String
+  url          String?
+
+  skills       CertificationSkill[]
+  translations CertificationTranslation[]
+}
+
+model CertificationTranslation {
+  id              Int    @id @default(autoincrement())
+  certificationId Int
+  locale          Locale
+
+  title    String
+  provider String?
+
+  certification Certification @relation(fields: [certificationId], references: [id], onDelete: Cascade)
+
+  @@unique([certificationId, locale])
+}
+
+model CertificationSkill {
+  certificationId Int
+  skillId         Int
+
+  certification Certification @relation(fields: [certificationId], references: [id], onDelete: Cascade)
+  skill         Skill         @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@id([certificationId, skillId])
+}
+
+// ==============================
+// PROFILES (SKILL AGGREGATES)
+// ==============================
+
+model Profile {
+  id  Int    @id @default(autoincrement())
+  key String @unique
+
+  translations ProfileTranslation[]
+  skills       ProfileSkill[]
+}
+
+model ProfileTranslation {
+  id        Int    @id @default(autoincrement())
+  profileId Int
+  locale    Locale
+
+  name String
+
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@unique([profileId, locale])
+}
+
+model ProfileSkill {
+  profileId Int
+  skillId   Int
+
+  profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  skill   Skill   @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@id([profileId, skillId])
+}
