@@ -1,11 +1,12 @@
 import { mapCertification } from "@/lib/mappers/mapCertification";
+import { cache } from "react";
 import prisma from "@/lib/prisma";
 
 import type { CertificationDTO } from "@/models/certificationDto";
 
 import { currentLocale } from "@/lib/config";
 
-export async function getCertifications(): Promise<CertificationDTO[]> {
+export const getCertifications = cache(async (): Promise<CertificationDTO[]> => {
 	const db = await prisma.certification.findMany({
 		include: {
 			translations: { where: { locale: currentLocale }, take: 1 },
@@ -14,4 +15,4 @@ export async function getCertifications(): Promise<CertificationDTO[]> {
 	});
 
 	return db.map(mapCertification);
-};
+});

@@ -22,10 +22,8 @@ export default async function Home() {
 	const projects: ProjectDTO[] = await getProjects();
 	const skills: SkillDTO[] = await getSkills();
 
-	console.log({ experienceSteps, educationSteps, certifications, profiles, projects, skills });
-
 	return (
-		<main className={styles.page}>
+		<div className={styles.page}>
 			<div className={styles.card}>
 				<span className={styles.label}>
 					Doświadczenie
@@ -113,6 +111,6 @@ export default async function Home() {
 					))}
 				</ul>
 			</div>
-		</main>
+		</div>
 	);
 }
