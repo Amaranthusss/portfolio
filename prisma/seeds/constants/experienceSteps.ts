@@ -1,6 +1,6 @@
-import type { Prisma } from "@/app/generated/prisma/client";
+import type { Prisma } from "@/generated/prisma/client";
 
-import { EmploymentType, Locale, LocationType, SkillKey } from "@/app/generated/prisma/client";
+import { EmploymentType, Locale, LocationType, SkillKey } from "@/generated/prisma/client";
 import { ExperienceStepSlug } from "../slugs/experienceStepSlug";
 
 export const experienceSteps: Prisma.ExperienceStepCreateInput[] = [

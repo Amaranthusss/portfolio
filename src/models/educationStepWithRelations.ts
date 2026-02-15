@@ -1,4 +1,4 @@
-import type { Locale, Prisma } from "@/app/generated/prisma";
+import type { Locale, Prisma } from "@/generated/prisma";
 
 export type EducationStepWithRelations = Prisma.EducationStepGetPayload<{
 	include: {

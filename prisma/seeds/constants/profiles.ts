@@ -1,6 +1,6 @@
-import type { Prisma } from "@/app/generated/prisma/client";
+import type { Prisma } from "@/generated/prisma/client";
 
-import { Locale, SkillKey } from "@/app/generated/prisma/client";
+import { Locale, SkillKey } from "@/generated/prisma/client";
 import { ProfileSlug } from "../slugs/profileSlug";
 
 const react = [

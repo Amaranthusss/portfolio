@@ -1,7 +1,7 @@
-import type { Prisma } from "@/app/generated/prisma/client";
+import type { Prisma } from "@/generated/prisma/client";
 
 import { CertificationSlug } from "../slugs/certificationSlug";
-import { Locale, SkillKey } from "@/app/generated/prisma/client";
+import { Locale, SkillKey } from "@/generated/prisma/client";
 
 export const certifications: Prisma.CertificationCreateInput[] = [
 	{

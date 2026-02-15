@@ -1,6 +1,6 @@
-import type { Prisma } from "@/app/generated/prisma/client";
+import type { Prisma } from "@/generated/prisma/client";
 
-import { Category, Locale, SkillKey } from "@/app/generated/prisma/client";
+import { Category, Locale, SkillKey } from "@/generated/prisma/client";
 import { ProjectSlug } from "../slugs/projectSlug";
 
 export const projects: Prisma.ProjectCreateInput[] = [

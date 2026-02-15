@@ -1,4 +1,4 @@
-import type { Locale, Prisma } from "@/app/generated/prisma";
+import type { Locale, Prisma } from "@/generated/prisma";
 
 export type ProfileWithRelations = Prisma.ProfileGetPayload<{
 	include: {
