@@ -13,9 +13,12 @@ export const Header = (): React.ReactNode => {
 
 	return (
 		<header className={styles.header}>
-			<Button onClick={(): void => router.push('home')}>Home page</Button>
-			<Button onClick={(): void => router.push('about-me')}>About me</Button>
-			<Button onClick={(): void => router.push('projects')} type={'primary'}>Projects</Button>
+			<Button onClick={(): void => router.push('home')}>Homepage</Button>
+			<Button onClick={(): void => router.push('projects')}>Experience & Education</Button>
+			<Button onClick={(): void => router.push('projects')}>Projects & Realisations</Button>
+			<Button onClick={(): void => router.push('projects')}>Core technologies</Button>
+			<Button onClick={(): void => router.push('projects')}>Code style</Button>
+			<Button onClick={(): void => router.push('projects')} type={'primary'} style={{ textTransform: 'uppercase' }} animated>Hire me</Button>
 		</header>
 	);
 };

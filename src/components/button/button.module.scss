@@ -1,8 +1,14 @@
+$box-shadow: 0px 0px 4px 0px var(--primary-color);
+
 .button {
-	font-size: 16px;
+	font-size: 20px;
+	font-weight: 500;
 	padding: 12px;
 	cursor: pointer;
 	color: var(--text-color);
+	-webkit-box-shadow: $box-shadow;
+	-moz-box-shadow: $box-shadow;
+	box-shadow: $box-shadow;
 
 	&.default {
 		border: solid 1px var(--border-color);
@@ -16,8 +22,23 @@
 
 	&.primary {
 		background-color: var(--primary-color);
-		border: solid 1px var(--primary-color);
+		border: solid 1px var(--primary-border-color);
 		border-radius: var(--border-radius);
 		color: var(--primary-contrast-color);
+	}
+
+	&.animated {
+		filter: drop-shadow(0 0 0.15rem var(--primary-color));
+		animation: pulse 1500ms infinite alternate;
+	}
+
+	@keyframes pulse {
+		0% {
+			filter: drop-shadow(0 0 0.0rem var(--primary-color));
+		}
+
+		100% {
+			filter: drop-shadow(0 0 0.5rem var(--primary-color));
+		}
 	}
 }
