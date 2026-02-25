@@ -6,10 +6,10 @@ export interface CertificationDTO {
 	slug: string;
 	credentialID?: string;
 	issueDate: Date;
-	image?: ImageFileDTO;
+	image: ImageFileDTO;
 	url?: string;
-	title?: string;
-	description?: string;
-	provider?: string;
+	title: string;
+	description: string;
+	provider: string;
 	skills: SkillDTO[];
 };
