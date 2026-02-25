@@ -1,15 +1,15 @@
-import type { Prisma } from "@/generated/prisma/client";
+import type { Prisma } from "../../../src/generated/prisma/client";
 
 import { CertificationSlug } from "../slugs/certificationSlug";
-import { Locale, SkillKey } from "@/generated/prisma/client";
+import { Locale, SkillKey } from "../../../src/generated/prisma/client";
 
 export const certifications: Prisma.CertificationCreateInput[] = [
 	{
 		slug: CertificationSlug.NestJsMicroservicesScaleableBackend,
 		issueDate: new Date('2025-05-31'),
-		logoUrl: 'udemy',
 		url: 'https://www.udemy.com/certificate/UC-9ef640b6-39b5-40b6-ac04-171756e6eebb/',
 		credentialID: 'UC-9ef640b6-39b5-40b6-ac04-171756e6eebb',
+		imageFile: { connect: { storageKey: "images/udemy.jpg" } },
 
 		skills: {
 			create: [
@@ -46,8 +46,8 @@ export const certifications: Prisma.CertificationCreateInput[] = [
 		slug: CertificationSlug.NestJsUltimateMasterclass,
 		credentialID: 'UC-c7beeb38-645f-447a-910a-b8388c1bf355',
 		issueDate: new Date('2025-04-28'),
-		logoUrl: 'udemy',
 		url: 'https://www.udemy.com/certificate/UC-c7beeb38-645f-447a-910a-b8388c1bf355/',
+		imageFile: { connect: { storageKey: "images/udemy.jpg" } },
 
 		skills: {
 			create: [

@@ -142,8 +142,8 @@ CREATE TABLE "Certification" (
     "slug" TEXT NOT NULL,
     "credentialID" TEXT,
     "issueDate" TIMESTAMP(3) NOT NULL,
-    "logoUrl" TEXT NOT NULL,
     "url" TEXT,
+    "imageFileId" INTEGER,
 
     CONSTRAINT "Certification_pkey" PRIMARY KEY ("id")
 );
@@ -166,6 +166,19 @@ CREATE TABLE "CertificationSkill" (
     "skillId" INTEGER NOT NULL,
 
     CONSTRAINT "CertificationSkill_pkey" PRIMARY KEY ("certificationId","skillId")
+);
+
+-- CreateTable
+CREATE TABLE "ImageFile" (
+    "id" SERIAL NOT NULL,
+    "fileName" TEXT NOT NULL,
+    "extension" TEXT NOT NULL,
+    "mimeType" TEXT NOT NULL,
+    "size" INTEGER NOT NULL,
+    "storageKey" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "ImageFile_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -228,6 +241,9 @@ CREATE UNIQUE INDEX "Certification_slug_key" ON "Certification"("slug");
 CREATE UNIQUE INDEX "CertificationTranslation_certificationId_locale_key" ON "CertificationTranslation"("certificationId", "locale");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "ImageFile_storageKey_key" ON "ImageFile"("storageKey");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Profile_slug_key" ON "Profile"("slug");
 
 -- CreateIndex
@@ -262,6 +278,9 @@ ALTER TABLE "ExperienceSkill" ADD CONSTRAINT "ExperienceSkill_experienceStepId_f
 
 -- AddForeignKey
 ALTER TABLE "ExperienceSkill" ADD CONSTRAINT "ExperienceSkill_skillId_fkey" FOREIGN KEY ("skillId") REFERENCES "Skill"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Certification" ADD CONSTRAINT "Certification_imageFileId_fkey" FOREIGN KEY ("imageFileId") REFERENCES "ImageFile"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "CertificationTranslation" ADD CONSTRAINT "CertificationTranslation_certificationId_fkey" FOREIGN KEY ("certificationId") REFERENCES "Certification"("id") ON DELETE CASCADE ON UPDATE CASCADE;

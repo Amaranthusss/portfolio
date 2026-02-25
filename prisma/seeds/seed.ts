@@ -1,9 +1,10 @@
-import { PrismaClient } from "@/generated/prisma/client";
+import { PrismaClient } from "../../src/generated/prisma/client";
 import { PrismaPg } from '@prisma/adapter-pg';
 
 import { experienceSteps } from "./constants/experienceSteps";
 import { educationSteps } from "./constants/educationSteps";
 import { certifications } from "./constants/certifications";
+import { imageFiles } from "./constants/imageFiles";
 import { profiles } from "./constants/profiles";
 import { projects } from "./constants/projects";
 import { skills } from "./constants/skills";
@@ -53,6 +54,14 @@ export async function main() {
 			create: project,
 		});
 	};
+
+	for (const image of imageFiles) {
+		await prisma.imageFile.upsert({
+			where: { storageKey: image.storageKey },
+			update: image,
+			create: image,
+		});
+	}
 
 	for (const certification of certifications) {
 		await prisma.certification.upsert({

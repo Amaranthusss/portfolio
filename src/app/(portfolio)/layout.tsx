@@ -7,6 +7,8 @@ import type { Metadata } from "next";
 
 import "../globals.scss";
 
+export const dynamic = "force-dynamic";
+
 export const magnat: NextFont = localFont({
 	src: [
 		{ path: '../../../public/fonts/magnat/Magnat-Light.woff', weight: '300', style: 'normal' },

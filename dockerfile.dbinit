@@ -1,0 +1,40 @@
+# -------------------
+# Build stage
+# -------------------
+FROM node:20-alpine AS builder
+WORKDIR /app
+
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+
+# Kopiujemy wszystko potrzebne do migracji i seedów
+COPY prisma ./prisma
+COPY prisma.config.ts ./prisma.config.ts
+COPY prisma/seeds ./prisma/seeds
+COPY src/generated/prisma ./src/generated/prisma
+COPY tsconfig.json ./tsconfig.json
+COPY tsconfig.seeds.json ./tsconfig.seeds.json
+
+# Build TS seeds → JS
+RUN pnpm tsc -p tsconfig.seeds.json
+
+# -------------------
+# Runner stage (lekki)
+# -------------------
+FROM node:20-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Kopiujemy skompilowane seed JS + Prisma Client
+COPY --from=builder /app/src/generated/prisma ./src/generated/prisma
+COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/node_modules ./node_modules
+
+CMD ["sh", "-c", "pnpm prisma migrate deploy && pnpm prisma db seed"]

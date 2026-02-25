@@ -1,0 +1,1 @@
+1. Maybe it’s a good idea to isolate Prisma into a separate package.json to avoid copying all Next.js node_modules during the Docker build, since it is only needed for seeding the PostgreSQL database.

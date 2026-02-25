@@ -1,7 +1,7 @@
-import type { Prisma } from "@/generated/prisma/client";
+import type { Prisma } from "../../../src/generated/prisma/client";
 
 import { EducationStepSlug } from "../slugs/educationStepSlug";
-import { Locale, SkillKey } from "@/generated/prisma/client";
+import { Locale, SkillKey } from "../../../src/generated/prisma/client";
 
 export const educationSteps: Prisma.EducationStepCreateInput[] = [
 	{

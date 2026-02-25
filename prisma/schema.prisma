@@ -301,8 +301,10 @@ model Certification {
   slug         String   @unique
   credentialID String?
   issueDate    DateTime
-  logoUrl      String
   url          String?
+
+  imageFileId Int?
+  imageFile   ImageFile? @relation(fields: [imageFileId], references: [id], onDelete: SetNull)
 
   skills       CertificationSkill[]
   translations CertificationTranslation[]
@@ -330,6 +332,18 @@ model CertificationSkill {
   skill         Skill         @relation(fields: [skillId], references: [id], onDelete: Cascade)
 
   @@id([certificationId, skillId])
+}
+
+model ImageFile {
+  id   Int    @id @default(autoincrement())
+  fileName  String
+  extension String
+  mimeType  String
+  size      Int
+  storageKey String @unique
+  createdAt DateTime @default(now())
+
+  certifications Certification[]
 }
 
 // ==============================
