@@ -2,7 +2,7 @@ export enum Route {
 	Homepage = 'homepage',
 	CoursesAndCertifications = 'courses-and-certifications',
 	ExperienceAndEducation = 'experience-and-education',
-	ProjectsAndRealisations = 'project-and-realisations',
+	ProjectsAndRealisations = 'projects-and-realisations',
 	CoreTechnologies = 'core-technologies',
 	CodeStyle = 'code-style',
 	Publications = 'publications',

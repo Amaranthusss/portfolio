@@ -1,0 +1,27 @@
+.skill_list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	opacity: 0.4;
+
+	>.skill {
+		$skill-gap: 8px;
+		position: relative;
+		padding-left: $skill-gap;
+		padding-right: $skill-gap;
+
+		&:first-of-type {
+			padding-left: 4px;
+		}
+
+		&:not(:first-child)::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 10%;
+			height: 80%;
+			width: 1px;
+			background: var(--text-color);
+		}
+	}
+}

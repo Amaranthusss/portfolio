@@ -1,4 +1,5 @@
 import { DisplayDateRange } from "@/components/display-date-range/display-date-range";
+import { DisplaySkills } from "@/components/display-skills/display-skills";
 import Image from "next/image";
 
 import { getCertifications } from "@/services/getCertifications";
@@ -36,12 +37,7 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
 							<span className={styles.description}>{c.description}</span>
 							{c.credentialID && <span className={styles.credential_id}>Credential ID: {c.credentialID}</span>}
 
-							{c.skills.length > 0 && (
-								<span className={styles.skill_list}>
-									Skills:
-									{c.skills.sort((s1, s2) => s1.name.localeCompare(s2.name)).map(s => <span key={s.id} className={styles.skill}>{s.name}</span>)}
-								</span>
-							)}
+							<DisplaySkills skills={c.skills} />
 						</div>
 					</div>
 				))}

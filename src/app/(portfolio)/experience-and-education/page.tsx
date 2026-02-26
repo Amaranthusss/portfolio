@@ -1,4 +1,5 @@
 import { DisplayDateRange } from "@/components/display-date-range/display-date-range";
+import { DisplaySkills } from "@/components/display-skills/display-skills";
 
 import { getExperienceSteps } from "@/services/getExperienceSteps";
 import { getEducationSteps } from "@/services/getEducationSteps";
@@ -33,12 +34,7 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
 						{e.projectTitle && <span className={styles.projectTitle}>Thesis: {e.projectTitle}</span>}
 						{e.description && <span className={styles.description}>{e.description}</span>}
 
-						{e.skills.length > 0 && (
-							<span className={styles.skill_list}>
-								Skills:
-								{e.skills.sort((s1, s2) => s1.name.localeCompare(s2.name)).map(s => <span key={s.id} className={styles.skill}>{s.name}</span>)}
-							</span>
-						)}
+						<DisplaySkills skills={e.skills} />
 					</div>
 				))}
 			</div>
@@ -73,12 +69,7 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
 							</ul>
 						)}
 
-						{e.skills.length > 0 && (
-							<span className={styles.skill_list}>
-								Skills:
-								{e.skills.sort((s1, s2) => s1.name.localeCompare(s2.name)).map(s => <span key={s.id} className={styles.skill}>{s.name}</span>)}
-							</span>
-						)}
+						<DisplaySkills skills={e.skills} />
 					</div>
 				))}
 			</div>
