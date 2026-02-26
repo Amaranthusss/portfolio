@@ -1,0 +1,28 @@
+.page {
+	position: relative;
+	height: 100%;
+
+	>.page_title {
+		font-size: 48px;
+		font-weight: 600;
+		padding-bottom: var(--padding);
+	}
+
+	>.content {
+		position: absolute;
+		max-width: 1400px;
+		text-align: justify;
+		right: var(--padding);
+		top: 0;
+
+		>p {
+			margin-bottom: var(--padding);
+		}
+	}
+
+	>.roadmap {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+	}
+}
