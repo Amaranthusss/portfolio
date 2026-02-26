@@ -17,7 +17,8 @@ export const educationSteps: Prisma.EducationStepCreateInput[] = [
 				SkillKey.Java,
 				SkillKey.LabView,
 				SkillKey.AI,
-				SkillKey.Print3D
+				SkillKey.Print3D,
+				SkillKey.Documentation,
 			].map((key) => ({
 				skill: { connect: { key } },
 			})),
@@ -56,7 +57,7 @@ export const educationSteps: Prisma.EducationStepCreateInput[] = [
 			create: [
 				SkillKey.TS, SkillKey.LabView, SkillKey.Python, SkillKey.CSharp,
 				SkillKey.CPlusPlus, SkillKey.AGV, SkillKey.PLCProgramming, SkillKey.TiaPortal,
-				SkillKey.Eagle, SkillKey.Fusion360, SkillKey.Print3D, SkillKey.Kuka,
+				SkillKey.Eagle, SkillKey.Fusion360, SkillKey.Print3D, SkillKey.Kuka, SkillKey.Documentation,
 			].map((key) => ({ skill: { connect: { key } } })),
 		},
 
@@ -90,7 +91,8 @@ export const educationSteps: Prisma.EducationStepCreateInput[] = [
 				SkillKey.LabView,
 				SkillKey.Python,
 				SkillKey.AI,
-				SkillKey.AGV
+				SkillKey.AGV,
+				SkillKey.Documentation,
 			].map((key) => ({
 				skill: { connect: { key } },
 			})),
@@ -118,7 +120,7 @@ export const educationSteps: Prisma.EducationStepCreateInput[] = [
 		endDate: new Date('2019-11-26'),
 
 		skills: {
-			create: [SkillKey.LabView].map((key) => ({ skill: { connect: { key } } })),
+			create: [SkillKey.LabView, SkillKey.Documentation].map((key) => ({ skill: { connect: { key } } })),
 		},
 
 		translations: {
@@ -145,7 +147,8 @@ export const educationSteps: Prisma.EducationStepCreateInput[] = [
 		skills: {
 			create: [
 				SkillKey.PLCProgramming,
-				SkillKey.Print3D
+				SkillKey.Print3D,
+				SkillKey.Documentation
 			].map((key) => ({ skill: { connect: { key } } })),
 		},
 
@@ -170,7 +173,7 @@ export const educationSteps: Prisma.EducationStepCreateInput[] = [
 		startDate: new Date('2014-11-28'),
 		endDate: new Date('2015-08-28'),
 		skills: {
-			create: [SkillKey.CADCAM, SkillKey.PLCProgramming].map((key) => ({ skill: { connect: { key } } })),
+			create: [SkillKey.CADCAM, SkillKey.PLCProgramming, SkillKey.Documentation].map((key) => ({ skill: { connect: { key } } })),
 		},
 
 		translations: {
@@ -195,7 +198,7 @@ export const educationSteps: Prisma.EducationStepCreateInput[] = [
 		endDate: new Date('2014-11-28'),
 
 		skills: {
-			create: [SkillKey.CADCAM].map((key) => ({ skill: { connect: { key } } })),
+			create: [SkillKey.CADCAM, SkillKey.Documentation].map((key) => ({ skill: { connect: { key } } })),
 		},
 
 		translations: {

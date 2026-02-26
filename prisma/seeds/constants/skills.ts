@@ -167,6 +167,15 @@ export const skills: Prisma.SkillCreateInput[] = [
 		},
 	},
 	{
+		key: SkillKey.Documentation,
+		translations: {
+			create: [
+				{ locale: Locale.pl, name: 'Dokumentacja' },
+				{ locale: Locale.en, name: 'Documentation' },
+			]
+		},
+	},
+	{
 		key: SkillKey.Eagle,
 		translations: {
 			create: [
@@ -478,6 +487,15 @@ export const skills: Prisma.SkillCreateInput[] = [
 			create: [
 				{ locale: Locale.pl, name: 'Sanity CMS', shortName: 'Sanity' },
 				{ locale: Locale.en, name: 'Sanity CMS', shortName: 'Sanity' },
+			]
+		},
+	},
+	{
+		key: SkillKey.SalesSupport,
+		translations: {
+			create: [
+				{ locale: Locale.pl, name: 'Sprzedaż' },
+				{ locale: Locale.en, name: 'Sales support' },
 			]
 		},
 	},

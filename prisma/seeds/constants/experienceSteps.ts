@@ -33,6 +33,8 @@ export const experienceSteps: Prisma.ExperienceStepCreateInput[] = [
 				SkillKey.Zustand,
 				SkillKey.Docker,
 				SkillKey.PostgreSQL,
+				SkillKey.Documentation,
+				SkillKey.SalesSupport
 			].map((key) => ({
 				skill: { connect: { key } },
 			})),
@@ -98,6 +100,7 @@ export const experienceSteps: Prisma.ExperienceStepCreateInput[] = [
 				SkillKey.FactoryIO,
 				SkillKey.AGV,
 				SkillKey.Fanuc,
+				SkillKey.Documentation
 			].map((key) => ({
 				skill: { connect: { key } },
 			})),
@@ -149,6 +152,8 @@ export const experienceSteps: Prisma.ExperienceStepCreateInput[] = [
 		isCurrent: false,
 		locationType: LocationType.OnSite,
 		employmentType: EmploymentType.Apprenticeship,
+
+		skills: { create: [SkillKey.Documentation, SkillKey.SalesSupport].map((key) => ({ skill: { connect: { key } } })) },
 
 		translations: {
 			create: [

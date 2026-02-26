@@ -8,7 +8,7 @@ import type { EducationStepDTO } from "@/models/educationStepDto";
 
 import styles from './page.module.scss';
 
-export default async function CoursesAndCertifications(): Promise<React.ReactNode> {
+export default async function ExperienceAndEducation(): Promise<React.ReactNode> {
 	const { dateToString, diffYearsMonths } = useDateFormatter();
 	const experienceSteps: ExperienceStepDTO[] = await getExperienceSteps();
 	const educationSteps: EducationStepDTO[] = await getEducationSteps();
@@ -42,7 +42,7 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
 							)}
 						</span>
 
-						{e.grade && <span className={styles.description}>Grade: {e.grade} {e.withHonors && ', diploma with distinction'}</span>}
+						{e.grade && <span className={styles.description}>Grade: {e.grade}{e.withHonors && ', diploma with distinction'}</span>}
 						{e.projectTitle && <span className={styles.projectTitle}>Thesis: {e.projectTitle}</span>}
 						{e.description && <span className={styles.description}>{e.description}</span>}
 

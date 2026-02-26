@@ -19,20 +19,20 @@ const frontendJS = [
 	...angular,
 	SkillKey.Leaflet, SkillKey.PdfMake, SkillKey.Sanity,
 	SkillKey.ThreeJS, SkillKey.YukaJS,
-	SkillKey.TS,
+	SkillKey.TS, SkillKey.Documentation
 ];
 
 const backendJS = [
 	SkillKey.NodeJS, SkillKey.ExpressJS, SkillKey.NestJS, SkillKey.NextJS,
 	SkillKey.MongoDB, SkillKey.PostgreSQL, SkillKey.SQLite,
 	SkillKey.GraphQL, SkillKey.GRPC, SkillKey.Microservices,
-	SkillKey.TS,
+	SkillKey.TS, SkillKey.Documentation
 ];
 
 const backendCSharp = [
 	SkillKey.DotNet, SkillKey.CSharp,
 	SkillKey.PostgreSQL, SkillKey.MongoDB, SkillKey.SQLite,
-	SkillKey.Microservices,
+	SkillKey.Microservices, SkillKey.Documentation
 ];
 
 const csharpFullstack = [
@@ -64,7 +64,7 @@ const mechatronics = [
 	SkillKey.J5, SkillKey.IQRF,
 	SkillKey.Eagle, SkillKey.Fusion360, SkillKey.CADCAM,
 	SkillKey.AGV, SkillKey.Fanuc, SkillKey.Kuka,
-	SkillKey.Print3D,
+	SkillKey.Print3D, SkillKey.Documentation
 ];
 
 const profileSkills: Record<ProfileSlug, SkillKey[]> = {
