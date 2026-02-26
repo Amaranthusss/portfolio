@@ -1,6 +1,5 @@
+import { DisplayDateRange } from "@/components/display-date-range/display-date-range";
 import Image from "next/image";
-
-import { useDateFormatter } from "@/hooks/useDateFormatter";
 
 import { getCertifications } from "@/services/getCertifications";
 
@@ -9,7 +8,6 @@ import type { CertificationDTO } from "@/models/certificationDto";
 import styles from './page.module.scss';
 
 export default async function CoursesAndCertifications(): Promise<React.ReactNode> {
-	const { dateToString } = useDateFormatter();
 	const certifications: CertificationDTO[] = await getCertifications();
 
 	return (
@@ -29,8 +27,8 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
 
 						<h2 className={styles.caption}>
 							<span className={styles.title}>{c.title}</span>
-							&nbsp;
-							<span className={styles.issue_date}>({dateToString(c.issueDate)})</span>
+							{' '}
+							<DisplayDateRange endDate={c.issueDate} className={styles.issue_date} />
 						</h2>
 
 						<div className={styles.info}>

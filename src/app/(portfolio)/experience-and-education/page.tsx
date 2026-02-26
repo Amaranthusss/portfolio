@@ -1,4 +1,4 @@
-import { useDateFormatter } from "@/hooks/useDateFormatter";
+import { DisplayDateRange } from "@/components/display-date-range/display-date-range";
 
 import { getExperienceSteps } from "@/services/getExperienceSteps";
 import { getEducationSteps } from "@/services/getEducationSteps";
@@ -9,7 +9,6 @@ import type { EducationStepDTO } from "@/models/educationStepDto";
 import styles from './page.module.scss';
 
 export default async function ExperienceAndEducation(): Promise<React.ReactNode> {
-	const { dateToString, diffYearsMonths } = useDateFormatter();
 	const experienceSteps: ExperienceStepDTO[] = await getExperienceSteps();
 	const educationSteps: EducationStepDTO[] = await getEducationSteps();
 
@@ -23,24 +22,12 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
 						<h2 className={styles.title}>{e.degree ?? e.projectTitle}</h2>
 						{e.institution && <span className={styles.institution}>{e.institution}</span>}
 
-						<span className={styles.date_range}>
-							{dateToString(e.startDate)}
-							{e.endDate && (
-								<>
-									&nbsp;&ndash;&nbsp;
-									{dateToString(e.endDate)}
-									&nbsp;&bull;&nbsp;
-									{diffYearsMonths(e.startDate, e.endDate)}
-								</>
-							)}
-							{!e.endDate && e.isCurrent && (
-								<>
-									&nbsp;&ndash;&nbsp;Currently
-									&nbsp;&bull;&nbsp;
-									{diffYearsMonths(e.startDate, new Date())}
-								</>
-							)}
-						</span>
+						<DisplayDateRange
+							startDate={e.startDate}
+							endDate={e.endDate}
+							isCurrent={e.isCurrent}
+							className={styles.date_range}
+						/>
 
 						{e.grade && <span className={styles.description}>Grade: {e.grade}{e.withHonors && ', diploma with distinction'}</span>}
 						{e.projectTitle && <span className={styles.projectTitle}>Thesis: {e.projectTitle}</span>}
@@ -65,24 +52,12 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
 						{e.company && <span className={styles.company}>{e.company}</span>}
 						{e.location && <span className={styles.location}>{e.location}</span>}
 
-						<span className={styles.date_range}>
-							{dateToString(e.startDate)}
-							{e.endDate && (
-								<>
-									&nbsp;&ndash;&nbsp;
-									{dateToString(e.endDate)}
-									&nbsp;&bull;&nbsp;
-									{diffYearsMonths(e.startDate, e.endDate)}
-								</>
-							)}
-							{!e.endDate && e.isCurrent && (
-								<>
-									&nbsp;&ndash;&nbsp;Currently
-									&nbsp;&bull;&nbsp;
-									{diffYearsMonths(e.startDate, new Date())}
-								</>
-							)}
-						</span>
+						<DisplayDateRange
+							startDate={e.startDate}
+							endDate={e.endDate}
+							isCurrent={e.isCurrent}
+							className={styles.date_range}
+						/>
 
 						<span className={styles.types}>
 							{e.employmentType && e.employmentType}
