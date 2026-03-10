@@ -30,4 +30,12 @@
 			margin-left: var(--padding);
 		}
 	}
+
+	>:nth-last-child(2) {
+		margin-bottom: var(--padding-sm);
+	}
+
+	>.read_more {
+		margin-top: auto;
+	}
 }

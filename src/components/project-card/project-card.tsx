@@ -32,7 +32,7 @@ export function ProjectCard({ project }: ProjectCardProps): React.ReactNode {
 			<DisplaySkills skills={project.skills} />
 
 			<Button
-				style={{ marginTop: 24 }}
+				className={styles.read_more}
 				onClick={() => router.push(Route.ProjectsAndRealisations + '/' + project.slug)}
 			>
 				Read more

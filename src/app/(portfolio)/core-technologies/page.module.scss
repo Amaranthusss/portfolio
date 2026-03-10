@@ -3,7 +3,7 @@
 	height: 100%;
 
 	>.page_title {
-		font-size: 48px;
+		font-size: var(--header-1-font-size);
 		font-weight: 600;
 		padding-bottom: var(--padding);
 	}

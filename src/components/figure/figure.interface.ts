@@ -4,4 +4,5 @@ export interface FigureProps {
 	height: number;
 	alt: string;
 	caption?: string;
+	priority?: boolean;
 };

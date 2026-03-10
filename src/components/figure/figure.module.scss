@@ -1,23 +1,18 @@
-.figure_container {
+.figure {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	gap: var(--padding);
-	justify-content: center;
 	align-items: center;
-	border-block-style: solid;
-	border-block-width: 1px;
-	border-block-color: var(--border-color);
+	gap: var(--padding);
+
+	border-block: 1px solid var(--border-color);
 	padding-block: var(--padding);
 	margin-bottom: var(--padding);
+}
 
-	>.caption {
-		text-align: center;
-		width: 100%;
-	}
-
-	>img {
-		max-width: 100%;
-		height: auto;
-	}
+.caption {
+	text-align: center;
+	font-size: 0.9rem;
+	color: var(--text-muted);
+	max-width: 70ch;
 }

@@ -1,5 +1,5 @@
 .page_title {
-	font-size: 48px;
+	font-size: var(--header-1-font-size);
 	font-weight: 600;
 	padding-bottom: var(--padding);
 
@@ -10,7 +10,7 @@
 
 .cards_layout {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(800px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
 	gap: var(--padding);
 
 	>.card {

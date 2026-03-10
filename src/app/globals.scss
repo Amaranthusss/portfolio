@@ -1,5 +1,8 @@
 :root {
 	--text-color: #1c1c1c;
+	--text-font-size: 16px;
+	--header-1-font-size: 32px;
+	--header-2-font-size: 28px;
 	--layout-bg-color: #ffffff;
 	--primary-color: rgb(0, 175, 234);
 	--primary-border-color: rgb(255, 255, 255);
@@ -7,6 +10,8 @@
 	--border-color: #4a6275;
 	--border-radius: 8px;
 	--padding: 32px;
+	--padding-sm: 12px;
+	--padding-md: 24px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,7 +37,7 @@ body {
 
 * {
 	font-family: magnat, magnat Fallback;
-	font-size: 22px;
+	font-size: 16px;
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;

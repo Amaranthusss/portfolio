@@ -13,7 +13,7 @@ export function DisplayDateRange({
 	const { dateToString, diffYearsMonths } = useDateFormatter();
 
 	return (
-		<span style={{ textWrap: 'nowrap', ...style }} className={className}>
+		<span style={style} className={className}>
 			{!startDate && !endDate && !isCurrent && <>&ndash;</>}
 
 			{!startDate && endDate && dateToString(endDate)}

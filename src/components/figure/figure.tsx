@@ -1,20 +1,34 @@
 import Image from "next/image";
-
 import type { FigureProps } from "./figure.interface";
 
-import styles from './figure.module.scss';
+import styles from "./figure.module.scss";
 
-export function Figure({ src, width, height, alt, caption }: FigureProps): React.ReactNode {
+export function Figure({
+	src,
+	width,
+	height,
+	alt,
+	caption,
+	priority = false
+}: FigureProps): React.ReactNode {
 	return (
-		<div className={styles.figure_container}>
+		<figure className={styles.figure}>
 			<Image
 				src={src}
 				width={width}
 				height={height}
 				alt={alt}
+				priority={priority}
+				loading={'eager'}
+				sizes={`(max-width: ${width}px) 100vw, {width}px`}
+				style={{ width: "80%", height: "auto" }}
 			/>
 
-			{caption && caption.length > 0 && <div className={styles.caption}>{caption}</div>}
-		</div>
+			{caption && (
+				<figcaption className={styles.caption}>
+					{caption}
+				</figcaption>
+			)}
+		</figure>
 	);
-};
+}
