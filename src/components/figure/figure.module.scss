@@ -1,0 +1,23 @@
+.figure_container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: var(--padding);
+	justify-content: center;
+	align-items: center;
+	border-block-style: solid;
+	border-block-width: 1px;
+	border-block-color: var(--border-color);
+	padding-block: var(--padding);
+	margin-bottom: var(--padding);
+
+	>.caption {
+		text-align: center;
+		width: 100%;
+	}
+
+	>img {
+		max-width: 100%;
+		height: auto;
+	}
+}

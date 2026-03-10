@@ -1,7 +1,7 @@
+import { PrimaryText } from "@/components/primary-text/primary-text";
 import Image from "next/image";
 
 import styles from './page.module.scss';
-import { PrimaryText } from "@/components/primary-text/primary-text";
 
 export default async function CoreTechnologies(): Promise<React.ReactNode> {
 	const imageWidth: number = 1000;

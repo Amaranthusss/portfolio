@@ -1,5 +1,4 @@
-import { DisplayDateRange } from "@/components/display-date-range/display-date-range";
-import { DisplaySkills } from "@/components/display-skills/display-skills";
+import { ProjectCard } from "@/components/project-card/project-card";
 
 import { getProjects } from "@/services/getProjects";
 
@@ -15,22 +14,7 @@ export default async function ProjectsAndRealisations(): Promise<React.ReactNode
 			<h1 className={styles.page_title}>Projects and Realisations</h1>
 
 			<div className={styles.cards_layout}>
-				{projects.sort(p => p.endDate?.getMilliseconds() ?? new Date().getMilliseconds()).map(p => (
-					<div key={p.id} className={styles.card}>
-						<h2 className={styles.name}>{p.name}</h2>
-						<span className={styles.category}>Category: {p.category}</span>
-
-						<DisplayDateRange
-							startDate={p.startDate}
-							endDate={p.endDate}
-							isCurrent={p.isCurrent}
-							className={styles.date_range}
-						/>
-
-						{p.description && <span className={styles.description}>{p.description}</span>}
-						<DisplaySkills skills={p.skills} />
-					</div>
-				))}
+				{projects.sort(p => p.endDate?.getMilliseconds() ?? new Date().getMilliseconds()).map(p => <ProjectCard key={p.slug} project={p} />)}
 			</div>
 		</main>
 	);

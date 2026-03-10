@@ -34,6 +34,7 @@ CREATE TABLE "ProjectTranslation" (
     "name" TEXT NOT NULL,
     "subname" TEXT,
     "description" TEXT,
+    "content" JSONB NOT NULL,
 
     CONSTRAINT "ProjectTranslation_pkey" PRIMARY KEY ("id")
 );

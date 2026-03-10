@@ -1,3 +1,4 @@
+import type { TypedObject } from "@portabletext/types";
 import type { SkillDTO } from "./skillDto";
 
 export interface ProjectDTO {
@@ -10,5 +11,6 @@ export interface ProjectDTO {
 	name: string;
 	subname?: string;
 	description?: string;
+	content: TypedObject | TypedObject[];
 	skills: SkillDTO[];
 };
