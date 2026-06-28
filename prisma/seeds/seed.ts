@@ -4,6 +4,7 @@ import { PrismaPg } from '@prisma/adapter-pg';
 import { experienceSteps } from "./constants/experienceSteps";
 import { educationSteps } from "./constants/educationSteps";
 import { certifications } from "./constants/certifications";
+import { publications } from "./constants/publications";
 import { imageFiles } from "./constants/imageFiles";
 import { profiles } from "./constants/profiles";
 import { projects } from "./constants/projects";
@@ -77,6 +78,27 @@ export async function main() {
 				},
 			},
 			create: certification,
+		});
+	};
+
+	for (const publication of publications) {
+		await prisma.publication.upsert({
+			where: { slug: publication.slug },
+			update: {
+				skills: {
+					deleteMany: {},
+					create: publication.skills?.create ?? [],
+				},
+				authors: {
+					deleteMany: {},
+					create: publication.authors?.create ?? [],
+				},
+				translations: {
+					deleteMany: {},
+					create: publication.translations?.create ?? [],
+				},
+			},
+			create: publication,
 		});
 	};
 

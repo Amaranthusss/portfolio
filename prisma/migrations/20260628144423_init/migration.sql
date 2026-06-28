@@ -13,6 +13,9 @@ CREATE TYPE "EmploymentType" AS ENUM ('FullTime', 'HalfTime', 'QuarterTime', 'Se
 -- CreateEnum
 CREATE TYPE "LocationType" AS ENUM ('OnSite', 'Remote', 'Hybrid');
 
+-- CreateEnum
+CREATE TYPE "AcademicDegree" AS ENUM ('Engineer', 'MasterOfScienceInEngineering', 'DoctorInEngineering', 'HabilitatedDoctorInEngineering', 'UniversityProfessor', 'Professor');
+
 -- CreateTable
 CREATE TABLE "Project" (
     "id" SERIAL NOT NULL,
@@ -57,6 +60,16 @@ CREATE TABLE "SkillTranslation" (
     "description" TEXT,
 
     CONSTRAINT "SkillTranslation_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "Person" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "surname" TEXT NOT NULL,
+    "academicDegree" "AcademicDegree",
+
+    CONSTRAINT "Person_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -183,6 +196,45 @@ CREATE TABLE "ImageFile" (
 );
 
 -- CreateTable
+CREATE TABLE "Publication" (
+    "id" SERIAL NOT NULL,
+    "slug" TEXT NOT NULL,
+    "publishDate" TIMESTAMP(3) NOT NULL,
+    "url" TEXT NOT NULL,
+
+    CONSTRAINT "Publication_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "PublicationAuthor" (
+    "publicationId" INTEGER NOT NULL,
+    "personId" INTEGER NOT NULL,
+
+    CONSTRAINT "PublicationAuthor_pkey" PRIMARY KEY ("publicationId","personId")
+);
+
+-- CreateTable
+CREATE TABLE "PublicationSkill" (
+    "publicationId" INTEGER NOT NULL,
+    "skillId" INTEGER NOT NULL,
+
+    CONSTRAINT "PublicationSkill_pkey" PRIMARY KEY ("publicationId","skillId")
+);
+
+-- CreateTable
+CREATE TABLE "PublicationTranslation" (
+    "id" SERIAL NOT NULL,
+    "publicationId" INTEGER NOT NULL,
+    "locale" "Locale" NOT NULL,
+    "title" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
+    "publisher" TEXT NOT NULL,
+    "keywords" TEXT[],
+
+    CONSTRAINT "PublicationTranslation_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Profile" (
     "id" SERIAL NOT NULL,
     "slug" TEXT NOT NULL,
@@ -245,6 +297,12 @@ CREATE UNIQUE INDEX "CertificationTranslation_certificationId_locale_key" ON "Ce
 CREATE UNIQUE INDEX "ImageFile_storageKey_key" ON "ImageFile"("storageKey");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Publication_slug_key" ON "Publication"("slug");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "PublicationTranslation_publicationId_locale_key" ON "PublicationTranslation"("publicationId", "locale");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Profile_slug_key" ON "Profile"("slug");
 
 -- CreateIndex
@@ -291,6 +349,21 @@ ALTER TABLE "CertificationSkill" ADD CONSTRAINT "CertificationSkill_certificatio
 
 -- AddForeignKey
 ALTER TABLE "CertificationSkill" ADD CONSTRAINT "CertificationSkill_skillId_fkey" FOREIGN KEY ("skillId") REFERENCES "Skill"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "PublicationAuthor" ADD CONSTRAINT "PublicationAuthor_publicationId_fkey" FOREIGN KEY ("publicationId") REFERENCES "Publication"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "PublicationAuthor" ADD CONSTRAINT "PublicationAuthor_personId_fkey" FOREIGN KEY ("personId") REFERENCES "Person"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "PublicationSkill" ADD CONSTRAINT "PublicationSkill_publicationId_fkey" FOREIGN KEY ("publicationId") REFERENCES "Publication"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "PublicationSkill" ADD CONSTRAINT "PublicationSkill_skillId_fkey" FOREIGN KEY ("skillId") REFERENCES "Skill"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "PublicationTranslation" ADD CONSTRAINT "PublicationTranslation_publicationId_fkey" FOREIGN KEY ("publicationId") REFERENCES "Publication"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "ProfileTranslation" ADD CONSTRAINT "ProfileTranslation_profileId_fkey" FOREIGN KEY ("profileId") REFERENCES "Profile"("id") ON DELETE CASCADE ON UPDATE CASCADE;

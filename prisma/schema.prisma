@@ -1,6 +1,4 @@
-// ==============================
-// Generator & Datasource
-// ==============================
+// * Generator & Datasource
 
 generator client {
   provider = "prisma-client-js"
@@ -11,9 +9,7 @@ datasource db {
   provider = "postgresql"
 }
 
-// ==============================
-// ENUMS
-// ==============================
+// * Enums
 
 enum Locale {
   pl
@@ -129,9 +125,16 @@ enum LocationType {
   Hybrid
 }
 
-// ==============================
-// PROJECTS
-// ==============================
+enum AcademicDegree {
+  Engineer
+  MasterOfScienceInEngineering
+  DoctorInEngineering
+  HabilitatedDoctorInEngineering
+  UniversityProfessor
+  Professor
+}
+
+// * Projects
 
 model Project {
   id        Int       @id @default(autoincrement())
@@ -164,20 +167,19 @@ model ProjectTranslation {
   @@unique([projectId, locale])
 }
 
-// ==============================
-// SKILLS
-// ==============================
+// * Skills
 
 model Skill {
   id  Int      @id @default(autoincrement())
   key SkillKey @unique
 
-  projects        ProjectSkill[]
-  certifications  CertificationSkill[]
-  educationSteps  EducationSkill[]
-  experienceSteps ExperienceSkill[]
-  profiles        ProfileSkill[]
-  translations    SkillTranslation[]
+  projects          ProjectSkill[]
+  certifications    CertificationSkill[]
+  educationSteps    EducationSkill[]
+  experienceSteps   ExperienceSkill[]
+  profiles          ProfileSkill[]
+  translations      SkillTranslation[]
+  publicationSkills PublicationSkill[]
 }
 
 model SkillTranslation {
@@ -194,9 +196,18 @@ model SkillTranslation {
   @@unique([skillId, locale])
 }
 
-// ==============================
-// PROJECT ↔ SKILL
-// ==============================
+// * Person
+
+model Person {
+  id             Int             @id @default(autoincrement())
+  name           String
+  surname        String
+  academicDegree AcademicDegree?
+
+  publicationAuthors PublicationAuthor[]
+}
+
+// * Project <-> Skill
 
 model ProjectSkill {
   projectId Int
@@ -208,9 +219,7 @@ model ProjectSkill {
   @@id([projectId, skillId])
 }
 
-// ==============================
-// EDUCATION
-// ==============================
+// * Education
 
 model EducationStep {
   id         Int       @id @default(autoincrement())
@@ -251,9 +260,7 @@ model EducationSkill {
   @@id([educationStepId, skillId])
 }
 
-// ==============================
-// EXPERIENCE
-// ==============================
+// * Experience
 
 model ExperienceStep {
   id        Int       @id @default(autoincrement())
@@ -295,9 +302,7 @@ model ExperienceSkill {
   @@id([experienceStepId, skillId])
 }
 
-// ==============================
-// CERTIFICATIONS
-// ==============================
+// * Certifications
 
 model Certification {
   id           Int      @id @default(autoincrement())
@@ -349,9 +354,55 @@ model ImageFile {
   certifications Certification[]
 }
 
-// ==============================
-// PROFILES (SKILL AGGREGATES)
-// ==============================
+// * Publications
+
+model Publication {
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique
+  publishDate DateTime
+  url         String
+
+  skills       PublicationSkill[]
+  authors      PublicationAuthor[]
+  translations PublicationTranslation[]
+}
+
+model PublicationAuthor {
+  publicationId Int
+  personId      Int
+
+  publication Publication @relation(fields: [publicationId], references: [id], onDelete: Cascade)
+  person      Person      @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@id([publicationId, personId])
+}
+
+model PublicationSkill {
+  publicationId Int
+  skillId       Int
+
+  publication Publication @relation(fields: [publicationId], references: [id], onDelete: Cascade)
+  skill       Skill       @relation(fields: [skillId], references: [id], onDelete: Cascade)
+
+  @@id([publicationId, skillId])
+}
+
+model PublicationTranslation {
+  id            Int    @id @default(autoincrement())
+  publicationId Int
+  locale        Locale
+
+  title       String
+  description String
+  publisher   String
+  keywords    String[]
+
+  publication Publication @relation(fields: [publicationId], references: [id], onDelete: Cascade)
+
+  @@unique([publicationId, locale])
+}
+
+// * Profiles (skill aggregates)
 
 model Profile {
   id   Int    @id @default(autoincrement())
