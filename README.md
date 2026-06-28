@@ -1,40 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Oskar Szkurłat — Portfolio
 
-## Getting Started
+_A full-stack & mechatronics engineer_  
+_Version: 2026-06-28_
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📘 About the Project
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This portfolio is a **fully custom-built web application designed to represent my professional journey across software engineering, frontend development, and industrial automation**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+It is not just a static showcase of projects — it is a **data-driven, interactive system** that models my entire professional profile through a structured relational database and dynamically generated UI.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The goal of this project is to demonstrate not only what I have built, but more importantly:
 
-## Learn More
+- how I design systems,
+- how I structure complex data,
+- and how I approach frontend architecture at scale.
 
-To learn more about Next.js, take a look at the following resources:
+The application is powered by a custom **PostgreSQL + Prisma** schema, supporting multilingual content, skill relationships, and rich content modeling across projects, experience, education, certifications, and publications.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Features
 
-## Deploy on Vercel
+- 🧠 **Skill-based Tag System** — entire content is connected through a normalized skill metadata
+- 🔍 **Advanced Filtering & Search Models** — explore content by role, technology, or skill set
+- 🌐 **Full Multilingual Support (PL / EN)** — structured i18n at database level
+- 🧩 **Custom Component System** — UI built entirely without external component libraries
+- 💾 **Rich Content Modeling** — projects, experience, education, certifications, publications
+- ⚡ **Type-safe Full-stack Architecture** — prisma-generated schema used across the entire stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧩 Tech Stack
 
+| Category | Technology |
+|-----------|-------------|
+| Framework | **Next**, **React** |
+| Language | **TypeScript** |
+| ORM | **Prisma** |
+| DataBase | **PostgreSQL** |
+| Styling | **SASS Modules** |
+| Deployment | **(to be added soon)** |
 
-## Development database URL
-DATABASE_URL="postgresql://postgres:postgres@localhost:5432/portfolio"
+---
+
+![DB relations](docs/portfolio-db-visualisation.png)
+
+---
+
+## 🧔 About Me
+
+Hi! I’m **Oskar Szkurłat**, a **full-stack developer** specializing in React and TypeScript with nearly 6 years of commercial experience building web applications. My primary focus is modern front-end development, where I have built and maintained web applications from scratch, worked on enterprise-scale systems, and delivered solutions for industrial, banking, and public-sector clients.
+
+React and TypeScript are my strongest technologies, but I am comfortable working across the entire application stack whenever a project requires it. Over the years, I have also worked commercially with Angular, Blazor, .NET, REST APIs, and SQL databases.
+
+Beyond my commercial experience, I continuously broaden my technical skills through personal projects and independent learning. I have worked with technologies such as Nest.js, Next.js, Node.js, Express.js, PostgreSQL, MySQL, SQLite, and other technologies from the JavaScript ecosystem. This allows me to continuously expand my full-stack capabilities beyond the technology stack used in my daily work.
+
+My engineering background is rooted in mechatronics. Before becoming a software developer, I worked with industrial automation and Siemens PLC systems at advanced level. This combination of software engineering, automation, electronics, and system design gives me a broader perspective when solving technical problems.
+
+Technology has been my passion since childhood. Whether building web applications, programming embedded devices, designing electronic circuits, creating IoT systems, or developing 3D-printable solutions, I enjoy transforming ideas into reliable and practical products.
+
+If you’d like to collaborate or just chat — feel free to contact me!
+
+📫 **Email:** _oskar.szkurlat@gmail.com_  
+💼 **LinkedIn:** _[Oskar Szkurłat](https://www.linkedin.com/in/oskar-szkur%C5%82at-597782305/)_  
+🌐 **Website:** _[Demo](https://amaranthusss.github.io/portfolio/)_
+
+---
+
+## 📄 License
+
+© 2026 Oskar Szkurłat. All rights reserved.
+
+This repository contains personal portfolio materials and proprietary design/code
+elements. You are not allowed to copy, distribute, or use any part of this project
+without explicit permission.
+
+---
+
+> _“Turning ideas into systems, and systems into stories.”_  
+> — **Oskar Szkurłat**
