@@ -405,8 +405,9 @@ model PublicationTranslation {
 // * Profiles (skill aggregates)
 
 model Profile {
-  id   Int    @id @default(autoincrement())
-  slug String @unique
+  id          Int    @id @default(autoincrement())
+  slug        String @unique
+  orderNumber Int    @unique
 
   translations ProfileTranslation[]
   skills       ProfileSkill[]

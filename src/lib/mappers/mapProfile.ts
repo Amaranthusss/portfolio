@@ -10,6 +10,7 @@ export function mapProfile(profile: ProfileWithRelations): ProfileDTO {
 		id: profile.id,
 		slug: profile.slug,
 		name: translation.name,
+		orderNumber: profile.orderNumber,
 		skills: profile.skills.map(ps => mapSkill(ps.skill)),
 	};
 }

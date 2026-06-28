@@ -67,17 +67,17 @@ const mechatronics = [
 	SkillKey.Print3D, SkillKey.Documentation
 ];
 
-const profileSkills: Record<ProfileSlug, SkillKey[]> = {
-	[ProfileSlug.FrontendJS]: frontendJS,
-	[ProfileSlug.React]: react,
-	[ProfileSlug.Angular]: angular,
-	[ProfileSlug.BackendJS]: backendJS,
-	[ProfileSlug.FullstackJS]: fullstackJS,
-	[ProfileSlug.BackendCSharp]: backendCSharp,
-	[ProfileSlug.CSharpFullstack]: csharpFullstack,
-	[ProfileSlug.Deploy]: deploy,
-	[ProfileSlug.PLCProgramming]: plcProgrammer,
-	[ProfileSlug.Mechatronics]: mechatronics,
+const profileSkills: Record<ProfileSlug, { orderNumber: number, skills: SkillKey[] }> = {
+	[ProfileSlug.FullstackJS]: { orderNumber: 0, skills: fullstackJS },
+	[ProfileSlug.React]: { orderNumber: 1, skills: react },
+	[ProfileSlug.FrontendJS]: { orderNumber: 2, skills: frontendJS },
+	[ProfileSlug.BackendJS]: { orderNumber: 3, skills: backendJS },
+	[ProfileSlug.Angular]: { orderNumber: 4, skills: angular },
+	[ProfileSlug.Deploy]: { orderNumber: 5, skills: deploy },
+	[ProfileSlug.BackendCSharp]: { orderNumber: 6, skills: backendCSharp },
+	[ProfileSlug.CSharpFullstack]: { orderNumber: 7, skills: csharpFullstack },
+	[ProfileSlug.PLCProgramming]: { orderNumber: 8, skills: plcProgrammer },
+	[ProfileSlug.Mechatronics]: { orderNumber: 9, skills: mechatronics },
 };
 
 function getLabelBySlug(slug: ProfileSlug, locale: 'pl' | 'en'): string {
@@ -129,11 +129,12 @@ function getLabelBySlug(slug: ProfileSlug, locale: 'pl' | 'en'): string {
 
 
 export const profiles: Prisma.ProfileCreateInput[] = Object.entries(profileSkills)
-	.map(([slug, skills]: [string, SkillKey[]]): Prisma.ProfileCreateInput => ({
+	.map(([slug, data]: [string, { orderNumber: number, skills: SkillKey[] }]): Prisma.ProfileCreateInput => ({
 		slug,
+		orderNumber: data.orderNumber,
 
 		skills: {
-			create: [...new Set(skills)].map((key) => ({
+			create: [...new Set(data.skills)].map((key) => ({
 				skill: { connect: { key } },
 			})),
 		},

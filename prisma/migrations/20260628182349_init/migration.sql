@@ -238,6 +238,7 @@ CREATE TABLE "PublicationTranslation" (
 CREATE TABLE "Profile" (
     "id" SERIAL NOT NULL,
     "slug" TEXT NOT NULL,
+    "orderNumber" INTEGER NOT NULL,
 
     CONSTRAINT "Profile_pkey" PRIMARY KEY ("id")
 );
@@ -304,6 +305,9 @@ CREATE UNIQUE INDEX "PublicationTranslation_publicationId_locale_key" ON "Public
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Profile_slug_key" ON "Profile"("slug");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Profile_orderNumber_key" ON "Profile"("orderNumber");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "ProfileTranslation_profileId_locale_key" ON "ProfileTranslation"("profileId", "locale");
