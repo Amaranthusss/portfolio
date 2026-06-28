@@ -21,14 +21,9 @@ export function Figure({
 				priority={priority}
 				loading={'eager'}
 				sizes={`(max-width: ${width}px) 100vw, {width}px`}
-				style={{ width: "80%", height: "auto" }}
 			/>
 
-			{caption && (
-				<figcaption className={styles.caption}>
-					{caption}
-				</figcaption>
-			)}
+			{caption && <figcaption>{caption}</figcaption>}
 		</figure>
 	);
 }

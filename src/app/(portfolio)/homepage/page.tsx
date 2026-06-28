@@ -3,13 +3,15 @@ import Image from 'next/image';
 import styles from './page.module.scss';
 
 export default function Home(): React.ReactNode {
+	const welcomeImageHeight = 800;
+
 	return (
 		<main className={styles.home_page}>
 			<div className={styles.welcome}>
 				<div className={styles.header}>
-					<span className={styles.marked}>Full-stack & mechatronics engineer</span>
-					<span>Oskar Szkurlat</span>
-					<span className={styles.description}>Ready to work!</span>
+					<h1>Oskar Szkurlat</h1>
+					<h2 className={styles.marked}>&bull; Full-stack<br />&bull; mechatronics engineer</h2>
+					<h2 className={styles.description}>Ready to work!</h2>
 				</div>
 
 				<Image
@@ -17,8 +19,9 @@ export default function Home(): React.ReactNode {
 					src={'/images/welcome.png'}
 					alt={'Welcome image'}
 					loading={'eager'}
-					width={700}
-					height={1050}
+					width={welcomeImageHeight * 700 / 1050}
+					height={welcomeImageHeight}
+					sizes={`(max-width: ${welcomeImageHeight * 700 / 1050}px) 100vw, {width}px`}
 				/>
 
 			</div>

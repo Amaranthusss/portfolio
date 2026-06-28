@@ -15,12 +15,12 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
 
 	return (
 		<main>
-			<h1 className={styles.page_title}>Education</h1>
+			<h1>Education</h1>
 
 			<div className={styles.cards_layout}>
 				{educationSteps.sort(e => e.endDate?.getMilliseconds() ?? new Date().getMilliseconds()).map(e => (
 					<div key={e.id} className={styles.card}>
-						<h2 className={styles.title}>{e.degree ?? e.projectTitle}</h2>
+						<strong className={styles.title}>{e.degree ?? e.projectTitle}</strong>
 						{e.institution && <span className={styles.institution}>{e.institution}</span>}
 
 						<DisplayDateRange
@@ -39,12 +39,12 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
 				))}
 			</div>
 
-			<h1 className={`${styles.page_title} ${styles.experience_title}`}>Experience</h1>
+			<h1>Experience</h1>
 
 			<div className={styles.cards_layout}>
 				{experienceSteps.sort(e => e.endDate?.getMilliseconds() ?? new Date().getMilliseconds()).map(e => (
 					<div key={e.id} className={styles.card}>
-						<h2 className={styles.title}>{e.position}</h2>
+						<strong>{e.position}</strong>
 						{e.company && <span className={styles.company}>{e.company}</span>}
 						{e.location && <span className={styles.location}>{e.location}</span>}
 

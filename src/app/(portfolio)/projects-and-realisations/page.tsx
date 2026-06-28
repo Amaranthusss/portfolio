@@ -11,7 +11,7 @@ export default async function ProjectsAndRealisations(): Promise<React.ReactNode
 
 	return (
 		<main>
-			<h1 className={styles.page_title}>Projects and Realisations</h1>
+			<h1>Projects and Realisations</h1>
 
 			<div className={styles.cards_layout}>
 				{projects.sort(p => p.endDate?.getMilliseconds() ?? new Date().getMilliseconds()).map(p => <ProjectCard key={p.slug} project={p} />)}

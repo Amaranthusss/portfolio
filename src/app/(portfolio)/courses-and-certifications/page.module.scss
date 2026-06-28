@@ -1,16 +1,11 @@
-.page_title {
-	font-size: var(--header-1-font-size);
-	font-weight: 600;
-	padding-bottom: var(--padding);
-}
-
 .cards_layout {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
-	gap: var(--padding);
+	gap: var(--padding-xl);
+	container-type: inline-size;
 
 	>.card {
-		padding: var(--padding);
+		padding: var(--padding-xl);
 		border-color: var(--border-color);
 		border-radius: var(--border-radius);
 		border-style: solid;
@@ -19,7 +14,18 @@
 		grid-template-areas: 'icon caption' 'icon info';
 		grid-template-columns: 64px 1fr;
 		grid-template-rows: auto 1fr;
-		gap: 8px var(--padding);
+		gap: var(--padding-sm) var(--padding-xl);
+
+		@container (max-width: 500px) {
+			grid-template-areas: 'icon' 'caption' 'info';
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
+			gap: var(--padding-md);
+
+			>.icon {
+				justify-self: center;
+			}
+		}
 
 		>.icon {
 			grid-area: icon;
@@ -28,11 +34,6 @@
 		>.caption {
 			grid-area: caption;
 			font-weight: 400;
-
-			>.title {
-				color: var(--primary-color);
-				font-weight: 600;
-			}
 		}
 
 		>.info {

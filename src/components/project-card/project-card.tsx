@@ -18,7 +18,7 @@ export function ProjectCard({ project }: ProjectCardProps): React.ReactNode {
 
 	return (
 		<div key={project.id} className={styles.card}>
-			<h2 className={styles.name}>{project.name}</h2>
+			<strong>{project.name}</strong>
 			<span className={styles.category}>Category: {project.category}</span>
 
 			<DisplayDateRange

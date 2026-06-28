@@ -13,7 +13,7 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
 
 	return (
 		<main>
-			<h1 className={styles.page_title}>Courses and Certifications</h1>
+			<h1>Courses and Certifications</h1>
 
 			<div className={styles.cards_layout}>
 				{certifications.sort(c => c.issueDate.getMilliseconds()).map(c => (
@@ -26,11 +26,11 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
 							className={styles.icon}
 						/>
 
-						<h2 className={styles.caption}>
-							<span className={styles.title}>{c.title}</span>
+						<div className={styles.caption}>
+							<strong>{c.title}</strong>
 							{' '}
 							<DisplayDateRange endDate={c.issueDate} className={styles.issue_date} />
-						</h2>
+						</div>
 
 						<div className={styles.info}>
 							<span className={styles.provider}>{c.provider}</span>

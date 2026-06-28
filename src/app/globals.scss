@@ -1,17 +1,19 @@
 :root {
 	--text-color: #1c1c1c;
-	--text-font-size: 16px;
+	--text-font-size: 15px;
 	--header-1-font-size: 32px;
 	--header-2-font-size: 28px;
+	--header-3-font-size: 22px;
 	--layout-bg-color: #ffffff;
 	--primary-color: rgb(0, 175, 234);
 	--primary-border-color: rgb(255, 255, 255);
 	--primary-contrast-color: rgb(255, 255, 255);
 	--border-color: #4a6275;
 	--border-radius: 8px;
-	--padding: 32px;
-	--padding-sm: 12px;
-	--padding-md: 24px;
+	--padding-sm: 8px;
+	--padding-md: 12px;
+	--padding-lg: 24px;
+	--padding-xl: 32px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,23 +35,54 @@ body {
 	background: var(--layout-bg-color);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	padding: 0;
+	margin: 0;
 }
 
 * {
 	font-family: magnat, magnat Fallback;
 	font-size: 16px;
 	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-}
-
-a {
-	color: inherit;
-	text-decoration: none;
 }
 
 @media (prefers-color-scheme: dark) {
 	html {
 		color-scheme: dark;
 	}
+}
+
+strong {
+	color: var(--primary-color);
+	font-weight: 600;
+}
+
+a {
+	color: var(--primary-color);
+	text-decoration: none;
+}
+
+ul {
+	padding-left: unset;
+	margin-block: unset;
+}
+
+h1,
+h2,
+h1 {
+	font-weight: 600;
+	margin-top: unset;
+	margin-bottom: var(--padding-xl);
+}
+
+h1 {
+	font-size: var(--header-1-font-size);
+}
+
+h2 {
+	font-size: var(--header-2-font-size);
+}
+
+h3 {
+	font-weight: 600;
+	font-size: var(--header-3-font-size);
 }

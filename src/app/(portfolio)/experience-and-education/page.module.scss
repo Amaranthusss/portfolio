@@ -1,32 +1,21 @@
-.page_title {
-	font-size: var(--header-1-font-size);
-	font-weight: 600;
-	padding-bottom: var(--padding);
-
-	&.experience_title {
-		padding-top: var(--padding);
-	}
-}
-
 .cards_layout {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
-	gap: var(--padding);
+	gap: var(--padding-xl);
+
+	&:first-of-type {
+		padding-bottom: var(--padding-xl);
+	}
 
 	>.card {
-		padding: var(--padding);
+		padding: var(--padding-xl);
 		border-color: var(--border-color);
 		border-radius: var(--border-radius);
 		border-style: solid;
 		border-width: 1px;
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
-
-		>.title {
-			color: var(--primary-color);
-			font-weight: 600;
-		}
+		gap: var(--padding-sm);
 
 		>.date_range,
 		>.types,
@@ -42,7 +31,7 @@
 			opacity: 0.4;
 
 			>.duty {
-				margin-left: var(--padding);
+				margin-left: var(--padding-xl);
 			}
 		}
 	}

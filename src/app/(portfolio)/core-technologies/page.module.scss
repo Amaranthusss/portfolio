@@ -5,18 +5,18 @@
 	>.page_title {
 		font-size: var(--header-1-font-size);
 		font-weight: 600;
-		padding-bottom: var(--padding);
+		padding-bottom: var(--padding-xl);
 	}
 
 	>.content {
 		position: absolute;
 		max-width: 1400px;
 		text-align: justify;
-		right: var(--padding);
+		right: var(--padding-xl);
 		top: 0;
 
 		>p {
-			margin-bottom: var(--padding);
+			margin-bottom: var(--padding-xl);
 		}
 	}
 
