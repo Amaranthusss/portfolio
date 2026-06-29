@@ -4,7 +4,7 @@ import type { ButtonProps } from "./button.interface";
 
 import styles from './button.module.scss';
 
-export const Button = ({ type, animated, style, className, children, onClick }: ButtonProps): React.ReactNode => {
+export const Button = ({ type, active, animated, style, className, children, onClick }: ButtonProps): React.ReactNode => {
 	const classNames = useMemo((): string => {
 		const classes: string[] = [styles.button];
 
@@ -13,9 +13,10 @@ export const Button = ({ type, animated, style, className, children, onClick }: 
 		if (type === 'text') classes.push(styles.text);
 		if (className && className.length > 0) classes.push(className);
 		if (animated) classes.push(styles.animated);
+		if (active) classes.push(styles.active);
 
 		return classes.join(' ');
-	}, [type, className, animated]);
+	}, [type, className, active, animated]);
 
 	return (
 		<button

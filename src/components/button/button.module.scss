@@ -1,4 +1,5 @@
 $box-shadow: 0px 0px 4px 0px var(--primary-color);
+$box-shadow-active: 0px 0px 4px 2px var(--primary-color);
 
 .button {
 	font-size: var(--text-font-size);
@@ -6,9 +7,19 @@ $box-shadow: 0px 0px 4px 0px var(--primary-color);
 	padding: var(--padding-sm);
 	cursor: pointer;
 	color: var(--text-color);
-	-webkit-box-shadow: $box-shadow;
-	-moz-box-shadow: $box-shadow;
-	box-shadow: $box-shadow;
+
+	&:not(.active) {
+		-webkit-box-shadow: $box-shadow;
+		-moz-box-shadow: $box-shadow;
+		box-shadow: $box-shadow;
+	}
+
+	&.active {
+		-webkit-box-shadow: $box-shadow-active;
+		-moz-box-shadow: $box-shadow-active;
+		box-shadow: $box-shadow-active;
+		border-color: var(--primary-color) !important;
+	}
 
 	&.default {
 		border: solid 1px var(--border-color);

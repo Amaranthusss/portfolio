@@ -1,0 +1,11 @@
+.divider {
+	&.horizontal {
+		border-bottom: solid 1px var(--border-color);
+		margin-block: var(--space-lg);
+		width: 100%;
+	}
+
+	&.vertical {
+		// ToDo to handle
+	}
+}

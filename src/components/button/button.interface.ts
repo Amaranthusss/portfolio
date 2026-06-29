@@ -5,6 +5,7 @@ export interface ButtonProps extends PropsWithChildren {
 	className?: string;
 	type?: 'primary' | 'default' | 'text';
 	animated?: boolean;
+	active?: boolean;
 	onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 };
 
