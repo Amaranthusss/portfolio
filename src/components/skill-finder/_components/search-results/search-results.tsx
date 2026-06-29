@@ -1,5 +1,5 @@
 'use client'
-import { Header } from "@/components/header/header";
+import { Title } from "@/components/title/title";
 
 import type { SearchResultsProps } from "./search-results.interface";
 
@@ -8,19 +8,19 @@ export function SearchResults({ results }: SearchResultsProps): React.ReactNode 
 
 	return (
 		<div>
-			<Header>Certifications:</Header>
+			<Title>Certifications:</Title>
 			{results.certifications.map(c => <div key={c.slug}>{c.title}</div>)}
 
-			<Header>Education:</Header>
+			<Title>Education:</Title>
 			{results.education.map(e => <div key={e.slug}>{e.degree ?? '-'}</div>)}
 
-			<Header>Experience:</Header>
+			<Title>Experience:</Title>
 			{results.experience.map(e => <div key={e.slug}>{e.position ?? '-'}</div>)}
 
-			<Header>Projects:</Header>
+			<Title>Projects:</Title>
 			{results.projects.map(p => <div key={p.slug}>{p.name}</div>)}
 
-			<Header>Publications:</Header>
+			<Title>Publications:</Title>
 			{results.publications.map(p => <div key={p.slug}>{p.title}</div>)}
 		</div>
 	);

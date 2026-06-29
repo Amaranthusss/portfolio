@@ -1,4 +1,5 @@
 "use client";
+import { LanguageSelector } from "@/components/language-selector/language-selector";
 import { Button } from "../../button/button";
 
 import { useTranslations } from "next-intl";
@@ -24,6 +25,7 @@ export const Header = (): React.ReactNode => {
 			<Button onClick={(): void => router.push(Route.CodeStyle)}>{t('code-style')}</Button>
 			<Button onClick={(): void => router.push(Route.Publications)}>{t('publications')}</Button>
 			<Button onClick={(): void => router.push(Route.HireMe)} type={'primary'} style={{ textTransform: 'uppercase' }} animated>{t('hire-me')}</Button>
+			<LanguageSelector />
 		</header>
 	);
 };

@@ -1,8 +1,8 @@
-import type { HeaderProps } from "./header.interface";
+import type { TitleProps } from "./title.interface";
 
-import styles from './header.module.scss';
+import styles from './title.module.scss';
 
-export function Header({ children, size = 'lg', level = 1 }: HeaderProps): React.ReactNode {
+export function Title({ children, size = 'lg', level = 1 }: TitleProps): React.ReactNode {
 	const className: string = [styles[size]].join(' ');
 	const props = { className };
 
