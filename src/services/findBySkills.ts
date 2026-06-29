@@ -1,3 +1,4 @@
+'use server'
 import { mapCertification } from "@/lib/mappers/mapCertification";
 import { mapPublication } from "@/lib/mappers/mapPublication";
 import { mapExperienceStep } from "@/lib/mappers/mapExperienceStep";
@@ -9,6 +10,8 @@ import prisma from "@/lib/prisma";
 import type { SkillAggregateDto } from "@/models/skillGraphDto";
 import type { SkillKey } from "@/generated/prisma";
 
+import { currentLocale } from "@/lib/config";
+
 export const findBySkills = cache(async (skillKeys: SkillKey[]): Promise<SkillAggregateDto> => {
 	// ToDo Prepare materialized view at the database
 
@@ -16,28 +19,28 @@ export const findBySkills = cache(async (skillKeys: SkillKey[]): Promise<SkillAg
 		await Promise.all([
 			prisma.certification.findMany({
 				where: { skills: { some: { skill: { key: { in: skillKeys } } } } },
-				include: { translations: true, skills: { include: { skill: true } }, imageFile: true },
+				include: { translations: { where: { locale: currentLocale }, take: 1 }, skills: { include: { skill: true } }, imageFile: true },
 			}),
 
 			prisma.project.findMany({
 				where: { skills: { some: { skill: { key: { in: skillKeys } } } } },
-				include: { translations: true, skills: { include: { skill: true } } },
+				include: { translations: { where: { locale: currentLocale }, take: 1 }, skills: { include: { skill: true } } },
 			}),
 
 			prisma.educationStep.findMany({
 				where: { skills: { some: { skill: { key: { in: skillKeys } } } } },
-				include: { translations: true, skills: { include: { skill: true } } },
+				include: { translations: { where: { locale: currentLocale }, take: 1 }, skills: { include: { skill: true } } },
 			}),
 
 			prisma.experienceStep.findMany({
 				where: { skills: { some: { skill: { key: { in: skillKeys } } } } },
-				include: { translations: true, skills: { include: { skill: true } } },
+				include: { translations: { where: { locale: currentLocale }, take: 1 }, skills: { include: { skill: true } } },
 			}),
 
 			prisma.publication.findMany({
 				where: { skills: { some: { skill: { key: { in: skillKeys } } } } },
 				include: {
-					translations: true,
+					translations: { where: { locale: currentLocale }, take: 1 },
 					authors: { include: { person: true } },
 					skills: { include: { skill: true } },
 				},

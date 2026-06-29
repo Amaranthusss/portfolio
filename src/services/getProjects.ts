@@ -1,3 +1,4 @@
+'use server'
 import { mapProject } from "@/lib/mappers/mapProject";
 import { cache } from "react";
 import prisma from "@/lib/prisma";

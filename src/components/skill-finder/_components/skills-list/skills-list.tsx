@@ -8,7 +8,7 @@ import styles from './skills-list.module.scss';
 
 export function SkillsList({
 	skills,
-	selectedSkills,
+	selectedSkillKeys,
 	onToggleSkill,
 }: SkillsListProps): React.ReactNode {
 	return (
@@ -18,7 +18,7 @@ export function SkillsList({
 				.map((skill: SkillDTO): React.ReactNode => (
 					<Checkbox
 						key={skill.key}
-						checked={selectedSkills.has(skill.key)}
+						checked={selectedSkillKeys.has(skill.key)}
 						onChange={(): void => onToggleSkill(skill)}
 					>
 						{skill.name}

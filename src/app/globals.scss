@@ -1,6 +1,9 @@
 :root {
 	--text-color: #1c1c1c;
 	--text-font-size: 15px;
+	--font-size-md: 12px;
+	--font-size-lg: 16px;
+	--font-size-xl: 24px;
 	--header-1-font-size: 32px;
 	--header-2-font-size: 28px;
 	--header-3-font-size: 22px;
@@ -75,7 +78,7 @@ h2,
 h1 {
 	font-weight: 600;
 	margin-top: unset;
-	margin-bottom: var(--padding-xl);
+	margin-block: var(--padding-md);
 }
 
 h1 {
