@@ -1,10 +1,12 @@
 {
-  "homepage": "Homepage",
-  "experience-and-education": "Experience & Education",
-  "courses-and-certifications": "Courses & Certifications",
-  "projects-and-realisations": "Projects & Realisations",
-  "core-technologies": "Core Technologies",
-  "code-style": "Code Style",
-  "publications": "Publications",
-  "hire-me": "Hire Me"
+  "menu": {
+    "homepage": "Homepage",
+    "experience-and-education": "Experience & Education",
+    "courses-and-certifications": "Courses & Certifications",
+    "projects-and-realisations": "Projects & Realisations",
+    "core-technologies": "Core Technologies",
+    "code-style": "Code Style",
+    "publications": "Publications",
+    "hire-me": "Hire Me"
+  }
 }

@@ -1,25 +1,24 @@
-'use client';
-
+import { getTranslations } from 'next-intl/server';
 import { DisplayDateRange } from '../display-date-range/display-date-range';
 import { DisplaySkills } from '../display-skills/display-skills';
-import { Button } from '../button/button';
+import { NavToProject } from './_components/nav-to-project/nav-to-project';
 
-import { useRouter } from 'next/navigation';
-
-import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import type { ProjectCardProps } from './project-card.interface';
-
-import { Route } from '@/constants/Route';
 
 import styles from './project-card.module.scss';
 
-export function ProjectCard({ project }: ProjectCardProps): React.ReactNode {
-  const router: AppRouterInstance = useRouter();
+export async function ProjectCard({
+  project
+}: ProjectCardProps): Promise<React.ReactNode> {
+  const t = await getTranslations('common');
 
   return (
     <div key={project.id} className={styles.card}>
       <strong>{project.name}</strong>
-      <span className={styles.category}>Category: {project.category}</span>
+			
+      <span className={styles.category}>
+        {t('category')}: {project.category}
+      </span>
 
       <DisplayDateRange
         startDate={project.startDate}
@@ -31,16 +30,9 @@ export function ProjectCard({ project }: ProjectCardProps): React.ReactNode {
       {project.description && (
         <span className={styles.description}>{project.description}</span>
       )}
-      <DisplaySkills skills={project.skills} />
 
-      <Button
-        className={styles.read_more}
-        onClick={() =>
-          router.push(Route.ProjectsAndRealisations + '/' + project.slug)
-        }
-      >
-        Read more
-      </Button>
+      <DisplaySkills skills={project.skills} />
+      <NavToProject project={project} />
     </div>
   );
 }

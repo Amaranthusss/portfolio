@@ -1,8 +1,10 @@
 import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
 import { DisplaySkills } from '@/components/display-skills/display-skills';
+import { Title } from '@/components/title/title';
 import Image from 'next/image';
 
 import { getCertifications } from '@/services/getCertifications';
+import { getTranslations } from 'next-intl/server';
 
 import type { CertificationDTO } from '@/models/certificationDto';
 
@@ -10,10 +12,11 @@ import styles from './page.module.scss';
 
 export default async function CoursesAndCertifications(): Promise<React.ReactNode> {
   const certifications: CertificationDTO[] = await getCertifications();
+  const t = await getTranslations('courses-and-certifications');
 
   return (
     <main>
-      <h1>Courses and Certifications</h1>
+      <Title>{t('header')}</Title>
 
       <div className={styles.cards_layout}>
         {certifications
@@ -41,7 +44,7 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
                 <span className={styles.description}>{c.description}</span>
                 {c.credentialID && (
                   <span className={styles.credential_id}>
-                    Credential ID: {c.credentialID}
+                    {t('credential-id')}: {c.credentialID}
                   </span>
                 )}
 

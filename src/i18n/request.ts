@@ -14,8 +14,26 @@ export default getRequestConfig(async ({ requestLocale }) => {
   const common = (await import(`../../messages/${locale}/common.json`)).default;
   const layout = (await import(`../../messages/${locale}/layout.json`)).default;
 
+  const coursesAndCertifications = (
+    await import(`../../messages/${locale}/courses-and-certifications.json`)
+  ).default;
+
+  const experienceAndEducation = (
+    await import(`../../messages/${locale}/experience-and-education.json`)
+  ).default;
+
+  const projectsAndRealisations = (
+    await import(`../../messages/${locale}/projects-and-realisations.json`)
+  ).default;
+
   return {
     locale,
-    messages: { common, layout },
+    messages: {
+      common: common,
+      layout: layout,
+      'experience-and-education': experienceAndEducation,
+      'projects-and-realisations': projectsAndRealisations,
+      'courses-and-certifications': coursesAndCertifications
+    }
   };
 });

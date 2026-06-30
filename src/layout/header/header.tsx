@@ -14,7 +14,7 @@ import styles from './header.module.scss';
 
 export const Header = (): React.ReactNode => {
   const router: AppRouterInstance = useRouter();
-  const t = useTranslations('layout');
+  const t = useTranslations('layout.menu');
 
   const menuItems: {
     route: Route;

@@ -1,7 +1,7 @@
 import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
 import { DisplaySkills } from '@/components/display-skills/display-skills';
 
-import { createAuthorFormatter } from '@/app/utils/authorFormatter';
+import { createAuthorFormatter } from '@/utils/createAuthorFormatter';
 import { getPublications } from '@/services/getPublications';
 
 import type { PublicationDTO } from '@/models/publicationDto';
