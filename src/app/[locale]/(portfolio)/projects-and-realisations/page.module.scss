@@ -1,5 +1,5 @@
 .cards_layout {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
-	gap: var(--padding-xl);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
+  gap: var(--padding-xl);
 }

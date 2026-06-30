@@ -3,6 +3,6 @@ import { defaultLocale } from './locale';
 import { locales } from './locale';
 
 export const routing = defineRouting({
-	locales,
-	defaultLocale: defaultLocale
+  locales,
+  defaultLocale: defaultLocale,
 });

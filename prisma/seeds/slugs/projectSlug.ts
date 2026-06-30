@@ -12,5 +12,5 @@ export enum ProjectSlug {
   ApplicationBinder = 'application-binder',
   LedControllerViaUSB = 'led-controller-via-usb',
   PilsudskiPalaceSmartHome = 'pilsudski-palace-smart-home',
-  PilsudskiPalaceProjectAndRealization = 'pilsudski-palace-project-and-realization'
-};
+  PilsudskiPalaceProjectAndRealization = 'pilsudski-palace-project-and-realization',
+}

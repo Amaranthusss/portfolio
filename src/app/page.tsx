@@ -1,7 +1,7 @@
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation';
 
-import { Route } from "@/constants/Route";
+import { Route } from '@/constants/Route';
 
 export default function Index(): void {
-	redirect("/" + Route.Homepage);
+  redirect('/' + Route.Homepage);
 }

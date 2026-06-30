@@ -1,5 +1,5 @@
-import type { Locale, Prisma } from "@/generated/prisma";
+import type { Locale, Prisma } from '@/generated/prisma';
 
 export type SkillWithTranslations = Prisma.SkillGetPayload<{
-	include: { translations: { where: { locale: Locale }, take: 1 } };
+  include: { translations: { where: { locale: Locale }; take: 1 } };
 }>;

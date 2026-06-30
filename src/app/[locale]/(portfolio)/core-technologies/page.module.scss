@@ -1,28 +1,28 @@
 .page {
-	position: relative;
-	height: 100%;
+  position: relative;
+  height: 100%;
 
-	>.page_title {
-		font-size: var(--header-1-font-size);
-		font-weight: 600;
-		padding-bottom: var(--padding-xl);
-	}
+  > .page_title {
+    font-size: var(--header-1-font-size);
+    font-weight: 600;
+    padding-bottom: var(--padding-xl);
+  }
 
-	>.content {
-		position: absolute;
-		max-width: 1400px;
-		text-align: justify;
-		right: var(--padding-xl);
-		top: 0;
+  > .content {
+    position: absolute;
+    max-width: 1400px;
+    text-align: justify;
+    right: var(--padding-xl);
+    top: 0;
 
-		>p {
-			margin-bottom: var(--padding-xl);
-		}
-	}
+    > p {
+      margin-bottom: var(--padding-xl);
+    }
+  }
 
-	>.roadmap {
-		position: absolute;
-		left: 0;
-		bottom: 0;
-	}
+  > .roadmap {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
 }

@@ -1,80 +1,82 @@
-'use client'
-import { useCallback, useEffect, useImperativeHandle, useRef, useState } from "react";
-import { useOpenAnimations } from "./_hooks/useOpenAnimations";
-import { useCloseShortcut } from "./_hooks/useCloseShortcut";
-import { useDragAndDrop } from "./_hooks/useDragAndDrop";
-import { useClassName } from "@/hooks/useClassName";
+'use client';
+import { useImperativeHandle, useRef, useState } from 'react';
+import { useCallback, useEffect } from 'react';
+import { useOpenAnimations } from './_hooks/useOpenAnimations';
+import { useCloseShortcut } from './_hooks/useCloseShortcut';
+import { useDragAndDrop } from './_hooks/useDragAndDrop';
+import { useClassName } from '@/hooks/useClassName';
 
-import { createPortal } from "react-dom";
+import { createPortal } from 'react-dom';
 
-import type { ModalHandle, ModalProps } from "./modal.interface";
+import type { ModalHandle, ModalProps } from './modal.interface';
 
 import styles from './modal.module.scss';
 
 export function Modal({
-	ref,
-	title,
-	onOpen,
-	onClose,
-	children,
-	className,
-	bodyClassName,
-	toolbarClassName,
-	attachToBody = true,
+  ref,
+  title,
+  onOpen,
+  onClose,
+  children,
+  className,
+  bodyClassName,
+  toolbarClassName,
+  attachToBody = true,
 }: WithRef<ModalProps, ModalHandle>): React.ReactNode {
-	const [isOpen, setIsOpen] = useState<boolean>(false);
-	const [isVisible, setIsVisible] = useState<boolean>(false);
-	const modalRef = useRef<HTMLDivElement | null>(null);
-	const toolbarRef = useRef<HTMLDivElement | null>(null);
-	const { cn } = useClassName();
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const modalRef = useRef<HTMLDivElement | null>(null);
+  const toolbarRef = useRef<HTMLDivElement | null>(null);
+  const { cn } = useClassName();
 
-	const open = useCallback((): void => {
-		if (isOpen) return;
-		setIsVisible(true);
-		setIsOpen(true);
-		onOpen?.()
-	}, [isOpen, onOpen])
+  const open = useCallback((): void => {
+    if (isOpen) return;
+    setIsVisible(true);
+    setIsOpen(true);
+    onOpen?.();
+  }, [isOpen, onOpen]);
 
-	const close = useCallback((): void => {
-		if (!isOpen) return;
-		setIsOpen(false);
-		onClose?.()
-	}, [isOpen, onClose])
+  const close = useCallback((): void => {
+    if (!isOpen) return;
+    setIsOpen(false);
+    onClose?.();
+  }, [isOpen, onClose]);
 
-	useDragAndDrop(isVisible, modalRef, toolbarRef);
-	useCloseShortcut(isOpen, close);
-	useOpenAnimations(isOpen, isVisible, modalRef, setIsVisible);
-	
-	useEffect((): void => {
-		if (!isOpen) return;
-		modalRef.current?.focus();
-	}, [isOpen])
+  useDragAndDrop(isVisible, modalRef, toolbarRef);
+  useCloseShortcut(isOpen, close);
+  useOpenAnimations(isOpen, isVisible, modalRef, setIsVisible);
 
-	useImperativeHandle(
-		ref,
-		() => ({ open, close, }),
-		[open, close]
-	);
+  useEffect((): void => {
+    if (!isOpen) return;
+    modalRef.current?.focus();
+  }, [isOpen]);
 
-	if (!isVisible) return null;
+  useImperativeHandle(ref, () => ({ open, close }), [open, close]);
 
-	const content = (
-		<div
-			ref={modalRef}
-			className={cn(styles.modal, className)}
-			aria-modal
-			tabIndex={-1}
-			role={'dialog'}
-			aria-labelledby={title}
-		>
-			<div ref={toolbarRef} className={cn(styles.toolbar, toolbarClassName)}>
-				{title != null && title.length > 0 && (<span className={styles.title}>{title}</span>)}
-				<button className={styles.closeButton} onClick={close}>x</button>
-			</div>
+  if (!isVisible) return null;
 
-			<div className={cn(styles.modalBody, bodyClassName)}>{children}</div>
-		</div>
-	);
+  const content = (
+    <div
+      ref={modalRef}
+      className={cn(styles.modal, className)}
+      aria-modal
+      tabIndex={-1}
+      role={'dialog'}
+      aria-labelledby={title}
+    >
+      <div ref={toolbarRef} className={cn(styles.toolbar, toolbarClassName)}>
+        {title != null && title.length > 0 && (
+          <span className={styles.title}>{title}</span>
+        )}
 
-	return attachToBody ? createPortal(content, document.body) : content;
+        <button className={styles.closeButton} onClick={close}>
+          x
+        </button>
+      </div>
+
+      <div className={cn(styles.modalBody, bodyClassName)}>{children}</div>
+    </div>
+  );
+
+  return attachToBody ? createPortal(content, document.body) : content;
 }

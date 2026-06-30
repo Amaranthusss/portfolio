@@ -1,5 +1,5 @@
-import type { Ref } from "react";
+import type { Ref } from 'react';
 
 declare global {
-	type WithRef<P, R> = P & { ref?: Ref<R> };
+  type WithRef<P, R> = P & { ref?: Ref<R> };
 }

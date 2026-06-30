@@ -1,13 +1,13 @@
 export type ValueExtension = string | number | readonly string[] | undefined;
 
 export interface SelectProps<TValue extends ValueExtension> {
-	value?: TValue
-	label?: string;
-	options?: SelectOption<TValue>[];
-	onChange?: (value: TValue) => void;
+  value?: TValue;
+  label?: string;
+  options?: SelectOption<TValue>[];
+  onChange?: (value: TValue) => void;
 }
 
 export interface SelectOption<TValue extends ValueExtension> {
-	label: string;
-	value: TValue;
+  label: string;
+  value: TValue;
 }

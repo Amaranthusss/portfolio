@@ -3,13 +3,13 @@ import type enCommon from './messages/en/common.json';
 import type enLayout from './messages/en/layout.json';
 
 type Messages = {
-	common: typeof enCommon;
-	layout: typeof enLayout;
+  common: typeof enCommon;
+  layout: typeof enLayout;
 };
 
 declare module 'next-intl' {
-	interface AppConfig {
-		Locale: Locale;
-		Messages: Messages;
-	}
+  interface AppConfig {
+    Locale: Locale;
+    Messages: Messages;
+  }
 }

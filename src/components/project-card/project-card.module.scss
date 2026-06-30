@@ -1,36 +1,36 @@
 .card {
-	padding: var(--padding-xl);
-	border-color: var(--border-color);
-	border-radius: var(--border-radius);
-	border-style: solid;
-	border-width: 1px;
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
+  padding: var(--padding-xl);
+  border-color: var(--border-color);
+  border-radius: var(--border-radius);
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
-	>.date_range,
-	>.types,
-	>.location {
-		opacity: 0.4;
-	}
+  > .date_range,
+  > .types,
+  > .location {
+    opacity: 0.4;
+  }
 
-	>.institution {
-		font-weight: 600;
-	}
+  > .institution {
+    font-weight: 600;
+  }
 
-	>.duty_list {
-		opacity: 0.4;
+  > .duty_list {
+    opacity: 0.4;
 
-		>.duty {
-			margin-left: var(--padding-xl);
-		}
-	}
+    > .duty {
+      margin-left: var(--padding-xl);
+    }
+  }
 
-	>:nth-last-child(2) {
-		margin-bottom: var(--padding-sm);
-	}
+  > :nth-last-child(2) {
+    margin-bottom: var(--padding-sm);
+  }
 
-	>.read_more {
-		margin-top: auto;
-	}
+  > .read_more {
+    margin-top: auto;
+  }
 }

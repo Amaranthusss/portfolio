@@ -1,43 +1,42 @@
-import { useDateFormatter } from "@/hooks/useDateFormatter";
+import { useDateFormatter } from '@/hooks/useDateFormatter';
 
-import type { DisplayDateRangeProps } from "./display-date-range.interface";
+import type { DisplayDateRangeProps } from './display-date-range.interface';
 
 export function DisplayDateRange({
-	style,
-	endDate,
-	startDate,
-	isCurrent,
-	className,
-	now = new Date(),
+  style,
+  endDate,
+  startDate,
+  isCurrent,
+  className,
+  now = new Date(),
 }: DisplayDateRangeProps): React.ReactNode {
-	const { dateToString, diffYearsMonths } = useDateFormatter();
+  const { dateToString, diffYearsMonths } = useDateFormatter();
 
-	return (
-		<span style={style} className={className}>
-			{!startDate && !endDate && !isCurrent && <>&ndash;</>}
+  return (
+    <span style={style} className={className}>
+      {!startDate && !endDate && !isCurrent && <>&ndash;</>}
 
-			{!startDate && endDate && dateToString(endDate)}
+      {!startDate && endDate && dateToString(endDate)}
 
-			{startDate && isCurrent && (
-				<>
-					{dateToString(startDate)}
-					&nbsp;&ndash;&nbsp;Currently
-					&nbsp;&bull;&nbsp;
-					{diffYearsMonths(startDate, now)}
-				</>
-			)}
+      {startDate && isCurrent && (
+        <>
+          {dateToString(startDate)}
+          &nbsp;&ndash;&nbsp;Currently &nbsp;&bull;&nbsp;
+          {diffYearsMonths(startDate, now)}
+        </>
+      )}
 
-			{startDate && endDate && !isCurrent && (
-				<>
-					{dateToString(startDate)}
-					&nbsp;&ndash;&nbsp;
-					{dateToString(endDate)}
-					&nbsp;&bull;&nbsp;
-					{diffYearsMonths(startDate, endDate)}
-				</>
-			)}
+      {startDate && endDate && !isCurrent && (
+        <>
+          {dateToString(startDate)}
+          &nbsp;&ndash;&nbsp;
+          {dateToString(endDate)}
+          &nbsp;&bull;&nbsp;
+          {diffYearsMonths(startDate, endDate)}
+        </>
+      )}
 
-			{startDate && !endDate && !isCurrent && dateToString(startDate)}
-		</span>
-	);
-};
+      {startDate && !endDate && !isCurrent && dateToString(startDate)}
+    </span>
+  );
+}

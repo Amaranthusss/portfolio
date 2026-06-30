@@ -34,13 +34,13 @@ The application is powered by a custom **PostgreSQL + Prisma** schema, supportin
 
 ## 🧩 Tech Stack
 
-| Category | Technology |
-|-----------|-------------|
-| Framework | **Next**, **React** |
-| Language | **TypeScript** |
-| ORM | **Prisma** |
-| DataBase | **PostgreSQL** |
-| Styling | **SASS Modules** |
+| Category   | Technology             |
+| ---------- | ---------------------- |
+| Framework  | **Next**, **React**    |
+| Language   | **TypeScript**         |
+| ORM        | **Prisma**             |
+| DataBase   | **PostgreSQL**         |
+| Styling    | **SASS Modules**       |
 | Deployment | **(to be added soon)** |
 
 ---

@@ -1,5 +1,5 @@
-import type { TypedObject } from "@portabletext/types";
+import type { TypedObject } from '@portabletext/types';
 
 export interface PortableContentProps {
-	content: TypedObject | TypedObject[];
-};
+  content: TypedObject | TypedObject[];
+}

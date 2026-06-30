@@ -1,16 +1,16 @@
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren } from 'react';
 
 export interface ModalHandle {
-	open: () => void
-	close: () => void
+  open: () => void;
+  close: () => void;
 }
 
 export interface ModalProps extends PropsWithChildren {
-	attachToBody?: boolean
-	title?: string
-	className?: string
-	bodyClassName?: string
-	toolbarClassName?: string
-	onOpen?: () => void
-	onClose?: () => void
+  attachToBody?: boolean;
+  title?: string;
+  className?: string;
+  bodyClassName?: string;
+  toolbarClassName?: string;
+  onOpen?: () => void;
+  onClose?: () => void;
 }

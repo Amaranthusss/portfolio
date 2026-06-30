@@ -1,7 +1,3 @@
 export default function Publications(): React.ReactNode {
-	return (
-		<div>
-			Publications
-		</div>
-	);
-};
+  return <div>Publications</div>;
+}

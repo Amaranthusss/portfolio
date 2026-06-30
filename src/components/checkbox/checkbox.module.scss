@@ -1,6 +1,29 @@
 .checkboxWrapper {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	gap: var(--space-sm);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-sm);
+
+  &:not(:disabled) {
+    > input,
+    > label {
+      cursor: pointer;
+    }
+
+    > input {
+      transition: border-color 0.5s;
+
+      &:hover {
+        border-color: var(--primary-color);
+      }
+    }
+
+    > label {
+      transition: color 0.5s;
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
 }
