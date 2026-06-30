@@ -1,7 +1,7 @@
 import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
 import { DisplaySkills } from '@/components/display-skills/display-skills';
 
-import { authorToString } from '@/lib/authorToString';
+import { createAuthorFormatter } from '@/app/utils/authorFormatter';
 import { getPublications } from '@/services/getPublications';
 
 import type { PublicationDTO } from '@/models/publicationDto';
@@ -10,6 +10,7 @@ import styles from './page.module.scss';
 
 export default async function HireMe(): Promise<React.ReactNode> {
   const publications: PublicationDTO[] = await getPublications();
+  const { authorToString } = await createAuthorFormatter();
 
   return (
     <main>

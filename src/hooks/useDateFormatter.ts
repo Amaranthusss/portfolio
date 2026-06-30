@@ -1,10 +1,14 @@
-import { currentLocale } from '@/lib/config';
+import { useLocale } from 'next-intl';
+
+import type { Locale } from '@/generated/prisma';
 
 export function useDateFormatter() {
+  const locale: Locale = useLocale();
+
   const dateToString = (date: Date): string => {
-    return date.toLocaleDateString(currentLocale, {
+    return date.toLocaleDateString(locale, {
       year: 'numeric',
-      month: 'short',
+      month: 'short'
     });
   };
 
