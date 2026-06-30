@@ -1,4 +1,4 @@
-import { Layout } from "@/components/layout/layout";
+import { Layout } from "@/layout/layout";
 
 import { NextIntlClientProvider } from "next-intl";
 

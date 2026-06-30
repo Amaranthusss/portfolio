@@ -1,6 +1,6 @@
 "use client";
 import { LanguageSelector } from "@/components/language-selector/language-selector";
-import { Button } from "../../button/button";
+import { Button } from "../../components/button/button";
 
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
