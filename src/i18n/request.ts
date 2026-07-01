@@ -12,7 +12,11 @@ export default getRequestConfig(async ({ requestLocale }) => {
     : routing.defaultLocale;
 
   const common = (await import(`../../messages/${locale}/common.json`)).default;
+
   const layout = (await import(`../../messages/${locale}/layout.json`)).default;
+
+  const homepage = (await import(`../../messages/${locale}/homepage.json`))
+    .default;
 
   const coursesAndCertifications = (
     await import(`../../messages/${locale}/courses-and-certifications.json`)
@@ -31,6 +35,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
     messages: {
       common: common,
       layout: layout,
+      homepage: homepage,
       'experience-and-education': experienceAndEducation,
       'projects-and-realisations': projectsAndRealisations,
       'courses-and-certifications': coursesAndCertifications

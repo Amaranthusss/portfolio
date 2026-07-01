@@ -4,7 +4,7 @@ import styles from './title.module.scss';
 
 export function Title({
   children,
-  size = 'lg',
+  size = 'xl',
   level = 1,
 }: TitleProps): React.ReactNode {
   const className: string = [styles[size]].join(' ');
