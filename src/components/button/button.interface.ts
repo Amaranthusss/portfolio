@@ -1,8 +1,7 @@
 import type { PropsWithChildren } from 'react';
 
-export interface ButtonProps extends PropsWithChildren {
-  style?: React.CSSProperties;
-  className?: string;
+export interface ButtonProps
+  extends PropsWithChildren, CommonProps<HTMLButtonElement> {
   type?: 'primary' | 'default' | 'text';
   animated?: boolean;
   active?: boolean;

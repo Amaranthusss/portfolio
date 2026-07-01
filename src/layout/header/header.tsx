@@ -1,5 +1,6 @@
 'use client';
 import { LanguageSelector } from '@/components/language-selector/language-selector';
+import { FlexGroup } from '@/components/flex-group/flex-group';
 import { Button } from '../../components/button/button';
 
 import { useTranslations } from 'next-intl';
@@ -36,25 +37,34 @@ export const Header = (): React.ReactNode => {
 
   return (
     <header className={styles.header}>
-      {menuItems.map(({ route, text, decorated }) => {
-        const extraProps: Partial<ButtonProps> = decorated
-          ? {
-              type: 'primary',
-              style: { textTransform: 'uppercase' },
-              animated: true
-            }
-          : {};
+      <div className={styles.leftSide} />
+			
+      <FlexGroup
+        className={styles.menu_items}
+        dropdownTopMargin={24}
+        dropdownClassName={styles.dropdown}
+        updateDropdownOnScroll={false}
+      >
+        {menuItems.map(({ route, text, decorated }) => {
+          const extraProps: Partial<ButtonProps> = decorated
+            ? {
+                type: 'primary',
+                style: { textTransform: 'uppercase' },
+                animated: true
+              }
+            : {};
 
-        return (
-          <Button
-            key={text}
-            {...extraProps}
-            onClick={(): void => router.push(route)}
-          >
-            {t(text)}
-          </Button>
-        );
-      })}
+          return (
+            <Button
+              key={text}
+              {...extraProps}
+              onClick={(): void => router.push(route)}
+            >
+              {t(text)}
+            </Button>
+          );
+        })}
+      </FlexGroup>
 
       <LanguageSelector />
     </header>

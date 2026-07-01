@@ -1,33 +1,39 @@
-import { useMemo } from 'react';
+import { useClassName } from '@/hooks/useClassName';
 
 import type { ButtonProps } from './button.interface';
 
 import styles from './button.module.scss';
 
 export const Button = ({
-  type,
+  rootRef,
   style,
   active,
   animated,
   children,
+  rootStyle,
   className,
-  onClick,
+  rootClassName,
+  type = 'default',
+  onClick
 }: ButtonProps): React.ReactNode => {
-  const classNames = useMemo((): string => {
-    const classes: string[] = [styles.button];
+  const { cn } = useClassName();
 
-    if (type == null || type === 'default') classes.push(styles.default);
-    if (type === 'primary') classes.push(styles.primary);
-    if (type === 'text') classes.push(styles.text);
-    if (className && className.length > 0) classes.push(className);
-    if (animated) classes.push(styles.animated);
-    if (active) classes.push(styles.active);
-
-    return classes.join(' ');
-  }, [type, className, active, animated]);
+  const classNames: string = cn(
+    className,
+    rootClassName,
+    styles.button,
+    type != null ? styles[type] : null,
+    active != null ? styles.active : null,
+    animated != null ? styles.animated : null
+  );
 
   return (
-    <button style={style} className={classNames} onClick={onClick}>
+    <button
+      ref={rootRef}
+      style={{ ...rootStyle, ...style }}
+      className={classNames}
+      onClick={onClick}
+    >
       {children ?? ''}
     </button>
   );

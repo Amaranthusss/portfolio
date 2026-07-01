@@ -1,6 +1,7 @@
 .header {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-columns: 130px 1fr 130px;
   gap: 16px;
   width: 100%;
   z-index: 1;
@@ -8,4 +9,13 @@
   padding-block: 12px;
   padding-inline: 24px;
   border-bottom: solid 1px var(--border-color);
+
+  > .menu_items {
+    justify-content: center;
+    min-height: var(--default-control-height);
+  }
+}
+
+.dropdown > div > button {
+  width: 100%;
 }
