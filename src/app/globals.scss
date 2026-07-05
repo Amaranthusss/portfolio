@@ -1,4 +1,5 @@
-@use './theme' as *;
+@use '../styles/app-font-size' as *;
+@use '../styles/theme' as *;
 
 :root {
   @include shared-theme;
@@ -20,29 +21,31 @@
 }
 
 @media (prefers-color-scheme: light) {
-  :root[data-theme='system'] {
+  :root:not([data-theme='light']):not([data-theme='dark']) {
     @include light-theme;
     color-scheme: light;
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  :root[data-theme='system'] {
+  :root:not([data-theme='light']):not([data-theme='dark']) {
     @include dark-theme;
     color-scheme: dark;
   }
 }
 
-html {
-  font-size: clamp(13px, 1vmin, 16px);
+:root:not([data-app-font-size='large']):not(
+    [data-app-font-size='extra-large']
+  ) {
+  @include standard-app-font-size;
+}
 
-  &.large-app-font-size {
-    font-size: clamp(15px, 1.2vmin, 18px);
-  }
+:root[data-app-font-size='large'] {
+  @include large-app-font-size;
+}
 
-  &.extra-large-app-font-size {
-    font-size: clamp(17px, 1.4vmin, 20px);
-  }
+:root[data-app-font-size='extra-large'] {
+  @include large-app-font-size;
 }
 
 html,

@@ -33,6 +33,7 @@
 
 @mixin light-theme {
   --primary-color: #00afea;
+  --primary-hover-color: #0088b6;
   --primary-border-color: #004055;
   --primary-contrast-color: #ffffff;
 
@@ -48,6 +49,7 @@
 
 @mixin dark-theme {
   --primary-color: #00afea;
+  --primary-hover-color: #1fbaee;
   --primary-border-color: #ffffff;
   --primary-contrast-color: #ffffff;
 
@@ -63,6 +65,7 @@
 
 @mixin contrast-theme {
   --primary-color: #ffff00;
+  --primary-hover-color: #ffffb5;
   --primary-border-color: #ffffff;
   --primary-contrast-color: #ffffff;
 

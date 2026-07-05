@@ -1,3 +1,4 @@
 export enum Cookie {
-  Theme = 'theme'
+  Theme = 'theme',
+  AppFontSize = 'app-font-size'
 }

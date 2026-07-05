@@ -99,10 +99,10 @@ export default async function RootLayout({
 
   if (!locales.includes(locale)) notFound();
 
-  const { theme } = await useGetTheme();
+  const { themeData } = await useGetTheme();
 
   return (
-    <html lang={defaultLocale} data-theme={theme}>
+    <html lang={defaultLocale} {...themeData}>
       <body className={magnat.className}>
         <NextIntlClientProvider>
           <Layout>
