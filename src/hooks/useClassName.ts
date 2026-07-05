@@ -7,5 +7,13 @@ export function useClassName() {
       .join(' ');
   };
 
-  return { cn };
+  const boolToClass = (
+    flag: boolean | undefined,
+    className: string
+  ): string | null => {
+    if (flag == null) return null;
+    return flag ? className : null;
+  };
+
+  return { cn, boolToClass };
 }

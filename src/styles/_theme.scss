@@ -34,18 +34,20 @@
 @mixin light-theme {
   --primary-color: #00afea;
   --primary-hover-color: #0088b6;
-  --primary-border-color: #004055;
+  --primary-border-color: #00afea;
   --primary-contrast-color: #ffffff;
 
   --text-color: #1c1c1c;
   --secondary-text-color: #bfbfbf;
   --placeholder-color: #bfbfbf;
   --header-color: white;
-  --border-color: #4a6275;
+  --border-color: #eaeaeb;
 
   --layout-bg-color: #ffffff;
   --control-bg-color: #ffffff;
-  --popup-box-shadow: 0px 0px 6px 0px rgba(0, 143, 238, 0.5);
+  --control-box-shadow: 0px 0px 4px 0px rgba(191, 191, 191, 0.5);
+  --control-box-shadow-active: 0px 0px 4px 2px var(--primary-color);
+  --popup-box-shadow: 0px 0px 6px 0px rgba(0, 143, 238, 1);
 }
 
 @mixin dark-theme {
@@ -62,6 +64,8 @@
 
   --layout-bg-color: #000000;
   --control-bg-color: #001c25;
+  --control-box-shadow: 0px 0px 4px 0px var(--primary-color);
+  --control-box-shadow-active: 0px 0px 4px 2px var(--primary-color);
   --popup-box-shadow: 0px 0px 6px 0px rgba(255, 255, 255, 0.5);
 }
 
@@ -79,5 +83,7 @@
 
   --layout-bg-color: #000000;
   --control-bg-color: #000000;
+  --control-box-shadow: unset;
+  --control-box-shadow-active: unset;
   --popup-box-shadow: unset;
 }

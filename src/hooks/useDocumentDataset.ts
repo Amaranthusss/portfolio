@@ -22,7 +22,5 @@ export async function useDocumentDataset() {
   if (theme != null) dataset['data-' + Cookie.Theme] = theme;
   if (appFontSize != null) dataset['data-' + Cookie.AppFontSize] = appFontSize;
 
-	console.log(dataset)
-
   return { dataset };
 }

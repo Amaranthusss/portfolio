@@ -18,15 +18,7 @@ export const Button = ({
   type = 'default',
   onClick
 }: ButtonProps): React.ReactNode => {
-  const { cn } = useClassName();
-
-  const boolToClass = (
-    flag: boolean | undefined,
-    className: string
-  ): string | null => {
-    if (flag == null) return null;
-    return flag ? className : null;
-  };
+  const { cn, boolToClass } = useClassName();
 
   const classNames: string = cn(
     className,

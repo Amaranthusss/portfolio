@@ -4,7 +4,7 @@ import { LanguageSelector } from '@/components/language-selector/language-select
 import { ThemeSelector } from '@/components/theme-selector/theme-selector';
 import { FlexGroup } from '@/components/flex-group/flex-group';
 import { Popover } from '@/components/popover/popover';
-import { Button } from '../../components/button/button';
+import { Button } from '../../../components/button/button';
 import { Icon } from '@/components/icon/icon';
 
 import { useTranslations } from 'next-intl';
@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import type { ButtonProps } from '@/components/button/button.interface';
 
+import { IconName } from '@/components/icon/icon.config';
 import { Route } from '@/constants/Route';
 
 import styles from './header.module.scss';
@@ -24,19 +25,46 @@ export const Header = (): React.ReactNode => {
   const menuItems: {
     route: Route;
     text: Parameters<typeof t>[0];
+    icon: IconName;
     decorated?: boolean;
   }[] = [
-    { route: Route.Homepage, text: 'homepage' },
-    { route: Route.ExperienceAndEducation, text: 'experience-and-education' },
+    { route: Route.Homepage, text: 'homepage', icon: IconName.Home },
+    {
+      route: Route.ExperienceAndEducation,
+      text: 'experience-and-education',
+      icon: IconName.Education
+    },
     {
       route: Route.CoursesAndCertifications,
-      text: 'courses-and-certifications'
+      text: 'courses-and-certifications',
+      icon: IconName.Certification
     },
-    { route: Route.ProjectsAndRealisations, text: 'projects-and-realisations' },
-    { route: Route.CoreTechnologies, text: 'core-technologies' },
-    { route: Route.CodeStyle, text: 'code-style' },
-    { route: Route.Publications, text: 'publications' },
-    { route: Route.HireMe, text: 'hire-me', decorated: true }
+    {
+      route: Route.ProjectsAndRealisations,
+      text: 'projects-and-realisations',
+      icon: IconName.Project
+    },
+    {
+      route: Route.CoreTechnologies,
+      text: 'core-technologies',
+      icon: IconName.TechStack
+    },
+    {
+      route: Route.CodeStyle,
+      text: 'code-style',
+      icon: IconName.Feather
+    },
+    {
+      route: Route.Publications,
+      text: 'publications',
+      icon: IconName.Publication
+    },
+    {
+      route: Route.HireMe,
+      text: 'hire-me',
+      icon: IconName.Handshake,
+      decorated: true
+    }
   ];
 
   return (
@@ -68,7 +96,7 @@ export const Header = (): React.ReactNode => {
         dropdownClassName={styles.dropdown}
         updateDropdownOnScroll={false}
       >
-        {menuItems.map(({ route, text, decorated }) => {
+        {menuItems.map(({ route, icon, text, decorated }) => {
           const extraProps: Partial<ButtonProps> = decorated
             ? {
                 type: 'primary',
@@ -81,9 +109,11 @@ export const Header = (): React.ReactNode => {
             <Button
               key={text}
               {...extraProps}
+              centerContent
               onClick={(): void => router.push(route)}
               name={`navigation-button-${route.replace('/', '')}`}
             >
+              <Icon icon={icon} style={{ marginRight: 'var(--space-4)' }} />
               {t(text)}
             </Button>
           );
