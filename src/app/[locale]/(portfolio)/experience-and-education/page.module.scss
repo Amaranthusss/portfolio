@@ -1,21 +1,21 @@
 .cards_layout {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
-  gap: var(--padding-xl);
+  gap: var(--space-9);
 
   &:first-of-type {
-    padding-bottom: var(--padding-xl);
+    padding-bottom: var(--space-9);
   }
 
   > .card {
-    padding: var(--padding-xl);
+    padding: var(--space-9);
     border-color: var(--border-color);
     border-radius: var(--border-radius);
     border-style: solid;
     border-width: 1px;
     display: flex;
     flex-direction: column;
-    gap: var(--padding-sm);
+    gap: var(--space-2);
 
     > .date_range,
     > .types,
@@ -31,7 +31,7 @@
       opacity: 0.4;
 
       > .duty {
-        margin-left: var(--padding-xl);
+        margin-left: var(--space-9);
       }
     }
   }

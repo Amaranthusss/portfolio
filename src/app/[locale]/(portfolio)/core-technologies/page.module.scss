@@ -3,20 +3,20 @@
   height: 100%;
 
   > .page_title {
-    font-size: var(--header-1-font-size);
+    font-size: var(--font-size-h1);
     font-weight: 600;
-    padding-bottom: var(--padding-xl);
+    padding-bottom: var(--space-9);
   }
 
   > .content {
     position: absolute;
     max-width: 1400px;
     text-align: justify;
-    right: var(--padding-xl);
+    right: var(--space-9);
     top: 0;
 
     > p {
-      margin-bottom: var(--padding-xl);
+      margin-bottom: var(--space-9);
     }
   }
 

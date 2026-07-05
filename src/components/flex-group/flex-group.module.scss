@@ -41,7 +41,7 @@ $more-btn-width: 80px;
   display: flex;
   flex-direction: column;
   max-height: calc(100vh - 48px);
-  padding: var(--padding-md);
+  padding: var(--space-4);
   border-radius: var(--border-radius);
   background: var(--layout-bg-color);
   border: solid 1px var(--border-color);
@@ -53,7 +53,7 @@ $more-btn-width: 80px;
   overflow-x: hidden;
 
   > .dropdownItem {
-    padding: var(--padding-sm) var(--padding-md);
+    padding: var(--space-2) var(--space-4);
     cursor: pointer;
   }
 }

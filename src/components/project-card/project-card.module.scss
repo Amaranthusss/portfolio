@@ -1,5 +1,5 @@
 .card {
-  padding: var(--padding-xl);
+  padding: var(--space-9);
   border-color: var(--border-color);
   border-radius: var(--border-radius);
   border-style: solid;
@@ -22,11 +22,11 @@
     opacity: 0.4;
 
     > .duty {
-      margin-left: var(--padding-xl);
+      margin-left: var(--space-9);
     }
   }
 
   > :nth-last-child(2) {
-    margin-bottom: var(--padding-sm);
+    margin-bottom: var(--space-2);
   }
 }

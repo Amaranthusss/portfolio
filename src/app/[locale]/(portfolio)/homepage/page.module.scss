@@ -1,5 +1,3 @@
-$z-index-bg: 1;
-$z-index-cards: 2;
 $z-index-elements: 3;
 
 .home_page {
@@ -38,13 +36,13 @@ $z-index-elements: 3;
 
       > .marked {
         z-index: $z-index-elements;
-        font-size: var(--header-3-font-size);
+        font-size: var(--font-size-h3);
         text-transform: uppercase;
         font-weight: 600;
       }
 
       > .description {
-        font-size: var(--header-3-font-size);
+        font-size: var(--font-size-h3);
         font-weight: 400;
         color: var(--primary-color);
       }
@@ -64,7 +62,7 @@ $z-index-elements: 3;
 
   > .about_me {
     z-index: $z-index-elements;
-    font-size: 32px;
+    font-size: var(--font-size-md);
     font-weight: 300;
 
     > * {
@@ -78,8 +76,8 @@ $z-index-elements: 3;
 
   > .card {
     position: relative;
-    padding-inline: var(--padding-xl);
-    padding-block: var(--padding-xl);
+    padding-inline: var(--space-9);
+    padding-block: var(--space-9);
     border-radius: 24px;
     background: linear-gradient(
       to bottom,

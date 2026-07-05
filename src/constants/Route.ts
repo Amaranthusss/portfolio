@@ -6,5 +6,5 @@ export enum Route {
   CoreTechnologies = '/core-technologies',
   CodeStyle = '/code-style',
   Publications = '/publications',
-  HireMe = '/hire-me',
+  HireMe = '/hire-me'
 }

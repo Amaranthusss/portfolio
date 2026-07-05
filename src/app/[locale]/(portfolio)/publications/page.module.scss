@@ -1,11 +1,11 @@
 .cards_layout {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
-  gap: var(--padding-xl);
+  gap: var(--space-9);
   container-type: inline-size;
 
   > .card {
-    padding: var(--padding-xl);
+    padding: var(--space-9);
     border-color: var(--border-color);
     border-radius: var(--border-radius);
     border-style: solid;
@@ -14,13 +14,13 @@
     grid-template-areas: 'icon caption' 'icon info';
     grid-template-columns: 64px 1fr;
     grid-template-rows: auto 1fr;
-    gap: var(--padding-sm) var(--padding-xl);
+    gap: var(--space-2) var(--space-9);
 
     @container (max-width: 500px) {
       grid-template-areas: 'icon' 'caption' 'info';
       grid-template-columns: 1fr;
       grid-template-rows: auto;
-      gap: var(--padding-md);
+      gap: var(--space-4);
 
       > .icon {
         justify-self: center;

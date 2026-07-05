@@ -3,13 +3,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--padding-xl);
+  gap: var(--space-9);
   border-block: 1px solid var(--border-color);
   margin-block-start: unset;
   margin-inline-start: unset;
   margin-inline-end: unset;
-  padding-block: var(--padding-xl);
-  margin-bottom: var(--padding-xl);
+  padding-block: var(--space-9);
+  margin-bottom: var(--space-9);
 
   > img {
     width: 80%;
@@ -19,7 +19,7 @@
   > figcaption {
     text-align: center;
     text-wrap: balance;
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
     color: var(--text-muted);
     max-width: 70ch;
   }
