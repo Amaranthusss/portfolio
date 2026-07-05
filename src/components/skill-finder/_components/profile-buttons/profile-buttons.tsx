@@ -9,7 +9,7 @@ import styles from './profile-buttons.module.scss';
 export function ProfileButtons({
   profiles,
   isActiveProfile,
-  onToggleProfile,
+  onToggleProfile
 }: ProfileButtonsProps): React.ReactNode {
   return (
     <div className={styles.profileButtons}>
@@ -20,6 +20,7 @@ export function ProfileButtons({
             key={profile.slug}
             active={isActiveProfile(profile)}
             onClick={(): void => onToggleProfile(profile)}
+            name={`toggle-profile-${profile.slug}-selection`}
           >
             {profile.name}
           </Button>

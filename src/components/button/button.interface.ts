@@ -5,5 +5,6 @@ export interface ButtonProps
   type?: 'primary' | 'default' | 'text';
   animated?: boolean;
   active?: boolean;
+  centerContent?: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }

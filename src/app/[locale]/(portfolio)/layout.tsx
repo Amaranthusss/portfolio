@@ -2,7 +2,7 @@ import { Layout } from '@/layout/layout';
 
 import { NextIntlClientProvider } from 'next-intl';
 
-import { useGetTheme } from '@/hooks/useGetTheme';
+import { useDocumentDataset } from '@/hooks/useDocumentDataset';
 import { notFound } from 'next/navigation';
 
 import localFont from 'next/font/local';
@@ -99,10 +99,10 @@ export default async function RootLayout({
 
   if (!locales.includes(locale)) notFound();
 
-  const { themeData } = await useGetTheme();
+  const { dataset } = await useDocumentDataset();
 
   return (
-    <html lang={defaultLocale} {...themeData}>
+    <html lang={defaultLocale} {...dataset}>
       <body className={magnat.className}>
         <NextIntlClientProvider>
           <Layout>

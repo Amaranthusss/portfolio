@@ -1,3 +1,4 @@
+import { useClassName } from '@/hooks/useClassName';
 import { useId } from 'react';
 
 import type { SelectOption, SelectProps } from './select.interface';
@@ -7,13 +8,22 @@ import type { Key } from 'react';
 import styles from './select.module.scss';
 
 export function Select<TValue extends ValueExtension = string>({
+  rootRef,
   value,
   label,
+  name,
+  style,
+  className,
+  rootStyle,
+  rootClassName,
   options = [],
-  onChange,
+  onChange
 }: SelectProps<TValue>): React.ReactNode {
+  const { cn } = useClassName();
+
   const isDuplicatedValue: boolean =
     options.length !== new Set(options.map((o) => o.value)).size;
+
   const id: string = useId();
 
   if (isDuplicatedValue)
@@ -28,10 +38,13 @@ export function Select<TValue extends ValueExtension = string>({
       {label && <label htmlFor={id}>{label}:</label>}
 
       <select
+        ref={rootRef}
         id={id}
         name={label}
         value={value}
-        className={styles.select}
+        style={{ ...rootStyle, ...style }}
+        aria-label={name}
+        className={cn(styles.select, rootClassName, className)}
         onChange={(e) => onChange?.(e.target.value as TValue)}
       >
         {options.map(

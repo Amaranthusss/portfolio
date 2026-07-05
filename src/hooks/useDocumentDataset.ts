@@ -7,7 +7,7 @@ import { AppFontSize } from '@/constants/AppFontSize';
 import { Cookie } from '@/constants/Cookie';
 import { Theme } from '@/constants/Theme';
 
-export async function useGetTheme() {
+export async function useDocumentDataset() {
   const cookiesData: ReadonlyRequestCookies = await cookies();
 
   const theme: Theme | undefined = cookiesData.get(Cookie.Theme)?.value as
@@ -17,10 +17,12 @@ export async function useGetTheme() {
     Cookie.AppFontSize
   )?.value as AppFontSize | undefined;
 
-  const themeData: { [dataName: string]: string | undefined } = {
-    ['data-' + Cookie.Theme]: theme,
-    ['data-' + Cookie.AppFontSize]: appFontSize
-  };
+  const dataset: { [dataName: string]: string | undefined } = {};
 
-  return { themeData };
+  if (theme != null) dataset['data-' + Cookie.Theme] = theme;
+  if (appFontSize != null) dataset['data-' + Cookie.AppFontSize] = appFontSize;
+
+	console.log(dataset)
+
+  return { dataset };
 }

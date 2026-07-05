@@ -13,7 +13,7 @@ export function LanguageSelector(): React.ReactNode {
 
   const options: SelectOption<Locale>[] = [
     { label: 'Polski (PL)', value: 'pl' },
-    { label: 'English (GB)', value: 'en' },
+    { label: 'English (GB)', value: 'en' }
   ];
 
   const onChange = (locale: Locale): void => {
@@ -21,6 +21,11 @@ export function LanguageSelector(): React.ReactNode {
   };
 
   return (
-    <Select<Locale> value={locale} options={options} onChange={onChange} />
+    <Select<Locale>
+      value={locale}
+      options={options}
+      onChange={onChange}
+      name={'language-selector'}
+    />
   );
 }

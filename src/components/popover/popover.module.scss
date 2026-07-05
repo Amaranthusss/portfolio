@@ -1,0 +1,17 @@
+.popover_content {
+  position: absolute;
+  z-index: var(--z-index-popup);
+  padding-inline: var(--space-8);
+  padding-block: var(--space-8);
+  border-style: solid;
+  border-width: var(--border-width);
+  border-color: var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--control-bg-color);
+  -webkit-box-shadow: var(--popup-box-shadow);
+  -moz-box-shadow: var(--popup-box-shadow);
+  box-shadow: var(--popup-box-shadow);
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+}

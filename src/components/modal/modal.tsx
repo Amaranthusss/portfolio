@@ -21,7 +21,7 @@ export function Modal({
   className,
   bodyClassName,
   toolbarClassName,
-  attachToBody = true,
+  attachToBody = true
 }: WithRef<ModalProps, ModalHandle>): React.ReactNode {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -69,7 +69,11 @@ export function Modal({
           <span className={styles.title}>{title}</span>
         )}
 
-        <button className={styles.closeButton} onClick={close}>
+        <button
+          onClick={close}
+          aria-label={'close-modal'}
+          className={styles.closeButton}
+        >
           x
         </button>
       </div>

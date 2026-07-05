@@ -1,6 +1,8 @@
 export type ValueExtension = string | number | readonly string[] | undefined;
 
-export interface SelectProps<TValue extends ValueExtension> {
+export interface SelectProps<
+  TValue extends ValueExtension
+> extends CommonProps<HTMLSelectElement> {
   value?: TValue;
   label?: string;
   options?: SelectOption<TValue>[];

@@ -19,3 +19,19 @@
 .dropdown > div > button {
   width: 100%;
 }
+
+.settings_popover {
+  > div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &:first-of-type {
+      margin-bottom: var(--space-4);
+    }
+
+    > select {
+      flex: 1;
+    }
+  }
+}

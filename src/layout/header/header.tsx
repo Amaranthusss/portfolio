@@ -1,7 +1,11 @@
 'use client';
+import { AppFontSizeSelector } from '@/components/app-font-size-selector/app-font-size-selector';
 import { LanguageSelector } from '@/components/language-selector/language-selector';
+import { ThemeSelector } from '@/components/theme-selector/theme-selector';
 import { FlexGroup } from '@/components/flex-group/flex-group';
+import { Popover } from '@/components/popover/popover';
 import { Button } from '../../components/button/button';
+import { Icon } from '@/components/icon/icon';
 
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
@@ -37,8 +41,27 @@ export const Header = (): React.ReactNode => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.leftSide} />
-			
+      <div className={styles.leftSide}>
+        <Popover
+          triggerProps={{
+            type: 'primary',
+            centerContent: true,
+            name: 'app-settings',
+            children: <Icon icon={Icon.All.Settings} />,
+            style: { minWidth: 'var(--control-height)' }
+          }}
+          popoverClassName={styles.settings_popover}
+        >
+          <div>
+            <ThemeSelector />
+          </div>
+
+          <div>
+            <AppFontSizeSelector />
+          </div>
+        </Popover>
+      </div>
+
       <FlexGroup
         className={styles.menu_items}
         dropdownTopMargin={24}
@@ -59,6 +82,7 @@ export const Header = (): React.ReactNode => {
               key={text}
               {...extraProps}
               onClick={(): void => router.push(route)}
+              name={`navigation-button-${route.replace('/', '')}`}
             >
               {t(text)}
             </Button>

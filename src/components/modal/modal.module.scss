@@ -1,6 +1,5 @@
-$ui-box-shadow: 0px 0px 6px 0px rgba(255, 255, 255, 0.5);
-$text-inline-gap: 24px;
-$text-block-gap: 24px;
+$text-inline-gap: var(--space-8);
+$text-block-gap: var(--space-8);
 
 .modal {
   position: fixed;
@@ -16,9 +15,9 @@ $text-block-gap: 24px;
   grid-row-gap: $text-block-gap;
   background-color: rgb(36, 36, 36);
   border-radius: var(--border-radius);
-  -webkit-box-shadow: $ui-box-shadow;
-  -moz-box-shadow: $ui-box-shadow;
-  box-shadow: $ui-box-shadow;
+  -webkit-box-shadow: var(--popup-box-shadow);
+  -moz-box-shadow: var(--popup-box-shadow);
+  box-shadow: var(--popup-box-shadow);
   z-index: var(--z-index-popup);
 
   > .toolbar {
@@ -26,7 +25,7 @@ $text-block-gap: 24px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 24px;
+    gap: var(--space-8);
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
     background-color: rgb(75, 75, 75);

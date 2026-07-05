@@ -22,7 +22,11 @@ export function NavToProject({ project }: NavToProjectProps): React.ReactNode {
   };
 
   return (
-    <Button className={styles.read_more} onClick={onClick}>
+    <Button
+      name={`read-more-about-project-${project.slug}`}
+      className={styles.read_more}
+      onClick={onClick}
+    >
       {t('read-more')}
     </Button>
   );

@@ -1,5 +1,18 @@
 {
   "read-more": "Czytaj więcej",
   "skills": "Umiejętności",
-  "category": "Kategoria"
+  "category": "Kategoria",
+  "themes": {
+		"selector": "Motyw:",
+    "system": "Systemowy",
+    "light": "Jasny",
+    "dark": "Ciemny",
+    "contrast": "Wysoki kontrast"
+  },
+  "app-font-size": {
+		"selector": "Rozmiar czcionki aplikacji:",
+    "standard": "Standardowy",
+    "large": "Duży",
+    "extra-large": "Bardzo duży"
+  }
 }

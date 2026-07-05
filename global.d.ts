@@ -4,6 +4,8 @@ declare global {
   type WithRef<P, R> = P & { ref?: Ref<R> };
 
   interface CommonProps<RootType extends HTMLElement> {
+		/** DOM element name, used f.e. as aria-label */
+    name?: string;
     /** The additional style */
     style?: React.CSSProperties;
     /** The additional css class */

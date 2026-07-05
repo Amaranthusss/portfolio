@@ -209,6 +209,7 @@ export const FlexGroup = ({
             rootRef={moreButtonRef}
             className={styles.more}
             onClick={toggleDropdown}
+            name={'show-more-hidden-flex-group-elements'}
           >
             ⋯
           </Button>

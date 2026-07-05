@@ -28,6 +28,11 @@ $box-shadow-active: 0px 0px 4px 2px var(--primary-color);
     background-color: transparent;
   }
 
+  &.center_content {
+    display: grid;
+    place-items: center;
+  }
+
   &.text {
     border: none;
   }

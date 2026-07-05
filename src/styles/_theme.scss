@@ -44,7 +44,8 @@
   --border-color: #4a6275;
 
   --layout-bg-color: #ffffff;
-  --control-bg-color: #f5f5f5;
+  --control-bg-color: #ffffff;
+  --popup-box-shadow: 0px 0px 6px 0px rgba(0, 143, 238, 0.5);
 }
 
 @mixin dark-theme {
@@ -61,6 +62,7 @@
 
   --layout-bg-color: #000000;
   --control-bg-color: #001c25;
+  --popup-box-shadow: 0px 0px 6px 0px rgba(255, 255, 255, 0.5);
 }
 
 @mixin contrast-theme {
@@ -77,4 +79,5 @@
 
   --layout-bg-color: #000000;
   --control-bg-color: #000000;
+  --popup-box-shadow: unset;
 }

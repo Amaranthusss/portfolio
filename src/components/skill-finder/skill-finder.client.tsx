@@ -14,7 +14,7 @@ import type { ModalHandle } from '../modal/modal.interface';
 
 export function SkillFinderClient({
   skills,
-  profiles,
+  profiles
 }: SkillFinderClientProps): React.ReactNode {
   const modalRef = useRef<ModalHandle>(null);
 
@@ -24,12 +24,17 @@ export function SkillFinderClient({
     onToggleSkill,
     onToggleProfile,
     isActiveProfile,
-    selectedSkillKeys,
+    selectedSkillKeys
   } = useFindBySkills();
 
   return (
     <>
-      <Button onClick={() => modalRef.current?.open()}>Open</Button>
+      <Button
+        name={'open-skill-finder'}
+        onClick={() => modalRef.current?.open()}
+      >
+        Open
+      </Button>
 
       <Modal ref={modalRef} title={'Skill finder'}>
         <ProfileButtons
@@ -48,7 +53,12 @@ export function SkillFinderClient({
 
         <Divider />
 
-        <Button type={'primary'} style={{ width: '100%' }} onClick={search}>
+        <Button
+          type={'primary'}
+          onClick={search}
+          style={{ width: '100%' }}
+          name={'search-data-for-selected-skills'}
+        >
           Search
         </Button>
 

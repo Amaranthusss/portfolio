@@ -1,5 +1,18 @@
 {
   "read-more": "Read more",
   "skills": "Skills",
-  "category": "Category"
+  "category": "Category",
+  "themes": {
+		"selector": "Theme:",
+    "system": "System",
+    "light": "Light",
+    "dark": "Dark",
+    "contrast": "High contrast"
+  },
+  "app-font-size": {
+		"selector": "Application font size:",
+    "standard": "Standard",
+    "large": "Large",
+    "extra-large": "Extra large"
+  }
 }
