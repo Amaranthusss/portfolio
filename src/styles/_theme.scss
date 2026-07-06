@@ -29,6 +29,8 @@
   --z-index-content: 10;
   --z-index-layout: 20;
   --z-index-popup: 30;
+
+  --animation-time: 500ms;
 }
 
 @mixin light-theme {
@@ -53,8 +55,8 @@
 
 @mixin dark-theme {
   --primary-color: #00c3ff;
-  --primary-hover-color: #1fbaee;
-  --primary-border-color: #002944;
+  --primary-hover-color: #00e1ff;
+  --primary-border-color: #00e1ff;
   --primary-contrast-color: #ffffff;
 
   --text-color: #ffffff;
@@ -73,7 +75,7 @@
 
 @mixin contrast-theme {
   --primary-color: #ffff00;
-  --primary-hover-color: #ffffb5;
+  --primary-hover-color: #ffffff;
   --primary-border-color: #ffffff;
   --primary-contrast-color: #000000;
 

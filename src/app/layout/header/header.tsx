@@ -82,8 +82,7 @@ export const Header = (): React.ReactNode => {
           const extraProps: Partial<ButtonProps> = decorated
             ? {
                 mode: 'primary',
-                style: { textTransform: 'uppercase' },
-                animated: true
+                style: { textTransform: 'uppercase' }
               }
             : {};
 
@@ -109,6 +108,7 @@ export const Header = (): React.ReactNode => {
             centerContent: true,
             name: 'app-settings',
             children: <Icon icon={Icon.All.Settings} />,
+            'aria-label': 'app-settings-popover',
             style: { minWidth: 'var(--control-height)' }
           }}
           popoverClassName={styles.settings_popover}
