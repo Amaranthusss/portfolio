@@ -34,7 +34,7 @@ export function LanguageSelector({
         value={locale}
         options={options}
         onChange={onChange}
-        name={'language-selector'}
+        aria-label={'language-selector'}
       />
     </>
   );

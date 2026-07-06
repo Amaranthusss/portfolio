@@ -10,8 +10,8 @@ import type { ChangeEvent } from 'react';
 export function ContrastThemeSwitch({
   showLabel = true
 }: ContrastThemeSwitchProps): React.ReactNode {
-  const [checked, setChecked] = useState<boolean>(false);
-  const { setContrastTheme } = useThemeSetter();
+  const { isContrastTheme, setContrastTheme } = useThemeSetter();
+  const [checked, setChecked] = useState<boolean>(isContrastTheme());
   const t = useTranslations('common.themes');
 
   const onChange = (

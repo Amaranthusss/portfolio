@@ -12,8 +12,8 @@ import { Theme } from '@/constants/Theme';
 export function ThemeSelector({
   showLabel = true
 }: ThemeSelectorProps): React.ReactNode {
-  const [value, setValue] = useState<Theme>(Theme.System);
-  const { setTheme } = useThemeSetter();
+  const { getTheme, setTheme } = useThemeSetter();
+  const [value, setValue] = useState<Theme>(getTheme());
   const t = useTranslations('common.themes');
 
   const options: SelectOption<Theme>[] = [
@@ -37,7 +37,7 @@ export function ThemeSelector({
         value={value}
         options={options}
         onChange={onChange}
-        name={'theme-selector'}
+        aria-label={'theme-selector'}
       />
     </>
   );

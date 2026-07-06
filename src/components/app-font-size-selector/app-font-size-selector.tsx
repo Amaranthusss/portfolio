@@ -12,8 +12,8 @@ import { AppFontSize } from '@/constants/AppFontSize';
 export function AppFontSizeSelector({
   showLabel = true
 }: AppFontSizeSelectorProps): React.ReactNode {
-  const [value, setValue] = useState<AppFontSize>(AppFontSize.Standard);
-  const { setAppFontSize } = useAppFontSizeSetter();
+  const { getAppFontSize, setAppFontSize } = useAppFontSizeSetter();
+  const [value, setValue] = useState<AppFontSize>(getAppFontSize());
   const t = useTranslations('common.app-font-size');
 
   const options: SelectOption<AppFontSize>[] = [
@@ -37,7 +37,7 @@ export function AppFontSizeSelector({
         value={value}
         options={options}
         onChange={onChange}
-        name={'app-font-size-selector'}
+        aria-label={'app-font-size-selector'}
       />
     </>
   );

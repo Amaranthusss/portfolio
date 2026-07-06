@@ -2,10 +2,11 @@
 import { cookies } from 'next/headers';
 
 import type { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
+import type { ConstrastCookieValue } from '@/constants/ContrastCookieValue';
+import type { AppFontSize } from '@/constants/AppFontSize';
+import type { Theme } from '@/constants/Theme';
 
-import { AppFontSize } from '@/constants/AppFontSize';
 import { Cookie } from '@/constants/Cookie';
-import { Theme } from '@/constants/Theme';
 
 export async function useDocumentDataset() {
   const cookiesData: ReadonlyRequestCookies = await cookies();
@@ -17,8 +18,8 @@ export async function useDocumentDataset() {
     Cookie.AppFontSize
   )?.value as AppFontSize | undefined;
 
-  const contrast: 'true' | undefined = cookiesData.get(Cookie.Contrast)
-    ?.value as 'true' | undefined;
+  const contrast: ConstrastCookieValue = cookiesData.get(Cookie.Contrast)
+    ?.value as ConstrastCookieValue;
 
   const dataset: { [dataName: string]: string | undefined } = {};
 
