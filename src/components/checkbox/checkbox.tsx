@@ -1,4 +1,3 @@
-'use client';
 import { useClassName } from '@/hooks/useClassName';
 import { useId } from 'react';
 
@@ -7,31 +6,29 @@ import type { CheckboxProps } from './checkbox.interface';
 import styles from './checkbox.module.scss';
 
 export function Checkbox({
-  style,
-  rootRef,
-  checked,
+  id,
   children,
-  rootStyle,
   className,
-  rootClassName,
-  onChange
+  container,
+  ...inputProps
 }: CheckboxProps): React.ReactNode {
   const { cn } = useClassName();
-  const id: string = useId();
+  const uncontrolledId: string = useId();
+  const usedId: string = id ?? uncontrolledId;
 
   return (
-    <div style={style} className={cn(className, styles.checkboxWrapper)}>
+    <div
+      {...container}
+      className={cn(container?.className, styles.checkboxWrapper)}
+    >
       <input
-        id={id}
-        ref={rootRef}
-        checked={checked}
+        {...inputProps}
+        id={usedId}
         type={'checkbox'}
-        style={rootStyle}
-        onChange={(e) => onChange?.(e.target.checked)}
-        className={cn(rootClassName, styles.checkbox)}
+        className={cn(className, styles.checkbox)}
       />
 
-      {children && <label htmlFor={id}>{children}</label>}
+      {children && <label htmlFor={usedId}>{children}</label>}
     </div>
   );
 }

@@ -1,10 +1,9 @@
-import type { PropsWithChildren } from 'react';
+import type { ComponentPropsWithRef, PropsWithChildren } from 'react';
 
 export interface ButtonProps
-  extends PropsWithChildren, CommonProps<HTMLButtonElement> {
-  type?: 'primary' | 'default' | 'text';
+  extends PropsWithChildren, ComponentPropsWithRef<'button'> {
+  mode?: 'primary' | 'default' | 'text';
   animated?: boolean;
   active?: boolean;
   centerContent?: boolean;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }

@@ -1,7 +1,8 @@
-import type { PropsWithChildren } from 'react';
+import type { ComponentPropsWithRef, PropsWithChildren } from 'react';
 
 export interface CheckboxProps
-  extends PropsWithChildren, CommonProps<HTMLInputElement> {
-  checked?: boolean;
-  onChange?: (checked: boolean) => void;
+  extends
+    PropsWithChildren,
+    StrictOmit<ComponentPropsWithRef<'input'>, 'type'> {
+  container?: ComponentPropsWithRef<'div'>;
 }
