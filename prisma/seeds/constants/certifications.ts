@@ -5,6 +5,44 @@ import { Locale, SkillKey } from '../../../src/generated/prisma/client';
 
 export const certifications: Prisma.CertificationCreateInput[] = [
   {
+    slug: CertificationSlug.NextJsSupabaseMasteryBuildFullstackApps,
+    issueDate: new Date('2026-06-25'),
+    url: 'https://www.udemy.com/certificate/UC-eaa0812d-ce13-4fca-afe3-0f05d4a359f1/',
+    credentialID: 'UC-eaa0812d-ce13-4fca-afe3-0f05d4a359f1',
+    imageFile: { connect: { storageKey: 'images/udemy.jpg' } },
+
+    skills: {
+      create: [
+        { skill: { connect: { key: SkillKey.NextJS } } },
+        { skill: { connect: { key: SkillKey.ReactJS } } },
+        { skill: { connect: { key: SkillKey.PostgreSQL } } },
+        { skill: { connect: { key: SkillKey.Zod } } },
+        { skill: { connect: { key: SkillKey.TS } } },
+      ],
+    },
+
+    translations: {
+      create: [
+        {
+          locale: Locale.pl,
+          title:
+            'Next.js & Supabase - Poziom Mistrzowski: Budowa aplikacji Full-Stack',
+          provider: 'Udemy - Instruktor: Piotr Jura',
+          description:
+            'Tworzenie aplikacji Next.js z użyciem Supabase, szkolenie z ekosystemów full-stack.',
+        },
+        {
+          locale: Locale.en,
+          title: 'Next.js & Supabase Mastery: Build 2 Full-Stack Apps',
+          provider: 'Udemy - Instructors: Piotr Jura',
+          description:
+            'Deploying an application Next.js with Supabase, mastering the full-stack ecosystem.',
+        },
+      ],
+    },
+  },
+
+  {
     slug: CertificationSlug.NestJsMicroservicesScaleableBackend,
     issueDate: new Date('2025-05-31'),
     url: 'https://www.udemy.com/certificate/UC-9ef640b6-39b5-40b6-ac04-171756e6eebb/',

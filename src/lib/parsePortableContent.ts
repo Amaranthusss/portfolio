@@ -35,7 +35,7 @@ function validateBlock(value: unknown): value is ContentBlock {
         'h3',
         'blockquote',
         'div',
-        'span',
+        'span'
       ];
       if (!allowedStyles.includes(value.style)) return false;
     }

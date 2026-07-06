@@ -53,6 +53,7 @@ enum SkillKey {
   Zustand
   Redux
   J5
+	Zod
 
   // * UI components
   AntDReact

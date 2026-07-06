@@ -1,4 +1,5 @@
 export enum CertificationSlug {
+  NextJsSupabaseMasteryBuildFullstackApps = 'nextjs-supabase-mastery-build-fullstack-apps',
   NestJsMicroservicesScaleableBackend = 'nestjs-microservices-build-and-deploy-a-scaleable-backend',
   NestJsUltimateMasterclass = 'master-nestjs-ultimate-masterclass-2025',
   BlazorDeepDiveDotNet8 = 'blazor-deep-dive-from-beginner-to-advanced-in-dot-net-8',

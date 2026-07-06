@@ -10,7 +10,7 @@ function span(text: string, marks: Mark[] = []): Span {
   return {
     _type: 'span',
     text,
-    marks,
+    marks
   };
 }
 
@@ -43,7 +43,7 @@ export function paragraph(...children: InlineBlock[]): ParagraphBlock {
     _type: 'block',
     style: 'normal',
     children,
-    markDefs: [],
+    markDefs: []
   };
 }
 
@@ -52,7 +52,7 @@ export function h1(textValue: string): HeadingBlock {
     _type: 'block',
     style: 'h1',
     children: [span(textValue)],
-    markDefs: [],
+    markDefs: []
   };
 }
 
@@ -61,7 +61,7 @@ export function h2(textValue: string): HeadingBlock {
     _type: 'block',
     style: 'h2',
     children: [span(textValue)],
-    markDefs: [],
+    markDefs: []
   };
 }
 
@@ -70,7 +70,7 @@ export function h3(textValue: string): HeadingBlock {
     _type: 'block',
     style: 'h3',
     children: [span(textValue)],
-    markDefs: [],
+    markDefs: []
   };
 }
 
@@ -79,7 +79,7 @@ export function quote(textValue: string): QuoteBlock {
     _type: 'block',
     style: 'blockquote',
     children: [span(textValue)],
-    markDefs: [],
+    markDefs: []
   };
 }
 
@@ -94,7 +94,7 @@ export function image(
     url,
     caption,
     width,
-    height,
+    height
   };
 }
 
@@ -102,7 +102,7 @@ export function code(language: string, value: string): CodeBlock {
   return {
     _type: 'code',
     language,
-    code: value,
+    code: value
   };
 }
 
@@ -115,7 +115,7 @@ export function list(
     listItem: 'bullet',
     level,
     children: typeof item === 'string' ? [span(item)] : item,
-    markDefs: [],
+    markDefs: []
   }));
 }
 
@@ -147,7 +147,7 @@ export function div(...children: InlineBlock[]): ParagraphBlock {
     _type: 'block',
     style: 'div',
     children,
-    markDefs: [],
+    markDefs: []
   };
 }
 
@@ -156,6 +156,6 @@ export function inline(...children: InlineBlock[]): ParagraphBlock {
     _type: 'block',
     style: 'span',
     children,
-    markDefs: [],
+    markDefs: []
   };
 }

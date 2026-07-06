@@ -19,8 +19,8 @@ export const projects: Prisma.ProjectCreateInput[] = [
         { skill: { connect: { key: SkillKey.PLCProgramming } } },
         { skill: { connect: { key: SkillKey.AGV } } },
         { skill: { connect: { key: SkillKey.CommunicationTCPIP } } },
-        { skill: { connect: { key: SkillKey.ModbusProtocol } } },
-      ],
+        { skill: { connect: { key: SkillKey.ModbusProtocol } } }
+      ]
     },
 
     translations: {
@@ -31,7 +31,7 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.ProductionSystemUtilizingAGV,
             Locale.pl
-          ),
+          )
         },
         {
           locale: Locale.en,
@@ -39,10 +39,10 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.ProductionSystemUtilizingAGV,
             Locale.en
-          ),
-        },
-      ],
-    },
+          )
+        }
+      ]
+    }
   },
 
   {
@@ -68,8 +68,8 @@ export const projects: Prisma.ProjectCreateInput[] = [
         { skill: { connect: { key: SkillKey.Eagle } } },
         { skill: { connect: { key: SkillKey.SCL } } },
         { skill: { connect: { key: SkillKey.STL } } },
-        { skill: { connect: { key: SkillKey.LAD } } },
-      ],
+        { skill: { connect: { key: SkillKey.LAD } } }
+      ]
     },
 
     translations: {
@@ -80,7 +80,7 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.AmaranthusAGVPlatform,
             Locale.pl
-          ),
+          )
         },
         {
           locale: Locale.en,
@@ -88,10 +88,10 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.AmaranthusAGVPlatform,
             Locale.en
-          ),
-        },
-      ],
-    },
+          )
+        }
+      ]
+    }
   },
 
   {
@@ -101,7 +101,7 @@ export const projects: Prisma.ProjectCreateInput[] = [
     endDate: new Date('2019-11-26'),
 
     skills: {
-      create: [{ skill: { connect: { key: SkillKey.LabView } } }],
+      create: [{ skill: { connect: { key: SkillKey.LabView } } }]
     },
 
     translations: {
@@ -112,7 +112,7 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.ElectrohydraulicSystemControl,
             Locale.pl
-          ),
+          )
         },
         {
           locale: Locale.en,
@@ -120,10 +120,10 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.ElectrohydraulicSystemControl,
             Locale.en
-          ),
-        },
-      ],
-    },
+          )
+        }
+      ]
+    }
   },
 
   {
@@ -137,8 +137,8 @@ export const projects: Prisma.ProjectCreateInput[] = [
         { skill: { connect: { key: SkillKey.Python } } },
         { skill: { connect: { key: SkillKey.AGV } } },
         { skill: { connect: { key: SkillKey.LabView } } },
-        { skill: { connect: { key: SkillKey.AI } } },
-      ],
+        { skill: { connect: { key: SkillKey.AI } } }
+      ]
     },
 
     translations: {
@@ -149,7 +149,7 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.ControlOfAGVGestureVoice,
             Locale.pl
-          ),
+          )
         },
         {
           locale: Locale.en,
@@ -157,10 +157,10 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.ControlOfAGVGestureVoice,
             Locale.en
-          ),
-        },
-      ],
-    },
+          )
+        }
+      ]
+    }
   },
 
   {
@@ -173,8 +173,8 @@ export const projects: Prisma.ProjectCreateInput[] = [
       create: [
         { skill: { connect: { key: SkillKey.Eagle } } },
         { skill: { connect: { key: SkillKey.TS } } },
-        { skill: { connect: { key: SkillKey.CPlusPlus } } },
-      ],
+        { skill: { connect: { key: SkillKey.CPlusPlus } } }
+      ]
     },
 
     translations: {
@@ -182,15 +182,15 @@ export const projects: Prisma.ProjectCreateInput[] = [
         {
           locale: Locale.pl,
           name: 'Inteligentne Terrarium',
-          content: getProjectContent(ProjectSlug.SmartTerrarium, Locale.pl),
+          content: getProjectContent(ProjectSlug.SmartTerrarium, Locale.pl)
         },
         {
           locale: Locale.en,
           name: 'Smart Terrarium',
-          content: getProjectContent(ProjectSlug.SmartTerrarium, Locale.en),
-        },
-      ],
-    },
+          content: getProjectContent(ProjectSlug.SmartTerrarium, Locale.en)
+        }
+      ]
+    }
   },
 
   {
@@ -204,8 +204,8 @@ export const projects: Prisma.ProjectCreateInput[] = [
         { skill: { connect: { key: SkillKey.Fusion360 } } },
         { skill: { connect: { key: SkillKey.Eagle } } },
         { skill: { connect: { key: SkillKey.TS } } },
-        { skill: { connect: { key: SkillKey.Print3D } } },
-      ],
+        { skill: { connect: { key: SkillKey.Print3D } } }
+      ]
     },
 
     translations: {
@@ -213,15 +213,15 @@ export const projects: Prisma.ProjectCreateInput[] = [
         {
           locale: Locale.pl,
           name: 'Inteligentne rolety',
-          content: getProjectContent(ProjectSlug.SmartRollerShutter, Locale.pl),
+          content: getProjectContent(ProjectSlug.SmartRollerShutter, Locale.pl)
         },
         {
           locale: Locale.en,
           name: 'Smart roller shutter',
-          content: getProjectContent(ProjectSlug.SmartRollerShutter, Locale.en),
-        },
-      ],
-    },
+          content: getProjectContent(ProjectSlug.SmartRollerShutter, Locale.en)
+        }
+      ]
+    }
   },
 
   {
@@ -237,8 +237,8 @@ export const projects: Prisma.ProjectCreateInput[] = [
         { skill: { connect: { key: SkillKey.Vite } } },
         { skill: { connect: { key: SkillKey.AntDReact } } },
         { skill: { connect: { key: SkillKey.Zustand } } },
-        { skill: { connect: { key: SkillKey.PdfMake } } },
-      ],
+        { skill: { connect: { key: SkillKey.PdfMake } } }
+      ]
     },
 
     translations: {
@@ -250,6 +250,13 @@ export const projects: Prisma.ProjectCreateInput[] = [
             ProjectSlug.CurriculumVitaeGenerator,
             Locale.pl
           ),
+          description:
+            'Aplikacja internetowa służąca do generowania curriculum vitae (CV). ' +
+            'Wystarczy wypełnić formularz, a otrzymasz gotowy do pobrania plik PDF, który możesz przesłać do potencjalnych pracodawców. ' +
+            'Podgląd pliku PDF aktualizuje się w czasie rzeczywistym, w momencie edycji pól formularza. ' +
+            'Możesz konfigurować kolory oraz układ do swoich preferencji - wszystko co jest potrzebne, aby stworzyć idealne CV. ' +
+            'Aplikacja nie zbiera żadnych danych osobistych. ' +
+            'Możesz bezpiecznie zapisać swoją konfigurację lokalnie na komputerze i wczytać na etapie, na którym zakończono.'
         },
         {
           locale: Locale.en,
@@ -258,9 +265,16 @@ export const projects: Prisma.ProjectCreateInput[] = [
             ProjectSlug.CurriculumVitaeGenerator,
             Locale.en
           ),
-        },
-      ],
-    },
+          description:
+            'A web application for generating your own curriculum vitae (CV). ' +
+            "Just fill out the form, and you'll get a ready-to-download PDF file you can send to potential employers. " +
+            'The live PDF preview updates in real time as you edit the form. ' +
+            'You can also customize the colors and layout to suit your preferences — everything you need to create the perfect CV. ' +
+            'The application does not store any personal data. ' +
+            'You can safely save your configuration locally on your device and reload it later to continue where you left off.'
+        }
+      ]
+    }
   },
 
   {
@@ -275,8 +289,8 @@ export const projects: Prisma.ProjectCreateInput[] = [
         { skill: { connect: { key: SkillKey.NextJS } } },
         { skill: { connect: { key: SkillKey.YukaJS } } },
         { skill: { connect: { key: SkillKey.ThreeJS } } },
-        { skill: { connect: { key: SkillKey.AI } } },
-      ],
+        { skill: { connect: { key: SkillKey.AI } } }
+      ]
     },
 
     translations: {
@@ -284,15 +298,15 @@ export const projects: Prisma.ProjectCreateInput[] = [
         {
           locale: Locale.pl,
           name: 'Wyszukiwanie ścieżek z AI',
-          content: getProjectContent(ProjectSlug.FindingPathAI, Locale.pl),
+          content: getProjectContent(ProjectSlug.FindingPathAI, Locale.pl)
         },
         {
           locale: Locale.en,
           name: 'Pathfinding AI',
-          content: getProjectContent(ProjectSlug.FindingPathAI, Locale.en),
-        },
-      ],
-    },
+          content: getProjectContent(ProjectSlug.FindingPathAI, Locale.en)
+        }
+      ]
+    }
   },
 
   {
@@ -309,8 +323,8 @@ export const projects: Prisma.ProjectCreateInput[] = [
         { skill: { connect: { key: SkillKey.NestJS } } },
         { skill: { connect: { key: SkillKey.SQLite } } },
         { skill: { connect: { key: SkillKey.DevExtremeReact } } },
-        { skill: { connect: { key: SkillKey.Redux } } },
-      ],
+        { skill: { connect: { key: SkillKey.Redux } } }
+      ]
     },
 
     translations: {
@@ -318,15 +332,15 @@ export const projects: Prisma.ProjectCreateInput[] = [
         {
           locale: Locale.pl,
           name: 'Generator Faktur v1',
-          content: getProjectContent(ProjectSlug.InvoiceGeneratorV1, Locale.pl),
+          content: getProjectContent(ProjectSlug.InvoiceGeneratorV1, Locale.pl)
         },
         {
           locale: Locale.en,
           name: 'Invoice Generator v1',
-          content: getProjectContent(ProjectSlug.InvoiceGeneratorV1, Locale.en),
-        },
-      ],
-    },
+          content: getProjectContent(ProjectSlug.InvoiceGeneratorV1, Locale.en)
+        }
+      ]
+    }
   },
 
   {
@@ -335,7 +349,7 @@ export const projects: Prisma.ProjectCreateInput[] = [
     endDate: new Date('2017-10-02'),
 
     skills: {
-      create: [{ skill: { connect: { key: SkillKey.MMF2Dev } } }],
+      create: [{ skill: { connect: { key: SkillKey.MMF2Dev } } }]
     },
 
     translations: {
@@ -343,15 +357,15 @@ export const projects: Prisma.ProjectCreateInput[] = [
         {
           locale: Locale.pl,
           name: 'Aplikacja "Binder"',
-          content: getProjectContent(ProjectSlug.ApplicationBinder, Locale.pl),
+          content: getProjectContent(ProjectSlug.ApplicationBinder, Locale.pl)
         },
         {
           locale: Locale.en,
           name: 'Application "Binder"',
-          content: getProjectContent(ProjectSlug.ApplicationBinder, Locale.en),
-        },
-      ],
-    },
+          content: getProjectContent(ProjectSlug.ApplicationBinder, Locale.en)
+        }
+      ]
+    }
   },
 
   {
@@ -362,8 +376,8 @@ export const projects: Prisma.ProjectCreateInput[] = [
     skills: {
       create: [
         { skill: { connect: { key: SkillKey.CPlusPlus } } },
-        { skill: { connect: { key: SkillKey.MMF2Dev } } },
-      ],
+        { skill: { connect: { key: SkillKey.MMF2Dev } } }
+      ]
     },
 
     translations: {
@@ -371,21 +385,15 @@ export const projects: Prisma.ProjectCreateInput[] = [
         {
           locale: Locale.pl,
           name: 'Kontroler USB oświetlenia LED',
-          content: getProjectContent(
-            ProjectSlug.LedControllerViaUSB,
-            Locale.pl
-          ),
+          content: getProjectContent(ProjectSlug.LedControllerViaUSB, Locale.pl)
         },
         {
           locale: Locale.en,
           name: 'LED Lighting Controller via USB',
-          content: getProjectContent(
-            ProjectSlug.LedControllerViaUSB,
-            Locale.en
-          ),
-        },
-      ],
-    },
+          content: getProjectContent(ProjectSlug.LedControllerViaUSB, Locale.en)
+        }
+      ]
+    }
   },
 
   {
@@ -400,8 +408,8 @@ export const projects: Prisma.ProjectCreateInput[] = [
         { skill: { connect: { key: SkillKey.ReactJS } } },
         { skill: { connect: { key: SkillKey.Vite } } },
         { skill: { connect: { key: SkillKey.NestJS } } },
-        { skill: { connect: { key: SkillKey.Eagle } } },
-      ],
+        { skill: { connect: { key: SkillKey.Eagle } } }
+      ]
     },
 
     translations: {
@@ -412,7 +420,7 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.PilsudskiPalaceSmartHome,
             Locale.pl
-          ),
+          )
         },
         {
           locale: Locale.en,
@@ -420,10 +428,10 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.PilsudskiPalaceSmartHome,
             Locale.en
-          ),
-        },
-      ],
-    },
+          )
+        }
+      ]
+    }
   },
 
   {
@@ -433,7 +441,7 @@ export const projects: Prisma.ProjectCreateInput[] = [
     isCurrent: true,
 
     skills: {
-      create: [{ skill: { connect: { key: SkillKey.Fusion360 } } }],
+      create: [{ skill: { connect: { key: SkillKey.Fusion360 } } }]
     },
 
     translations: {
@@ -444,7 +452,7 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.PilsudskiPalaceProjectAndRealization,
             Locale.pl
-          ),
+          )
         },
         {
           locale: Locale.en,
@@ -452,10 +460,10 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.PilsudskiPalaceProjectAndRealization,
             Locale.en
-          ),
-        },
-      ],
-    },
+          )
+        }
+      ]
+    }
   },
 
   {
@@ -473,8 +481,8 @@ export const projects: Prisma.ProjectCreateInput[] = [
         { skill: { connect: { key: SkillKey.Leaflet } } },
         { skill: { connect: { key: SkillKey.Zustand } } },
         { skill: { connect: { key: SkillKey.ExpressJS } } },
-        { skill: { connect: { key: SkillKey.AntDReact } } },
-      ],
+        { skill: { connect: { key: SkillKey.AntDReact } } }
+      ]
     },
 
     translations: {
@@ -485,7 +493,7 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.ArtisticLanguageNurseryLittleAcademy,
             Locale.pl
-          ),
+          )
         },
         {
           locale: Locale.en,
@@ -493,9 +501,9 @@ export const projects: Prisma.ProjectCreateInput[] = [
           content: getProjectContent(
             ProjectSlug.ArtisticLanguageNurseryLittleAcademy,
             Locale.en
-          ),
-        },
-      ],
-    },
-  },
+          )
+        }
+      ]
+    }
+  }
 ];
