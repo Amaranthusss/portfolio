@@ -17,10 +17,14 @@ export async function useDocumentDataset() {
     Cookie.AppFontSize
   )?.value as AppFontSize | undefined;
 
+  const contrast: 'true' | undefined = cookiesData.get(Cookie.Contrast)
+    ?.value as 'true' | undefined;
+
   const dataset: { [dataName: string]: string | undefined } = {};
 
   if (theme != null) dataset['data-' + Cookie.Theme] = theme;
   if (appFontSize != null) dataset['data-' + Cookie.AppFontSize] = appFontSize;
+  if (contrast != null) dataset['data-' + Cookie.Contrast] = contrast;
 
   return { dataset };
 }

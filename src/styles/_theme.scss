@@ -32,7 +32,7 @@
 }
 
 @mixin light-theme {
-  --primary-color: #00afea;
+  --primary-color: #00bfff;
   --primary-hover-color: #0088b6;
   --primary-border-color: #00afea;
   --primary-contrast-color: #ffffff;
@@ -45,25 +45,27 @@
 
   --layout-bg-color: #ffffff;
   --control-bg-color: #ffffff;
+  --control-disable-color: #b6b6b6;
   --control-box-shadow: 0px 0px 4px 0px rgba(191, 191, 191, 0.5);
   --control-box-shadow-active: 0px 0px 4px 2px var(--primary-color);
   --popup-box-shadow: 0px 0px 6px 0px rgba(0, 143, 238, 1);
 }
 
 @mixin dark-theme {
-  --primary-color: #00afea;
+  --primary-color: #00c3ff;
   --primary-hover-color: #1fbaee;
-  --primary-border-color: #ffffff;
+  --primary-border-color: #002944;
   --primary-contrast-color: #ffffff;
 
   --text-color: #ffffff;
-  --secondary-text-color: #1f1f1f;
+  --secondary-text-color: #6d6d6d;
   --placeholder-color: #1f1f1f;
   --header-color: var(--primary-color);
   --border-color: #4a6275;
 
   --layout-bg-color: #000000;
-  --control-bg-color: #001c25;
+  --control-bg-color: #151718;
+  --control-disable-color: #393c3d;
   --control-box-shadow: 0px 0px 4px 0px var(--primary-color);
   --control-box-shadow-active: 0px 0px 4px 2px var(--primary-color);
   --popup-box-shadow: 0px 0px 6px 0px rgba(255, 255, 255, 0.5);
@@ -73,7 +75,7 @@
   --primary-color: #ffff00;
   --primary-hover-color: #ffffb5;
   --primary-border-color: #ffffff;
-  --primary-contrast-color: #ffffff;
+  --primary-contrast-color: #000000;
 
   --text-color: #ffff00;
   --secondary-text-color: #ffff00;
@@ -83,6 +85,7 @@
 
   --layout-bg-color: #000000;
   --control-bg-color: #000000;
+  --control-disable-color: #000000;
   --control-box-shadow: unset;
   --control-box-shadow-active: unset;
   --popup-box-shadow: unset;

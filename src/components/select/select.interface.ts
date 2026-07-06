@@ -1,8 +1,11 @@
+import type { ComponentPropsWithRef } from 'react';
+
 export type ValueExtension = string | number | readonly string[] | undefined;
 
-export interface SelectProps<
-  TValue extends ValueExtension
-> extends CommonProps<HTMLSelectElement> {
+export interface SelectProps<TValue extends ValueExtension> extends StrictOmit<
+  ComponentPropsWithRef<'select'>,
+  'value' | 'onChange' | 'id' | 'name'
+> {
   value?: TValue;
   label?: string;
   options?: SelectOption<TValue>[];

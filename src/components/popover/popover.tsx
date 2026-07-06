@@ -99,7 +99,7 @@ export function Popover({
 
   const trigger = (
     <Button
-      rootRef={triggerRef}
+      ref={triggerRef}
       onClick={(): void => setOpenState(true)}
       {...triggerProps}
     />

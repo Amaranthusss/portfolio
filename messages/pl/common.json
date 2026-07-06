@@ -3,16 +3,19 @@
   "skills": "Umiejętności",
   "category": "Kategoria",
   "themes": {
-		"selector": "Motyw:",
+    "selector": "Motyw:",
+    "contrast-switch": "Wysoki kontrast:",
     "system": "Systemowy",
     "light": "Jasny",
-    "dark": "Ciemny",
-    "contrast": "Wysoki kontrast"
+    "dark": "Ciemny"
   },
   "app-font-size": {
-		"selector": "Rozmiar czcionki aplikacji:",
+    "selector": "Rozmiar czcionki aplikacji:",
     "standard": "Standardowy",
     "large": "Duży",
     "extra-large": "Bardzo duży"
+  },
+  "language-selector": {
+    "selector": "Język aplikacji:"
   }
 }

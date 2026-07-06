@@ -3,16 +3,19 @@
   "skills": "Skills",
   "category": "Category",
   "themes": {
-		"selector": "Theme:",
+    "selector": "Theme:",
+    "contrast-switch": "High contrast:",
     "system": "System",
     "light": "Light",
-    "dark": "Dark",
-    "contrast": "High contrast"
+    "dark": "Dark"
   },
   "app-font-size": {
-		"selector": "Application font size:",
+    "selector": "Application font size:",
     "standard": "Standard",
     "large": "Large",
     "extra-large": "Extra large"
+  },
+  "language-selector": {
+    "selector": "Application language:"
   }
 }

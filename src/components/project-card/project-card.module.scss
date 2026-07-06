@@ -11,7 +11,7 @@
   > .date_range,
   > .types,
   > .location {
-    opacity: 0.4;
+    color: var(--secondary-text-color);
   }
 
   > .institution {
@@ -19,7 +19,7 @@
   }
 
   > .duty_list {
-    opacity: 0.4;
+    color: var(--secondary-text-color);
 
     > .duty {
       margin-left: var(--space-9);

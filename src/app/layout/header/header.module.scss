@@ -10,6 +10,21 @@
   padding-inline: 24px;
   border-bottom: solid 1px var(--border-color);
 
+  @mixin border-side($justify-content) {
+    display: flex;
+    flex-direction: row;
+    justify-content: $justify-content;
+    align-items: center;
+  }
+
+  > .left_side {
+    @include border-side(flex-start);
+  }
+
+  > .right_side {
+    @include border-side(flex-end);
+  }
+
   > .menu_items {
     justify-content: center;
     min-height: var(--control-height);
@@ -21,14 +36,14 @@
 }
 
 .settings_popover {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
   > div {
     display: flex;
     flex-direction: row;
     align-items: center;
-
-    &:first-of-type {
-      margin-bottom: var(--space-4);
-    }
 
     > select {
       flex: 1;

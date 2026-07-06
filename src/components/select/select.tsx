@@ -8,16 +8,12 @@ import type { Key } from 'react';
 import styles from './select.module.scss';
 
 export function Select<TValue extends ValueExtension = string>({
-  rootRef,
   value,
   label,
-  name,
-  style,
   className,
-  rootStyle,
-  rootClassName,
   options = [],
-  onChange
+  onChange,
+  ...selectProps
 }: SelectProps<TValue>): React.ReactNode {
   const { cn } = useClassName();
 
@@ -26,8 +22,9 @@ export function Select<TValue extends ValueExtension = string>({
 
   const id: string = useId();
 
-  if (isDuplicatedValue)
+  if (isDuplicatedValue) {
     console.error('Met a duplicated value, please check options list');
+  }
 
   const getOptionKey = (value: TValue, index: number): Key => {
     return value != null ? value.toString() : index;
@@ -38,13 +35,11 @@ export function Select<TValue extends ValueExtension = string>({
       {label && <label htmlFor={id}>{label}:</label>}
 
       <select
-        ref={rootRef}
+        {...selectProps}
         id={id}
         name={label}
         value={value}
-        style={{ ...rootStyle, ...style }}
-        aria-label={name}
-        className={cn(styles.select, rootClassName, className)}
+        className={cn(styles.select, className)}
         onChange={(e) => onChange?.(e.target.value as TValue)}
       >
         {options.map(

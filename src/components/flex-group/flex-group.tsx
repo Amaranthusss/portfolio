@@ -206,7 +206,7 @@ export const FlexGroup = ({
 
         {isMeasured && overflowItems.length > 0 && (
           <Button
-            rootRef={moreButtonRef}
+            ref={moreButtonRef}
             className={styles.more}
             onClick={toggleDropdown}
             name={'show-more-hidden-flex-group-elements'}

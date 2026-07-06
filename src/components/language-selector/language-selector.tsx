@@ -1,15 +1,19 @@
+import { useLocale, useTranslations } from 'next-intl';
 import { usePathname, useRouter } from '@/i18n/navigation';
-import { useLocale } from 'next-intl';
 
 import { Select } from '../select/select';
 
+import type { LanguageSelectorProps } from './language-selector.interface';
 import type { SelectOption } from '../select/select.interface';
 import type { Locale } from '@/i18n/locale';
 
-export function LanguageSelector(): React.ReactNode {
+export function LanguageSelector({
+  showLabel = true
+}: LanguageSelectorProps): React.ReactNode {
   const locale: Locale = useLocale();
   const pathname: string = usePathname();
   const router = useRouter();
+  const t = useTranslations('common.language-selector');
 
   const options: SelectOption<Locale>[] = [
     { label: 'Polski (PL)', value: 'pl' },
@@ -21,11 +25,17 @@ export function LanguageSelector(): React.ReactNode {
   };
 
   return (
-    <Select<Locale>
-      value={locale}
-      options={options}
-      onChange={onChange}
-      name={'language-selector'}
-    />
+    <>
+      {showLabel && (
+        <span style={{ marginRight: 'var(--space-4)' }}>{t('selector')}</span>
+      )}
+
+      <Select<Locale>
+        value={locale}
+        options={options}
+        onChange={onChange}
+        name={'language-selector'}
+      />
+    </>
   );
 }

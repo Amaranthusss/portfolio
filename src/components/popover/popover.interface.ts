@@ -2,7 +2,7 @@ import type { PropsWithChildren } from 'react';
 import type { ButtonProps } from '../button/button.interface';
 
 export interface PopoverProps extends PropsWithChildren {
-  triggerProps: Omit<ButtonProps, 'onClick' | 'rootRef'>;
+  triggerProps: Omit<ButtonProps, 'onClick' | 'ref'>;
   open?: boolean;
 	popoverClassName?: string
   defaultOpen?: boolean;

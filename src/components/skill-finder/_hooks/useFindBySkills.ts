@@ -63,6 +63,6 @@ export function useFindBySkills() {
     onToggleSkill,
     onToggleProfile,
     isActiveProfile,
-    selectedSkillKeys,
+    selectedSkillKeys
   };
 }

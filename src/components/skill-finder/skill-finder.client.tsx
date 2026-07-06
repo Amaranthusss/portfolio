@@ -54,10 +54,10 @@ export function SkillFinderClient({
         <Divider />
 
         <Button
-          type={'primary'}
+          mode={'primary'}
           onClick={search}
           style={{ width: '100%' }}
-          name={'search-data-for-selected-skills'}
+          aria-label={'search-data-for-selected-skills'}
         >
           Search
         </Button>

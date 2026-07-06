@@ -1,4 +1,5 @@
 'use client';
+import { ContrastThemeSwitch } from '@/components/contrast-theme-switch/contrast-theme-switch';
 import { AppFontSizeSelector } from '@/components/app-font-size-selector/app-font-size-selector';
 import { LanguageSelector } from '@/components/language-selector/language-selector';
 import { ThemeSelector } from '@/components/theme-selector/theme-selector';
@@ -69,26 +70,7 @@ export const Header = (): React.ReactNode => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.leftSide}>
-        <Popover
-          triggerProps={{
-            type: 'primary',
-            centerContent: true,
-            name: 'app-settings',
-            children: <Icon icon={Icon.All.Settings} />,
-            style: { minWidth: 'var(--control-height)' }
-          }}
-          popoverClassName={styles.settings_popover}
-        >
-          <div>
-            <ThemeSelector />
-          </div>
-
-          <div>
-            <AppFontSizeSelector />
-          </div>
-        </Popover>
-      </div>
+      <div className={styles.left_side} />
 
       <FlexGroup
         className={styles.menu_items}
@@ -99,7 +81,7 @@ export const Header = (): React.ReactNode => {
         {menuItems.map(({ route, icon, text, decorated }) => {
           const extraProps: Partial<ButtonProps> = decorated
             ? {
-                type: 'primary',
+                mode: 'primary',
                 style: { textTransform: 'uppercase' },
                 animated: true
               }
@@ -120,7 +102,34 @@ export const Header = (): React.ReactNode => {
         })}
       </FlexGroup>
 
-      <LanguageSelector />
+      <div className={styles.right_side}>
+        <Popover
+          triggerProps={{
+            mode: 'primary',
+            centerContent: true,
+            name: 'app-settings',
+            children: <Icon icon={Icon.All.Settings} />,
+            style: { minWidth: 'var(--control-height)' }
+          }}
+          popoverClassName={styles.settings_popover}
+        >
+          <div>
+            <LanguageSelector />
+          </div>
+
+          <div>
+            <ThemeSelector />
+          </div>
+
+          <div>
+            <AppFontSizeSelector />
+          </div>
+
+          <div>
+            <ContrastThemeSwitch />
+          </div>
+        </Popover>
+      </div>
     </header>
   );
 };
