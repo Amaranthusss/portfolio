@@ -1,4 +1,5 @@
 import { ProjectCard } from '@/components/project-card/project-card';
+import { ListModule } from '@/components/list-module/list-module';
 import { Title } from '@/components/title/title';
 
 import { getTranslations } from 'next-intl/server';
@@ -13,7 +14,7 @@ export default async function ProjectsAndRealisations(): Promise<React.ReactNode
   const t = await getTranslations('courses-and-certifications');
 
   return (
-    <main>
+    <ListModule>
       <Title>{t('header')}</Title>
 
       <div className={styles.cards_layout}>
@@ -25,6 +26,6 @@ export default async function ProjectsAndRealisations(): Promise<React.ReactNode
             <ProjectCard key={p.slug} project={p} />
           ))}
       </div>
-    </main>
+    </ListModule>
   );
 }

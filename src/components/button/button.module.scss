@@ -13,9 +13,6 @@
   }
 
   &.active {
-    -webkit-box-shadow: var(--control-box-shadow-active);
-    -moz-box-shadow: var(--control-box-shadow-active);
-    box-shadow: var(--control-box-shadow-active);
     border-color: var(--primary-color) !important;
   }
 
@@ -45,6 +42,7 @@
   }
 
   &.primary {
+    position: relative;
     background-color: var(--primary-color);
     border-style: solid;
     border-width: var(--border-width);
@@ -55,13 +53,32 @@
       background-color var(--animation-time),
       color var(--animation-time);
 
+    > span {
+      position: relative;
+      z-index: 1;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      background: linear-gradient(165deg, var(--primary-color), var(--primary-color-2));
+      border-radius: inherit;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    &:hover::before {
+      opacity: 0;
+    }
+
     &:hover {
       color: var(--primary-hover-color);
       background-color: transparent;
     }
   }
 
-  &.center_content {
+  &.center_content > .button_content {
     display: flex;
     flex-direction: row;
     align-items: center;

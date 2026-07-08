@@ -1,5 +1,6 @@
 import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
 import { DisplaySkills } from '@/components/display-skills/display-skills';
+import { ListModule } from '@/components/list-module/list-module';
 import { Title } from '@/components/title/title';
 
 import { getExperienceSteps } from '@/services/getExperienceSteps';
@@ -17,7 +18,7 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
   const t = await getTranslations('experience-and-education');
 
   return (
-    <main>
+    <ListModule>
       <Title>{t('experience')}</Title>
 
       <div className={styles.cards_layout}>
@@ -108,6 +109,6 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
             </div>
           ))}
       </div>
-    </main>
+    </ListModule>
   );
 }

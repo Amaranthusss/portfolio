@@ -4,46 +4,51 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
 import styles from './page.module.scss';
+import { Button } from '@/components/button/button';
 
-export default async function Home(): Promise<React.ReactNode> {
+export default async function Homepage(): Promise<React.ReactNode> {
   const t = await getTranslations('homepage');
-  const welcomeImageHeight = 800;
 
   return (
-    <main className={styles.home_page}>
+    <main className={styles.homepage}>
       <div className={styles.welcome}>
         <div className={styles.header}>
           <h1>{t('full-name')}</h1>
 
           <h2 className={styles.marked}>
-            &bull; {t('first-title')}
+            {t('first-title')}
             <br />
-            &bull; {t('second-title')}
+            {t('second-title')}
           </h2>
 
-          <h2 className={styles.description}>{t('description')}</h2>
+          <h2 className={styles.description}>
+            {t('first-description')}
+            <br />
+            {t('second-description')}
+          </h2>
         </div>
 
         <Image
           className={styles.welcome_image}
-          src={'/images/welcome.png'}
-          alt={'Welcome image'}
+          src={'/images/homepage.png'}
+          alt={'Homepage background image'}
           loading={'eager'}
-          width={(welcomeImageHeight * 700) / 1050}
-          height={welcomeImageHeight}
-          sizes={`(max-width: ${(welcomeImageHeight * 700) / 1050}px) 100vw, {width}px`}
+          quality={100}
+          width={1219}
+          height={756}
+          priority
         />
       </div>
 
-      <div className={`${styles.about_me} ${styles.card}`}>
-        <Title>{t('about-me')}</Title>
+      <div className={`${styles.about_me}`}>
+        <Title>Hi, I'm Oskar</Title>
 
         <p>{t('paragraph-1')}</p>
         <p>{t('paragraph-2')}</p>
         <p>{t('paragraph-3')}</p>
         <p>{t('paragraph-4')}</p>
         <p>{t('paragraph-5')}</p>
-				
+
         <p>📫 Email: oskar.szkurlat@gmail.com</p>
         <p>
           💼 LinkedIn:{' '}
@@ -53,6 +58,14 @@ export default async function Home(): Promise<React.ReactNode> {
             Oskar Szkurłat
           </a>
         </p>
+      </div>
+
+      <div className={`${styles.shortcuts}`}>
+        I build complex, performant and user-friendly web applications.
+        <div>
+          <Button mode={'primary'}>View Projects</Button>
+          <Button mode={'default'}>Get in Touch</Button>
+        </div>
       </div>
     </main>
   );

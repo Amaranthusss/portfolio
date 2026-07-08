@@ -26,7 +26,7 @@ export const Button = ({
 
   return (
     <button {...buttonProps} className={classNames}>
-      {children ?? ''}
+      <span className={styles.button_content}>{children ?? ''}</span>
     </button>
   );
 };

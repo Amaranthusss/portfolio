@@ -5,21 +5,27 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   reactCompiler: true,
   images: {
+    qualities: [75, 100],
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.public.blob.vercel-storage.com',
+        pathname: '/images/**'
+      },
       {
         protocol: 'http',
         hostname: 'nginx',
-        pathname: '/images/**',
+        pathname: '/images/**'
       },
       {
         protocol: 'http',
         hostname: 'localhost',
-        pathname: '/images/**',
-      },
+        pathname: '/images/**'
+      }
     ],
     dangerouslyAllowLocalIP:
-      process.env.NEXT_IMAGES_DANGEROUSLY_ALLOW_LOCAL_IP === 'true',
-  },
+      process.env.NEXT_IMAGES_DANGEROUSLY_ALLOW_LOCAL_IP === 'true'
+  }
 };
 
 const withNextIntl = createNextIntlPlugin();

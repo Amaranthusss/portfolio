@@ -1,5 +1,6 @@
 import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
 import { DisplaySkills } from '@/components/display-skills/display-skills';
+import { ListModule } from '@/components/list-module/list-module';
 import { Title } from '@/components/title/title';
 import Image from 'next/image';
 
@@ -15,7 +16,7 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
   const t = await getTranslations('courses-and-certifications');
 
   return (
-    <main>
+    <ListModule>
       <Title>{t('header')}</Title>
 
       <div className={styles.cards_layout}>
@@ -53,6 +54,6 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
             </div>
           ))}
       </div>
-    </main>
+    </ListModule>
   );
 }

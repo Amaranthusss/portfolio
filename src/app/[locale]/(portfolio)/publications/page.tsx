@@ -1,5 +1,6 @@
 import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
 import { DisplaySkills } from '@/components/display-skills/display-skills';
+import { ListModule } from '@/components/list-module/list-module';
 
 import { createAuthorFormatter } from '@/utils/createAuthorFormatter';
 import { getPublications } from '@/services/getPublications';
@@ -13,7 +14,7 @@ export default async function HireMe(): Promise<React.ReactNode> {
   const { authorToString } = await createAuthorFormatter();
 
   return (
-    <main>
+    <ListModule>
       <h1>Publications</h1>
 
       <div className={styles.cards_layout}>
@@ -44,6 +45,6 @@ export default async function HireMe(): Promise<React.ReactNode> {
             </div>
           ))}
       </div>
-    </main>
+    </ListModule>
   );
 }

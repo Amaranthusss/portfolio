@@ -9,6 +9,7 @@ import { Button } from '../../../components/button/button';
 import { Icon } from '@/components/icon/icon';
 
 import { useTranslations } from 'next-intl';
+import { usePathname } from '@/i18n/navigation';
 import { useRouter } from 'next/navigation';
 
 import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
@@ -21,6 +22,7 @@ import styles from './header.module.scss';
 
 export const Header = (): React.ReactNode => {
   const router: AppRouterInstance = useRouter();
+  const pathname: string = usePathname();
   const t = useTranslations('layout.menu');
 
   const menuItems: {
@@ -70,7 +72,10 @@ export const Header = (): React.ReactNode => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.left_side} />
+      <div className={styles.logo}>
+        <span>Oskar Szkurłat</span>
+        <span>Portfolio</span>
+      </div>
 
       <FlexGroup
         className={styles.menu_items}
@@ -91,6 +96,7 @@ export const Header = (): React.ReactNode => {
               key={text}
               {...extraProps}
               centerContent
+              active={route === pathname}
               onClick={(): void => router.push(route)}
               name={`navigation-button-${route.replace('/', '')}`}
             >
@@ -104,7 +110,6 @@ export const Header = (): React.ReactNode => {
       <div className={styles.right_side}>
         <Popover
           triggerProps={{
-            mode: 'primary',
             centerContent: true,
             name: 'app-settings',
             children: <Icon icon={Icon.All.Settings} />,

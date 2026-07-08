@@ -1,4 +1,5 @@
 import { PrimaryText } from '@/components/primary-text/primary-text';
+import { ListModule } from '@/components/list-module/list-module';
 import Image from 'next/image';
 
 import styles from './page.module.scss';
@@ -16,7 +17,7 @@ export default async function CoreTechnologies(): Promise<React.ReactNode> {
   // </>;
 
   return (
-    <main className={styles.page}>
+    <ListModule>
       <h1 className={styles.page_title}>Core technologies</h1>
 
       <div className={styles.content}>
@@ -96,6 +97,6 @@ export default async function CoreTechnologies(): Promise<React.ReactNode> {
         width={imageWidth}
         height={(imageWidth * 1) / 3 + imageWidth}
       />
-    </main>
+    </ListModule>
   );
 }

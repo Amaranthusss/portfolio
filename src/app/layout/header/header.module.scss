@@ -9,16 +9,27 @@
   padding-block: 12px;
   padding-inline: 24px;
   border-bottom: solid 1px var(--border-color);
+  background-color: var(--layout-bg-color);
 
   @mixin border-side($justify-content) {
     display: flex;
-    flex-direction: row;
     justify-content: $justify-content;
     align-items: center;
   }
 
-  > .left_side {
-    @include border-side(flex-start);
+  > .logo {
+    @include border-side(center);
+    pointer-events: none;
+    user-select: none;
+    flex-direction: column;
+		text-wrap: nowrap;
+    text-shadow: 0px 0px 2px black;
+
+    :last-child {
+      font-style: italic;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
   }
 
   > .right_side {
