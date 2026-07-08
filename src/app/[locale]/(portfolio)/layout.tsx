@@ -1,9 +1,10 @@
-import { Layout } from '@/app/layout/layout';
+import { Layout } from '@/components/_layout/layout';
 
 import { NextIntlClientProvider } from 'next-intl';
 
 import { useDocumentDataset } from '@/hooks/useDocumentDataset';
 import { notFound } from 'next/navigation';
+import { isLocale } from '@/i18n/locale';
 
 import localFont from 'next/font/local';
 
@@ -11,7 +12,7 @@ import type { NextFont } from 'next/dist/compiled/@next/font';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/locale';
 
-import { defaultLocale, locales } from '@/i18n/locale';
+import { defaultLocale } from '@/i18n/locale';
 
 import '../../globals.scss';
 
@@ -93,11 +94,13 @@ export default async function RootLayout({
   children
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }>): Promise<React.ReactNode> {
   const { locale } = await params;
 
-  if (!locales.includes(locale)) notFound();
+  const typedLocale: Locale = locale as Locale;
+
+  if (!isLocale(typedLocale)) notFound();
 
   const { dataset } = await useDocumentDataset();
 

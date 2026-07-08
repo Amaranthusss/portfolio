@@ -1,10 +1,10 @@
+import { Button } from '@/components/button/button';
 import { Title } from '@/components/title/title';
 import Image from 'next/image';
 
 import { getTranslations } from 'next-intl/server';
 
 import styles from './page.module.scss';
-import { Button } from '@/components/button/button';
 
 export default async function Homepage(): Promise<React.ReactNode> {
   const t = await getTranslations('homepage');

@@ -24,7 +24,18 @@ export const findBySkills = cache(
           where: { skills: { some: { skill: { key: { in: skillKeys } } } } },
           include: {
             translations: { where: { locale }, take: 1 },
-            skills: { include: { skill: true } },
+            skills: {
+              include: {
+                skill: {
+                  include: {
+                    translations: {
+                      where: { locale },
+                      take: 1
+                    }
+                  }
+                }
+              }
+            },
             imageFile: true
           }
         }),
@@ -33,7 +44,18 @@ export const findBySkills = cache(
           where: { skills: { some: { skill: { key: { in: skillKeys } } } } },
           include: {
             translations: { where: { locale }, take: 1 },
-            skills: { include: { skill: true } }
+            skills: {
+              include: {
+                skill: {
+                  include: {
+                    translations: {
+                      where: { locale },
+                      take: 1
+                    }
+                  }
+                }
+              }
+            }
           }
         }),
 
@@ -41,7 +63,18 @@ export const findBySkills = cache(
           where: { skills: { some: { skill: { key: { in: skillKeys } } } } },
           include: {
             translations: { where: { locale }, take: 1 },
-            skills: { include: { skill: true } }
+            skills: {
+              include: {
+                skill: {
+                  include: {
+                    translations: {
+                      where: { locale },
+                      take: 1
+                    }
+                  }
+                }
+              }
+            }
           }
         }),
 
@@ -49,7 +82,18 @@ export const findBySkills = cache(
           where: { skills: { some: { skill: { key: { in: skillKeys } } } } },
           include: {
             translations: { where: { locale }, take: 1 },
-            skills: { include: { skill: true } }
+            skills: {
+              include: {
+                skill: {
+                  include: {
+                    translations: {
+                      where: { locale },
+                      take: 1
+                    }
+                  }
+                }
+              }
+            }
           }
         }),
 
@@ -58,7 +102,18 @@ export const findBySkills = cache(
           include: {
             translations: { where: { locale }, take: 1 },
             authors: { include: { person: true } },
-            skills: { include: { skill: true } }
+            skills: {
+              include: {
+                skill: {
+                  include: {
+                    translations: {
+                      where: { locale },
+                      take: 1
+                    }
+                  }
+                }
+              }
+            }
           }
         })
       ]);

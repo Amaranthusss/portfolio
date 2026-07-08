@@ -5,7 +5,7 @@ import { LanguageSelector } from '@/components/language-selector/language-select
 import { ThemeSelector } from '@/components/theme-selector/theme-selector';
 import { FlexGroup } from '@/components/flex-group/flex-group';
 import { Popover } from '@/components/popover/popover';
-import { Button } from '../../../components/button/button';
+import { Button } from '../../button/button';
 import { Icon } from '@/components/icon/icon';
 
 import { useTranslations } from 'next-intl';
