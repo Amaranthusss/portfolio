@@ -13,7 +13,7 @@ export default async function Homepage(): Promise<React.ReactNode> {
     <main className={styles.homepage}>
       <div className={styles.welcome}>
         <div className={styles.header}>
-          <h1>{t('full-name')}</h1>
+          <h1 className={styles.full_name}>{t('full-name')}</h1>
 
           <h2 className={styles.marked}>
             {t('first-title')}
