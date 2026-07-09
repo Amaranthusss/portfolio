@@ -4,13 +4,16 @@ import { ListModule } from '@/components/list-module/list-module';
 
 import { createAuthorFormatter } from '@/utils/createAuthorFormatter';
 import { getPublications } from '@/services/getPublications';
+import { getLocale } from 'next-intl/server';
 
 import type { PublicationDTO } from '@/models/publicationDto';
+import type { Locale } from '@/i18n/locale';
 
 import styles from './page.module.scss';
 
 export default async function HireMe(): Promise<React.ReactNode> {
-  const publications: PublicationDTO[] = await getPublications();
+  const locale: Locale = await getLocale();
+  const publications: PublicationDTO[] = await getPublications(locale);
   const { authorToString } = await createAuthorFormatter();
 
   return (

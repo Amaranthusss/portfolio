@@ -1,18 +1,17 @@
 import { Layout } from '@/components/_layout/layout';
 
+import { DocumentDatasetProvider } from '@/providers/DocumentDatasetProvider';
 import { NextIntlClientProvider } from 'next-intl';
 
-import { useDocumentDataset } from '@/hooks/useDocumentDataset';
 import { notFound } from 'next/navigation';
 import { isLocale } from '@/i18n/locale';
 
 import localFont from 'next/font/local';
 
+import type { Revalidate } from 'next/dist/server/lib/cache-control';
 import type { NextFont } from 'next/dist/compiled/@next/font';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/locale';
-
-import { defaultLocale } from '@/i18n/locale';
 
 import '../../globals.scss';
 
@@ -89,6 +88,8 @@ export const metadata: Metadata = {
   description: 'Portfolio Web Application'
 };
 
+export const revalidate: Revalidate = false;
+
 export default async function RootLayout({
   params,
   children
@@ -102,19 +103,19 @@ export default async function RootLayout({
 
   if (!isLocale(typedLocale)) notFound();
 
-  const { dataset } = await useDocumentDataset();
-
   return (
-    <html lang={defaultLocale} {...dataset}>
+    <html lang={typedLocale}>
       <body className={magnat.className}>
         <NextIntlClientProvider>
-          <Layout>
-            <Layout.Header />
-            <Layout.Content>{children}</Layout.Content>
-            <Layout.Footer>
-              Oskar Szkurłat ©{new Date().getFullYear()}
-            </Layout.Footer>
-          </Layout>
+          <DocumentDatasetProvider>
+            <Layout>
+              <Layout.Header />
+              <Layout.Content>{children}</Layout.Content>
+              <Layout.Footer>
+                Oskar Szkurłat ©{new Date().getFullYear()}
+              </Layout.Footer>
+            </Layout>
+          </DocumentDatasetProvider>
         </NextIntlClientProvider>
       </body>
     </html>

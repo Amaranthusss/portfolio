@@ -11,8 +11,8 @@ export function mapEducationStep(
   return {
     id: step.id,
     slug: step.slug,
-    startDate: step.startDate,
-    endDate: step.endDate ?? undefined,
+    startDate: new Date(step.startDate),
+    endDate: step.endDate != null ? new Date(step.endDate) : undefined,
     isCurrent: step.isCurrent ?? undefined,
     grade: step.grade ?? undefined,
     withHonors: step.withHonors,
@@ -21,6 +21,6 @@ export function mapEducationStep(
     projectTitle: translation.projectTitle ?? undefined,
     fieldOfStudy: translation.fieldOfStudy ?? undefined,
     description: translation.description ?? undefined,
-    skills: step.skills.map((es) => mapSkill(es.skill)),
+    skills: step.skills.map((es) => mapSkill(es.skill))
   };
 }

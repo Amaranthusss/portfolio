@@ -8,9 +8,8 @@ import { Popover } from '@/components/popover/popover';
 import { Button } from '../../button/button';
 import { Icon } from '@/components/icon/icon';
 
+import { usePathname, useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
-import { usePathname } from '@/i18n/navigation';
-import { useRouter } from 'next/navigation';
 
 import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import type { ButtonProps } from '@/components/button/button.interface';

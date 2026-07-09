@@ -3,18 +3,20 @@ import { DisplaySkills } from '@/components/display-skills/display-skills';
 import { ListModule } from '@/components/list-module/list-module';
 import { Title } from '@/components/title/title';
 
+import { getLocale, getTranslations } from 'next-intl/server';
 import { getExperienceSteps } from '@/services/getExperienceSteps';
 import { getEducationSteps } from '@/services/getEducationSteps';
-import { getTranslations } from 'next-intl/server';
 
 import type { ExperienceStepDTO } from '@/models/experienceStepDto';
 import type { EducationStepDTO } from '@/models/educationStepDto';
+import type { Locale } from '@/i18n/locale';
 
 import styles from './page.module.scss';
 
 export default async function ExperienceAndEducation(): Promise<React.ReactNode> {
-  const experienceSteps: ExperienceStepDTO[] = await getExperienceSteps();
-  const educationSteps: EducationStepDTO[] = await getEducationSteps();
+  const locale: Locale = await getLocale();
+  const experienceSteps: ExperienceStepDTO[] = await getExperienceSteps(locale);
+  const educationSteps: EducationStepDTO[] = await getEducationSteps(locale);
   const t = await getTranslations('experience-and-education');
 
   return (
@@ -24,7 +26,7 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
       <div className={styles.cards_layout}>
         {experienceSteps
           .sort(
-            (e) => e.endDate?.getMilliseconds() ?? new Date().getMilliseconds()
+            (e) => e.endDate?.getMilliseconds?.() ?? new Date().getMilliseconds()
           )
           .map((e) => (
             <div key={e.id} className={styles.card}>
@@ -71,7 +73,7 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
       <div className={styles.cards_layout}>
         {educationSteps
           .sort(
-            (e) => e.endDate?.getMilliseconds() ?? new Date().getMilliseconds()
+            (e) => e.endDate?.getMilliseconds?.() ?? new Date().getMilliseconds()
           )
           .map((e) => (
             <div key={e.id} className={styles.card}>

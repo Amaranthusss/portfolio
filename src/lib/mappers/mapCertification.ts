@@ -34,7 +34,7 @@ export function mapCertification(
     id: cert.id,
     slug: cert.slug,
     credentialID: cert.credentialID ?? undefined,
-    issueDate: cert.issueDate,
+    issueDate: new Date(cert.issueDate),
     url: cert.url ?? undefined,
     title: translation.title,
     description: translation.description ?? '',

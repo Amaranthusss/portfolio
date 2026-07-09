@@ -12,12 +12,13 @@ export function mapProject(project: ProjectWithRelations): ProjectDTO {
     slug: project.slug,
     content: parsePortableContent(translation.content),
     category: project.category,
-    startDate: project.startDate ?? undefined,
-    endDate: project.endDate ?? undefined,
+    startDate:
+      project.startDate != null ? new Date(project.startDate) : undefined,
+    endDate: project.endDate != null ? new Date(project.endDate) : undefined,
     isCurrent: project.isCurrent,
     name: translation.name,
     subname: translation.subname ?? undefined,
     description: translation.description ?? undefined,
-    skills: project.skills.map((ps) => mapSkill(ps.skill)),
+    skills: project.skills.map((ps) => mapSkill(ps.skill))
   };
 }

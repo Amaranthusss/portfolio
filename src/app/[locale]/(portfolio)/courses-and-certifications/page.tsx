@@ -4,15 +4,17 @@ import { ListModule } from '@/components/list-module/list-module';
 import { Title } from '@/components/title/title';
 import Image from 'next/image';
 
+import { getLocale, getTranslations } from 'next-intl/server';
 import { getCertifications } from '@/services/getCertifications';
-import { getTranslations } from 'next-intl/server';
 
 import type { CertificationDTO } from '@/models/certificationDto';
+import type { Locale } from '@/i18n/locale';
 
 import styles from './page.module.scss';
 
 export default async function CoursesAndCertifications(): Promise<React.ReactNode> {
-  const certifications: CertificationDTO[] = await getCertifications();
+  const locale: Locale = await getLocale();
+  const certifications: CertificationDTO[] = await getCertifications(locale);
   const t = await getTranslations('courses-and-certifications');
 
   return (

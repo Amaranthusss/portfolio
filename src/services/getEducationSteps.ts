@@ -1,31 +1,36 @@
 'use server';
 import { mapEducationStep } from '@/lib/mappers/mapEducationStep';
-import { getLocale } from 'next-intl/server';
-import { cache } from 'react';
+import { unstable_cache } from 'next/cache';
 import prisma from '@/lib/prisma';
 
 import type { EducationStepDTO } from '@/models/educationStepDto';
 import type { Locale } from '@/generated/prisma';
 
-export const getEducationSteps = cache(
-  async (): Promise<EducationStepDTO[]> => {
-    const locale: Locale = await getLocale();
+import { CacheName } from '@/constants/CacheName';
 
-    const db = await prisma.educationStep.findMany({
-      include: {
-        translations: { where: { locale }, take: 1 },
-        skills: {
-          include: {
-            skill: {
-              include: {
-                translations: { where: { locale }, take: 1 }
+export const getEducationSteps = async (
+  locale: Locale
+): Promise<EducationStepDTO[]> => {
+  const db = await unstable_cache(
+    async () => {
+      return prisma.educationStep.findMany({
+        include: {
+          translations: { where: { locale }, take: 1 },
+          skills: {
+            include: {
+              skill: {
+                include: {
+                  translations: { where: { locale }, take: 1 }
+                }
               }
             }
           }
         }
-      }
-    });
+      });
+    },
+    [CacheName.EducationSteps, locale],
+    { revalidate: false }
+  )();
 
-    return db.map(mapEducationStep);
-  }
-);
+  return db.map(mapEducationStep);
+};

@@ -11,8 +11,8 @@ export function mapExperienceStep(
   return {
     id: step.id,
     slug: step.slug,
-    startDate: step.startDate,
-    endDate: step.endDate ?? undefined,
+    startDate: new Date(step.startDate),
+    endDate: step.endDate != null ? new Date(step.endDate) : undefined,
     isCurrent: step.isCurrent,
     employmentType: step.employmentType,
     locationType: step.locationType,
@@ -21,6 +21,6 @@ export function mapExperienceStep(
     location: translation.location,
     description: translation.description ?? undefined,
     duties: translation.duties ?? [],
-    skills: step.skills.map((es) => mapSkill(es.skill)),
+    skills: step.skills.map((es) => mapSkill(es.skill))
   };
 }

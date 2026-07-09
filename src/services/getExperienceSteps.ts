@@ -1,31 +1,36 @@
 'use server';
 import { mapExperienceStep } from '@/lib/mappers/mapExperienceStep';
-import { getLocale } from 'next-intl/server';
-import { cache } from 'react';
+import { unstable_cache } from 'next/cache';
 import prisma from '@/lib/prisma';
 
 import type { ExperienceStepDTO } from '@/models/experienceStepDto';
 import type { Locale } from '@/generated/prisma';
 
-export const getExperienceSteps = cache(
-  async (): Promise<ExperienceStepDTO[]> => {
-    const locale: Locale = await getLocale();
+import { CacheName } from '@/constants/CacheName';
 
-    const db = await prisma.experienceStep.findMany({
-      include: {
-        translations: { where: { locale }, take: 1 },
-        skills: {
-          include: {
-            skill: {
-              include: {
-                translations: { where: { locale }, take: 1 }
+export const getExperienceSteps = async (
+  locale: Locale
+): Promise<ExperienceStepDTO[]> => {
+  const db = await unstable_cache(
+    async () => {
+      return prisma.experienceStep.findMany({
+        include: {
+          translations: { where: { locale }, take: 1 },
+          skills: {
+            include: {
+              skill: {
+                include: {
+                  translations: { where: { locale }, take: 1 }
+                }
               }
             }
           }
         }
-      }
-    });
+      });
+    },
+    [CacheName.ExperienceSteps, locale],
+    { revalidate: false }
+  )();
 
-    return db.map(mapExperienceStep);
-  }
-);
+  return db.map(mapExperienceStep);
+};

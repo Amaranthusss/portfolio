@@ -9,7 +9,7 @@ export function mapPublication(pub: PublicationWithRelations): PublicationDTO {
   return {
     id: pub.id,
     slug: pub.slug,
-    publishDate: pub.publishDate,
+    publishDate: new Date(pub.publishDate),
     url: pub.url,
     title: translation.title,
     description: translation.description,
@@ -19,7 +19,7 @@ export function mapPublication(pub: PublicationWithRelations): PublicationDTO {
     authors: pub.authors.map((a) => ({
       ...a.person,
       academicDegree: a.person.academicDegree ?? undefined,
-      publicationId: a.publicationId,
-    })),
+      publicationId: a.publicationId
+    }))
   };
 }

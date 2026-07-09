@@ -2,14 +2,18 @@ import { SkillFinderClient } from './skill-finder.client';
 
 import { getProfiles } from '@/services/getProfiles';
 import { getSkills } from '@/services/getSkills';
+import { getLocale } from 'next-intl/server';
 
 import type { ProfileDTO } from '@/models/profileDto';
 import type { SkillDTO } from '@/models/skillDto';
+import type { Locale } from '@/i18n/locale';
 
 export async function SkillFinder(): Promise<React.ReactNode> {
+  const locale: Locale = await getLocale();
+
   const [profiles, skills]: [ProfileDTO[], SkillDTO[]] = await Promise.all([
-    getProfiles(),
-    getSkills(),
+    getProfiles(locale),
+    getSkills(locale)
   ]);
 
   return <SkillFinderClient skills={skills} profiles={profiles} />;

@@ -1,3 +1,5 @@
+'use client';
+import { useLocale } from 'next-intl';
 import { useState } from 'react';
 
 import { startTransition } from 'react';
@@ -7,12 +9,16 @@ import type { SkillAggregateDto } from '@/models/skillGraphDto';
 import type { ProfileDTO } from '@/models/profileDto';
 import type { SkillDTO } from '@/models/skillDto';
 import type { SkillKey } from '@/generated/prisma';
+import type { Locale } from '@/i18n/locale';
 
 export function useFindBySkills() {
   const [selectedSkillKeys, setSelectedSkillKeys] = useState<Set<SkillKey>>(
     new Set()
   );
+
   const [results, setResults] = useState<SkillAggregateDto | null>(null);
+
+  const locale: Locale = useLocale();
 
   const onToggleSkill = (skill: SkillDTO): void => {
     setSelectedSkillKeys((prev) => {
@@ -50,7 +56,8 @@ export function useFindBySkills() {
   const search = () => {
     startTransition(async (): Promise<void> => {
       const data: SkillAggregateDto = await findBySkills(
-        selectedSkillKeys.values().toArray()
+        selectedSkillKeys.values().toArray(),
+        locale
       );
 
       setResults(data);
