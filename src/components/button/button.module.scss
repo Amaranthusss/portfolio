@@ -2,7 +2,7 @@
   font-size: var(--font-size-md);
   font-weight: 500;
   padding: var(--space-2);
-  color: var(--text-color);
+  color: inherit;
   min-height: var(--control-height);
   cursor: pointer;
 
@@ -61,8 +61,12 @@
     &::before {
       content: '';
       position: absolute;
-      inset: -1px;
-      background: linear-gradient(165deg, var(--primary-color), var(--primary-color-2));
+      inset: 0px;
+      background: linear-gradient(
+        165deg,
+        var(--primary-color),
+        var(--primary-color-2)
+      );
       border-radius: inherit;
       opacity: 1;
       transition: opacity 0.3s ease;
