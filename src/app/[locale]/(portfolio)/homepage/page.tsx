@@ -10,7 +10,7 @@ export default async function Homepage(): Promise<React.ReactNode> {
   const t = await getTranslations('homepage');
 
   return (
-    <main className={styles.homepage}>
+    <section className={styles.homepage}>
       <div className={styles.welcome}>
         <div className={styles.header}>
           <h1 className={styles.full_name}>{t('full-name')}</h1>
@@ -67,6 +67,6 @@ export default async function Homepage(): Promise<React.ReactNode> {
           <Button mode={'default'}>Get in Touch</Button>
         </div>
       </div>
-    </main>
+    </section>
   );
 }

@@ -4,8 +4,8 @@ import styles from './content.module.scss';
 
 export const Content = ({ children }: PropsWithChildren): React.ReactNode => {
   return (
-    <section tabIndex={0} className={styles.content}>
+    <main tabIndex={0} className={styles.content}>
       {children}
-    </section>
+    </main>
   );
 };

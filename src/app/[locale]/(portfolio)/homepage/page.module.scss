@@ -8,8 +8,7 @@ $z-index-elements: 3;
   gap: var(--space-8) var(--space-10);
   grid-auto-flow: row;
   padding-top: var(--space-10);
-  padding-inline: var(--space-10);
-  max-width: 1219px;
+  padding-inline: max(calc(100vw / 2 - 1200px / 2), var(--space-10));
   grid-template-areas:
     'welcome welcome'
     'about-me shortcuts';
@@ -84,11 +83,13 @@ $z-index-elements: 3;
     font-weight: 300;
     padding-left: var(--space-10);
     text-align: justify;
+    transition: padding-inline var(--animation-time);
   }
 
   > .shortcuts {
     grid-area: shortcuts;
     padding-right: var(--space-10);
+    transition: padding-inline var(--animation-time);
 
     > div {
       display: flex;
@@ -110,13 +111,20 @@ $z-index-elements: 3;
     }
   }
 
+  @media screen and (max-width: 550px) {
+    > .about_me,
+    > .shortcuts {
+      padding-inline: var(--space-0);
+    }
+  }
+
   &::before {
     content: '';
     position: absolute;
     left: 50%;
     top: 500px;
     transform: translate(-50%, -50%);
-    width: 90%;
+    width: 100%;
     height: 70%;
 
     background: radial-gradient(
