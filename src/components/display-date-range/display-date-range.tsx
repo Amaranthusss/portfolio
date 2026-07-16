@@ -1,6 +1,6 @@
+import { getLocale, getTranslations } from 'next-intl/server';
 import { diffYearsMonths } from '@/utils/diffYearsMonths';
 import { dateToString } from '@/utils/dateToString';
-import { getLocale } from 'next-intl/server';
 
 import type { DisplayDateRangeProps } from './display-date-range.interface';
 import type { Locale } from '@/i18n/locale';
@@ -13,6 +13,7 @@ export async function DisplayDateRange({
   className,
   now = new Date()
 }: DisplayDateRangeProps): Promise<React.ReactNode> {
+  const t = await getTranslations('common.date-and-time');
   const locale: Locale = await getLocale();
 
   return (
@@ -24,8 +25,8 @@ export async function DisplayDateRange({
       {startDate && isCurrent && (
         <>
           {dateToString(startDate, locale)}
-          &nbsp;&ndash;&nbsp;Currently &nbsp;&bull;&nbsp;
-          {diffYearsMonths(startDate, now)}
+          &nbsp;&ndash;&nbsp;{t('currently')}&nbsp;&bull;&nbsp;
+          {diffYearsMonths(startDate, now, locale)}
         </>
       )}
 
@@ -35,7 +36,7 @@ export async function DisplayDateRange({
           &nbsp;&ndash;&nbsp;
           {dateToString(endDate, locale)}
           &nbsp;&bull;&nbsp;
-          {diffYearsMonths(startDate, endDate)}
+          {diffYearsMonths(startDate, endDate, locale)}
         </>
       )}
 

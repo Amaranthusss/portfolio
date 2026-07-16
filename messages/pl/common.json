@@ -17,5 +17,8 @@
   },
   "language-selector": {
     "selector": "Język aplikacji:"
+  },
+  "date-and-time": {
+    "currently": "Aktualnie"
   }
 }
