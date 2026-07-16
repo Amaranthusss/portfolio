@@ -85,7 +85,13 @@ export const magnat: NextFont = localFont({
 
 export const metadata: Metadata = {
   title: 'Oskar Szkurłat Portfolio',
-  description: 'Portfolio Web Application'
+  description: 'Portfolio Web Application',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false
+  }
 };
 
 export const revalidate: Revalidate = false;

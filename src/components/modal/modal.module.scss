@@ -19,6 +19,8 @@ $text-block-gap: var(--space-8);
   -moz-box-shadow: var(--popup-box-shadow);
   box-shadow: var(--popup-box-shadow);
   z-index: var(--z-index-popup);
+  touch-action: pan-y;
+  overscroll-behavior: contain;
 
   > .toolbar {
     display: flex;
@@ -53,6 +55,5 @@ $text-block-gap: var(--space-8);
     padding-bottom: $text-block-gap;
     overflow-x: hidden;
     overflow-y: auto;
-    overscroll-behavior: contain;
   }
 }
