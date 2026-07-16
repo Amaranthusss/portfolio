@@ -36,10 +36,10 @@ export const experienceSteps: Prisma.ExperienceStepCreateInput[] = [
         SkillKey.Docker,
         SkillKey.PostgreSQL,
         SkillKey.Documentation,
-        SkillKey.SalesSupport,
+        SkillKey.SalesSupport
       ].map((key) => ({
-        skill: { connect: { key } },
-      })),
+        skill: { connect: { key } }
+      }))
     },
 
     translations: {
@@ -59,8 +59,8 @@ export const experienceSteps: Prisma.ExperienceStepCreateInput[] = [
             'Code review i mentoring zespołu.',
             'Pisanie testów jednostkowych i e2e (Jest, Cypress).',
             'Udział w spotkaniach z klientami.',
-            'Tworzenie dokumentacji technicznej.',
-          ],
+            'Tworzenie dokumentacji technicznej.'
+          ]
         },
         {
           locale: Locale.en,
@@ -77,11 +77,11 @@ export const experienceSteps: Prisma.ExperienceStepCreateInput[] = [
             'Conducting code reviews and mentoring team members.',
             'Writing unit and end-to-end tests (Jest, Cypress).',
             'Participating in client meetings.',
-            'Preparing technical documentation.',
-          ],
-        },
-      ],
-    },
+            'Preparing technical documentation.'
+          ]
+        }
+      ]
+    }
   },
   {
     slug: ExperienceStepSlug.AiutPlcProgrammer,
@@ -102,10 +102,10 @@ export const experienceSteps: Prisma.ExperienceStepCreateInput[] = [
         SkillKey.FactoryIO,
         SkillKey.AGV,
         SkillKey.Fanuc,
-        SkillKey.Documentation,
+        SkillKey.Documentation
       ].map((key) => ({
-        skill: { connect: { key } },
-      })),
+        skill: { connect: { key } }
+      }))
     },
 
     translations: {
@@ -124,8 +124,8 @@ export const experienceSteps: Prisma.ExperienceStepCreateInput[] = [
             'Integracja systemów z pojazdami AGV.',
             'Prototypowanie rozwiązań elektronicznych IoT.',
             'Przygotowywanie dokumentacji i materiałów szkoleniowych.',
-            'Szkolenie techników automatyki.',
-          ],
+            'Szkolenie techników automatyki.'
+          ]
         },
         {
           locale: Locale.en,
@@ -141,56 +141,10 @@ export const experienceSteps: Prisma.ExperienceStepCreateInput[] = [
             'Integrating automation systems with AGV vehicles.',
             'Prototyping IoT electronic solutions.',
             'Preparing documentation and training materials.',
-            'Training automation technicians.',
-          ],
-        },
-      ],
-    },
-  },
-  {
-    slug: ExperienceStepSlug.TagraElectrician,
-    startDate: new Date('2014-01-01'),
-    endDate: new Date('2014-02-01'),
-    isCurrent: false,
-    locationType: LocationType.OnSite,
-    employmentType: EmploymentType.Apprenticeship,
-
-    skills: {
-      create: [SkillKey.Documentation, SkillKey.SalesSupport].map((key) => ({
-        skill: { connect: { key } },
-      })),
-    },
-
-    translations: {
-      create: [
-        {
-          locale: Locale.pl,
-          position: 'Elektryk (praktyki)',
-          company: 'Usługi Elektryczno-Budowlane TAGRA',
-          location: 'Bytom, Woj. Śląskie, Polska',
-          description:
-            'Praca jako pomocnik elektryka przy realizacji instalacji elektrycznych.',
-          duties: [
-            'Wykonywanie instalacji elektrycznych.',
-            'Czytanie dokumentacji technicznej i schematów.',
-            'Montaż i demontaż oświetlenia.',
-            'Prace przy otwarciach sklepów.',
-          ],
-        },
-        {
-          locale: Locale.en,
-          position: 'Electrician (Apprenticeship)',
-          company: 'Electrical and Construction Services TAGRA',
-          location: 'Bytom, Silesia, Poland',
-          description: 'Working as an electrician assistant on-site.',
-          duties: [
-            'Executing electrical installations.',
-            'Reading technical documentation and electrical diagrams.',
-            'Installation and disassembly of lighting systems.',
-            'On-site duties during store openings.',
-          ],
-        },
-      ],
-    },
-  },
+            'Training automation technicians.'
+          ]
+        }
+      ]
+    }
+  }
 ];
