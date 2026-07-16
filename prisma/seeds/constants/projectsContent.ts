@@ -2,6 +2,7 @@ import type { InputJsonValue } from '../../../src/generated/prisma/runtime/clien
 
 import { productionSystemUtilizingAGV } from '../projects/productionSystemUtilizingAgv';
 import { curriculumVitaeGenerator } from '../projects/curriculumVitaeGenerator';
+import { invoiceGenerator } from '../projects/invoiceGenerator';
 
 import { ProjectSlug } from '../slugs/projectSlug';
 import { Locale } from '../../../src/generated/prisma';
@@ -27,3 +28,5 @@ projectContents.set(
   ProjectSlug.CurriculumVitaeGenerator,
   curriculumVitaeGenerator
 );
+
+projectContents.set(ProjectSlug.InvoiceGeneratorV1, invoiceGenerator);

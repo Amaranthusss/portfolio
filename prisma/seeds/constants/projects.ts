@@ -76,19 +76,31 @@ export const projects: Prisma.ProjectCreateInput[] = [
       create: [
         {
           locale: Locale.pl,
-          name: 'Pojazd AGV "Amaranthus" - Platforma',
+          name: 'Pojazd AGV "Amaranthus"',
           content: getProjectContent(
             ProjectSlug.AmaranthusAGVPlatform,
             Locale.pl
-          )
+          ),
+          description:
+            'Projekt autonomicznego pojazdu mobilnego będącego elementem inteligentnego systemu domu, ' +
+            'obejmujący część implementacyjną oraz badawczą. W ramach projektu zaprojektowano i zbudowano ' +
+            'platformę robota, opracowano systemy bezpieczeństwa, mechanizmy zapisu i odtwarzania tras ' +
+            'oraz model matematyczny rozładowania baterii. Przeprowadzono również analizę i porównanie metod ' +
+            'sterowania ruchem absolutnym oraz względnym pojazdu na podstawie badań literaturowych.'
         },
         {
           locale: Locale.en,
-          name: 'AGV vehicle "Amaranthus" - Platform',
+          name: 'AGV vehicle "Amaranthus"',
           content: getProjectContent(
             ProjectSlug.AmaranthusAGVPlatform,
             Locale.en
-          )
+          ),
+          description:
+            'An autonomous vehicle project developed as a part of a smart home system, including both implementation ' +
+            'and research components. The project involved designing and building a robotic platform, developing safety systems, ' +
+            'route recording and replay mechanisms, and creating a mathematical battery discharge model. ' +
+            'Additionally, different methods for controlling absolute and relative vehicle movements were analyzed ' +
+            'and compared based on a literature review.'
         }
       ]
     }
@@ -298,12 +310,18 @@ export const projects: Prisma.ProjectCreateInput[] = [
         {
           locale: Locale.pl,
           name: 'Wyszukiwanie ścieżek z AI',
-          content: getProjectContent(ProjectSlug.FindingPathAI, Locale.pl)
+          content: getProjectContent(ProjectSlug.FindingPathAI, Locale.pl),
+          description:
+            'Prototyp silnika dla systemu ruchu z funkcją odnajdywania ścieżki ' +
+            'w oparciu o bibliotekę Yuka.js służącą do obliczania najkrótszych ścieżek z wykorzystaniem siatki nawigacyjnej.'
         },
         {
           locale: Locale.en,
-          name: 'Pathfinding AI',
-          content: getProjectContent(ProjectSlug.FindingPathAI, Locale.en)
+          name: 'Finding path AI',
+          content: getProjectContent(ProjectSlug.FindingPathAI, Locale.en),
+          description:
+            'Prototype of the movement engine, including a movement system with pathfinding. ' +
+            'The Yuka.js library is used to calculate the shortest paths utilizing a navigation mesh.'
         }
       ]
     }
@@ -331,13 +349,23 @@ export const projects: Prisma.ProjectCreateInput[] = [
       create: [
         {
           locale: Locale.pl,
-          name: 'Generator Faktur v1',
-          content: getProjectContent(ProjectSlug.InvoiceGeneratorV1, Locale.pl)
+          name: 'Generator Faktur',
+          content: getProjectContent(ProjectSlug.InvoiceGeneratorV1, Locale.pl),
+          description:
+            'Aplikacja internetowa do tworzenia faktur i protokołów w formacie PDF. ' +
+            'Umożliwia szybkie generowanie dokumentów na podstawie danych firmy, klientów oraz usług, ' +
+            'automatycznie obliczając podatki i wartości brutto. Dodatkowo oferuje wysyłkę faktur e-mailem, ' +
+            'lokalne przechowywanie plików PDF oraz moduł archiwum z analizą przychodów.'
         },
         {
           locale: Locale.en,
-          name: 'Invoice Generator v1',
-          content: getProjectContent(ProjectSlug.InvoiceGeneratorV1, Locale.en)
+          name: 'Invoice Generator',
+          content: getProjectContent(ProjectSlug.InvoiceGeneratorV1, Locale.en),
+          description:
+            'Invoice Generator is a web application for creating PDF invoices and protocols. ' +
+            'It allows users to quickly generate documents based on company, client, and service data, ' +
+            'automatically calculating taxes and gross values. The application also provides email invoice delivery, ' +
+            'local PDF storage, and an archive module with income analysis features.'
         }
       ]
     }
@@ -489,19 +517,31 @@ export const projects: Prisma.ProjectCreateInput[] = [
       create: [
         {
           locale: Locale.pl,
-          name: 'Żłobek Artystyczno - Językowy "Akademia Maluszka"',
+          name: 'Full-Stack Aplikacja Internetowa dla Żłobka',
           content: getProjectContent(
             ProjectSlug.ArtisticLanguageNurseryLittleAcademy,
             Locale.pl
-          )
+          ),
+          description:
+            'Aplikacja internetowa dla żłobka typu full-stack, stworzona z wykorzystaniem React, ' +
+            'TypeScript, Express.js oraz Sanity CMS. Projekt łączy nowoczesny interfejs użytkownika, ' +
+            'własne API backendowe do obsługi formularzy oraz system CMS umożliwiający samodzielne ' +
+            'zarządzanie treścią przez osoby nietechniczne. Aplikacja została zoptymalizowana pod kątem wydajności, ' +
+            'responsywności, bezpieczeństwa, dostępności i SEO, wraz z pełną konfiguracją oraz wdrożeniem rozwiązania.'
         },
         {
           locale: Locale.en,
-          name: 'Artistic and Language Nursery "Little Academy"',
+          name: 'Full-Stack Nursery Web App',
           content: getProjectContent(
             ProjectSlug.ArtisticLanguageNurseryLittleAcademy,
             Locale.en
-          )
+          ),
+          description:
+            'A full-stack nursery web application built with React, TypeScript, Express.js, and Sanity CMS. ' +
+            'The project combines a modern user interface, a custom backend API for handling application forms, ' +
+            'and a headless CMS that allows non-technical users to manage website content independently. ' +
+            'The application was developed with a focus on performance, responsiveness, security, accessibility, ' +
+            'and SEO, including complete system configuration and deployment.'
         }
       ]
     }
