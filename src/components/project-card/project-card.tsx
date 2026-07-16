@@ -15,7 +15,7 @@ export async function ProjectCard({
   return (
     <div key={project.id} className={styles.card}>
       <strong>{project.name}</strong>
-			
+
       <span className={styles.category}>
         {t('category')}: {project.category}
       </span>
@@ -32,7 +32,11 @@ export async function ProjectCard({
       )}
 
       <DisplaySkills skills={project.skills} />
-      <NavToProject project={project} />
+
+      {/* 
+				// ToDo Enable NavToProject after infill project details data 
+				<NavToProject project={project} />
+			*/}
     </div>
   );
 }

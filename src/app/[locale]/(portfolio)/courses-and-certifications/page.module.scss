@@ -43,6 +43,10 @@
       flex-direction: column;
       gap: 4px;
 
+      > .description {
+        text-align: justify;
+      }
+
       > .provider {
         font-weight: 600;
       }

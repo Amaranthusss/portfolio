@@ -1,9 +1,10 @@
 {
+  "welcome-text": "Hi, I'm Oskar",
   "full-name": "Oskar Szkurłat",
   "first-title": "Senior Full-stack",
   "second-title": "TypeScript Developer",
-  "first-description": "Expert in Scalable Web Architectures",
-  "second-description": "& Modern Front-end",
+  "first-description": "Expert in building modern web applications",
+  "second-description": "& advanced component libraries",
   "about-me": "About me",
   "paragraph-1": "Full-stack developer specializing in React and TypeScript with nearly 6 years of commercial experience building web applications. My primary focus is modern front-end development, where I have built and maintained web applications from scratch, worked on enterprise-scale systems, and delivered solutions for industrial, banking, and public-sector clients.",
   "paragraph-2": "React and TypeScript are my strongest technologies, but I am comfortable working across the entire application stack whenever a project requires it. Over the years, I have also worked commercially with Angular, Blazor, .NET, REST APIs, and SQL databases.",

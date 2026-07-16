@@ -23,6 +23,11 @@
       color: var(--secondary-text-color);
     }
 
+    > .description,
+    > .project-title {
+      text-align: justify;
+    }
+
     > .institution {
       font-weight: 600;
     }

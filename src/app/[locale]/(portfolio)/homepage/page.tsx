@@ -41,7 +41,7 @@ export default async function Homepage(): Promise<React.ReactNode> {
       </div>
 
       <div className={`${styles.about_me}`}>
-        <Title>Hi, I'm Oskar</Title>
+        <Title>{t('welcome-text')}</Title>
 
         <p>{t('paragraph-1')}</p>
         <p>{t('paragraph-2')}</p>
