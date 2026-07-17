@@ -1,39 +1,62 @@
 'use client';
 import { Title } from '@/components/title/title';
 
+import { useTranslations } from 'next-intl';
+
 import type { SearchResultsProps } from './search-results.interface';
 
 export function SearchResults({
-  results,
+  results
 }: SearchResultsProps): React.ReactNode {
+  const t = useTranslations('common.advanced-search');
+
   if (results == null) return;
 
   return (
     <div>
-      <Title>Certifications:</Title>
-      {results.certifications.map((c) => (
-        <div key={c.slug}>{c.title}</div>
-      ))}
+      {results.certifications.length > 0 && (
+        <>
+          <Title>{t('courses-and-certifications')}:</Title>
+          {results.certifications.map((c) => (
+            <div key={c.slug}>{c.title}</div>
+          ))}
+        </>
+      )}
 
-      <Title>Education:</Title>
-      {results.education.map((e) => (
-        <div key={e.slug}>{e.degree ?? '-'}</div>
-      ))}
+      {results.education.length > 0 && (
+        <>
+          <Title>{t('education')}:</Title>
+          {results.education.map((c) => (
+            <div key={c.slug}>{c.degree}</div>
+          ))}
+        </>
+      )}
 
-      <Title>Experience:</Title>
-      {results.experience.map((e) => (
-        <div key={e.slug}>{e.position ?? '-'}</div>
-      ))}
+      {results.experience.length > 0 && (
+        <>
+          <Title>{t('experience')}:</Title>
+          {results.experience.map((c) => (
+            <div key={c.slug}>{c.position ?? '-'}</div>
+          ))}
+        </>
+      )}
 
-      <Title>Projects:</Title>
-      {results.projects.map((p) => (
-        <div key={p.slug}>{p.name}</div>
-      ))}
-
-      <Title>Publications:</Title>
-      {results.publications.map((p) => (
-        <div key={p.slug}>{p.title}</div>
-      ))}
+      {results.projects.length > 0 && (
+        <>
+          <Title>{t('projects-and-realisations')}:</Title>
+          {results.projects.map((c) => (
+            <div key={c.slug}>{c.name}</div>
+          ))}
+        </>
+      )}
+      {results.publications.length > 0 && (
+        <>
+          <Title>{t('publications')}:</Title>
+          {results.publications.map((c) => (
+            <div key={c.slug}>{c.title}</div>
+          ))}
+        </>
+      )}
     </div>
   );
 }

@@ -26,7 +26,7 @@ export const useOpenAnimations = (
           scale: 0.9,
           duration: 0.25,
           ease: 'power3.in',
-          onComplete: (): void => setIsVisible(false),
+          onComplete: (): void => setIsVisible(false)
         });
       }
     }, modalRef);

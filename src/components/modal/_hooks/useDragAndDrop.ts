@@ -21,7 +21,7 @@ export const useDragAndDrop = (
         type: 'x,y',
         trigger: toolbarRef.current,
         inertia: true,
-        bounds: window,
+        bounds: window
       })?.[0];
 
       window.addEventListener('resize', onWindowResize);

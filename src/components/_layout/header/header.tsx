@@ -13,11 +13,12 @@ import styles from './header.module.scss';
 
 export const Header = (): React.ReactNode => {
   const settingsPopoverProps: PopoverProps['triggerProps'] = {
+    square: true,
     centerContent: true,
     name: 'app-settings',
     children: <Icon icon={Icon.All.Settings} />,
     'aria-label': 'app-settings-popover',
-    style: { marginLeft: 'var(--space-2)', minWidth: 'var(--control-height)' }
+    style: { marginLeft: 'var(--space-2)' }
   };
 
   return (

@@ -8,6 +8,7 @@ import { SettingsIcon } from './_components/settings-icon/settings-icon';
 import { FeatherIcon } from './_components/feather-icon/feather-icon';
 import { ProjectIcon } from './_components/project-icon/project-icon';
 import { SearchIcon } from './_components/search-icon/search-icon';
+import { CloseIcon } from './_components/close-icon/close-icon';
 import { HomeIcon } from './_components/home-icon/home-icon';
 
 import type { ComponentType, SVGProps } from 'react';
@@ -23,7 +24,8 @@ export enum IconName {
   Publication = 'publication',
   Settings = 'settings',
   TechStack = 'tech-stack',
-  Search = 'search'
+  Search = 'search',
+  Close = 'close'
 }
 
 export const iconConfig: Record<
@@ -40,7 +42,8 @@ export const iconConfig: Record<
   [IconName.Publication]: PublicationIcon,
   [IconName.Settings]: SettingsIcon,
   [IconName.TechStack]: TechStackIcon,
-  [IconName.Search]: SearchIcon
+  [IconName.Search]: SearchIcon,
+  [IconName.Close]: CloseIcon
 };
 
 export const defaultSvgProps: SVGProps<SVGSVGElement> = {

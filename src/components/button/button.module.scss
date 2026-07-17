@@ -34,6 +34,7 @@
 
   &.text {
     border: none;
+    background: unset;
     transition: color var(--animation-time);
 
     &:hover {
@@ -69,17 +70,42 @@
       );
       border-radius: inherit;
       opacity: 1;
-      transition: opacity 0.3s ease;
-    }
-
-    &:hover::before {
-      opacity: 0;
+      transition:
+        opacity 0.3s ease,
+        background 0.3s ease;
     }
 
     &:hover {
       color: var(--primary-hover-color);
       background-color: transparent;
     }
+
+    &:hover::before {
+      opacity: 0;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+			background-color: var(--control-disable-color);
+      border-color: var(--control-disable-color);
+
+      &::before {
+        background: linear-gradient(
+          165deg,
+          var(--control-disable-color),
+          var(--control-disable-color-2)
+        );
+      }
+
+      &:hover {
+        color: var(--contr);
+        background-color: transparent;
+      }
+    }
+  }
+
+  &.square {
+    min-width: var(--control-height);
   }
 
   &.center_content > .button_content {
@@ -87,6 +113,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+  }
+
+  &.center_vertical > .button_content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   &.animated {

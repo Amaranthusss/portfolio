@@ -20,7 +20,7 @@ export function ProfileButtons({
             key={profile.slug}
             active={isActiveProfile(profile)}
             onClick={(): void => onToggleProfile(profile)}
-            name={`toggle-profile-${profile.slug}-selection`}
+            aria-label={`toggle-profile-${profile.slug}-selection`}
           >
             {profile.name}
           </Button>

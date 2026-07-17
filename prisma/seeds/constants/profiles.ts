@@ -12,13 +12,13 @@ const react = [
   SkillKey.NextJS,
   SkillKey.AntDReact,
   SkillKey.MaterialUI,
-  SkillKey.DevExtremeReact,
+  SkillKey.DevExtremeReact
 ];
 
 const angular = [
   SkillKey.Angular,
   SkillKey.Bootstrap,
-  SkillKey.DevExtremeAngular,
+  SkillKey.DevExtremeAngular
 ];
 
 const frontendJS = [
@@ -30,7 +30,7 @@ const frontendJS = [
   SkillKey.ThreeJS,
   SkillKey.YukaJS,
   SkillKey.TS,
-  SkillKey.Documentation,
+  SkillKey.Documentation
 ];
 
 const backendJS = [
@@ -45,7 +45,7 @@ const backendJS = [
   SkillKey.GRPC,
   SkillKey.Microservices,
   SkillKey.TS,
-  SkillKey.Documentation,
+  SkillKey.Documentation
 ];
 
 const backendCSharp = [
@@ -55,7 +55,7 @@ const backendCSharp = [
   SkillKey.MongoDB,
   SkillKey.SQLite,
   SkillKey.Microservices,
-  SkillKey.Documentation,
+  SkillKey.Documentation
 ];
 
 const csharpFullstack = [
@@ -64,7 +64,7 @@ const csharpFullstack = [
   SkillKey.AntDBlazor,
   SkillKey.Bootstrap,
   SkillKey.TS,
-  SkillKey.Leaflet,
+  SkillKey.Leaflet
 ];
 
 const fullstackJS = [...frontendJS, ...backendJS];
@@ -74,7 +74,7 @@ const deploy = [
   SkillKey.Linux,
   SkillKey.AWS,
   SkillKey.GCP,
-  SkillKey.VPS,
+  SkillKey.VPS
 ];
 
 const plcProgrammer = [
@@ -85,7 +85,7 @@ const plcProgrammer = [
   SkillKey.ModbusProtocol,
   SkillKey.SCL,
   SkillKey.STL,
-  SkillKey.LAD,
+  SkillKey.LAD
 ];
 
 const mechatronics = [
@@ -99,7 +99,7 @@ const mechatronics = [
   SkillKey.Fanuc,
   SkillKey.Kuka,
   SkillKey.Print3D,
-  SkillKey.Documentation,
+  SkillKey.Documentation
 ];
 
 const profileSkills: Record<
@@ -115,51 +115,51 @@ const profileSkills: Record<
   [ProfileSlug.BackendCSharp]: { orderNumber: 6, skills: backendCSharp },
   [ProfileSlug.CSharpFullstack]: { orderNumber: 7, skills: csharpFullstack },
   [ProfileSlug.PLCProgramming]: { orderNumber: 8, skills: plcProgrammer },
-  [ProfileSlug.Mechatronics]: { orderNumber: 9, skills: mechatronics },
+  [ProfileSlug.Mechatronics]: { orderNumber: 9, skills: mechatronics }
 };
 
 function getLabelBySlug(slug: ProfileSlug, locale: 'pl' | 'en'): string {
   const map: Record<ProfileSlug, { pl: string; en: string }> = {
     [ProfileSlug.FrontendJS]: {
-      pl: 'Frontend JavaScript',
-      en: 'Frontend JavaScript',
+      pl: 'Front-end JavaScript',
+      en: 'Front-end JavaScript'
     },
     [ProfileSlug.React]: {
       pl: 'React Developer',
-      en: 'React Developer',
+      en: 'React Developer'
     },
     [ProfileSlug.Angular]: {
       pl: 'Angular Developer',
-      en: 'Angular Developer',
+      en: 'Angular Developer'
     },
     [ProfileSlug.BackendJS]: {
       pl: 'Backend JavaScript',
-      en: 'Backend JavaScript',
+      en: 'Backend JavaScript'
     },
     [ProfileSlug.FullstackJS]: {
-      pl: 'Fullstack JavaScript',
-      en: 'Fullstack JavaScript',
+      pl: 'Full-stack JavaScript',
+      en: 'Full-stack JavaScript'
     },
     [ProfileSlug.BackendCSharp]: {
-      pl: 'Backend .NET / C#',
-      en: 'Backend .NET / C#',
+      pl: 'Back-end .NET / C#',
+      en: 'Back-end .NET / C#'
     },
     [ProfileSlug.CSharpFullstack]: {
-      pl: 'Fullstack .NET',
-      en: 'Fullstack .NET',
+      pl: 'Full-stack .NET',
+      en: 'Full-stack .NET'
     },
     [ProfileSlug.Deploy]: {
       pl: 'DevOps / Deployment',
-      en: 'DevOps / Deployment',
+      en: 'DevOps / Deployment'
     },
     [ProfileSlug.PLCProgramming]: {
       pl: 'Programista PLC',
-      en: 'PLC Programmer',
+      en: 'PLC Programmer'
     },
     [ProfileSlug.Mechatronics]: {
       pl: 'Mechatronika / Automatyka',
-      en: 'Mechatronics / Automation',
-    },
+      en: 'Mechatronics / Automation'
+    }
   };
 
   return map[slug][locale];
@@ -170,22 +170,22 @@ export const profiles: Prisma.ProfileCreateInput[] = Object.entries(
 ).map(
   ([slug, data]: [
     string,
-    { orderNumber: number; skills: SkillKey[] },
+    { orderNumber: number; skills: SkillKey[] }
   ]): Prisma.ProfileCreateInput => ({
     slug,
     orderNumber: data.orderNumber,
 
     skills: {
       create: [...new Set(data.skills)].map((key) => ({
-        skill: { connect: { key } },
-      })),
+        skill: { connect: { key } }
+      }))
     },
 
     translations: {
       create: [
         { locale: Locale.pl, name: getLabelBySlug(slug as ProfileSlug, 'pl') },
-        { locale: Locale.en, name: getLabelBySlug(slug as ProfileSlug, 'en') },
-      ],
-    },
+        { locale: Locale.en, name: getLabelBySlug(slug as ProfileSlug, 'en') }
+      ]
+    }
   })
 );

@@ -11,6 +11,8 @@ import { createPortal } from 'react-dom';
 import type { ModalHandle, ModalProps } from './modal.interface';
 
 import styles from './modal.module.scss';
+import { Button } from '../button/button';
+import { Icon } from '../icon/icon';
 
 export function Modal({
   ref,
@@ -69,16 +71,17 @@ export function Modal({
           <span className={styles.title}>{title}</span>
         )}
 
-        <button
-          onClick={close}
+        <Button
+          mode={'text'}
+          centerVertical
           aria-label={'close-modal'}
-          className={styles.closeButton}
+          onClick={close}
         >
-          x
-        </button>
+          <Icon icon={Icon.All.Close} />
+        </Button>
       </div>
 
-      <div className={cn(styles.modalBody, bodyClassName)}>{children}</div>
+      <div className={cn(styles.modal_body, bodyClassName)}>{children}</div>
     </div>
   );
 

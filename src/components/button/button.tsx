@@ -6,10 +6,12 @@ import styles from './button.module.scss';
 
 export const Button = ({
   active,
+  square,
   animated,
   children,
-  className,
   centerContent,
+  className,
+  centerVertical,
   mode = 'default',
   ...buttonProps
 }: ButtonProps): React.ReactNode => {
@@ -20,8 +22,10 @@ export const Button = ({
     styles[mode],
     styles.button,
     boolToClass(active, styles.active),
+    boolToClass(square, styles.square),
     boolToClass(animated, styles.animated),
-    boolToClass(centerContent, styles.center_content)
+    boolToClass(centerContent, styles.center_content),
+    boolToClass(centerVertical, styles.center_vertical)
   );
 
   return (

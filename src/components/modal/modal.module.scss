@@ -13,7 +13,7 @@ $text-block-gap: var(--space-8);
   grid-template-rows: 48px 1fr;
   grid-column-gap: 0px;
   grid-row-gap: $text-block-gap;
-  background-color: rgb(36, 36, 36);
+  background-color: var(--body-bg-color);
   border-radius: var(--border-radius);
   -webkit-box-shadow: var(--popup-box-shadow);
   -moz-box-shadow: var(--popup-box-shadow);
@@ -21,6 +21,9 @@ $text-block-gap: var(--space-8);
   z-index: var(--z-index-popup);
   touch-action: pan-y;
   overscroll-behavior: contain;
+  border-style: solid;
+  border-width: var(--border-width);
+  border-color: var(--border-color);
 
   > .toolbar {
     display: flex;
@@ -30,27 +33,17 @@ $text-block-gap: var(--space-8);
     gap: var(--space-8);
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
-    background-color: rgb(75, 75, 75);
     padding-inline: $text-inline-gap;
+    border-bottom-style: solid;
+    border-bottom-width: var(--border-width-secondary);
+    border-bottom-color: var(--border-color);
 
     > .title {
       flex: 1;
     }
-
-    > .closeButton {
-      border: unset;
-      cursor: pointer;
-      background: unset;
-      text-transform: uppercase;
-      transition: color 200ms;
-
-      &:hover {
-        color: var(--primary-color);
-      }
-    }
   }
 
-  > .modalBody {
+  > .modal_body {
     padding-inline: $text-inline-gap;
     padding-bottom: $text-block-gap;
     overflow-x: hidden;

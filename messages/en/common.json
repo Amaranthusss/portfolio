@@ -20,5 +20,14 @@
   },
   "date-and-time": {
     "currently": "Currently"
+  },
+  "advanced-search": {
+    "title": "Advanced Search",
+    "search": "Search",
+    "courses-and-certifications": "Courses & Certifications",
+    "education": "Education",
+    "experience": "Experience",
+    "projects-and-realisations": "Projects & Realisations",
+    "publications": "Publications"
   }
 }

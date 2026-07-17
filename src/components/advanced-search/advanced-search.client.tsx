@@ -8,17 +8,17 @@ import { Modal } from '../modal/modal';
 import { Icon } from '../icon/icon';
 
 import { useFindBySkills } from './_hooks/useFindBySkills';
+import { useTranslations } from 'next-intl';
 import { useRef } from 'react';
 
 import type { AdvancedSearchClientProps } from './advanced-search.client.interface';
 import type { ModalHandle } from '../modal/modal.interface';
 
-import styles from './advanced-search.client.module.scss';
-
 export function AdvancedSearchClient({
   skills,
   profiles
 }: AdvancedSearchClientProps): React.ReactNode {
+  const t = useTranslations('common.advanced-search');
   const modalRef = useRef<ModalHandle>(null);
 
   const {
@@ -35,15 +35,15 @@ export function AdvancedSearchClient({
   return (
     <>
       <Button
+        square
         centerContent
-        className={styles.open_button}
-        name={'open-advanced-search'}
+        aria-label={'open-advanced-search'}
         onClick={open}
       >
         <Icon icon={Icon.All.Search} />
       </Button>
 
-      <Modal ref={modalRef} title={'Advanced search'}>
+      <Modal ref={modalRef} title={t('title')}>
         <ProfileButtons
           profiles={profiles}
           isActiveProfile={isActiveProfile}
@@ -64,9 +64,10 @@ export function AdvancedSearchClient({
           mode={'primary'}
           onClick={search}
           style={{ width: '100%' }}
+          disabled={selectedSkillKeys.size === 0}
           aria-label={'search-data-for-selected-skills'}
         >
-          Search
+          {t('search')}
         </Button>
 
         <Divider />

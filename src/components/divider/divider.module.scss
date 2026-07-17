@@ -1,6 +1,8 @@
 .divider {
   &.horizontal {
-    border-bottom: solid 1px var(--border-color);
+    border-bottom-style: solid;
+    border-bottom-width: var(--border-width-secondary);
+    border-bottom-color: var(--border-color);
     margin-block: var(--space-4);
     width: 100%;
   }
