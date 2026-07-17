@@ -1,3 +1,4 @@
+'use client';
 import { Button } from '../button/button';
 
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';

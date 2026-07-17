@@ -1,3 +1,4 @@
+'use client';
 import { Select } from '../select/select';
 
 import { useTranslations } from 'next-intl';

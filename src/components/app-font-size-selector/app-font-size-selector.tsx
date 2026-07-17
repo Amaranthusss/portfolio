@@ -1,3 +1,4 @@
+'use client';
 import { Select } from '../select/select';
 
 import { useAppFontSizeSetter } from '@/hooks/useAppFontSizeSetter';

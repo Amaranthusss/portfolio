@@ -1,4 +1,4 @@
-import { SkillFinderClient } from './skill-finder.client';
+import { AdvancedSearchClient } from './advanced-search.client';
 
 import { getProfiles } from '@/services/getProfiles';
 import { getSkills } from '@/services/getSkills';
@@ -8,7 +8,7 @@ import type { ProfileDTO } from '@/models/profileDto';
 import type { SkillDTO } from '@/models/skillDto';
 import type { Locale } from '@/i18n/locale';
 
-export async function SkillFinder(): Promise<React.ReactNode> {
+export async function AdvancedSearch(): Promise<React.ReactNode> {
   const locale: Locale = await getLocale();
 
   const [profiles, skills]: [ProfileDTO[], SkillDTO[]] = await Promise.all([
@@ -16,5 +16,5 @@ export async function SkillFinder(): Promise<React.ReactNode> {
     getSkills(locale)
   ]);
 
-  return <SkillFinderClient skills={skills} profiles={profiles} />;
+  return <AdvancedSearchClient skills={skills} profiles={profiles} />;
 }

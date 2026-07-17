@@ -1,3 +1,4 @@
+'use client';
 import { Switch } from '../switch/switch';
 
 import { useThemeSetter } from '@/hooks/useThemeSetter';

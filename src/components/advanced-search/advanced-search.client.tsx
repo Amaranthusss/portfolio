@@ -5,17 +5,20 @@ import { SkillsList } from './_components/skills-list/skills-list';
 import { Divider } from '../divider/divider';
 import { Button } from '../button/button';
 import { Modal } from '../modal/modal';
+import { Icon } from '../icon/icon';
 
 import { useFindBySkills } from './_hooks/useFindBySkills';
 import { useRef } from 'react';
 
-import type { SkillFinderClientProps } from './skill-finder.client.interface';
+import type { AdvancedSearchClientProps } from './advanced-search.client.interface';
 import type { ModalHandle } from '../modal/modal.interface';
 
-export function SkillFinderClient({
+import styles from './advanced-search.client.module.scss';
+
+export function AdvancedSearchClient({
   skills,
   profiles
-}: SkillFinderClientProps): React.ReactNode {
+}: AdvancedSearchClientProps): React.ReactNode {
   const modalRef = useRef<ModalHandle>(null);
 
   const {
@@ -27,16 +30,20 @@ export function SkillFinderClient({
     selectedSkillKeys
   } = useFindBySkills();
 
+  const open = (): void => modalRef.current?.open();
+
   return (
     <>
       <Button
-        name={'open-skill-finder'}
-        onClick={() => modalRef.current?.open()}
+        centerContent
+        className={styles.open_button}
+        name={'open-advanced-search'}
+        onClick={open}
       >
-        Open
+        <Icon icon={Icon.All.Search} />
       </Button>
 
-      <Modal ref={modalRef} title={'Skill finder'}>
+      <Modal ref={modalRef} title={'Advanced search'}>
         <ProfileButtons
           profiles={profiles}
           isActiveProfile={isActiveProfile}
