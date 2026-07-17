@@ -12,6 +12,7 @@ import { usePathname, useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
 import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import type { PopoverProps } from '@/components/popover/popover.interface';
 import type { ButtonProps } from '@/components/button/button.interface';
 
 import { IconName } from '@/components/icon/icon.config';
@@ -69,6 +70,14 @@ export const Header = (): React.ReactNode => {
     }
   ];
 
+  const settingsPopoverProps: PopoverProps['triggerProps'] = {
+    centerContent: true,
+    name: 'app-settings',
+    children: <Icon icon={Icon.All.Settings} />,
+    'aria-label': 'app-settings-popover',
+    style: { minWidth: 'var(--control-height)' }
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -108,13 +117,7 @@ export const Header = (): React.ReactNode => {
 
       <div className={styles.right_side}>
         <Popover
-          triggerProps={{
-            centerContent: true,
-            name: 'app-settings',
-            children: <Icon icon={Icon.All.Settings} />,
-            'aria-label': 'app-settings-popover',
-            style: { minWidth: 'var(--control-height)' }
-          }}
+          triggerProps={settingsPopoverProps}
           popoverClassName={styles.settings_popover}
         >
           <div>

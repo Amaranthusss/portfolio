@@ -65,7 +65,7 @@ If you’d like to collaborate or just chat — feel free to contact me!
 
 📫 **Email:** _oskar.szkurlat@gmail.com_  
 💼 **LinkedIn:** _[Oskar Szkurłat](https://www.linkedin.com/in/oskar-szkur%C5%82at-597782305/)_  
-🌐 **Website:** _[Demo](https://amaranthusss.github.io/portfolio/)_
+🌐 **Website:** _[Deploy](https://oszkurlat-portfolio.vercel.app/)_
 
 ---
 
