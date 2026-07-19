@@ -2,6 +2,7 @@ import { DisplayDateRange } from '@/components/display-date-range/display-date-r
 import { DisplaySkills } from '@/components/display-skills/display-skills';
 import { ListModule } from '@/components/list-module/list-module';
 import { Title } from '@/components/title/title';
+import { Card } from '@/components/card/card';
 
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getExperienceSteps } from '@/services/getExperienceSteps';
@@ -27,8 +28,8 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
         {experienceSteps
           .sort((e) => e.endDate?.getTime?.() ?? new Date().getTime())
           .map((e) => (
-            <div id={e.slug} key={e.id} className={styles.card}>
-              <strong>{e.position}</strong>
+            <Card key={e.id} slug={e.slug} className={styles.card}>
+              <strong className={styles.title}>{e.position}</strong>
               {e.company && <span className={styles.company}>{e.company}</span>}
               {e.location && (
                 <span className={styles.location}>{e.location}</span>
@@ -62,7 +63,7 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
               )}
 
               <DisplaySkills skills={e.skills} />
-            </div>
+            </Card>
           ))}
       </div>
 
@@ -72,7 +73,7 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
         {educationSteps
           .sort((e) => e.endDate?.getTime?.() ?? new Date().getTime())
           .map((e) => (
-            <div id={e.slug} key={e.id} className={styles.card}>
+            <Card key={e.id} slug={e.slug} className={styles.card}>
               <strong className={styles.title}>
                 {e.degree ?? e.projectTitle}
               </strong>
@@ -104,7 +105,7 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
               )}
 
               <DisplaySkills skills={e.skills} />
-            </div>
+            </Card>
           ))}
       </div>
     </ListModule>

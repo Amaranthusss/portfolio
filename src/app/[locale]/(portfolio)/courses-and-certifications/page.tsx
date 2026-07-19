@@ -26,7 +26,7 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
         {certifications
           .sort((c1, c2) => c2.issueDate.getTime() - c1.issueDate.getTime())
           .map((c) => (
-            <Card slug={c.slug} key={c.id}>
+            <Card key={c.id} slug={c.slug} className={styles.card}>
               <Image
                 src={c.image.url}
                 alt={c.title}

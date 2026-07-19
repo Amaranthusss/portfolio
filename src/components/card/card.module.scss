@@ -1,27 +1,11 @@
 .card {
-  display: grid;
-  grid-template-areas: 'icon caption' 'icon info';
-  grid-template-columns: 64px 1fr;
-  grid-template-rows: auto 1fr;
-  gap: var(--space-2) var(--space-9);
   padding: var(--space-9);
   border-style: solid;
   border-color: var(--border-color);
   border-radius: var(--border-radius);
   border-width: var(--border-width);
   scroll-margin-top: var(--space-9);
-  transition: border-color 300ms;
-
-  @container (max-width: 500px) {
-    grid-template-areas: 'icon' 'caption' 'info';
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: var(--space-4);
-
-    > .icon {
-      justify-self: center;
-    }
-  }
+  transition: border-color var(--animation-time);
 
   &.highlight {
     animation: highlight 2s ease;

@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { DisplayDateRange } from '../display-date-range/display-date-range';
 import { DisplaySkills } from '../display-skills/display-skills';
-import { NavToProject } from './_components/nav-to-project/nav-to-project';
+import { Card } from '../card/card';
 
 import type { ProjectCardProps } from './project-card.interface';
 
@@ -13,8 +13,8 @@ export async function ProjectCard({
   const t = await getTranslations('common');
 
   return (
-    <div id={project.slug} key={project.id} className={styles.card}>
-      <strong>{project.name}</strong>
+    <Card key={project.id} slug={project.slug} className={styles.card}>
+      <strong className={styles.project_title}>{project.name}</strong>
 
       <span className={styles.category}>
         {t('category')}: {project.category}
@@ -37,6 +37,6 @@ export async function ProjectCard({
 				// ToDo Enable NavToProject after infill project details data 
 				<NavToProject project={project} />
 			*/}
-    </div>
+    </Card>
   );
 }

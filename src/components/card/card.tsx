@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import { useClassName } from '@/hooks/useClassName';
 
 import type { CardProps } from './card.interface';
 
@@ -7,9 +8,17 @@ import { CustomEventName } from '@/constants/CustomEventName';
 
 import styles from './card.module.scss';
 
-export function Card({ slug, children }: CardProps): React.ReactNode {
+export function Card({
+  slug,
+  children,
+  className,
+  ...divProps
+}: CardProps): React.ReactNode {
+  const { cn } = useClassName();
+
   const isTarget = useRef<boolean>(false);
   const cardRef = useRef<HTMLDivElement>(null);
+  const classNames: string = cn(className, styles.card);
   const highlightTime = 2000;
 
   const scrollToCard = (): void => {
@@ -62,7 +71,7 @@ export function Card({ slug, children }: CardProps): React.ReactNode {
   }, [slug, initHighlight, handleHighlight]);
 
   return (
-    <div ref={cardRef} id={slug} className={styles.card}>
+    <div {...divProps} ref={cardRef} id={slug} className={classNames}>
       {children}
     </div>
   );

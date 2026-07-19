@@ -13,7 +13,7 @@ import styles from './page.module.scss';
 export default async function ProjectsAndRealisations(): Promise<React.ReactNode> {
   const locale: Locale = await getLocale();
   const projects: ProjectDTO[] = await getProjects(locale);
-  const t = await getTranslations('courses-and-certifications');
+  const t = await getTranslations('projects-and-realisations');
 
   return (
     <ListModule>

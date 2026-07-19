@@ -1,6 +1,7 @@
 import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
 import { DisplaySkills } from '@/components/display-skills/display-skills';
 import { ListModule } from '@/components/list-module/list-module';
+import { Card } from '@/components/card/card';
 
 import { createAuthorFormatter } from '@/utils/createAuthorFormatter';
 import { getPublications } from '@/services/getPublications';
@@ -24,7 +25,7 @@ export default async function HireMe(): Promise<React.ReactNode> {
         {publications
           .sort((p) => p.publishDate.getTime())
           .map((p) => (
-            <div id={p.slug} key={p.id} className={styles.card}>
+            <Card key={p.id} slug={p.slug} className={styles.card}>
               <div className={styles.caption}>
                 <strong>{p.title}</strong>{' '}
                 <DisplayDateRange
@@ -45,7 +46,7 @@ export default async function HireMe(): Promise<React.ReactNode> {
 
                 <DisplaySkills skills={p.skills} />
               </div>
-            </div>
+            </Card>
           ))}
       </div>
     </ListModule>
