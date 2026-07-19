@@ -1,62 +1,94 @@
 'use client';
-import { Title } from '@/components/title/title';
+import { SearchCategory } from './search-catergory/search-category';
 
 import { useTranslations } from 'next-intl';
 
 import type { SearchResultsProps } from './search-results.interface';
+import type { ExperienceStepDTO } from '@/models/experienceStepDto';
+import type { CertificationDTO } from '@/models/certificationDto';
+import type { EducationStepDTO } from '@/models/educationStepDto';
+import type { PublicationDTO } from '@/models/publicationDto';
+import type { ProjectDTO } from '@/models/projectDto';
+
+import { Route } from '@/constants/Route';
 
 export function SearchResults({
   results
 }: SearchResultsProps): React.ReactNode {
   const t = useTranslations('common.advanced-search');
 
+  const joinAndHandleEmpty = (elements: string[]): string => {
+    return elements.length === 0 ? '' : elements.join(', ');
+  };
+
+  const renderEducationStep = (e: EducationStepDTO): string => {
+    const elements: string[] = [];
+
+    if (e.degree) elements.push(e.degree);
+    else if (e.projectTitle) elements.push(e.projectTitle);
+
+    if (e.institution) elements.push(e.institution);
+
+    return joinAndHandleEmpty(elements);
+  };
+
+  const renderExperienceStep = (e: ExperienceStepDTO): string => {
+    const elements: string[] = [];
+
+    if (e.position) elements.push(e.position);
+    if (e.company) elements.push(e.company);
+
+    return joinAndHandleEmpty(elements);
+  };
+
   if (results == null) return;
 
   return (
     <div>
-      {results.certifications.length > 0 && (
-        <>
-          <Title>{t('courses-and-certifications')}:</Title>
-          {results.certifications.map((c) => (
-            <div key={c.slug}>{c.title}</div>
-          ))}
-        </>
-      )}
+      <SearchCategory<CertificationDTO>
+        data={results.certifications}
+        textExpr={(c) => c.title}
+        keyExpr={(c) => c.slug}
+        slugExpr={(c) => c.slug}
+        title={t('courses-and-certifications')}
+        route={Route.CoursesAndCertifications}
+      />
 
-      {results.education.length > 0 && (
-        <>
-          <Title>{t('education')}:</Title>
-          {results.education.map((c) => (
-            <div key={c.slug}>{c.degree}</div>
-          ))}
-        </>
-      )}
+      <SearchCategory<EducationStepDTO>
+        data={results.education}
+        textExpr={renderEducationStep}
+        keyExpr={(e) => e.slug}
+        slugExpr={(e) => e.slug}
+        title={t('education')}
+        route={Route.ExperienceAndEducation}
+      />
 
-      {results.experience.length > 0 && (
-        <>
-          <Title>{t('experience')}:</Title>
-          {results.experience.map((c) => (
-            <div key={c.slug}>{c.position ?? '-'}</div>
-          ))}
-        </>
-      )}
+      <SearchCategory<ExperienceStepDTO>
+        data={results.experience}
+        textExpr={renderExperienceStep}
+        keyExpr={(e) => e.slug}
+        slugExpr={(e) => e.slug}
+        title={t('experience')}
+        route={Route.ExperienceAndEducation}
+      />
 
-      {results.projects.length > 0 && (
-        <>
-          <Title>{t('projects-and-realisations')}:</Title>
-          {results.projects.map((c) => (
-            <div key={c.slug}>{c.name}</div>
-          ))}
-        </>
-      )}
-      {results.publications.length > 0 && (
-        <>
-          <Title>{t('publications')}:</Title>
-          {results.publications.map((c) => (
-            <div key={c.slug}>{c.title}</div>
-          ))}
-        </>
-      )}
+      <SearchCategory<ProjectDTO>
+        data={results.projects}
+        textExpr={(p) => p.name}
+        keyExpr={(p) => p.slug}
+        slugExpr={(p) => p.slug}
+        title={t('projects-and-realisations')}
+        route={Route.ProjectsAndRealisations}
+      />
+
+      <SearchCategory<PublicationDTO>
+        data={results.publications}
+        textExpr={(p) => p.title}
+        keyExpr={(p) => p.slug}
+        slugExpr={(p) => p.slug}
+        title={t('publications')}
+        route={Route.Publications}
+      />
     </div>
   );
 }

@@ -22,28 +22,28 @@ export default async function HireMe(): Promise<React.ReactNode> {
 
       <div className={styles.cards_layout}>
         {publications
-          .sort((p) => p.publishDate.getMilliseconds())
-          .map((c) => (
-            <div key={c.id} className={styles.card}>
+          .sort((p) => p.publishDate.getTime())
+          .map((p) => (
+            <div id={p.slug} key={p.id} className={styles.card}>
               <div className={styles.caption}>
-                <strong>{c.title}</strong>{' '}
+                <strong>{p.title}</strong>{' '}
                 <DisplayDateRange
-                  endDate={c.publishDate}
+                  endDate={p.publishDate}
                   className={styles.issue_date}
                 />
               </div>
 
               <div className={styles.info}>
-                <span className={styles.publisher}>{c.publisher}</span>
-                <span className={styles.description}>{c.description}</span>
+                <span className={styles.publisher}>{p.publisher}</span>
+                <span className={styles.description}>{p.description}</span>
                 <span className={styles.authors}>
-                  Authors: {c.authors.map(authorToString).join(' | ')}
+                  Authors: {p.authors.map(authorToString).join(' | ')}
                 </span>
                 <span className={styles.keywords}>
-                  Keywords: {c.keywords.join(' | ')}
+                  Keywords: {p.keywords.join(' | ')}
                 </span>
 
-                <DisplaySkills skills={c.skills} />
+                <DisplaySkills skills={p.skills} />
               </div>
             </div>
           ))}

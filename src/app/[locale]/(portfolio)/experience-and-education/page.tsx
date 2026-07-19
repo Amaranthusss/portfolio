@@ -25,11 +25,9 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
 
       <div className={styles.cards_layout}>
         {experienceSteps
-          .sort(
-            (e) => e.endDate?.getMilliseconds?.() ?? new Date().getMilliseconds()
-          )
+          .sort((e) => e.endDate?.getTime?.() ?? new Date().getTime())
           .map((e) => (
-            <div key={e.id} className={styles.card}>
+            <div id={e.slug} key={e.id} className={styles.card}>
               <strong>{e.position}</strong>
               {e.company && <span className={styles.company}>{e.company}</span>}
               {e.location && (
@@ -72,11 +70,9 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
 
       <div className={styles.cards_layout}>
         {educationSteps
-          .sort(
-            (e) => e.endDate?.getMilliseconds?.() ?? new Date().getMilliseconds()
-          )
+          .sort((e) => e.endDate?.getTime?.() ?? new Date().getTime())
           .map((e) => (
-            <div key={e.id} className={styles.card}>
+            <div id={e.slug} key={e.id} className={styles.card}>
               <strong className={styles.title}>
                 {e.degree ?? e.projectTitle}
               </strong>

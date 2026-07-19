@@ -2,6 +2,7 @@ import { DisplayDateRange } from '@/components/display-date-range/display-date-r
 import { DisplaySkills } from '@/components/display-skills/display-skills';
 import { ListModule } from '@/components/list-module/list-module';
 import { Title } from '@/components/title/title';
+import { Card } from '@/components/card/card';
 import Image from 'next/image';
 
 import { getLocale, getTranslations } from 'next-intl/server';
@@ -25,7 +26,7 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
         {certifications
           .sort((c1, c2) => c2.issueDate.getTime() - c1.issueDate.getTime())
           .map((c) => (
-            <div key={c.id} className={styles.card}>
+            <Card slug={c.slug} key={c.id}>
               <Image
                 src={c.image.url}
                 alt={c.title}
@@ -53,7 +54,7 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
 
                 <DisplaySkills skills={c.skills} />
               </div>
-            </div>
+            </Card>
           ))}
       </div>
     </ListModule>

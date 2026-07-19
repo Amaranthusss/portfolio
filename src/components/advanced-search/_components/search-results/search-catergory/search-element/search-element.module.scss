@@ -1,0 +1,19 @@
+.list_element {
+  display: flex;
+  margin-bottom: var(--space-2);
+
+  > .button {
+    text-align: left;
+    padding: var(--space-0);
+    min-height: unset;
+
+    .link {
+      color: inherit;
+    }
+  }
+
+  &::before {
+    content: '•';
+    margin-right: var(--space-2);
+  }
+}

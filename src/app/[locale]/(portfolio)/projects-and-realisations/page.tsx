@@ -21,9 +21,7 @@ export default async function ProjectsAndRealisations(): Promise<React.ReactNode
 
       <div className={styles.cards_layout}>
         {projects
-          .sort(
-            (p) => p.endDate?.getMilliseconds() ?? new Date().getMilliseconds()
-          )
+          .sort((p) => p.endDate?.getTime() ?? new Date().getTime())
           .map((p) => (
             <ProjectCard key={p.slug} project={p} />
           ))}

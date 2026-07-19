@@ -13,7 +13,7 @@ export async function ProjectCard({
   const t = await getTranslations('common');
 
   return (
-    <div key={project.id} className={styles.card}>
+    <div id={project.slug} key={project.id} className={styles.card}>
       <strong>{project.name}</strong>
 
       <span className={styles.category}>
