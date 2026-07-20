@@ -23,6 +23,8 @@
 
   --control-height: 38px;
 
+  --sb-size: 12px;
+
   --border-width: 2px;
   --border-width-secondary: 1px;
   --border-radius: 8px;
@@ -51,7 +53,7 @@
   --body-bg-color: #ffffff;
   --footer-bg-color: #ebebeb;
   --layout-bg-color: #161b2e;
-	--layout-text-color: white; 
+  --layout-text-color: white;
 
   --control-bg-color: #ffffff;
   --control-disable-color: #b6b6b6;
@@ -59,6 +61,14 @@
   --control-box-shadow: 0px 0px 4px 0px rgba(191, 191, 191, 0.5);
   --control-box-shadow-active: 0px 0px 4px 2px var(--primary-color);
   --popup-box-shadow: 0px 0px 6px 0px rgba(0, 143, 238, 1);
+
+  --sb-bg-color: #eef3fb;
+  --sb-track-color: #f7f9fc;
+  --sb-thumb-color: #b7c4d8;
+  --sb-thumb-hover-color: var(--primary-color);
+  --sb-thumb-active-color: var(--primary-hover-color);
+  --sb-border-color: #ffffff;
+  --sb-corner-color: var(--sb-track-color);
 }
 
 @mixin dark-theme {
@@ -77,14 +87,22 @@
   --body-bg-color: #111420;
   --footer-bg-color: #0a0d18;
   --layout-bg-color: #101424;
-	--layout-text-color: white; 
-	
+  --layout-text-color: white;
+
   --control-bg-color: #1a2347;
   --control-disable-color: #555555;
   --control-disable-color-2: #272727;
   --control-box-shadow: unset;
   --control-box-shadow-active: 0px 0px 4px 2px var(--primary-color);
   --popup-box-shadow: 0px 0px 6px 0px rgba(37, 46, 61, 0.5);
+
+  --sb-bg-color: #101b41;
+  --sb-track-color: #161d35;
+  --sb-thumb-color: #e4e4e4;
+  --sb-thumb-hover-color: var(--primary-color);
+  --sb-thumb-active-color: var(--primary-hover-color);
+  --sb-border-color: #161d35;
+  --sb-corner-color: var(--sb-track-color);
 }
 
 @mixin contrast-theme {
@@ -103,11 +121,19 @@
   --body-bg-color: #000000;
   --footer-bg-color: #000000;
   --layout-bg-color: #000000;
-	--layout-text-color: white; 
+  --layout-text-color: white;
 
   --control-bg-color: #000000;
   --control-disable-color: #000000;
   --control-box-shadow: unset;
   --control-box-shadow-active: unset;
   --popup-box-shadow: unset;
+
+  --sb-bg-color: #000000;
+  --sb-track-color: #000000;
+  --sb-thumb-color: #ffff00;
+  --sb-thumb-hover-color: #ffffff;
+  --sb-thumb-active-color: #ffffff;
+  --sb-border-color: #000000;
+  --sb-corner-color: #000000;
 }

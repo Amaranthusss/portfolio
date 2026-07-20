@@ -1,0 +1,69 @@
+@mixin scrollbar {
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+
+  *::-webkit-scrollbar {
+    width: var(--sb-size);
+    height: var(--sb-size);
+    background: var(--sb-bg-color);
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 999px;
+    border: 1px solid var(--sb-bg-color);
+  }
+
+  *::-webkit-scrollbar-track:hover {
+    background: var(--sb-track-color);
+  }
+
+  *::-webkit-scrollbar-track:active {
+    background: var(--sb-track-color);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 999px;
+    border: 2px solid var(--sb-track-color);
+    background-clip: padding-box;
+    min-height: 40px;
+    min-width: 40px;
+    transition:
+      background-color var(--animation-time),
+      border-color var(--animation-time);
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--sb-thumb-hover-color);
+  }
+
+  *::-webkit-scrollbar-thumb:active {
+    background: var(--sb-thumb-active-color);
+  }
+
+  *::-webkit-scrollbar-corner {
+    background: var(--sb-track-color);
+  }
+
+  *::-webkit-scrollbar-button,
+  *::-webkit-scrollbar-button:single-button,
+  *::-webkit-scrollbar-button:start,
+  *::-webkit-scrollbar-button:end,
+  *::-webkit-scrollbar-button:vertical,
+  *::-webkit-scrollbar-button:horizontal,
+  *::-webkit-scrollbar-button:increment,
+  *::-webkit-scrollbar-button:decrement {
+    display: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+  }
+
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}

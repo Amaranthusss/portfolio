@@ -1,9 +1,12 @@
 @use '../styles/app-font-size' as *;
+@use '../styles/scrollbar' as *;
 @use '../styles/theme' as *;
 
 :root {
   @include shared-theme;
 }
+
+@include scrollbar;
 
 :root[data-theme='light']:not([data-contrast='true']) {
   @include light-theme;
