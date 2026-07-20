@@ -9,6 +9,7 @@ import styles from './profile-buttons.module.scss';
 export function ProfileButtons({
   profiles,
   isActiveProfile,
+  isActiveExactProfile,
   onToggleProfile
 }: ProfileButtonsProps): React.ReactNode {
   return (
@@ -18,6 +19,7 @@ export function ProfileButtons({
         .map((profile: ProfileDTO): React.ReactNode => (
           <Button
             key={profile.slug}
+            mode={isActiveExactProfile(profile) ? 'primary' : undefined}
             active={isActiveProfile(profile)}
             onClick={(): void => onToggleProfile(profile)}
             aria-label={`toggle-profile-${profile.slug}-selection`}

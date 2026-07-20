@@ -28,6 +28,7 @@ export default async function HireMe(): Promise<React.ReactNode> {
             <Card key={p.id} slug={p.slug} className={styles.card}>
               <div className={styles.caption}>
                 <strong>{p.title}</strong>{' '}
+								
                 <DisplayDateRange
                   endDate={p.publishDate}
                   className={styles.issue_date}

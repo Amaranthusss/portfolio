@@ -4,5 +4,8 @@ import type { ProfileDTO } from '@/models/profileDto';
 export interface ProfileButtonsProps {
   profiles: ProfileDTO[];
   isActiveProfile: ReturnType<typeof UseFindBySkills>['isActiveProfile'];
+  isActiveExactProfile: ReturnType<
+    typeof UseFindBySkills
+  >['isActiveExactProfile'];
   onToggleProfile: ReturnType<typeof UseFindBySkills>['onToggleProfile'];
 }

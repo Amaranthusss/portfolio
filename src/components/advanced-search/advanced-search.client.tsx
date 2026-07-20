@@ -27,7 +27,8 @@ export function AdvancedSearchClient({
     onToggleSkill,
     onToggleProfile,
     isActiveProfile,
-    selectedSkillKeys
+    selectedSkillKeys,
+    isActiveExactProfile
   } = useFindBySkills();
 
   const open = (): void => modalRef.current?.open();
@@ -47,6 +48,7 @@ export function AdvancedSearchClient({
         <ProfileButtons
           profiles={profiles}
           isActiveProfile={isActiveProfile}
+          isActiveExactProfile={isActiveExactProfile}
           onToggleProfile={onToggleProfile}
         />
 
