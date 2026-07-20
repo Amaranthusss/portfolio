@@ -2,7 +2,6 @@
 import { ProfileButtons } from './_components/profile-buttons/profile-buttons';
 import { SearchResults } from './_components/search-results/search-results';
 import { SkillsList } from './_components/skills-list/skills-list';
-import { Divider } from '../divider/divider';
 import { Button } from '../button/button';
 import { Modal } from '../modal/modal';
 import { Icon } from '../icon/icon';
@@ -13,6 +12,8 @@ import { useRef } from 'react';
 
 import type { AdvancedSearchClientProps } from './advanced-search.client.interface';
 import type { ModalHandle } from '../modal/modal.interface';
+
+import styles from './advanced-search.client.module.scss';
 
 export function AdvancedSearchClient({
   skills,
@@ -33,6 +34,18 @@ export function AdvancedSearchClient({
 
   const open = (): void => modalRef.current?.open();
 
+  const footer: React.ReactNode = (
+    <Button
+      mode={'primary'}
+      onClick={search}
+      style={{ width: '100%' }}
+      disabled={selectedSkillKeys.size === 0}
+      aria-label={'search-data-for-selected-skills'}
+    >
+      {t('search')}
+    </Button>
+  );
+
   return (
     <>
       <Button
@@ -44,37 +57,30 @@ export function AdvancedSearchClient({
         <Icon icon={Icon.All.Search} />
       </Button>
 
-      <Modal ref={modalRef} title={t('title')}>
-        <ProfileButtons
-          profiles={profiles}
-          isActiveProfile={isActiveProfile}
-          isActiveExactProfile={isActiveExactProfile}
-          onToggleProfile={onToggleProfile}
-        />
+      <Modal
+        ref={modalRef}
+        title={t('title')}
+        footer={footer}
+        bodyClassName={styles.advanced_search_modal_body}
+      >
+        <div className={styles.configuration}>
+          <ProfileButtons
+            profiles={profiles}
+            className={styles.profile_buttons}
+            isActiveProfile={isActiveProfile}
+            isActiveExactProfile={isActiveExactProfile}
+            onToggleProfile={onToggleProfile}
+          />
 
-        <Divider />
+          <SkillsList
+            skills={skills}
+            className={styles.skills_list}
+            selectedSkillKeys={selectedSkillKeys}
+            onToggleSkill={onToggleSkill}
+          />
+        </div>
 
-        <SkillsList
-          skills={skills}
-          selectedSkillKeys={selectedSkillKeys}
-          onToggleSkill={onToggleSkill}
-        />
-
-        <Divider />
-
-        <Button
-          mode={'primary'}
-          onClick={search}
-          style={{ width: '100%' }}
-          disabled={selectedSkillKeys.size === 0}
-          aria-label={'search-data-for-selected-skills'}
-        >
-          {t('search')}
-        </Button>
-
-        <Divider />
-
-        <SearchResults results={results} />
+        <SearchResults results={results} className={styles.search_results} />
       </Modal>
     </>
   );

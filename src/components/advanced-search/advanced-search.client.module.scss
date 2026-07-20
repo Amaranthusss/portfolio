@@ -1,0 +1,48 @@
+@media screen and (min-width: 875px) {
+  .advanced_search_modal_body {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    overflow: hidden !important;
+
+    > .configuration {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      overflow: hidden;
+
+      > .skills_list {
+        border-left-style: solid;
+        border-left-width: var(--border-width);
+        border-left-color: var(--border-color);
+        padding-inline: var(--space-2);
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      > .profile_buttons {
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 876px) {
+  .advanced_search_modal_body {
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    > .configuration {
+      flex-direction: column;
+      gap: var(--space-2);
+
+      > .skills_list {
+        border-top-style: solid;
+        border-top-width: var(--border-width);
+        border-top-color: var(--border-color);
+        margin-top: var(--space-4);
+        overflow: hidden;
+        height: 100%;
+      }
+    }
+  }
+}

@@ -1,7 +1,9 @@
 'use client';
 import { SearchCategory } from './search-catergory/search-category';
+import { Divider } from '@/components/divider/divider';
 
 import { useTranslations } from 'next-intl';
+import { useClassName } from '@/hooks/useClassName';
 
 import type { SearchResultsProps } from './search-results.interface';
 import type { ExperienceStepDTO } from '@/models/experienceStepDto';
@@ -12,10 +14,14 @@ import type { ProjectDTO } from '@/models/projectDto';
 
 import { Route } from '@/constants/Route';
 
+import styles from './search-results.module.scss';
+
 export function SearchResults({
-  results
+  results,
+  className
 }: SearchResultsProps): React.ReactNode {
   const t = useTranslations('common.advanced-search');
+  const { cn } = useClassName();
 
   const joinAndHandleEmpty = (elements: string[]): string => {
     return elements.length === 0 ? '' : elements.join(', ');
@@ -41,54 +47,65 @@ export function SearchResults({
     return joinAndHandleEmpty(elements);
   };
 
-  if (results == null) return;
+  if (results == null)
+    return (
+      <div className={styles.empty_results}>
+        <Divider />
+
+        {t('empty-results')}
+      </div>
+    );
 
   return (
-    <div>
-      <SearchCategory<CertificationDTO>
-        data={results.certifications}
-        textExpr={(c) => c.title}
-        keyExpr={(c) => c.slug}
-        slugExpr={(c) => c.slug}
-        title={t('courses-and-certifications')}
-        route={Route.CoursesAndCertifications}
-      />
+    <div className={cn(styles.search_results)}>
+      <Divider />
 
-      <SearchCategory<EducationStepDTO>
-        data={results.education}
-        textExpr={renderEducationStep}
-        keyExpr={(e) => e.slug}
-        slugExpr={(e) => e.slug}
-        title={t('education')}
-        route={Route.ExperienceAndEducation}
-      />
+      <div className={styles.results_content}>
+        <SearchCategory<CertificationDTO>
+          data={results.certifications}
+          textExpr={(c) => c.title}
+          keyExpr={(c) => c.slug}
+          slugExpr={(c) => c.slug}
+          title={t('courses-and-certifications')}
+          route={Route.CoursesAndCertifications}
+        />
 
-      <SearchCategory<ExperienceStepDTO>
-        data={results.experience}
-        textExpr={renderExperienceStep}
-        keyExpr={(e) => e.slug}
-        slugExpr={(e) => e.slug}
-        title={t('experience')}
-        route={Route.ExperienceAndEducation}
-      />
+        <SearchCategory<EducationStepDTO>
+          data={results.education}
+          textExpr={renderEducationStep}
+          keyExpr={(e) => e.slug}
+          slugExpr={(e) => e.slug}
+          title={t('education')}
+          route={Route.ExperienceAndEducation}
+        />
 
-      <SearchCategory<ProjectDTO>
-        data={results.projects}
-        textExpr={(p) => p.name}
-        keyExpr={(p) => p.slug}
-        slugExpr={(p) => p.slug}
-        title={t('projects-and-realisations')}
-        route={Route.ProjectsAndRealisations}
-      />
+        <SearchCategory<ExperienceStepDTO>
+          data={results.experience}
+          textExpr={renderExperienceStep}
+          keyExpr={(e) => e.slug}
+          slugExpr={(e) => e.slug}
+          title={t('experience')}
+          route={Route.ExperienceAndEducation}
+        />
 
-      <SearchCategory<PublicationDTO>
-        data={results.publications}
-        textExpr={(p) => p.title}
-        keyExpr={(p) => p.slug}
-        slugExpr={(p) => p.slug}
-        title={t('publications')}
-        route={Route.Publications}
-      />
+        <SearchCategory<ProjectDTO>
+          data={results.projects}
+          textExpr={(p) => p.name}
+          keyExpr={(p) => p.slug}
+          slugExpr={(p) => p.slug}
+          title={t('projects-and-realisations')}
+          route={Route.ProjectsAndRealisations}
+        />
+
+        <SearchCategory<PublicationDTO>
+          data={results.publications}
+          textExpr={(p) => p.title}
+          keyExpr={(p) => p.slug}
+          slugExpr={(p) => p.slug}
+          title={t('publications')}
+          route={Route.Publications}
+        />
+      </div>
     </div>
   );
 }

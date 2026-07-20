@@ -24,6 +24,9 @@
   "advanced-search": {
     "title": "Advanced Search",
     "search": "Search",
+		"profiles": "Recommended Profiles",
+		"skill-set": "Skill Set",
+    "empty-results": "Select skill set",
     "courses-and-certifications": "Courses & Certifications",
     "education": "Education",
     "experience": "Experience",

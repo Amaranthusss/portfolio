@@ -2,6 +2,7 @@ import type { useFindBySkills as UseFindBySkills } from '../../_hooks/useFindByS
 import type { ProfileDTO } from '@/models/profileDto';
 
 export interface ProfileButtonsProps {
+  className: string;
   profiles: ProfileDTO[];
   isActiveProfile: ReturnType<typeof UseFindBySkills>['isActiveProfile'];
   isActiveExactProfile: ReturnType<

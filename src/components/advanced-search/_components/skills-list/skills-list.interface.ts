@@ -3,6 +3,7 @@ import type { SkillDTO } from '@/models/skillDto';
 
 export interface SkillsListProps {
   skills: SkillDTO[];
+  className: string;
   selectedSkillKeys: ReturnType<typeof UseFindBySkills>['selectedSkillKeys'];
   onToggleSkill: ReturnType<typeof UseFindBySkills>['onToggleSkill'];
 }

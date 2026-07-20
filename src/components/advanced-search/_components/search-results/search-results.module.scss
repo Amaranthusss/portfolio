@@ -1,0 +1,17 @@
+.search_results {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  > .results_content {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+.empty_results {
+  text-align: center;
+  font-size: var(--font-size-md);
+  color: var(--secondary-text-color);
+  font-style: italic;
+}

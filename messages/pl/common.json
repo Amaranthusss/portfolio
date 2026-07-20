@@ -24,6 +24,9 @@
   "advanced-search": {
     "title": "Zaawansowane wyszukiwanie",
     "search": "Wyszukaj",
+		"profiles": "Zalecane profile",
+		"skill-set": "Zestaw umiejętności",
+    "empty-results": "Wybierz zestaw umiejętności",
     "courses-and-certifications": "Kursy i certfikaty",
     "education": "Edukacja",
     "experience": "Doświadczenie",
