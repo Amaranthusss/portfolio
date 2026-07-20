@@ -1,4 +1,7 @@
 'use client';
+import { Button } from '../button/button';
+import { Icon } from '../icon/icon';
+
 import { useImperativeHandle, useRef, useState } from 'react';
 import { useCallback, useEffect } from 'react';
 import { useOpenAnimations } from './_hooks/useOpenAnimations';
@@ -11,17 +14,17 @@ import { createPortal } from 'react-dom';
 import type { ModalHandle, ModalProps } from './modal.interface';
 
 import styles from './modal.module.scss';
-import { Button } from '../button/button';
-import { Icon } from '../icon/icon';
 
 export function Modal({
   ref,
   title,
+  footer,
   onOpen,
   onClose,
   children,
   className,
   bodyClassName,
+  footerClassName,
   toolbarClassName,
   attachToBody = true
 }: WithRef<ModalProps, ModalHandle>): React.ReactNode {
@@ -29,7 +32,7 @@ export function Modal({
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const modalRef = useRef<HTMLDivElement | null>(null);
   const toolbarRef = useRef<HTMLDivElement | null>(null);
-  const { cn } = useClassName();
+  const { cn, boolToClass } = useClassName();
 
   const open = useCallback((): void => {
     if (isOpen) return;
@@ -43,6 +46,12 @@ export function Modal({
     setIsOpen(false);
     onClose?.();
   }, [isOpen, onClose]);
+
+  const classNames: string = cn(
+    className,
+    styles.modal,
+    boolToClass(footer != null, styles.with_footer)
+  );
 
   useDragAndDrop(isVisible, modalRef, toolbarRef);
   useCloseShortcut(isOpen, close);
@@ -60,7 +69,7 @@ export function Modal({
   const content = (
     <div
       ref={modalRef}
-      className={cn(styles.modal, className)}
+      className={classNames}
       aria-modal
       tabIndex={-1}
       role={'dialog'}
@@ -82,6 +91,10 @@ export function Modal({
       </div>
 
       <div className={cn(styles.modal_body, bodyClassName)}>{children}</div>
+
+      {footer && (
+        <div className={cn(styles.modal_footer, footerClassName)}>{footer}</div>
+      )}
     </div>
   );
 

@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 
 export interface ModalHandle {
   open: () => void;
@@ -10,7 +10,9 @@ export interface ModalProps extends PropsWithChildren {
   title?: string;
   className?: string;
   bodyClassName?: string;
+  footerClassName?: string;
   toolbarClassName?: string;
   onOpen?: () => void;
   onClose?: () => void;
+  footer?: ReactNode;
 }

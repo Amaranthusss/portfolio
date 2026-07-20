@@ -12,18 +12,21 @@ $text-block-gap: var(--space-8);
   grid-template-columns: 1fr;
   grid-template-rows: 48px 1fr;
   grid-column-gap: 0px;
-  grid-row-gap: $text-block-gap;
   background-color: var(--body-bg-color);
   border-radius: var(--border-radius);
   -webkit-box-shadow: var(--popup-box-shadow);
   -moz-box-shadow: var(--popup-box-shadow);
   box-shadow: var(--popup-box-shadow);
   z-index: var(--z-index-popup);
-  touch-action: pan-y;
-  overscroll-behavior: contain;
   border-style: solid;
   border-width: var(--border-width);
   border-color: var(--border-color);
+  touch-action: pan-y;
+  overscroll-behavior: contain;
+
+  &.with_footer {
+    grid-template-rows: 48px 1fr auto;
+  }
 
   > .toolbar {
     display: flex;
@@ -45,8 +48,16 @@ $text-block-gap: var(--space-8);
 
   > .modal_body {
     padding-inline: $text-inline-gap;
-    padding-bottom: $text-block-gap;
+    padding-block: $text-block-gap;
     overflow-x: hidden;
     overflow-y: auto;
+  }
+
+  > .modal_footer {
+    padding-inline: var(--space-4);
+    padding-block: var(--space-4);
+    border-top-style: solid;
+    border-top-width: var(--border-width-secondary);
+    border-top-color: var(--border-color);
   }
 }
