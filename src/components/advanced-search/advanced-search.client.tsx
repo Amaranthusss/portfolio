@@ -6,6 +6,7 @@ import { Button } from '../button/button';
 import { Modal } from '../modal/modal';
 import { Icon } from '../icon/icon';
 
+import { useModalAutoClose } from './_hooks/useModalAutoClose';
 import { useFindBySkills } from './_hooks/useFindBySkills';
 import { useTranslations } from 'next-intl';
 import { useRef } from 'react';
@@ -32,13 +33,30 @@ export function AdvancedSearchClient({
     isActiveExactProfile
   } = useFindBySkills();
 
+  const { closeOnNavigate, onNavigate, onToggleCloseOnNavigate } =
+    useModalAutoClose(modalRef);
+
   const open = (): void => modalRef.current?.open();
+
+  const toolbar: React.ReactNode = (
+    <Button
+      mode={'text'}
+      onClick={onToggleCloseOnNavigate}
+      aria-label={'toggle-close-modal-on-navigate'}
+    >
+      {closeOnNavigate ? (
+        <Icon icon={Icon.All.Unlock} />
+      ) : (
+        <Icon icon={Icon.All.Lock} />
+      )}
+    </Button>
+  );
 
   const footer: React.ReactNode = (
     <Button
       mode={'primary'}
       onClick={search}
-      style={{ width: '100%' }}
+      className={styles.footer}
       disabled={selectedSkillKeys.size === 0}
       aria-label={'search-data-for-selected-skills'}
     >
@@ -61,6 +79,8 @@ export function AdvancedSearchClient({
         ref={modalRef}
         title={t('title')}
         footer={footer}
+        toolbar={toolbar}
+        footerClassName={styles.advanced_search_modal_footer}
         bodyClassName={styles.advanced_search_modal_body}
       >
         <div className={styles.configuration}>
@@ -80,7 +100,7 @@ export function AdvancedSearchClient({
           />
         </div>
 
-        <SearchResults results={results} className={styles.search_results} />
+        <SearchResults results={results} onNavigate={onNavigate} />
       </Modal>
     </>
   );

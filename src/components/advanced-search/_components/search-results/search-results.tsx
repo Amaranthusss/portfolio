@@ -18,7 +18,7 @@ import styles from './search-results.module.scss';
 
 export function SearchResults({
   results,
-  className
+  onNavigate
 }: SearchResultsProps): React.ReactNode {
   const t = useTranslations('common.advanced-search');
   const { cn } = useClassName();
@@ -68,6 +68,7 @@ export function SearchResults({
           slugExpr={(c) => c.slug}
           title={t('courses-and-certifications')}
           route={Route.CoursesAndCertifications}
+          onNavigate={onNavigate}
         />
 
         <SearchCategory<EducationStepDTO>
@@ -77,6 +78,7 @@ export function SearchResults({
           slugExpr={(e) => e.slug}
           title={t('education')}
           route={Route.ExperienceAndEducation}
+          onNavigate={onNavigate}
         />
 
         <SearchCategory<ExperienceStepDTO>
@@ -86,6 +88,7 @@ export function SearchResults({
           slugExpr={(e) => e.slug}
           title={t('experience')}
           route={Route.ExperienceAndEducation}
+          onNavigate={onNavigate}
         />
 
         <SearchCategory<ProjectDTO>
@@ -95,6 +98,7 @@ export function SearchResults({
           slugExpr={(p) => p.slug}
           title={t('projects-and-realisations')}
           route={Route.ProjectsAndRealisations}
+          onNavigate={onNavigate}
         />
 
         <SearchCategory<PublicationDTO>
@@ -104,6 +108,7 @@ export function SearchResults({
           slugExpr={(p) => p.slug}
           title={t('publications')}
           route={Route.Publications}
+          onNavigate={onNavigate}
         />
       </div>
     </div>

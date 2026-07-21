@@ -18,6 +18,7 @@ export function Card({
 
   const isTarget = useRef<boolean>(false);
   const cardRef = useRef<HTMLDivElement>(null);
+
   const classNames: string = cn(className, styles.card);
   const highlightTime = 2000;
 
@@ -29,20 +30,23 @@ export function Card({
   };
 
   const highlight = (): void => {
-    const element: HTMLDivElement | null = cardRef.current;
+    const element = cardRef.current;
 
     if (element == null) return;
 
     element.classList.remove(styles.highlight);
     void element.offsetWidth;
     element.classList.add(styles.highlight);
-
     if (isTarget.current) scrollToCard();
     isTarget.current = true;
 
     window.setTimeout((): void => {
       element.classList.remove(styles.highlight);
     }, highlightTime);
+
+    window.dispatchEvent(
+      new CustomEvent(CustomEventName.HighlightCardFinished, { detail: slug })
+    );
   };
 
   const initHighlight = (): void => {
@@ -63,7 +67,7 @@ export function Card({
     initHighlight();
     window.addEventListener(CustomEventName.HighlightCard, handleHighlight);
 
-    return () =>
+    return (): void =>
       window.removeEventListener(
         CustomEventName.HighlightCard,
         handleHighlight

@@ -12,6 +12,8 @@ import { CloseIcon } from './_components/close-icon/close-icon';
 import { HomeIcon } from './_components/home-icon/home-icon';
 
 import type { ComponentType, SVGProps } from 'react';
+import { LockIcon } from './_components/lock-icon/lock-icon';
+import { UnlockIcon } from './_components/unlock-icon/unlock-icon';
 
 export enum IconName {
   Accessibility = 'accessibility',
@@ -25,7 +27,9 @@ export enum IconName {
   Settings = 'settings',
   TechStack = 'tech-stack',
   Search = 'search',
-  Close = 'close'
+  Close = 'close',
+  Lock = 'lock',
+  Unlock = 'unlock'
 }
 
 export const iconConfig: Record<
@@ -43,7 +47,9 @@ export const iconConfig: Record<
   [IconName.Settings]: SettingsIcon,
   [IconName.TechStack]: TechStackIcon,
   [IconName.Search]: SearchIcon,
-  [IconName.Close]: CloseIcon
+  [IconName.Close]: CloseIcon,
+  [IconName.Lock]: LockIcon,
+  [IconName.Unlock]: UnlockIcon
 };
 
 export const defaultSvgProps: SVGProps<SVGSVGElement> = {

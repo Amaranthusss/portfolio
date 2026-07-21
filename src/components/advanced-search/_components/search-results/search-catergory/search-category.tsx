@@ -1,3 +1,4 @@
+'use client';
 import { SearchElement } from './search-element/search-element';
 import { Title } from '@/components/title/title';
 
@@ -12,7 +13,8 @@ export function SearchCategory<DtoItem extends object>({
   route,
   keyExpr,
   textExpr,
-  slugExpr
+  slugExpr,
+  onNavigate
 }: SearchCategoryProps<DtoItem>): React.ReactNode {
   if (data.length === 0) return;
 
@@ -29,7 +31,13 @@ export function SearchCategory<DtoItem extends object>({
           if (text.length === 0) return;
 
           return (
-            <SearchElement key={key} text={text} route={route} slug={slug} />
+            <SearchElement
+              key={key}
+              slug={slug}
+              text={text}
+              route={route}
+              onNavigate={onNavigate}
+            />
           );
         })}
       </ul>
