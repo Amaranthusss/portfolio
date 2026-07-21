@@ -14,5 +14,6 @@ export interface ModalProps extends PropsWithChildren {
   toolbarClassName?: string;
   onOpen?: () => void;
   onClose?: () => void;
+  toolbar?: ReactNode;
   footer?: ReactNode;
 }

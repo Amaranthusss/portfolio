@@ -18,11 +18,12 @@ import styles from './modal.module.scss';
 export function Modal({
   ref,
   title,
-  footer,
   onOpen,
   onClose,
   children,
   className,
+  footer,
+  toolbar,
   bodyClassName,
   footerClassName,
   toolbarClassName,
@@ -80,14 +81,18 @@ export function Modal({
           <span className={styles.title}>{title}</span>
         )}
 
-        <Button
-          mode={'text'}
-          centerVertical
-          aria-label={'close-modal'}
-          onClick={close}
-        >
-          <Icon icon={Icon.All.Close} />
-        </Button>
+        <div>
+          {toolbar && toolbar}
+
+          <Button
+            mode={'text'}
+            centerVertical
+            aria-label={'close-modal'}
+            onClick={close}
+          >
+            <Icon icon={Icon.All.Close} />
+          </Button>
+        </div>
       </div>
 
       <div className={cn(styles.modal_body, bodyClassName)}>{children}</div>
