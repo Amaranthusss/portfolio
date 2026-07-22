@@ -65,6 +65,7 @@ export function NavMenu(): React.ReactNode {
       className={styles.menu_items}
       dropdownTopMargin={24}
       dropdownClassName={styles.dropdown}
+      containerBgColor={'var(--layout-bg-color)'}
       updateDropdownOnScroll={false}
     >
       {menuItems.map(({ route, icon, text, decorated }) => {
@@ -81,8 +82,8 @@ export function NavMenu(): React.ReactNode {
             {...extraProps}
             centerContent
             active={route === pathname}
+            aria-label={`navigation-button-${route.replace('/', '')}`}
             onClick={(): void => router.push(route)}
-            name={`navigation-button-${route.replace('/', '')}`}
           >
             <Icon icon={icon} style={{ marginRight: 'var(--space-4)' }} />
             {t(text)}
