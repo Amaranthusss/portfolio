@@ -11,6 +11,7 @@ import localFont from 'next/font/local';
 import type { Revalidate } from 'next/dist/server/lib/cache-control';
 import type { NextFont } from 'next/dist/compiled/@next/font';
 import type { Metadata } from 'next';
+import type { Viewport } from 'next';
 import type { Locale } from '@/i18n/locale';
 
 import '../../globals.scss';
@@ -82,6 +83,14 @@ export const magnat: NextFont = localFont({
   ],
   display: 'swap'
 });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 5,
+  userScalable: true
+};
 
 export const metadata: Metadata = {
   title: 'Oskar Szkurłat Portfolio',
