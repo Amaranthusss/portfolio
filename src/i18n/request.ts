@@ -30,12 +30,16 @@ export default getRequestConfig(async ({ requestLocale }) => {
     await import(`../../messages/${locale}/projects-and-realisations.json`)
   ).default;
 
+  const codeStyles = (await import(`../../messages/${locale}/code-style.json`))
+    .default;
+
   return {
     locale,
     messages: {
       common: common,
       layout: layout,
       homepage: homepage,
+      'code-style': codeStyles,
       'experience-and-education': experienceAndEducation,
       'projects-and-realisations': projectsAndRealisations,
       'courses-and-certifications': coursesAndCertifications

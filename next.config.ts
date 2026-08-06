@@ -1,3 +1,4 @@
+import { withPayload } from '@payloadcms/next/withPayload';
 import createNextIntlPlugin from 'next-intl/plugin';
 
 import type { NextConfig } from 'next';
@@ -10,24 +11,24 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: '*.public.blob.vercel-storage.com',
-        pathname: '/images/**'
+        pathname: '/images/**',
       },
       {
         protocol: 'http',
         hostname: 'nginx',
-        pathname: '/images/**'
+        pathname: '/images/**',
       },
       {
         protocol: 'http',
         hostname: 'localhost',
-        pathname: '/images/**'
-      }
+        pathname: '/images/**',
+      },
     ],
     dangerouslyAllowLocalIP:
-      process.env.NEXT_IMAGES_DANGEROUSLY_ALLOW_LOCAL_IP === 'true'
-  }
+      process.env.NEXT_IMAGES_DANGEROUSLY_ALLOW_LOCAL_IP === 'true',
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();
 
-export default withNextIntl(nextConfig);
+export default withPayload(withNextIntl(nextConfig));

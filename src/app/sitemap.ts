@@ -3,10 +3,10 @@ import { getProjects } from '@/services/getProjects';
 import type { MetadataRoute } from 'next';
 import type { Locale } from '@/i18n/locale';
 
+import { locales } from '@/i18n/locale';
 import { Route } from '@/constants/Route';
 
 const siteUrl: string = process.env.NEXT_PUBLIC_SITE_URL!;
-const locales: Locale[] = ['pl', 'en'];
 
 const staticRoutes: Route[] = [
   Route.Homepage,

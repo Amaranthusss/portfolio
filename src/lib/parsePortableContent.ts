@@ -1,5 +1,5 @@
+import type { PortableContent } from '../../prisma/seeds/helpers/portableText.types';
 import type { ContentBlock } from '../../prisma/seeds/helpers/portableText.types';
-import type { TypedObject } from '@portabletext/types';
 import type { Prisma } from '../../src/generated/prisma/client';
 import type { Span } from '../../prisma/seeds/helpers/portableText.types';
 
@@ -68,10 +68,10 @@ function validateBlock(value: unknown): value is ContentBlock {
   return false;
 }
 
-export function parsePortableContent(value: Prisma.JsonValue): TypedObject[] {
+export function parsePortableContent(value: Prisma.JsonValue): PortableContent {
   if (!Array.isArray(value)) return [];
 
-  const result: TypedObject[] = [];
+  const result: PortableContent = [];
 
   for (const item of value) {
     if (validateBlock(item)) result.push(item);

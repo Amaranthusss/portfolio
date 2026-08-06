@@ -12,7 +12,7 @@ import type { Locale } from '@/i18n/locale';
 export default async function ProjectPage({
   params
 }: {
-  params: ReactPromise<{ slug: string; locale: string }>;
+  params: ReactPromise<{ slug: string }>;
 }): Promise<React.ReactNode> {
   const slug: string = (await params).slug;
   const locale: Locale = await getLocale();
