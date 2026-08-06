@@ -1,23 +1,36 @@
 'use server';
 import { unstable_cache } from 'next/cache';
+import { getPayload } from 'payload';
 import { mapSkill } from '@/lib/mappers/mapSkill';
-import prisma from '@/lib/prisma';
 
+import config from '@payload-config';
+
+import type { BasePayload, PaginatedDocs } from 'payload';
 import type { SkillDTO } from '@/models/skillDto';
-import type { Locale } from '@/generated/prisma';
+import type { Locale } from '@/i18n/locale';
+import type { Skill } from '../../payload-types';
 
-import { CacheName } from '@/constants/CacheName';
+const getSkillsFromPayload = unstable_cache(
+  async (locale: Locale): Promise<Skill[]> => {
+    const payload: BasePayload = await getPayload({ config });
+
+    const result: PaginatedDocs<Skill> = await payload.find({
+      collection: 'skills',
+      locale,
+      pagination: false,
+      sort: 'key',
+    });
+
+    return result.docs;
+  },
+  ['skills'],
+  {
+    revalidate: false,
+  }
+);
 
 export const getSkills = async (locale: Locale): Promise<SkillDTO[]> => {
-  const db = await unstable_cache(
-    async () => {
-      return prisma.skill.findMany({
-        include: { translations: { where: { locale }, take: 1 } }
-      });
-    },
-    [CacheName.Skills, locale],
-    { revalidate: false }
-  )();
+  const skills: Skill[] = await getSkillsFromPayload(locale);
 
-  return db.map(mapSkill);
+  return skills.map(mapSkill);
 };

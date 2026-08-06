@@ -1,8 +1,8 @@
-import type { SkillKey } from '@/generated/prisma';
+import type { Skill } from '../../payload-types';
 
 export interface SkillDTO {
   id: number;
-  key: SkillKey;
+  key: Skill['key'];
   name: string;
   shortName?: string;
 }

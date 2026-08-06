@@ -1,16 +1,20 @@
 import { mapSkill } from './mapSkill';
 
-import type { ProfileWithRelations } from '@/models/profileWithRelations';
+import type { Profile, Skill } from '../../../payload-types';
 import type { ProfileDTO } from '@/models/profileDto';
 
-export function mapProfile(profile: ProfileWithRelations): ProfileDTO {
-  const translation = profile.translations[0] ?? { name: profile.slug };
-
+export function mapProfile(profile: Profile): ProfileDTO {
   return {
     id: profile.id,
     slug: profile.slug,
-    name: translation.name,
+    name: profile.name,
     orderNumber: profile.orderNumber,
-    skills: profile.skills.map((ps) => mapSkill(ps.skill)),
+    skills: profile.skills?.filter(isPopulatedSkill).map(mapSkill) ?? [],
   };
+}
+
+function isPopulatedSkill(
+  skill: number | Skill | null | undefined
+): skill is Skill {
+  return typeof skill !== 'number' && skill !== null && skill !== undefined;
 }
