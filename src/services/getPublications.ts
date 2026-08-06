@@ -1,37 +1,42 @@
 'use server';
+
 import { unstable_cache } from 'next/cache';
+import { getPayload } from 'payload';
+
 import { mapPublication } from '@/lib/mappers/mapPublication';
-import prisma from '@/lib/prisma';
 
+import type { BasePayload, PaginatedDocs } from 'payload';
+import type { Publication } from '../../payload-types';
 import type { PublicationDTO } from '@/models/publicationDto';
-import type { Locale } from '@/generated/prisma';
+import type { Locale } from '@/i18n/locale';
 
-import { CacheName } from '@/constants/CacheName';
+import { defaultLocale } from '@/i18n/locale';
+
+import config from '@payload-config';
+
+const getPublicationsFromPayload = unstable_cache(
+  async (locale: Locale): Promise<PublicationDTO[]> => {
+    const payload: BasePayload = await getPayload({ config });
+
+    const result: PaginatedDocs<Publication> = await payload.find({
+      collection: 'publications',
+      locale,
+      fallbackLocale: defaultLocale,
+      depth: 2,
+      pagination: false,
+      sort: '-publishDate',
+    });
+
+    return result.docs.map(mapPublication);
+  },
+  ['publications'],
+  {
+    revalidate: false,
+  }
+);
 
 export const getPublications = async (
   locale: Locale
 ): Promise<PublicationDTO[]> => {
-  const db = await unstable_cache(
-    async () => {
-      return prisma.publication.findMany({
-        include: {
-          authors: { include: { person: true } },
-          translations: { where: { locale }, take: 1 },
-          skills: {
-            include: {
-              skill: {
-                include: {
-                  translations: { where: { locale }, take: 1 }
-                }
-              }
-            }
-          }
-        }
-      });
-    },
-    [CacheName.Publications, locale],
-    { revalidate: false }
-  )();
-
-  return db.map(mapPublication);
+  return getPublicationsFromPayload(locale);
 };

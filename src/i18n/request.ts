@@ -42,7 +42,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       'code-style': codeStyles,
       'experience-and-education': experienceAndEducation,
       'projects-and-realisations': projectsAndRealisations,
-      'courses-and-certifications': coursesAndCertifications
-    }
+      'courses-and-certifications': coursesAndCertifications,
+    },
   };
 });

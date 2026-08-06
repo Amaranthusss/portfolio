@@ -1,8 +1,8 @@
-import type { Skill } from '../../payload-types';
+import type { SkillKey } from './skillKey';
 
 export interface SkillDTO {
   id: number;
-  key: Skill['key'];
+  key: SkillKey;
   name: string;
   shortName?: string;
 }

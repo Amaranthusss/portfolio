@@ -1,26 +1,31 @@
 import { mapSkill } from './mapSkill';
 
-import type { EducationStepWithRelations } from '@/models/educationStepWithRelations';
 import type { EducationStepDTO } from '@/models/educationStepDto';
+import type { EducationStep } from '../../../payload-types';
+import type { Skill } from '../../../payload-types';
 
-export function mapEducationStep(
-  step: EducationStepWithRelations
-): EducationStepDTO {
-  const translation = step.translations[0] ?? {};
+export function mapEducationStep(step: EducationStep): EducationStepDTO {
+  const skills = step.skills?.filter(isPopulatedSkill).map(mapSkill) ?? [];
 
   return {
     id: step.id,
     slug: step.slug,
     startDate: new Date(step.startDate),
-    endDate: step.endDate != null ? new Date(step.endDate) : undefined,
+    endDate: step.endDate ? new Date(step.endDate) : undefined,
     isCurrent: step.isCurrent ?? undefined,
     grade: step.grade ?? undefined,
-    withHonors: step.withHonors,
-    institution: translation.institution,
-    degree: translation.degree ?? undefined,
-    projectTitle: translation.projectTitle ?? undefined,
-    fieldOfStudy: translation.fieldOfStudy ?? undefined,
-    description: translation.description ?? undefined,
-    skills: step.skills.map((es) => mapSkill(es.skill))
+    withHonors: step.withHonors ?? undefined,
+    institution: step.institution ?? undefined,
+    degree: step.degree ?? undefined,
+    projectTitle: step.projectTitle ?? undefined,
+    fieldOfStudy: step.fieldOfStudy ?? undefined,
+    description: step.description ?? undefined,
+    skills,
   };
+}
+
+function isPopulatedSkill(
+  skill: number | Skill | null | undefined
+): skill is Skill {
+  return typeof skill !== 'number' && skill !== null && skill !== undefined;
 }

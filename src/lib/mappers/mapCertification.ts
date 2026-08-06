@@ -2,13 +2,13 @@ import { mapSkill } from './mapSkill';
 
 import type { Certification, Skill } from '../../../payload-types';
 import type { CertificationDTO } from '@/models/certificationDto';
-import type { ImageFileDTO } from '@/models/imageFileDto';
+import type { MediaDTO } from '@/models/mediaDTO';
 import type { SkillDTO } from '@/models/skillDto';
 
 export function mapCertification(
   certification: Certification
 ): CertificationDTO {
-  const image: ImageFileDTO =
+  const image: MediaDTO =
     certification.image && typeof certification.image !== 'number'
       ? {
           id: certification.image.id,
@@ -35,12 +35,12 @@ export function mapCertification(
     slug: certification.slug,
     credentialID: certification.credentialID ?? undefined,
     issueDate: new Date(certification.issueDate),
-    image,
     url: certification.url ?? undefined,
     title: certification.title,
     description: certification.description ?? '',
     provider: certification.provider ?? '',
     skills,
+    image,
   };
 }
 

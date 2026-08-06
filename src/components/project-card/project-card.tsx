@@ -1,16 +1,20 @@
-import { getTranslations } from 'next-intl/server';
 import { DisplayDateRange } from '../display-date-range/display-date-range';
 import { DisplaySkills } from '../display-skills/display-skills';
+import { NavToProject } from './_components/nav-to-project/nav-to-project';
 import { Card } from '../card/card';
+
+import { getTranslations } from 'next-intl/server';
 
 import type { ProjectCardProps } from './project-card.interface';
 
 import styles from './project-card.module.scss';
 
 export async function ProjectCard({
-  project
+  project,
 }: ProjectCardProps): Promise<React.ReactNode> {
   const t = await getTranslations('common');
+
+  console.log(project)
 
   return (
     <Card key={project.id} slug={project.slug} className={styles.card}>
@@ -33,10 +37,7 @@ export async function ProjectCard({
 
       <DisplaySkills skills={project.skills} />
 
-      {/* 
-				// ToDo Enable NavToProject after infill project details data 
-				<NavToProject project={project} />
-			*/}
+      <NavToProject project={project} />
     </Card>
   );
 }

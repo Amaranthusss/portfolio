@@ -1,3 +1,5 @@
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
+
 import type { CollectionConfig } from 'payload';
 
 export const Projects: CollectionConfig = {
@@ -71,8 +73,9 @@ export const Projects: CollectionConfig = {
 
     {
       name: 'content',
-      type: 'json',
+      type: 'richText',
       localized: true,
+      editor: lexicalEditor(),
     },
 
     {

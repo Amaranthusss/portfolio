@@ -1,4 +1,4 @@
-import type { AcademicDegree } from '@/generated/prisma';
+import type { AcademicDegree } from './academicDegree';
 
 export interface PersonDto {
   id: number;

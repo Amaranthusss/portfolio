@@ -1,4 +1,4 @@
-export interface ImageFileDTO {
+export interface MediaDTO {
   id: number;
   url: string;
   fileName: string;

@@ -16,7 +16,7 @@ const staticRoutes: Route[] = [
   Route.CoreTechnologies,
   Route.CodeStyle,
   Route.Publications,
-  Route.HireMe
+  Route.HireMe,
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -24,7 +24,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     locales.map(async (locale: Locale) => {
       return {
         locale,
-        projects: await getProjects(locale)
+        projects: await getProjects(locale),
       };
     })
   );
@@ -37,9 +37,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         alternates: {
           languages: {
             pl: `${siteUrl}/pl${route}`,
-            en: `${siteUrl}/en${route}`
-          }
-        }
+            en: `${siteUrl}/en${route}`,
+          },
+        },
       };
     })
   );
@@ -52,9 +52,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         alternates: {
           languages: {
             pl: `${siteUrl}/pl${Route.ProjectsAndRealisations}/${project.slug}`,
-            en: `${siteUrl}/en${Route.ProjectsAndRealisations}/${project.slug}`
-          }
-        }
+            en: `${siteUrl}/en${Route.ProjectsAndRealisations}/${project.slug}`,
+          },
+        },
       }))
   );
 

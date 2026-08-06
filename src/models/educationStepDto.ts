@@ -7,7 +7,7 @@ export interface EducationStepDTO {
   endDate?: Date;
   isCurrent?: boolean;
   grade?: number;
-  withHonors: boolean;
+  withHonors?: boolean;
   institution?: string;
   degree?: string;
   projectTitle?: string;

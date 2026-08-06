@@ -1,4 +1,4 @@
-import type { ImageFileDTO } from './imageFileDto';
+import type { MediaDTO } from './mediaDTO';
 import type { SkillDTO } from './skillDto';
 
 export interface CertificationDTO {
@@ -6,7 +6,7 @@ export interface CertificationDTO {
   slug: string;
   credentialID?: string;
   issueDate: Date;
-  image: ImageFileDTO;
+  image: MediaDTO;
   url?: string;
   title: string;
   description: string;

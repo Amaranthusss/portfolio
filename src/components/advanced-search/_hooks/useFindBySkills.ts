@@ -5,10 +5,10 @@ import { useRef, useState } from 'react';
 import { startTransition } from 'react';
 import { findBySkills } from '@/services/findBySkills';
 
-import type { SkillAggregateDto } from '@/models/skillGraphDto';
+import type { SkillAggregateDto } from '@/models/skillAggregateDto';
 import type { ProfileDTO } from '@/models/profileDto';
 import type { SkillDTO } from '@/models/skillDto';
-import type { SkillKey } from '@/generated/prisma';
+import type { SkillKey } from '@/models/skillKey';
 import type { Locale } from '@/i18n/locale';
 
 export function useFindBySkills() {
@@ -89,6 +89,6 @@ export function useFindBySkills() {
     selectedSkillKeys,
     isActiveExactProfile,
     onToggleSkill,
-    onToggleProfile
+    onToggleProfile,
   };
 }

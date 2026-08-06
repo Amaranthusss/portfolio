@@ -1,6 +1,6 @@
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob';
 import { postgresAdapter } from '@payloadcms/db-postgres';
-// import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { buildConfig } from 'payload';
 import sharp from 'sharp';
 
@@ -21,7 +21,7 @@ import { defaultLocale, localesAsString } from '@/i18n/locale';
 
 export default buildConfig({
   admin: { user: Users.slug },
-  // editor: lexicalEditor(),
+  editor: lexicalEditor(),
   collections: [
     Users,
     Media,

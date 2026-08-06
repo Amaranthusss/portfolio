@@ -1,36 +1,41 @@
 'use server';
-import { mapExperienceStep } from '@/lib/mappers/mapExperienceStep';
+
 import { unstable_cache } from 'next/cache';
-import prisma from '@/lib/prisma';
+import { getPayload } from 'payload';
 
+import { mapExperienceStep } from '@/lib/mappers/mapExperienceStep';
+import { defaultLocale } from '@/i18n/locale';
+
+import type { BasePayload, PaginatedDocs } from 'payload';
 import type { ExperienceStepDTO } from '@/models/experienceStepDto';
-import type { Locale } from '@/generated/prisma';
+import type { ExperienceStep } from '../../payload-types';
+import type { Locale } from '@/i18n/locale';
 
-import { CacheName } from '@/constants/CacheName';
+import config from '@payload-config';
+
+const getExperienceStepsFromPayload = unstable_cache(
+  async (locale: Locale): Promise<ExperienceStepDTO[]> => {
+    const payload: BasePayload = await getPayload({ config });
+
+    const result: PaginatedDocs<ExperienceStep> = await payload.find({
+      collection: 'experience-steps',
+      locale,
+      fallbackLocale: defaultLocale,
+      depth: 2,
+      pagination: false,
+      sort: '-startDate',
+    });
+
+    return result.docs.map(mapExperienceStep);
+  },
+  ['experience-steps'],
+  {
+    revalidate: false,
+  }
+);
 
 export const getExperienceSteps = async (
   locale: Locale
 ): Promise<ExperienceStepDTO[]> => {
-  const db = await unstable_cache(
-    async () => {
-      return prisma.experienceStep.findMany({
-        include: {
-          translations: { where: { locale }, take: 1 },
-          skills: {
-            include: {
-              skill: {
-                include: {
-                  translations: { where: { locale }, take: 1 }
-                }
-              }
-            }
-          }
-        }
-      });
-    },
-    [CacheName.ExperienceSteps, locale],
-    { revalidate: false }
-  )();
-
-  return db.map(mapExperienceStep);
+  return getExperienceStepsFromPayload(locale);
 };
