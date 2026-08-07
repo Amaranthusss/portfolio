@@ -1,7 +1,5 @@
 import type { MetadataRoute } from 'next';
 
-import { Route } from '@/constants/Route';
-
 const siteUrl: string = process.env.NEXT_PUBLIC_SITE_URL!;
 
 export default function robots(): MetadataRoute.Robots {
@@ -10,9 +8,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: [Route.AdminPanel]
-      }
+      },
     ],
-    sitemap: `${siteUrl}/sitemap.xml`
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 }

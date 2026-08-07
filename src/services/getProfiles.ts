@@ -1,34 +1,35 @@
 'use server';
 import { unstable_cache } from 'next/cache';
+import { getPayload } from 'payload';
 import { mapProfile } from '@/lib/mappers/mapProfile';
-import prisma from '@/lib/prisma';
 
 import type { ProfileDTO } from '@/models/profileDto';
-import type { Locale } from '@/generated/prisma';
+import type { Locale } from '@/i18n/locale';
 
-import { CacheName } from '@/constants/CacheName';
+import { defaultLocale } from '@/i18n/locale';
+import config from '@payload-config';
+
+const getProfilesFromPayload = unstable_cache(
+  async (locale: Locale): Promise<ProfileDTO[]> => {
+    const payload = await getPayload({ config });
+
+    const result = await payload.find({
+      collection: 'profiles',
+      locale,
+      fallbackLocale: defaultLocale,
+      depth: 1,
+      pagination: false,
+      sort: 'orderNumber',
+    });
+
+    return result.docs.map(mapProfile);
+  },
+  ['profiles'],
+  {
+    revalidate: false,
+  }
+);
 
 export const getProfiles = async (locale: Locale): Promise<ProfileDTO[]> => {
-  const db = await unstable_cache(
-    async () => {
-      return prisma.profile.findMany({
-        include: {
-          translations: { where: { locale }, take: 1 },
-          skills: {
-            include: {
-              skill: {
-                include: {
-                  translations: { where: { locale }, take: 1 }
-                }
-              }
-            }
-          }
-        }
-      });
-    },
-    [CacheName.Profiles, locale],
-    { revalidate: false }
-  )();
-
-  return db.map(mapProfile);
+  return getProfilesFromPayload(locale);
 };

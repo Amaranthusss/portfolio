@@ -28,20 +28,22 @@ The application is powered by a custom **PostgreSQL + Prisma** schema, supportin
 - 🌐 **Full Multilingual Support (PL / EN)** — structured i18n at database level
 - 🧩 **Custom Component System** — UI built entirely without external component libraries
 - 💾 **Rich Content Modeling** — projects, experience, education, certifications, publications
-- ⚡ **Type-safe Full-stack Architecture** — prisma-generated schema used across the entire stack
+- ⚡ **Type-safe Full-stack Architecture** — payload-generated schema used across the entire stack
 
 ---
 
 ## 🧩 Tech Stack
 
-| Category   | Technology             |
-| ---------- | ---------------------- |
-| Framework  | **Next**, **React**    |
-| Language   | **TypeScript**         |
-| ORM        | **Prisma**             |
-| DataBase   | **PostgreSQL**         |
-| Styling    | **SASS Modules**       |
-| Deployment | **(to be added soon)** |
+| Category      | Technology          |
+| ------------- | ------------------- |
+| Framework     | **Next**, **React** |
+| Language      | **TypeScript**      |
+| ORM           | **Drizzle**         |
+| CMS           | **Payload CMS**     |
+| DataBase      | **PostgreSQL**      |
+| Media Storage | **Vercel Blob**     |
+| Styling       | **SASS Modules**    |
+| Deployment    | **Vercel Hosting**  |
 
 ---
 

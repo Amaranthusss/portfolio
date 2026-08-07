@@ -1,5 +1,5 @@
 export enum Route {
-  AdminPanel = '/admin-panel',
+  Payload = '/admin',
   Homepage = '/homepage',
   CoursesAndCertifications = '/courses-and-certifications',
   ExperienceAndEducation = '/experience-and-education',
@@ -7,5 +7,5 @@ export enum Route {
   CoreTechnologies = '/core-technologies',
   CodeStyle = '/code-style',
   Publications = '/publications',
-  HireMe = '/hire-me'
+  HireMe = '/hire-me',
 }

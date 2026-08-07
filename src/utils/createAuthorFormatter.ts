@@ -1,9 +1,7 @@
 import { getLocale } from 'next-intl/server';
 
 import type { PersonDto } from '@/models/personDto';
-import type { Locale } from '@/generated/prisma';
-
-import { AcademicDegree } from '@/generated/prisma';
+import type { Locale } from '@/i18n/locale';
 
 export async function createAuthorFormatter() {
   const locale: Locale = await getLocale();
@@ -12,24 +10,24 @@ export async function createAuthorFormatter() {
     const fullName: string = `${author.name} ${author.surname}`;
 
     switch (author.academicDegree) {
-      case AcademicDegree.Engineer:
+      case 'Engineer':
         return locale === 'pl' ? `inż. ${fullName}` : `${fullName}, Eng.`;
 
-      case AcademicDegree.MasterOfScienceInEngineering:
+      case 'MasterOfScienceInEngineering':
         return locale === 'pl'
           ? `mgr inż. ${fullName}`
           : `${fullName}, MSc Eng.`;
 
-      case AcademicDegree.DoctorInEngineering:
+      case 'DoctorInEngineering':
         return locale === 'pl' ? `dr inż. ${fullName}` : `${fullName}, PhD`;
 
-      case AcademicDegree.HabilitatedDoctorInEngineering:
+      case 'HabilitatedDoctorInEngineering':
         return locale === 'pl'
           ? `dr hab. inż. ${fullName}`
           : `${fullName}, Dr. hab.`;
 
-      case AcademicDegree.UniversityProfessor:
-      case AcademicDegree.Professor:
+      case 'UniversityProfessor':
+      case 'Professor':
         return locale === 'pl' ? `prof. ${fullName}` : `Prof. ${fullName}`;
 
       default:

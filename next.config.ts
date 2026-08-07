@@ -1,6 +1,12 @@
+import { withPayload } from '@payloadcms/next/withPayload';
 import createNextIntlPlugin from 'next-intl/plugin';
 
 import type { NextConfig } from 'next';
+
+const blobStoreId: string =
+  process.env.BLOB_STORE_ID == null
+    ? '*'
+    : process.env.BLOB_STORE_ID.replace('store_', '').toLowerCase();
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
@@ -9,25 +15,24 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '*.public.blob.vercel-storage.com',
-        pathname: '/images/**'
+        hostname: blobStoreId + '.public.blob.vercel-storage.com',
       },
-      {
-        protocol: 'http',
-        hostname: 'nginx',
-        pathname: '/images/**'
-      },
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-        pathname: '/images/**'
-      }
+      // {
+      //   protocol: 'http',
+      //   hostname: 'nginx',
+      //   pathname: '/images/**',
+      // },
+      // {
+      //   protocol: 'http',
+      //   hostname: 'localhost',
+      //   pathname: '/images/**',
+      // },
     ],
     dangerouslyAllowLocalIP:
-      process.env.NEXT_IMAGES_DANGEROUSLY_ALLOW_LOCAL_IP === 'true'
-  }
+      process.env.NEXT_IMAGES_DANGEROUSLY_ALLOW_LOCAL_IP === 'true',
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();
 
-export default withNextIntl(nextConfig);
+export default withPayload(withNextIntl(nextConfig));

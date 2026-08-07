@@ -7,5 +7,5 @@ export enum CacheName {
   Project = 'project',
   Projects = 'projects',
   Publications = 'publications',
-  Skills = 'skills'
+  Skills = 'skills',
 }

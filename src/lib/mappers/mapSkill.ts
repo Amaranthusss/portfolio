@@ -1,10 +1,11 @@
-import { mapTranslation } from './mapTranslation';
-
-import type { SkillWithTranslations } from '@/models/skillWithTranslations';
 import type { SkillDTO } from '@/models/skillDto';
+import type { Skill } from '../../../payload-types';
 
-export function mapSkill(skill: SkillWithTranslations): SkillDTO {
-  const { name, shortName } = mapTranslation(skill.translations, skill.key);
-
-  return { id: skill.id, key: skill.key, name, shortName };
+export function mapSkill(skill: Skill): SkillDTO {
+  return {
+    id: skill.id,
+    key: skill.key,
+    name: skill.name,
+    shortName: skill.shortName ?? undefined,
+  };
 }

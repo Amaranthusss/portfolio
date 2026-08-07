@@ -1,24 +1,59 @@
-import { parsePortableContent } from '../parsePortableContent';
 import { mapSkill } from './mapSkill';
 
-import type { ProjectWithRelations } from '@/models/projectWithRelations';
+import type { DefaultTypedEditorState } from '@payloadcms/richtext-lexical';
+import type { Project, Skill } from '../../../payload-types';
 import type { ProjectDTO } from '@/models/projectDto';
 
-export function mapProject(project: ProjectWithRelations): ProjectDTO {
-  const translation = project.translations[0] ?? { name: project.slug };
-
+export function mapProject(project: Project): ProjectDTO {
   return {
     id: project.id,
     slug: project.slug,
-    content: parsePortableContent(translation.content),
     category: project.category,
     startDate:
       project.startDate != null ? new Date(project.startDate) : undefined,
     endDate: project.endDate != null ? new Date(project.endDate) : undefined,
-    isCurrent: project.isCurrent,
-    name: translation.name,
-    subname: translation.subname ?? undefined,
-    description: translation.description ?? undefined,
-    skills: project.skills.map((ps) => mapSkill(ps.skill))
+    isCurrent: project.isCurrent ?? false,
+    name: project.name,
+    subname: project.subname ?? undefined,
+    description: project.description ?? undefined,
+    content: parseLexicalContent(project.content),
+    skills: project.skills?.filter(isPopulatedSkill).map(mapSkill) ?? [],
   };
+}
+
+function parseLexicalContent(
+  content: Project['content']
+): DefaultTypedEditorState {
+  if (!content || typeof content !== 'object' || Array.isArray(content)) {
+    return createEmptyEditorState();
+  }
+
+  if (
+    !('root' in content) ||
+    !content.root ||
+    typeof content.root !== 'object'
+  ) {
+    return createEmptyEditorState();
+  }
+
+  return content as DefaultTypedEditorState;
+}
+
+function createEmptyEditorState(): DefaultTypedEditorState {
+  return {
+    root: {
+      type: 'root',
+      children: [],
+      direction: null,
+      format: '',
+      indent: 0,
+      version: 1,
+    },
+  };
+}
+
+function isPopulatedSkill(
+  skill: number | Skill | null | undefined
+): skill is Skill {
+  return typeof skill !== 'number' && skill !== null && skill !== undefined;
 }

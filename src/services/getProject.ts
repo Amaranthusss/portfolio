@@ -1,38 +1,46 @@
 'use server';
 import { unstable_cache } from 'next/cache';
+import { getPayload } from 'payload';
 import { mapProject } from '@/lib/mappers/mapProject';
-import prisma from '@/lib/prisma';
 
+import type { BasePayload } from 'payload';
 import type { ProjectDTO } from '@/models/projectDto';
-import type { Locale } from '@/generated/prisma';
+import type { Project } from '../../payload-types';
+import type { Locale } from '@/i18n/locale';
 
-import { CacheName } from '@/constants/CacheName';
+import { defaultLocale } from '@/i18n/locale';
+import config from '@payload-config';
+
+const getProjectFromPayload = unstable_cache(
+  async (slug: string, locale: Locale): Promise<ProjectDTO | null> => {
+    const payload: BasePayload = await getPayload({ config });
+
+    const result = await payload.find({
+      collection: 'projects',
+      where: {
+        slug: {
+          equals: slug,
+        },
+      },
+      locale,
+      fallbackLocale: defaultLocale,
+      depth: 2,
+      limit: 1,
+    });
+
+    const project: Project | undefined = result.docs[0];
+
+    return project != null ? mapProject(project) : null;
+  },
+  ['project'],
+  {
+    revalidate: false,
+  }
+);
 
 export const getProject = async (
   slug: string,
   locale: Locale
 ): Promise<ProjectDTO | null> => {
-  const db = await unstable_cache(
-    async () => {
-      return prisma.project.findFirst({
-        where: { slug },
-        include: {
-          translations: { where: { locale }, take: 1 },
-          skills: {
-            include: {
-              skill: {
-                include: {
-                  translations: { where: { locale }, take: 1 }
-                }
-              }
-            }
-          }
-        }
-      });
-    },
-    [CacheName.Project, locale, slug],
-    { revalidate: false }
-  )();
-
-  return db != null ? mapProject(db) : null;
+  return getProjectFromPayload(slug, locale);
 };

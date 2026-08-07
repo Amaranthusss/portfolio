@@ -1,25 +1,49 @@
 import { mapSkill } from './mapSkill';
 
-import type { PublicationWithRelations } from '@/models/publicationWithRelations';
+import type { Publication, Person, Skill } from '../../../payload-types';
 import type { PublicationDTO } from '@/models/publicationDto';
 
-export function mapPublication(pub: PublicationWithRelations): PublicationDTO {
-  const translation = pub.translations[0] ?? {};
-
+export function mapPublication(publication: Publication): PublicationDTO {
   return {
-    id: pub.id,
-    slug: pub.slug,
-    publishDate: new Date(pub.publishDate),
-    url: pub.url,
-    title: translation.title,
-    description: translation.description,
-    keywords: translation.keywords,
-    publisher: translation.publisher,
-    skills: pub.skills.map((cs) => mapSkill(cs.skill)),
-    authors: pub.authors.map((a) => ({
-      ...a.person,
-      academicDegree: a.person.academicDegree ?? undefined,
-      publicationId: a.publicationId
-    }))
+    id: publication.id,
+    slug: publication.slug,
+    publishDate: new Date(publication.publishDate),
+    url: publication.url,
+    title: publication.title ?? '',
+    description: publication.description ?? '',
+    publisher: publication.publisher ?? '',
+
+    keywords:
+      publication.keywords?.filter(isPopulatedKeyword).map((k) => k.value) ??
+      [],
+
+    authors:
+      publication.authors?.filter(isPopulatedPerson).map((person) => ({
+        id: person.id,
+        name: person.name,
+        surname: person.surname,
+        publicationId: publication.id,
+        academicDegree: person.academicDegree ?? undefined,
+      })) ?? [],
+
+    skills: publication.skills?.filter(isPopulatedSkill).map(mapSkill) ?? [],
   };
+}
+
+function isPopulatedKeyword(
+  keyword: NonNullable<Publication['keywords']>[number]
+): keyword is { value: string } {
+  return keyword != null;
+}
+
+function isPopulatedPerson(
+  person: number | Person | null | undefined
+): person is Person {
+  return typeof person !== 'number' && person !== null && person !== undefined;
+}
+
+function isPopulatedSkill(
+  skill: number | Skill | null | undefined
+): skill is Skill {
+  return typeof skill !== 'number' && skill !== null && skill !== undefined;
 }

@@ -9,6 +9,7 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
+# TODO Projekt został przeniesiony z Prisma na Payload
 # Kopiujemy wszystko potrzebne do migracji i seedów
 COPY prisma ./prisma
 COPY prisma.config.ts ./prisma.config.ts

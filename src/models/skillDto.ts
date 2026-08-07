@@ -1,4 +1,4 @@
-import type { SkillKey } from '@/generated/prisma';
+import type { SkillKey } from './skillKey';
 
 export interface SkillDTO {
   id: number;

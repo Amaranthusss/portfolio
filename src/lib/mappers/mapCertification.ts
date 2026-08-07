@@ -1,44 +1,57 @@
-import { getPublicImageUrlFromStorageKey } from '../storage';
 import { mapSkill } from './mapSkill';
 
-import type { CertificationWithRelations } from '@/models/certificationWithRelations';
+import type { Certification, Skill } from '../../../payload-types';
 import type { CertificationDTO } from '@/models/certificationDto';
-import type { ImageFileDTO } from '@/models/imageFileDto';
+import type { MediaDTO } from '@/models/mediaDTO';
+import type { SkillDTO } from '@/models/skillDto';
 
 export function mapCertification(
-  cert: CertificationWithRelations
+  certification: Certification
 ): CertificationDTO {
-  const translation = cert.translations[0] ?? {};
-
-  const image: ImageFileDTO =
-    cert.imageFile != null
+  const image: MediaDTO =
+    certification.image && typeof certification.image !== 'number'
       ? {
-          fileName: cert.imageFile.fileName,
-          extension: cert.imageFile.extension,
-          id: cert.imageFile.id,
-          mimeType: cert.imageFile.mimeType,
-          url: getPublicImageUrlFromStorageKey(cert.imageFile.storageKey),
-          size: cert.imageFile.size,
+          id: certification.image.id,
+          fileName: certification.image.filename ?? '',
+          extension: getFileExtension(certification.image.filename ?? ''),
+          mimeType: certification.image.mimeType ?? 'application/octet-stream',
+          size: certification.image.filesize ?? 0,
+          url: certification.image.url ?? '/images/unknown.png',
         }
       : {
           id: -1,
           size: 22033,
           extension: '.png',
-          fileName: 'images/unknown.png',
+          fileName: 'unknown.png',
           mimeType: 'image/png',
-          url: getPublicImageUrlFromStorageKey('images/unknown.png'),
+          url: '/images/unknown.png',
         };
 
+  const skills: SkillDTO[] =
+    certification.skills?.filter(isPopulatedSkill).map(mapSkill) ?? [];
+
   return {
+    id: certification.id,
+    slug: certification.slug,
+    credentialID: certification.credentialID ?? undefined,
+    issueDate: new Date(certification.issueDate),
+    url: certification.url ?? undefined,
+    title: certification.title,
+    description: certification.description ?? '',
+    provider: certification.provider ?? '',
+    skills,
     image,
-    id: cert.id,
-    slug: cert.slug,
-    credentialID: cert.credentialID ?? undefined,
-    issueDate: new Date(cert.issueDate),
-    url: cert.url ?? undefined,
-    title: translation.title,
-    description: translation.description ?? '',
-    provider: translation.provider ?? '',
-    skills: cert.skills.map((cs) => mapSkill(cs.skill)),
   };
+}
+
+function isPopulatedSkill(
+  skill: number | Skill | null | undefined
+): skill is Skill {
+  return typeof skill !== 'number' && skill !== null && skill !== undefined;
+}
+
+function getFileExtension(filename: string): string {
+  const index = filename.lastIndexOf('.');
+
+  return index >= 0 ? filename.slice(index) : '';
 }
