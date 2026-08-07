@@ -40,8 +40,8 @@ export default buildConfig({
   sharp: sharp as SharpDependency,
   plugins: [
     vercelBlobStorage({
-      enabled: process.env.VERCEL_BLOB_ENABLED === 'true',
-      collections: { media: true },
+      enabled: true,
+      collections: { media: { disablePayloadAccessControl: true } },
       token: process.env.BLOB_READ_WRITE_TOKEN,
     }),
   ],

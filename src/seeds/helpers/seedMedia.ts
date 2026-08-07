@@ -4,8 +4,8 @@ import type { Media } from '../../../payload-types';
 import { mediaFiles } from '../constants/media';
 
 export async function seedMedia(payload: BasePayload): Promise<void> {
+  console.log('== Seeding media ==');
   let i: number = 1;
-  console.log(`[${i++}] Seeding media`);
 
   for (const media of mediaFiles) {
     const existing: PaginatedDocs<Media> = await payload.find({
@@ -20,7 +20,7 @@ export async function seedMedia(payload: BasePayload): Promise<void> {
     });
 
     if (existing.docs.length > 0) {
-      console.log(`✓ Media already exists: ${media.filename}`);
+      console.log(`[${i++}] ✓ Media already exists: ${media.filename}`);
       continue;
     }
 
@@ -33,5 +33,5 @@ export async function seedMedia(payload: BasePayload): Promise<void> {
     console.log(`[${i++}] Media created: ${media.filename}`);
   }
 
-  console.log(`[${i++}] Media seeding finished`);
+  console.log(`[${i++}] Media seeding completed`);
 }

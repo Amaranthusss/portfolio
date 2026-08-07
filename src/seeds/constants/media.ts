@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const IMAGES_DIR: string = path.resolve(process.cwd(), 'media');
+const IMAGES_DIR: string = path.resolve(process.cwd(), 'uploads');
 
 export const mediaFiles = fs
   .readdirSync(IMAGES_DIR)

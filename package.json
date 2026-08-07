@@ -8,13 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "payload": "payload",
-    "payload:seed": "payload run src/seeds/_run.ts",
-    "payload:seed:diag": "pnpm payload:seed -- --mode=diagnostics",
-    "payload:migrate": "payload migrate",
-    "payload:migrate:create": "payload migrate:create",
-    "payload:migrate:status": "payload migrate:status",
-    "payload:generate:types": "payload generate:types"
+    "seed": "payload run src/seeds/_run.ts",
+    "migrate": "payload migrate:create",
+    "reset-db": "pnpm payload migrate:fresh",
+    "generate": "payload generate:types"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.87.0",

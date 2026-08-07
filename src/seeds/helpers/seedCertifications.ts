@@ -7,6 +7,9 @@ import type { PaginatedDocs, Payload } from 'payload';
 import { certifications } from '../constants/certifications';
 
 export async function seedCertifications(payload: Payload): Promise<void> {
+  console.log('== Seeding certifications ==');
+  let i: number = 1;
+
   for (const certification of certifications) {
     const mediaId: Media['id'] = await getMediaId(payload, certification.image);
 
@@ -26,9 +29,11 @@ export async function seedCertifications(payload: Payload): Promise<void> {
       depth: 0,
     });
 
+    const isExisting: boolean = existing.docs[0] != null;
+
     let certificationId: Certification['id'];
 
-    if (existing.docs[0]) {
+    if (isExisting) {
       certificationId = existing.docs[0].id;
 
       await payload.update({
@@ -78,6 +83,8 @@ export async function seedCertifications(payload: Payload): Promise<void> {
       },
     });
 
-    console.log(`✓ Certification: ${certification.slug}`);
+    console.log(`[${i++}] ✓ ${isExisting ? 'Updated' : 'Created'} certification: ${certification.slug}`);
   }
+
+  console.log(`[${i++}] Seeding certifications completed`);
 }
