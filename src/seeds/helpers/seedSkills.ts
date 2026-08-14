@@ -95,11 +95,6 @@ export async function seedSkills(payload: BasePayload): Promise<void> {
   let i: number = 1;
 
   console.log(`== Seeding skills ==`);
-
-  for (const skill of skills) {
-    await seedSkill(payload, skill, i);
-    i = i + 1;
-  }
-
+  for (const skill of skills) await seedSkill(payload, skill, i++);
   console.log(`[${i++}] Seeding skills completed`);
 }

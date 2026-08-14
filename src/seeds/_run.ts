@@ -1,4 +1,5 @@
 import { seedCertifications } from './helpers/seedCertifications';
+import { seedProfiles } from './helpers/seedProfiles';
 import { getPayload } from 'payload';
 import { seedSkills } from './helpers/seedSkills';
 import { seedMedia } from './helpers/seedMedia';
@@ -11,6 +12,7 @@ async function seed(): Promise<void> {
   const payload = await getPayload({ config });
 
   await seedSkills(payload);
+  await seedProfiles(payload);
   await seedMedia(payload);
   await seedCertifications(payload);
 

@@ -14,7 +14,7 @@ export function SearchElement({
   slug,
   text,
   route,
-  onNavigate
+  onNavigate,
 }: SearchElementProps): React.ReactNode {
   const href: string = route + '#' + slug;
   const navigateToTimeout = 8000;

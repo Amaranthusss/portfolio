@@ -1,4 +1,5 @@
 import type { CertificationSlug } from '../constants/certificationSlug';
+import type { Locale } from '@/i18n/locale';
 import type { Skill } from '../../../payload-types';
 
 export interface CertificationSeed {
@@ -10,13 +11,7 @@ export interface CertificationSeed {
   skills: Skill['key'][];
 
   translations: {
-    pl: {
-      title: string;
-      provider?: string;
-      description?: string;
-    };
-
-    en: {
+    [locale in Locale]: {
       title: string;
       provider?: string;
       description?: string;

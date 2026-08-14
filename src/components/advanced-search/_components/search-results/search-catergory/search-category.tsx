@@ -14,7 +14,7 @@ export function SearchCategory<DtoItem extends object>({
   keyExpr,
   textExpr,
   slugExpr,
-  onNavigate
+  onNavigate,
 }: SearchCategoryProps<DtoItem>): React.ReactNode {
   if (data.length === 0) return;
 

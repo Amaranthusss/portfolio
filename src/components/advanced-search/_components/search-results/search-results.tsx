@@ -18,7 +18,7 @@ import styles from './search-results.module.scss';
 
 export function SearchResults({
   results,
-  onNavigate
+  onNavigate,
 }: SearchResultsProps): React.ReactNode {
   const t = useTranslations('common.advanced-search');
   const { cn } = useClassName();

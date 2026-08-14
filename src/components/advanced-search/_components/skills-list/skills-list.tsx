@@ -13,7 +13,7 @@ export function SkillsList({
   skills,
   className,
   selectedSkillKeys,
-  onToggleSkill
+  onToggleSkill,
 }: SkillsListProps): React.ReactNode {
   const t = useTranslations('common.advanced-search');
 

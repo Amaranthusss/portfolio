@@ -14,6 +14,6 @@ export const mediaFiles = fs
   .map((filename: string) => {
     return {
       filename,
-      filePath: path.join(IMAGES_DIR, filename)
+      filePath: path.join(IMAGES_DIR, filename),
     };
   });

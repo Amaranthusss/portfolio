@@ -13,7 +13,7 @@ export async function AdvancedSearch(): Promise<React.ReactNode> {
 
   const [profiles, skills]: [ProfileDTO[], SkillDTO[]] = await Promise.all([
     getProfiles(locale),
-    getSkills(locale)
+    getSkills(locale),
   ]);
 
   return <AdvancedSearchClient skills={skills} profiles={profiles} />;

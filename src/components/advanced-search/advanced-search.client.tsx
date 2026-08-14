@@ -18,7 +18,7 @@ import styles from './advanced-search.client.module.scss';
 
 export function AdvancedSearchClient({
   skills,
-  profiles
+  profiles,
 }: AdvancedSearchClientProps): React.ReactNode {
   const t = useTranslations('common.advanced-search');
   const modalRef = useRef<ModalHandle>(null);
@@ -30,7 +30,7 @@ export function AdvancedSearchClient({
     onToggleProfile,
     isActiveProfile,
     selectedSkillKeys,
-    isActiveExactProfile
+    isActiveExactProfile,
   } = useFindBySkills();
 
   const { closeOnNavigate, onNavigate, onToggleCloseOnNavigate } =

@@ -83,7 +83,9 @@ export async function seedCertifications(payload: Payload): Promise<void> {
       },
     });
 
-    console.log(`[${i++}] ✓ ${isExisting ? 'Updated' : 'Created'} certification: ${certification.slug}`);
+    console.log(
+      `[${i++}] ✓ ${isExisting ? 'Updated' : 'Created'} certification: ${certification.slug}`
+    );
   }
 
   console.log(`[${i++}] Seeding certifications completed`);

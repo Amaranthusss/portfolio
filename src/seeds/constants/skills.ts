@@ -18,731 +18,731 @@ export const skills: SkillSeed[] = [
         name: 'Wózek samojezdny AGV',
         shortName: 'AGV',
         description:
-          'Pojazd bezzałogowy sterowany za pomocą odpowiednich układów nawigacji bez potrzeby bezpośredniej obsługi operatora'
+          'Pojazd bezzałogowy sterowany za pomocą odpowiednich układów nawigacji bez potrzeby bezpośredniej obsługi operatora',
       },
       en: {
         name: 'Automated guided vehicle',
         shortName: 'AGV',
         description:
-          'Portable robot that, unlike an autonomous mobile robot (AMR), follows along marked long lines or wires on the floor, or uses radio waves, vision cameras, magnets, or lasers for navigation'
-      }
-    }
+          'Portable robot that, unlike an autonomous mobile robot (AMR), follows along marked long lines or wires on the floor, or uses radio waves, vision cameras, magnets, or lasers for navigation',
+      },
+    },
   },
   {
     key: 'AI',
     translations: {
       pl: {
         name: 'Sztuczna inteligencja',
-        shortName: 'AI'
+        shortName: 'AI',
       },
       en: {
         name: 'Artificial intelligence',
-        shortName: 'AI'
-      }
-    }
+        shortName: 'AI',
+      },
+    },
   },
   {
     key: 'AWS',
     translations: {
       pl: {
         name: 'Amazon Web Services',
-        shortName: 'AWS'
+        shortName: 'AWS',
       },
       en: {
         name: 'Amazon Web Services',
-        shortName: 'AWS'
-      }
-    }
+        shortName: 'AWS',
+      },
+    },
   },
   {
     key: 'Angular',
     translations: {
       pl: {
-        name: 'Angular'
+        name: 'Angular',
       },
       en: {
-        name: 'Angular'
-      }
-    }
+        name: 'Angular',
+      },
+    },
   },
   {
     key: 'AntDBlazor',
     translations: {
       pl: {
         name: 'Ant Design (Blazor)',
-        shortName: 'AntD Blazor'
+        shortName: 'AntD Blazor',
       },
       en: {
         name: 'Ant Design (Blazor)',
-        shortName: 'AntD Blazor'
-      }
-    }
+        shortName: 'AntD Blazor',
+      },
+    },
   },
   {
     key: 'AntDReact',
     translations: {
       pl: {
         name: 'Ant Design (React)',
-        shortName: 'AntD React'
+        shortName: 'AntD React',
       },
       en: {
         name: 'Ant Design (React)',
-        shortName: 'AntD React'
-      }
-    }
+        shortName: 'AntD React',
+      },
+    },
   },
   {
     key: 'Blazor',
     translations: {
       pl: {
-        name: 'Blazor'
+        name: 'Blazor',
       },
       en: {
-        name: 'Blazor'
-      }
-    }
+        name: 'Blazor',
+      },
+    },
   },
   {
     key: 'Bootstrap',
     translations: {
       pl: {
-        name: 'Bootstrap'
+        name: 'Bootstrap',
       },
       en: {
-        name: 'Bootstrap'
-      }
-    }
+        name: 'Bootstrap',
+      },
+    },
   },
   {
     key: 'CADCAM',
     translations: {
       pl: {
-        name: 'CADCAM'
+        name: 'CADCAM',
       },
       en: {
-        name: 'CADCAM'
-      }
-    }
+        name: 'CADCAM',
+      },
+    },
   },
   {
     key: 'CPlusPlus',
     translations: {
       pl: {
-        name: 'C++'
+        name: 'C++',
       },
       en: {
-        name: 'C++'
-      }
-    }
+        name: 'C++',
+      },
+    },
   },
   {
     key: 'CRA',
     translations: {
       pl: {
         name: 'Create React App',
-        shortName: 'CRA'
+        shortName: 'CRA',
       },
       en: {
         name: 'Create React App',
-        shortName: 'CRA'
-      }
-    }
+        shortName: 'CRA',
+      },
+    },
   },
   {
     key: 'CSharp',
     translations: {
       pl: {
-        name: 'C#'
+        name: 'C#',
       },
       en: {
-        name: 'C#'
-      }
-    }
+        name: 'C#',
+      },
+    },
   },
   {
     key: 'CommunicationTCPIP',
     translations: {
       pl: {
         name: 'Model TCP/IP',
-        shortName: 'TCP/IP'
+        shortName: 'TCP/IP',
       },
       en: {
         name: 'Internet protocol suite',
-        shortName: 'TCP/IP'
-      }
-    }
+        shortName: 'TCP/IP',
+      },
+    },
   },
   {
     key: 'DevExtremeAngular',
     translations: {
       pl: {
         name: 'DevExtreme Angular',
-        shortName: 'DevEx Angular'
+        shortName: 'DevEx Angular',
       },
       en: {
         name: 'DevExtreme Angular',
-        shortName: 'DevEx Angular'
-      }
-    }
+        shortName: 'DevEx Angular',
+      },
+    },
   },
   {
     key: 'DevExtremeReact',
     translations: {
       pl: {
         name: 'DevExtreme React',
-        shortName: 'DevEx React'
+        shortName: 'DevEx React',
       },
       en: {
         name: 'DevExtreme React',
-        shortName: 'DevEx React'
-      }
-    }
+        shortName: 'DevEx React',
+      },
+    },
   },
   {
     key: 'Docker',
     translations: {
       pl: {
-        name: 'Docker'
+        name: 'Docker',
       },
       en: {
-        name: 'Docker'
-      }
-    }
+        name: 'Docker',
+      },
+    },
   },
   {
     key: 'DotNet',
     translations: {
       pl: {
-        name: '.NET'
+        name: '.NET',
       },
       en: {
-        name: '.NET'
-      }
-    }
+        name: '.NET',
+      },
+    },
   },
   {
     key: 'Documentation',
     translations: {
       pl: {
-        name: 'Dokumentacja'
+        name: 'Dokumentacja',
       },
       en: {
-        name: 'Documentation'
-      }
-    }
+        name: 'Documentation',
+      },
+    },
   },
   {
     key: 'Eagle',
     translations: {
       pl: {
         name: 'Autodesk Eagle',
-        shortName: 'Eagle'
+        shortName: 'Eagle',
       },
       en: {
         name: 'Autodesk Eagle',
-        shortName: 'Eagle'
-      }
-    }
+        shortName: 'Eagle',
+      },
+    },
   },
   {
     key: 'ExpressJS',
     translations: {
       pl: {
-        name: 'Express.js'
+        name: 'Express.js',
       },
       en: {
-        name: 'Express.js'
-      }
-    }
+        name: 'Express.js',
+      },
+    },
   },
   {
     key: 'FactoryIO',
     translations: {
       pl: {
         name: 'Factory I/O',
-        shortName: 'FactoryIO'
+        shortName: 'FactoryIO',
       },
       en: {
         name: 'Factory I/O',
-        shortName: 'FactoryIO'
-      }
-    }
+        shortName: 'FactoryIO',
+      },
+    },
   },
   {
     key: 'Fanuc',
     translations: {
       pl: {
-        name: 'Fanuc'
+        name: 'Fanuc',
       },
       en: {
-        name: 'Fanuc'
-      }
-    }
+        name: 'Fanuc',
+      },
+    },
   },
   {
     key: 'Fusion360',
     translations: {
       pl: {
         name: 'Autodesk Fusion 360',
-        shortName: 'Fusion'
+        shortName: 'Fusion',
       },
       en: {
         name: 'Autodesk Fusion 360',
-        shortName: 'Fusion'
-      }
-    }
+        shortName: 'Fusion',
+      },
+    },
   },
   {
     key: 'GCP',
     translations: {
       pl: {
         name: 'Google Cloud Platform',
-        shortName: 'GCP'
+        shortName: 'GCP',
       },
       en: {
         name: 'Google Cloud Platform',
-        shortName: 'GCP'
-      }
-    }
+        shortName: 'GCP',
+      },
+    },
   },
   {
     key: 'GRPC',
     translations: {
       pl: {
         name: 'gRPC Remote Procedure Calls',
-        shortName: 'gRPC'
+        shortName: 'gRPC',
       },
       en: {
         name: 'gRPC Remote Procedure Calls',
-        shortName: 'gRPC'
-      }
-    }
+        shortName: 'gRPC',
+      },
+    },
   },
   {
     key: 'GraphQL',
     translations: {
       pl: {
-        name: 'GraphQL'
+        name: 'GraphQL',
       },
       en: {
-        name: 'GraphQL'
-      }
-    }
+        name: 'GraphQL',
+      },
+    },
   },
   {
     key: 'IQRF',
     translations: {
       pl: {
-        name: 'IQRF'
+        name: 'IQRF',
       },
       en: {
-        name: 'IQRF'
-      }
-    }
+        name: 'IQRF',
+      },
+    },
   },
   {
     key: 'J5',
     translations: {
       pl: {
         name: 'Johnny Five',
-        shortName: 'J5'
+        shortName: 'J5',
       },
       en: {
         name: 'Johnny Five',
-        shortName: 'J5'
-      }
-    }
+        shortName: 'J5',
+      },
+    },
   },
   {
     key: 'Java',
     translations: {
       pl: {
-        name: 'Java'
+        name: 'Java',
       },
       en: {
-        name: 'Java'
-      }
-    }
+        name: 'Java',
+      },
+    },
   },
   {
     key: 'Kuka',
     translations: {
       pl: {
-        name: 'Kuka'
+        name: 'Kuka',
       },
       en: {
-        name: 'Kuka'
-      }
-    }
+        name: 'Kuka',
+      },
+    },
   },
   {
     key: 'LAD',
     translations: {
       pl: {
         name: 'Język drabinkowy LAD',
-        shortName: 'LAD'
+        shortName: 'LAD',
       },
       en: {
         name: 'Ladder Logic',
-        shortName: 'LAD'
-      }
-    }
+        shortName: 'LAD',
+      },
+    },
   },
   {
     key: 'LabView',
     translations: {
       pl: {
-        name: 'LabView'
+        name: 'LabView',
       },
       en: {
-        name: 'LabView'
-      }
-    }
+        name: 'LabView',
+      },
+    },
   },
   {
     key: 'Leaflet',
     translations: {
       pl: {
-        name: 'Leaflet'
+        name: 'Leaflet',
       },
       en: {
-        name: 'Leaflet'
-      }
-    }
+        name: 'Leaflet',
+      },
+    },
   },
   {
     key: 'Linux',
     translations: {
       pl: {
-        name: 'Linux'
+        name: 'Linux',
       },
       en: {
-        name: 'Linux'
-      }
-    }
+        name: 'Linux',
+      },
+    },
   },
   {
     key: 'MMF2Dev',
     translations: {
       pl: {
         name: 'Multimedia Fusion Developer 2',
-        shortName: 'MMF2 Dev'
+        shortName: 'MMF2 Dev',
       },
       en: {
         name: 'Multimedia Fusion Developer 2',
-        shortName: 'MMF2 Dev'
-      }
-    }
+        shortName: 'MMF2 Dev',
+      },
+    },
   },
   {
     key: 'MaterialUI',
     translations: {
       pl: {
-        name: 'Material UI'
+        name: 'Material UI',
       },
       en: {
-        name: 'Material UI'
-      }
-    }
+        name: 'Material UI',
+      },
+    },
   },
   {
     key: 'Microservices',
     translations: {
       pl: {
-        name: 'Mikroserwisy'
+        name: 'Mikroserwisy',
       },
       en: {
-        name: 'Microservices'
-      }
-    }
+        name: 'Microservices',
+      },
+    },
   },
   {
     key: 'ModbusProtocol',
     translations: {
       pl: {
         name: 'Protokół MODBUS',
-        shortName: 'MODBUS'
+        shortName: 'MODBUS',
       },
       en: {
         name: 'MODBUS protocol',
-        shortName: 'MODBUS'
-      }
-    }
+        shortName: 'MODBUS',
+      },
+    },
   },
   {
     key: 'MongoDB',
     translations: {
       pl: {
-        name: 'MongoDB'
+        name: 'MongoDB',
       },
       en: {
-        name: 'MongoDB'
-      }
-    }
+        name: 'MongoDB',
+      },
+    },
   },
   {
     key: 'NestJS',
     translations: {
       pl: {
-        name: 'Nest.js'
+        name: 'Nest.js',
       },
       en: {
-        name: 'Nest.js'
-      }
-    }
+        name: 'Nest.js',
+      },
+    },
   },
   {
     key: 'NextJS',
     translations: {
       pl: {
-        name: 'Next.js'
+        name: 'Next.js',
       },
       en: {
-        name: 'Next.js'
-      }
-    }
+        name: 'Next.js',
+      },
+    },
   },
   {
     key: 'NodeJS',
     translations: {
       pl: {
-        name: 'Node.js'
+        name: 'Node.js',
       },
       en: {
-        name: 'Node.js'
-      }
-    }
+        name: 'Node.js',
+      },
+    },
   },
   {
     key: 'PLCProgramming',
     translations: {
       pl: {
         name: 'Programowanie PLC',
-        shortName: 'PLC'
+        shortName: 'PLC',
       },
       en: {
         name: 'PLC programming',
-        shortName: 'PLC'
-      }
-    }
+        shortName: 'PLC',
+      },
+    },
   },
   {
     key: 'PdfMake',
     translations: {
       pl: {
-        name: 'PdfMake'
+        name: 'PdfMake',
       },
       en: {
-        name: 'PdfMake'
-      }
-    }
+        name: 'PdfMake',
+      },
+    },
   },
   {
     key: 'PostgreSQL',
     translations: {
       pl: {
-        name: 'PostgreSQL'
+        name: 'PostgreSQL',
       },
       en: {
-        name: 'PostgreSQL'
-      }
-    }
+        name: 'PostgreSQL',
+      },
+    },
   },
   {
     key: 'Print3D',
     translations: {
       pl: {
-        name: 'Druk 3D'
+        name: 'Druk 3D',
       },
       en: {
-        name: '3D printing'
-      }
-    }
+        name: '3D printing',
+      },
+    },
   },
   {
     key: 'Python',
     translations: {
       pl: {
-        name: 'Python'
+        name: 'Python',
       },
       en: {
-        name: 'Python'
-      }
-    }
+        name: 'Python',
+      },
+    },
   },
   {
     key: 'ReactJS',
     translations: {
       pl: {
-        name: 'React.js'
+        name: 'React.js',
       },
       en: {
-        name: 'React.js'
-      }
-    }
+        name: 'React.js',
+      },
+    },
   },
   {
     key: 'Redux',
     translations: {
       pl: {
-        name: 'Redux'
+        name: 'Redux',
       },
       en: {
-        name: 'Redux'
-      }
-    }
+        name: 'Redux',
+      },
+    },
   },
   {
     key: 'SCL',
     translations: {
       pl: {
-        name: 'SCL'
+        name: 'SCL',
       },
       en: {
-        name: 'SCL'
-      }
-    }
+        name: 'SCL',
+      },
+    },
   },
   {
     key: 'SQLite',
     translations: {
       pl: {
-        name: 'SQLite'
+        name: 'SQLite',
       },
       en: {
-        name: 'SQLite'
-      }
-    }
+        name: 'SQLite',
+      },
+    },
   },
   {
     key: 'STL',
     translations: {
       pl: {
         name: 'Lista stanów (STL)',
-        shortName: 'STL'
+        shortName: 'STL',
       },
       en: {
         name: 'Statement List (STL)',
-        shortName: 'STL'
-      }
-    }
+        shortName: 'STL',
+      },
+    },
   },
   {
     key: 'Sanity',
     translations: {
       pl: {
         name: 'Sanity CMS',
-        shortName: 'Sanity'
+        shortName: 'Sanity',
       },
       en: {
         name: 'Sanity CMS',
-        shortName: 'Sanity'
-      }
-    }
+        shortName: 'Sanity',
+      },
+    },
   },
   {
     key: 'SalesSupport',
     translations: {
       pl: {
-        name: 'Sprzedaż'
+        name: 'Sprzedaż',
       },
       en: {
-        name: 'Sales support'
-      }
-    }
+        name: 'Sales support',
+      },
+    },
   },
   {
     key: 'TS',
     translations: {
       pl: {
         name: 'TypeScript',
-        shortName: 'TS'
+        shortName: 'TS',
       },
       en: {
         name: 'TypeScript',
-        shortName: 'TS'
-      }
-    }
+        shortName: 'TS',
+      },
+    },
   },
   {
     key: 'ThreeJS',
     translations: {
       pl: {
-        name: 'Three.js'
+        name: 'Three.js',
       },
       en: {
-        name: 'Three.js'
-      }
-    }
+        name: 'Three.js',
+      },
+    },
   },
   {
     key: 'TiaPortal',
     translations: {
       pl: {
         name: 'Siemens TIA Portal',
-        shortName: 'TIA Portal'
+        shortName: 'TIA Portal',
       },
       en: {
         name: 'Siemens TIA Portal',
-        shortName: 'TIA Portal'
-      }
-    }
+        shortName: 'TIA Portal',
+      },
+    },
   },
   {
     key: 'VPS',
     translations: {
       pl: {
         name: 'Prywatny wirtualny serwer (VPS)',
-        shortName: 'VPS'
+        shortName: 'VPS',
       },
       en: {
         name: 'Virtual private server (VPS)',
-        shortName: 'VPS'
-      }
-    }
+        shortName: 'VPS',
+      },
+    },
   },
   {
     key: 'Vite',
     translations: {
       pl: {
-        name: 'Vite'
+        name: 'Vite',
       },
       en: {
-        name: 'Vite'
-      }
-    }
+        name: 'Vite',
+      },
+    },
   },
   {
     key: 'YukaJS',
     translations: {
       pl: {
-        name: 'Yuka.js'
+        name: 'Yuka.js',
       },
       en: {
-        name: 'Yuka.js'
-      }
-    }
+        name: 'Yuka.js',
+      },
+    },
   },
   {
     key: 'Zod',
     translations: {
       pl: {
-        name: 'Zod'
+        name: 'Zod',
       },
       en: {
-        name: 'Zod'
-      }
-    }
+        name: 'Zod',
+      },
+    },
   },
   {
     key: 'Zustand',
     translations: {
       pl: {
-        name: 'Zustand'
+        name: 'Zustand',
       },
       en: {
-        name: 'Zustand'
-      }
-    }
-  }
+        name: 'Zustand',
+      },
+    },
+  },
 ];
