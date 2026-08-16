@@ -1,154 +1,130 @@
 'use server';
-
-import { unstable_cache } from 'next/cache';
-import { getPayload } from 'payload';
-import config from '@payload-config';
-
-import { mapCertification } from '@/lib/mappers/mapCertification';
-import { mapEducationStep } from '@/lib/mappers/mapEducationStep';
+import { getExperienceStepsCacheTag } from './cache/getExperienceStepsCacheTag';
+import { getCertificationsCacheTag } from './cache/getCertificationsCacheTag';
+import { getEducationStepsCacheTag } from './cache/getEducationStepsCacheTag';
+import { getPublicationsCacheTag } from './cache/getPublicationsCacheTag';
+import { getProjectsCacheTag } from './cache/getProjectsCacheTag';
 import { mapExperienceStep } from '@/lib/mappers/mapExperienceStep';
-import { mapProject } from '@/lib/mappers/mapProject';
+import { mapEducationStep } from '@/lib/mappers/mapEducationStep';
+import { mapCertification } from '@/lib/mappers/mapCertification';
 import { mapPublication } from '@/lib/mappers/mapPublication';
+import { unstable_cache } from 'next/cache';
+import { mapProject } from '@/lib/mappers/mapProject';
+import { getPayload } from 'payload';
 
 import type { SkillAggregateDto } from '@/models/skillAggregateDto';
+import type { BasePayload } from 'payload';
+import type { SkillKey } from '@/models/skillKey';
 import type { Locale } from '@/i18n/locale';
-import type { Skill } from '../../payload-types';
 
-export type SkillKey = Skill['key'];
-
-const getSkillAggregate = unstable_cache(
-  async (skillKeys: SkillKey[], locale: Locale): Promise<SkillAggregateDto> => {
-    const payload = await getPayload({ config });
-
-    /*
-     * Payload stores relationships as Skill document IDs,
-     * while the application searches by Skill.key.
-     *
-     * First resolve the requested keys to Skill IDs.
-     */
-    const skillsResult = await payload.find({
-      collection: 'skills',
-      where: {
-        key: {
-          in: skillKeys,
-        },
-      },
-      depth: 0,
-      pagination: false,
-    });
-
-    const skillIds = skillsResult.docs.map((skill) => skill.id);
-
-    if (skillIds.length === 0) {
-      return {
-        certifications: [],
-        publications: [],
-        experience: [],
-        education: [],
-        projects: [],
-      };
-    }
-
-    /*
-     * All collections use the same relationship:
-     *
-     * skills: hasMany relationship -> skills collection
-     *
-     * `in` means that at least one related Skill ID
-     * must be one of the requested IDs.
-     */
-    const [
-      certificationsResult,
-      projectsResult,
-      educationResult,
-      experienceResult,
-      publicationsResult,
-    ] = await Promise.all([
-      payload.find({
-        collection: 'certifications',
-        where: {
-          skills: {
-            in: skillIds,
-          },
-        },
-        locale,
-        fallbackLocale: 'en',
-        depth: 2,
-        pagination: false,
-      }),
-
-      payload.find({
-        collection: 'projects',
-        where: {
-          skills: {
-            in: skillIds,
-          },
-        },
-        locale,
-        fallbackLocale: 'en',
-        depth: 2,
-        pagination: false,
-      }),
-
-      payload.find({
-        collection: 'education-steps',
-        where: {
-          skills: {
-            in: skillIds,
-          },
-        },
-        locale,
-        fallbackLocale: 'en',
-        depth: 2,
-        pagination: false,
-      }),
-
-      payload.find({
-        collection: 'experience-steps',
-        where: {
-          skills: {
-            in: skillIds,
-          },
-        },
-        locale,
-        fallbackLocale: 'en',
-        depth: 2,
-        pagination: false,
-      }),
-
-      payload.find({
-        collection: 'publications',
-        where: {
-          skills: {
-            in: skillIds,
-          },
-        },
-        locale,
-        fallbackLocale: 'en',
-        depth: 2,
-        pagination: false,
-      }),
-    ]);
-
-    return {
-      certifications: certificationsResult.docs.map(mapCertification),
-      publications: publicationsResult.docs.map(mapPublication),
-      experience: experienceResult.docs.map(mapExperienceStep),
-      education: educationResult.docs.map(mapEducationStep),
-      projects: projectsResult.docs.map(mapProject),
-    };
-  },
-  ['skill-aggregates'],
-  {
-    revalidate: false,
-  }
-);
+import { defaultLocale } from '@/i18n/locale';
+import { CacheName } from '@/constants/CacheName';
+import config from '@payload-config';
 
 export const findBySkills = async (
   skillKeys: SkillKey[],
   locale: Locale
 ): Promise<SkillAggregateDto> => {
-  const normalizedSkillKeys = [...new Set(skillKeys)].sort();
+  const skillsCacheKey: string = [...skillKeys].sort().join('-');
 
-  return getSkillAggregate(normalizedSkillKeys, locale);
+  const aggregate: SkillAggregateDto = await unstable_cache(
+    async () => {
+      const payload: BasePayload = await getPayload({ config });
+
+      const [certifications, projects, education, experience, publications] =
+        await Promise.all([
+          payload.find({
+            collection: 'certifications',
+            where: { 'skills.key': { in: skillKeys } },
+            locale,
+            fallbackLocale: defaultLocale,
+            depth: 2,
+            pagination: false,
+          }),
+
+          payload.find({
+            collection: 'projects',
+            where: { 'skills.key': { in: skillKeys } },
+            locale,
+            fallbackLocale: defaultLocale,
+            depth: 2,
+            pagination: false,
+          }),
+
+          payload.find({
+            collection: 'education-steps',
+            where: { 'skills.key': { in: skillKeys } },
+            locale,
+            fallbackLocale: defaultLocale,
+            depth: 2,
+            pagination: false,
+          }),
+
+          payload.find({
+            collection: 'experience-steps',
+            where: { 'skills.key': { in: skillKeys } },
+            locale,
+            fallbackLocale: defaultLocale,
+            depth: 2,
+            pagination: false,
+          }),
+
+          payload.find({
+            collection: 'publications',
+            where: { 'skills.key': { in: skillKeys } },
+            locale,
+            fallbackLocale: defaultLocale,
+            depth: 2,
+            pagination: false,
+          }),
+        ]);
+
+      return {
+        certifications: certifications.docs.map(mapCertification),
+        publications: publications.docs.map(mapPublication),
+        experience: experience.docs.map(mapExperienceStep),
+        education: education.docs.map(mapEducationStep),
+        projects: projects.docs.map(mapProject),
+      };
+    },
+    [CacheName.SkillAggregates, locale, skillsCacheKey],
+    {
+      revalidate: false,
+      tags: [
+        getCertificationsCacheTag(locale),
+        getProjectsCacheTag(locale),
+        getEducationStepsCacheTag(locale),
+        getExperienceStepsCacheTag(locale),
+        getPublicationsCacheTag(locale),
+      ],
+    }
+  )();
+
+  return {
+    ...aggregate,
+    certifications: aggregate.certifications.map((certification) => ({
+      ...certification,
+      issueDate: new Date(certification.issueDate),
+    })),
+    publications: aggregate.publications.map((publication) => ({
+      ...publication,
+      publishDate: new Date(publication.publishDate),
+    })),
+    experience: aggregate.experience.map((step) => ({
+      ...step,
+      startDate: new Date(step.startDate),
+      endDate: step.endDate != null ? new Date(step.endDate) : undefined,
+    })),
+    education: aggregate.education.map((step) => ({
+      ...step,
+      startDate: new Date(step.startDate),
+      endDate: step.endDate != null ? new Date(step.endDate) : undefined,
+    })),
+    projects: aggregate.projects.map((project) => ({
+      ...project,
+      startDate:
+        project.startDate != null ? new Date(project.startDate) : undefined,
+      endDate: project.endDate != null ? new Date(project.endDate) : undefined,
+    })),
+  };
 };

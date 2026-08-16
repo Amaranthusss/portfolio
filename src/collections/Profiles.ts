@@ -1,7 +1,15 @@
+import { revalidateProfilesAfterDelete } from '@/services/cache/revalidateProfiles';
+import { revalidateProfiles } from '@/services/cache/revalidateProfiles';
+
 import type { CollectionConfig } from 'payload';
 
 export const Profiles: CollectionConfig = {
   slug: 'profiles',
+
+  hooks: {
+    afterChange: [revalidateProfiles],
+    afterDelete: [revalidateProfilesAfterDelete],
+  },
 
   admin: {
     useAsTitle: 'name',

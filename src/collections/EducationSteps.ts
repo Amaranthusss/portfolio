@@ -1,7 +1,15 @@
+import { revalidateEducationStepsAfterDelete } from '@/services/cache/revalidateEducationSteps';
+import { revalidateEducationSteps } from '@/services/cache/revalidateEducationSteps';
+
 import type { CollectionConfig } from 'payload';
 
 export const EducationSteps: CollectionConfig = {
   slug: 'education-steps',
+
+  hooks: {
+    afterChange: [revalidateEducationSteps],
+    afterDelete: [revalidateEducationStepsAfterDelete],
+  },
 
   admin: {
     useAsTitle: 'institution',

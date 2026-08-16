@@ -1,7 +1,15 @@
+import { revalidatePublicationsAfterDelete } from '@/services/cache/revalidatePublications';
+import { revalidatePublications } from '@/services/cache/revalidatePublications';
+
 import type { CollectionConfig } from 'payload';
 
 export const Publications: CollectionConfig = {
   slug: 'publications',
+
+  hooks: {
+    afterChange: [revalidatePublications],
+    afterDelete: [revalidatePublicationsAfterDelete],
+  },
 
   admin: {
     useAsTitle: 'title',

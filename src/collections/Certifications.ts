@@ -1,8 +1,15 @@
+import { revalidateCertificationsAfterDelete } from '@/services/cache/revalidateCertifications';
+import { revalidateCertifications } from '@/services/cache/revalidateCertifications';
+
 import type { CollectionConfig } from 'payload';
 
 export const Certifications: CollectionConfig = {
   slug: 'certifications',
 
+  hooks: {
+    afterChange: [revalidateCertifications],
+    afterDelete: [revalidateCertificationsAfterDelete],
+  },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'provider', 'issueDate'],

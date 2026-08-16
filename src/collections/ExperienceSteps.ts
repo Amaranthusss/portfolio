@@ -1,7 +1,15 @@
+import { revalidateExperienceStepsAfterDelete } from '@/services/cache/revalidateExperienceSteps';
+import { revalidateExperienceSteps } from '@/services/cache/revalidateExperienceSteps';
+
 import type { CollectionConfig } from 'payload';
 
 export const ExperienceSteps: CollectionConfig = {
   slug: 'experience-steps',
+
+  hooks: {
+    afterChange: [revalidateExperienceSteps],
+    afterDelete: [revalidateExperienceStepsAfterDelete],
+  },
 
   admin: {
     useAsTitle: 'position',

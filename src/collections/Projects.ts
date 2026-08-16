@@ -1,9 +1,16 @@
+import { revalidateProjectsAfterDelete } from '@/services/cache/revalidateProjects';
+import { revalidateProjects } from '@/services/cache/revalidateProjects';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 
 import type { CollectionConfig } from 'payload';
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
+
+  hooks: {
+    afterChange: [revalidateProjects],
+    afterDelete: [revalidateProjectsAfterDelete],
+  },
 
   admin: {
     useAsTitle: 'name',

@@ -1,3 +1,6 @@
+import { revalidateSkillsAfterDelete } from '@/services/cache/revalidateSkills';
+import { revalidateSkills } from '@/services/cache/revalidateSkills';
+
 import type { CollectionConfig } from 'payload';
 
 export const Skills: CollectionConfig = {
@@ -6,6 +9,11 @@ export const Skills: CollectionConfig = {
   admin: {
     useAsTitle: 'key',
     defaultColumns: ['key', 'name'],
+  },
+
+  hooks: {
+    afterChange: [revalidateSkills],
+    afterDelete: [revalidateSkillsAfterDelete],
   },
 
   fields: [

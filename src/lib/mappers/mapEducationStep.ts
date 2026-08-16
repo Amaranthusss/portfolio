@@ -2,10 +2,12 @@ import { mapSkill } from './mapSkill';
 
 import type { EducationStepDTO } from '@/models/educationStepDto';
 import type { EducationStep } from '../../../payload-types';
+import type { SkillDTO } from '@/models/skillDto';
 import type { Skill } from '../../../payload-types';
 
 export function mapEducationStep(step: EducationStep): EducationStepDTO {
-  const skills = step.skills?.filter(isPopulatedSkill).map(mapSkill) ?? [];
+  const skills: SkillDTO[] =
+    step.skills?.filter(isPopulatedSkill).map(mapSkill) ?? [];
 
   return {
     id: step.id,
