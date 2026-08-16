@@ -1,8 +1,8 @@
-import type { CertificationSeed } from '../interfaces/certificationSeed';
+import type { CertificationSeedData } from '../interfaces/certificationSeedData';
 
 import { CertificationSlug } from './certificationSlug';
 
-export const certifications: CertificationSeed[] = [
+export const certifications: CertificationSeedData[] = [
   {
     slug: CertificationSlug.NextJsSupabaseMasteryBuildFullstackApps,
     issueDate: '2026-06-25',

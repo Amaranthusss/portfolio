@@ -20,11 +20,7 @@ export async function seedCertifications(payload: Payload): Promise<void> {
 
     const existing: PaginatedDocs<Certification> = await payload.find({
       collection: 'certifications',
-      where: {
-        slug: {
-          equals: certification.slug,
-        },
-      },
+      where: { slug: { equals: certification.slug } },
       limit: 1,
       depth: 0,
     });
