@@ -12,7 +12,7 @@ import { unstable_cache } from 'next/cache';
 import { mapProject } from '@/lib/mappers/mapProject';
 import { getPayload } from 'payload';
 
-import type { SkillAggregateDto } from '@/models/skillAggregateDto';
+import type { SkillAggregateDTO } from '@/models/skillAggregateDto';
 import type { BasePayload } from 'payload';
 import type { SkillKey } from '@/models/skillKey';
 import type { Locale } from '@/i18n/locale';
@@ -24,10 +24,10 @@ import config from '@payload-config';
 export const findBySkills = async (
   skillKeys: SkillKey[],
   locale: Locale
-): Promise<SkillAggregateDto> => {
+): Promise<SkillAggregateDTO> => {
   const skillsCacheKey: string = [...skillKeys].sort().join('-');
 
-  const aggregate: SkillAggregateDto = await unstable_cache(
+  const aggregate: SkillAggregateDTO = await unstable_cache(
     async () => {
       const payload: BasePayload = await getPayload({ config });
 

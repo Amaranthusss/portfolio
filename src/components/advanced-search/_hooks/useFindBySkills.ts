@@ -5,14 +5,14 @@ import { useRef, useState } from 'react';
 import { startTransition } from 'react';
 import { findBySkills } from '@/services/findBySkills';
 
-import type { SkillAggregateDto } from '@/models/skillAggregateDto';
+import type { SkillAggregateDTO } from '@/models/skillAggregateDto';
 import type { ProfileDTO } from '@/models/profileDto';
 import type { SkillDTO } from '@/models/skillDto';
 import type { SkillKey } from '@/models/skillKey';
 import type { Locale } from '@/i18n/locale';
 
 export function useFindBySkills() {
-  const [results, setResults] = useState<SkillAggregateDto | null>(null);
+  const [results, setResults] = useState<SkillAggregateDTO | null>(null);
   const [selectedSkillKeys, setSelectedSkillKeys] = useState<Set<SkillKey>>(
     new Set()
   );
@@ -23,7 +23,7 @@ export function useFindBySkills() {
 
   const search = (): void => {
     startTransition(async (): Promise<void> => {
-      const data: SkillAggregateDto = await findBySkills(
+      const data: SkillAggregateDTO = await findBySkills(
         selectedSkillKeys.values().toArray(),
         locale
       );

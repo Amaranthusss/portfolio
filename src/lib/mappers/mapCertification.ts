@@ -2,13 +2,13 @@ import { mapSkill } from './mapSkill';
 
 import type { Certification, Skill } from '../../../payload-types';
 import type { CertificationDTO } from '@/models/certificationDto';
-import type { MediaDto } from '@/models/mediaDto';
+import type { MediaDTO } from '@/models/mediaDto';
 import type { SkillDTO } from '@/models/skillDto';
 
 export function mapCertification(
   certification: Certification
 ): CertificationDTO {
-  const image: MediaDto =
+  const image: MediaDTO =
     certification.image && typeof certification.image !== 'number'
       ? {
           id: certification.image.id,

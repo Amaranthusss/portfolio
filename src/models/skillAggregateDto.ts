@@ -4,7 +4,7 @@ import type { EducationStepDTO } from './educationStepDto';
 import type { PublicationDTO } from './publicationDto';
 import type { ProjectDTO } from './projectDto';
 
-export type SkillAggregateDto = {
+export type SkillAggregateDTO = {
   projects: ProjectDTO[];
   certifications: CertificationDTO[];
   education: EducationStepDTO[];
