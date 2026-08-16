@@ -1,13 +1,25 @@
+import { RichTextContent } from '@/components/rich-text-content/rich-text-content';
 import { Button } from '@/components/button/button';
 import { Title } from '@/components/title/title';
 import Image from 'next/image';
 
+import { getPortfolioDocumentation } from '@/services/getPortfolioDocumentation';
 import { getTranslations } from 'next-intl/server';
+import { getAboutMe } from '@/services/getAboutMe';
+import { getLocale } from 'next-intl/server';
+
+import type { PortfolioDocumentationDTO } from '@/models/portfolioDocumentationDto';
+import type { AboutMeDTO } from '@/models/aboutMeDto';
+import type { Locale } from '@/i18n/locale';
 
 import styles from './page.module.scss';
 
 export default async function Homepage(): Promise<React.ReactNode> {
   const t = await getTranslations('homepage');
+  const locale: Locale = await getLocale();
+  const aboutMe: AboutMeDTO = await getAboutMe(locale);
+  const portfolioDocumentation: PortfolioDocumentationDTO =
+    await getPortfolioDocumentation(locale);
 
   return (
     <section className={styles.homepage}>
@@ -41,31 +53,23 @@ export default async function Homepage(): Promise<React.ReactNode> {
       </div>
 
       <div className={`${styles.about_me}`}>
-        <Title>{t('welcome-text')}</Title>
+        <Title>{aboutMe.title}</Title>
 
-        <p>{t('paragraph-1')}</p>
-        <p>{t('paragraph-2')}</p>
-        <p>{t('paragraph-3')}</p>
-        <p>{t('paragraph-4')}</p>
-        <p>{t('paragraph-5')}</p>
+        <RichTextContent content={aboutMe.content} />
 
-        <p>📫 Email: oskar.szkurlat@gmail.com</p>
+        <p>📫 Email: {aboutMe.email}</p>
         <p>
-          💼 LinkedIn:{' '}
-          <a
-            href={'https://www.linkedin.com/in/oskar-szkur%C5%82at-597782305/'}
-          >
-            Oskar Szkurłat
-          </a>
+          💼 LinkedIn: <a href={aboutMe.linkedin}>Oskar Szkurłat</a>{' '}
         </p>
       </div>
 
       <div className={`${styles.shortcuts}`}>
         I build complex, performant and user-friendly web applications.
         <div>
-          <Button mode={'primary'}>View Projects</Button>
+          <Button mode={'primary'}>{portfolioDocumentation.title}</Button>
           <Button mode={'default'}>Get in Touch</Button>
         </div>
+        <RichTextContent content={portfolioDocumentation.content} />
       </div>
     </section>
   );

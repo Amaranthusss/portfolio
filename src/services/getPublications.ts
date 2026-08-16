@@ -16,7 +16,7 @@ import config from '@payload-config';
 export const getPublications = async (
   locale: Locale
 ): Promise<PublicationDTO[]> => {
-  return unstable_cache(
+  const publications: PublicationDTO[] = await unstable_cache(
     async () => {
       const payload: BasePayload = await getPayload({ config });
 
@@ -37,4 +37,9 @@ export const getPublications = async (
       tags: [getPublicationsCacheTag(locale)],
     }
   )();
+
+  return publications.map((publication) => ({
+    ...publication,
+    publishDate: new Date(publication.publishDate),
+  }));
 };

@@ -1,14 +1,7 @@
 {
-  "welcome-text": "Cześć, z tej strony Oskar",
   "full-name": "Oskar Szkurłat",
   "first-title": "Senior Full-stack",
   "second-title": "TypeScript Developer",
   "first-description": "Ekspert w tworzeniu aplikacji internetowych",
-  "second-description": "i zaawansowanych bibliotek komponentów",
-  "about-me": "O mnie",
-  "paragraph-1": "Full-stack developer specjalizujący się w React oraz TypeScript, z blisko 6-letnim komercyjnym doświadczeniem w tworzeniu aplikacji webowych. Moim głównym obszarem specjalizacji jest nowoczesny Front-end, w ramach którego budowałem i rozwijałem aplikacje od podstaw oraz dostarczałem rozwiązania dla klientów z sektorów przemysłowego, bankowego i publicznego.",
-	"paragraph-2": "React i TypeScript są dla mnie technologiami pierwszego wyboru, ale potrafię dostosować się do korzystania z technologii określonej w danym projekcie. W trakcie pracy komercyjnej miałem również okazję pracować z technologiami takimi jak Angular, Blazor, .NET, REST API oraz relacyjnymi bazami danych SQL.",
-	"paragraph-3": "Poza pracą zawodową stale rozwijam swoje kompetencje poprzez realizację własnych projektów oraz samodzielną naukę. Korzystam z technologii takich jak Nest.js, Next.js, Node.js, Express.js, PostgreSQL, MySQL, SQLite oraz z innych narzędzi z ekosystemu JavaScript. Pozwala mi to systematycznie poszerzać moje możliwości Full-stack poza technologie wykorzystywane na co dzień.",
-	"paragraph-4": "Mój inżynierski tok rozumowania wywodzi się z mechatroniki. Zanim rozpocząłem karierę jako software developer, pracowałem w obszarze automatyki przemysłowej, gdzie zajmowałem się zaawansowanym programowaniem sterowników PLC Siemens. Połączenie doświadczenia z zakresu programowania, automatyki, elektroniki oraz projektowania systemów pozwala mi spojrzeć na problemy techniczne z szerszej perspektywy i tworzyć bardziej kompleksowe rozwiązania.",
-	"paragraph-5": "Technologia jest moją pasją od dzieciństwa. Tworzenie aplikacji webowych, programowanie mikroprocesorów, projektowanie układów elektronicznych, budowa własnych rozwiązań IoT czy modelowanie elementów 3D to obszary, które pozwalają mi przekuwać pomysły w rzeczywiste i praktyczne produkty."
+  "second-description": "i zaawansowanych bibliotek komponentów"
 }

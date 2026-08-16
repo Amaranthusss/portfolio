@@ -17,6 +17,11 @@ import { Skills } from '@/collections/Skills';
 import { Media } from '@/collections/Media';
 import { Users } from '@/collections/Users';
 
+import { PortfolioDocumentation } from '@/globals/PortfolioDocumentation';
+import { CoreTechnologies } from '@/globals/CoreTechnologies';
+import { CodeStyle } from '@/globals/CodeStyle';
+import { AboutMe } from '@/globals/AboutMe';
+
 import { defaultLocale, localesAsString } from '@/i18n/locale';
 
 export default buildConfig({
@@ -34,6 +39,7 @@ export default buildConfig({
     Persons,
     Profiles,
   ],
+  globals: [AboutMe, PortfolioDocumentation, CoreTechnologies, CodeStyle],
   localization: { locales: localesAsString, defaultLocale, fallback: true },
   secret: process.env.PAYLOAD_SECRET || '',
   db: postgresAdapter({ pool: { connectionString: process.env.DATABASE_URL } }),

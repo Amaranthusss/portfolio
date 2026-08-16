@@ -14,8 +14,6 @@ export async function ProjectCard({
 }: ProjectCardProps): Promise<React.ReactNode> {
   const t = await getTranslations('common');
 
-  console.log(project)
-
   return (
     <Card key={project.id} slug={project.slug} className={styles.card}>
       <strong className={styles.project_title}>{project.name}</strong>

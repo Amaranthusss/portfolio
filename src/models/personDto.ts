@@ -1,6 +1,6 @@
 import type { AcademicDegree } from './academicDegree';
 
-export interface PersonDto {
+export interface PersonDTO {
   id: number;
   name: string;
   surname: string;

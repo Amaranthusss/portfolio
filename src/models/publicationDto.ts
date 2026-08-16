@@ -1,4 +1,4 @@
-import type { PersonDto } from './personDto';
+import type { PersonDTO } from './personDto';
 import type { SkillDTO } from './skillDto';
 
 export interface PublicationDTO {
@@ -10,6 +10,6 @@ export interface PublicationDTO {
   description: string;
   publisher: string;
   keywords: string[];
-  authors: PersonDto[];
+  authors: PersonDTO[];
   skills: SkillDTO[];
 }

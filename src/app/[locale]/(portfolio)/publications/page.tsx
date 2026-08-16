@@ -12,7 +12,7 @@ import type { Locale } from '@/i18n/locale';
 
 import styles from './page.module.scss';
 
-export default async function HireMe(): Promise<React.ReactNode> {
+export default async function Publications(): Promise<React.ReactNode> {
   const locale: Locale = await getLocale();
   const publications: PublicationDTO[] = await getPublications(locale);
   const { authorToString } = await createAuthorFormatter();

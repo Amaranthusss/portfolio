@@ -14,7 +14,6 @@ type Messages = {
   'courses-and-certifications': typeof enCoursesAndCertifications;
   'experience-and-education': typeof enExperienceAndEducation;
   'projects-and-realisations': typeof enProjectsAndRealisations;
-  'code-style': typeof enCodeStyle;
 };
 
 declare module 'next-intl' {

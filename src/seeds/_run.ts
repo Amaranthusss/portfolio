@@ -1,9 +1,13 @@
+import { seedPortfolioDocumentation } from './helpers/seedPortfolioDocumentation';
+import { seedCoreTechnologies } from './helpers/seedCoreTechnologies';
 import { tryRevalidateDeploy } from './helpers/tryRevalidateDeploy';
 import { seedExperienceSteps } from './helpers/seedExperienceSteps';
 import { seedCertifications } from './helpers/seedCertifications';
 import { seedEducationSteps } from './helpers/seedEducationSteps';
 import { seedPublications } from './helpers/seedPublications';
+import { seedCodeStyle } from './helpers/seedCodeStyle';
 import { seedProfiles } from './helpers/seedProfiles';
+import { seedAboutMe } from './helpers/seedAboutMe';
 import { getPayload } from 'payload';
 import { seedSkills } from './helpers/seedSkills';
 import { seedMedia } from './helpers/seedMedia';
@@ -20,6 +24,7 @@ async function seed(): Promise<void> {
   const payload: BasePayload = await getPayload({ config });
 
   try {
+    // * Collections
     await seedSkills(payload);
     await seedMedia(payload);
     await seedProfiles(payload);
@@ -27,6 +32,12 @@ async function seed(): Promise<void> {
     await seedEducationSteps(payload);
     await seedExperienceSteps(payload);
     await seedPublications(payload);
+
+    // * Globals
+    await seedAboutMe(payload);
+    await seedCodeStyle(payload);
+    await seedCoreTechnologies(payload);
+    await seedPortfolioDocumentation(payload);
 
     console.log('== Payload initialized ==');
 

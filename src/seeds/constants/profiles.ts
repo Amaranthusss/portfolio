@@ -1,5 +1,4 @@
 import type { ProfileSeedData } from '../interfaces/profileSeed';
-import type { Locale } from '@/i18n/locale';
 import type { Skill } from '../../../payload-types';
 
 import { ProfileSlug } from './profileSlug';

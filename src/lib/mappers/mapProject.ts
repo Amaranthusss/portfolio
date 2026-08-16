@@ -1,3 +1,4 @@
+import { createEmptyEditorState } from '@/utils/createEmptyEditorState';
 import { mapSkill } from './mapSkill';
 
 import type { DefaultTypedEditorState } from '@payloadcms/richtext-lexical';
@@ -37,19 +38,6 @@ function parseLexicalContent(
   }
 
   return content as DefaultTypedEditorState;
-}
-
-function createEmptyEditorState(): DefaultTypedEditorState {
-  return {
-    root: {
-      type: 'root',
-      children: [],
-      direction: null,
-      format: '',
-      indent: 0,
-      version: 1,
-    },
-  };
 }
 
 function isPopulatedSkill(

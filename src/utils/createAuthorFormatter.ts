@@ -1,12 +1,12 @@
 import { getLocale } from 'next-intl/server';
 
-import type { PersonDto } from '@/models/personDto';
+import type { PersonDTO } from '@/models/personDto';
 import type { Locale } from '@/i18n/locale';
 
 export async function createAuthorFormatter() {
   const locale: Locale = await getLocale();
 
-  const authorToString = (author: PersonDto): string => {
+  const authorToString = (author: PersonDTO): string => {
     const fullName: string = `${author.name} ${author.surname}`;
 
     switch (author.academicDegree) {

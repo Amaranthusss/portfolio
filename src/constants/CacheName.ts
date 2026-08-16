@@ -8,4 +8,8 @@ export enum CacheName {
   Projects = 'projects',
   Publications = 'publications',
   Skills = 'skills',
+  AboutMe = 'about-me',
+  CodeStyle = 'code-style',
+  CoreTechnologies = 'core-technologies',
+  PortfolioDocumentation = 'portfolio-documentation',
 }
