@@ -1,6 +1,8 @@
 import { tryRevalidateDeploy } from './helpers/tryRevalidateDeploy';
+import { seedExperienceSteps } from './helpers/seedExperienceSteps';
 import { seedCertifications } from './helpers/seedCertifications';
 import { seedEducationSteps } from './helpers/seedEducationSteps';
+import { seedPublications } from './helpers/seedPublications';
 import { seedProfiles } from './helpers/seedProfiles';
 import { getPayload } from 'payload';
 import { seedSkills } from './helpers/seedSkills';
@@ -17,15 +19,21 @@ async function seed(): Promise<void> {
 
   const payload: BasePayload = await getPayload({ config });
 
-  await seedSkills(payload);
-  await seedProfiles(payload);
-  await seedMedia(payload);
-  await seedCertifications(payload);
-  await seedEducationSteps(payload);
+  try {
+    await seedSkills(payload);
+    await seedMedia(payload);
+    await seedProfiles(payload);
+    await seedCertifications(payload);
+    await seedEducationSteps(payload);
+    await seedExperienceSteps(payload);
+    await seedPublications(payload);
 
-  console.log('== Payload initialized ==');
+    console.log('== Payload initialized ==');
 
-  await tryRevalidateDeploy();
+    await tryRevalidateDeploy();
+  } finally {
+    await payload.destroy();
+  }
 }
 
 await seed();
