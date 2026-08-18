@@ -1,5 +1,4 @@
 'use client';
-
 import type { TechStackProps } from './tech-stack.interface';
 
 import { TechStackRelations } from './_components/tech-stack-relations/tech-stack-relations';

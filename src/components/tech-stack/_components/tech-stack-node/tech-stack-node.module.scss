@@ -2,39 +2,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 100%;
   min-width: 0;
-
   margin: 0;
   padding: 0;
-
   border: 0;
-
   background: transparent;
-
   color: var(--text-color);
-
   text-align: center;
-
   font: inherit;
 
   &__iconWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-
     flex: 0 0 auto;
-
     width: 52px;
     height: 52px;
-
     border-radius: var(--border-radius);
-
     background: var(--body-bg-color);
-
     box-shadow: var(--control-box-shadow);
-
     transition:
       transform var(--animation-time) ease,
       box-shadow var(--animation-time) ease,
@@ -43,40 +30,28 @@
 
   &__icon {
     display: block;
-
     width: 40px;
     height: 40px;
-
     object-fit: contain;
-
     transition: transform var(--animation-time) ease;
   }
 
   &__title {
     display: block;
-
     width: 100%;
-
     margin-top: var(--space-2);
-
     overflow: hidden;
-
     color: var(--secondary-text-color);
-
     font-size: var(--font-size-xs);
     font-weight: 500;
     line-height: 1.2;
-
     text-overflow: ellipsis;
-
     text-wrap: balance;
   }
 
   &:focus-visible {
     outline: var(--border-width) solid var(--primary-color);
-
     outline-offset: var(--space-2);
-
     border-radius: var(--border-radius);
   }
 
@@ -85,9 +60,7 @@
 
     .node__iconWrapper {
       transform: translateY(-4px) scale(1.06);
-
       background: var(--primary-contrast-color);
-
       box-shadow: var(--control-box-shadow-active);
     }
 
