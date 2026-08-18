@@ -1,7 +1,8 @@
+import { isPopulatedSkill } from './isPopulatedSkill';
 import { mapSkill } from './mapSkill';
 
-import type { Profile, Skill } from '../../../payload-types';
 import type { ProfileDTO } from '@/models/profileDto';
+import type { Profile } from '../../../payload-types';
 
 export function mapProfile(profile: Profile): ProfileDTO {
   return {
@@ -11,10 +12,4 @@ export function mapProfile(profile: Profile): ProfileDTO {
     orderNumber: profile.orderNumber,
     skills: profile.skills?.filter(isPopulatedSkill).map(mapSkill) ?? [],
   };
-}
-
-function isPopulatedSkill(
-  skill: number | Skill | null | undefined
-): skill is Skill {
-  return typeof skill !== 'number' && skill !== null && skill !== undefined;
 }

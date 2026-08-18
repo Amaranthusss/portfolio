@@ -1,6 +1,7 @@
 import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
 import { DisplaySkills } from '@/components/display-skills/display-skills';
 import { ListModule } from '@/components/list-module/list-module';
+import { Title } from '@/components/title/title';
 import { Card } from '@/components/card/card';
 
 import { createAuthorFormatter } from '@/utils/createAuthorFormatter';
@@ -19,7 +20,7 @@ export default async function Publications(): Promise<React.ReactNode> {
 
   return (
     <ListModule>
-      <h1>Publications</h1>
+      <Title>Publications</Title>
 
       <div className={styles.cards_layout}>
         {publications
@@ -28,7 +29,6 @@ export default async function Publications(): Promise<React.ReactNode> {
             <Card key={p.id} slug={p.slug} className={styles.card}>
               <div className={styles.caption}>
                 <strong>{p.title}</strong>{' '}
-								
                 <DisplayDateRange
                   endDate={p.publishDate}
                   className={styles.issue_date}

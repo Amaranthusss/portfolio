@@ -286,7 +286,7 @@ export const certifications: CertificationSeedData[] = [
     slug: CertificationSlug.ModernMethodsOfPlcProgramming,
     issueDate: '2019-04-09',
 
-    image: 'bAndR.jpg',
+    image: 'b-and-r.jpg',
 
     skills: ['PLCProgramming', 'SCL', 'LAD'],
 

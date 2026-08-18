@@ -1,14 +1,16 @@
-import type { BasePayload, getPayload } from 'payload';
+import type { BasePayload, PaginatedDocs } from 'payload';
+import type { SkillTranslation } from '../interfaces/skillSeedData';
+import type { Skill } from '../../../payload-types';
 
 import { locales } from '@/i18n/locale';
 import { skills } from '../constants/skills';
 
 async function seedSkill(
-  payload: Awaited<ReturnType<typeof getPayload>>,
+  payload: BasePayload,
   skill: (typeof skills)[number],
   i: number
 ): Promise<void> {
-  const existingSkill = await payload.find({
+  const existingSkill: PaginatedDocs<Skill> = await payload.find({
     collection: 'skills',
     where: {
       key: {
@@ -23,10 +25,10 @@ async function seedSkill(
   if (existingSkill.docs.length > 0) {
     console.log(`[${i}] ✓ Updated skill: ${skill.key}`);
 
-    const skillId = existingSkill.docs[0].id;
+    const skillId: Skill['id'] = existingSkill.docs[0].id;
 
     for (const locale of locales) {
-      const translation = skill.translations[locale];
+      const translation: SkillTranslation = skill.translations[locale];
 
       await payload.update({
         collection: 'skills',
@@ -50,7 +52,7 @@ async function seedSkill(
 
   console.log(`[${i}] ✓ Created skill: ${skill.key}`);
 
-  const createdSkill = await payload.create({
+  const createdSkill: Skill = await payload.create({
     collection: 'skills',
     data: {
       key: skill.key,
@@ -69,7 +71,7 @@ async function seedSkill(
   for (const locale of locales) {
     if (locale === 'pl') continue;
 
-    const translation = skill.translations[locale];
+    const translation: SkillTranslation = skill.translations[locale];
 
     await payload.update({
       collection: 'skills',

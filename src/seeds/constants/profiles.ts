@@ -1,12 +1,48 @@
 import type { ProfileSeedData } from '../interfaces/profileSeed';
-import type { Skill } from '../../../payload-types';
+import type { SkillKey } from '@/models/skillKey';
 
 import { ProfileSlug } from './profileSlug';
 
-const react: Skill['key'][] = [
-  'ReactJS',
+const _generalIt: SkillKey[] = ['Documentation', 'Microservices', 'Git'];
+
+const _databases: SkillKey[] = [
+  'DB',
+  'PostgreSQL',
+  'MongoDB',
+  'MySQL',
+  'SQLite',
+
+  'ORM',
+  'TypeORM',
+  'Drizzle',
+  'Prisma',
+
+  'GraphQL',
+];
+
+const _jsFrontendLibraries: SkillKey[] = [
   'Redux',
   'Zustand',
+
+  'Leaflet',
+  'ThreeJS',
+  'PdfMake',
+  'YukaJS',
+];
+
+const _jsBackendFrameworks: SkillKey[] = [
+  'NodeJS',
+  'ExpressJS',
+  'NestJS',
+  'NextJS',
+];
+
+const _cms: SkillKey[] = ['SanityCMS', 'PayloadCMS'];
+
+const _cloudServices: SkillKey[] = ['GRPC', 'AWS', 'GCP'];
+
+const react: SkillKey[] = [
+  'ReactJS',
   'CRA',
   'Vite',
   'NextJS',
@@ -15,59 +51,47 @@ const react: Skill['key'][] = [
   'DevExtremeReact',
 ];
 
-const angular: Skill['key'][] = ['Angular', 'Bootstrap', 'DevExtremeAngular'];
+const angular: SkillKey[] = ['Angular', 'DevExtremeAngular'];
 
-const frontendJS: Skill['key'][] = [
+const frontendJS: SkillKey[] = [
+  'JS',
+  'TS',
   ...react,
   ...angular,
-  'Leaflet',
-  'PdfMake',
-  'Sanity',
-  'ThreeJS',
-  'YukaJS',
-  'TS',
-  'Documentation',
+  ..._cms,
+  ..._jsFrontendLibraries,
+  ..._generalIt,
 ];
 
-const backendJS: Skill['key'][] = [
-  'NodeJS',
-  'ExpressJS',
-  'NestJS',
-  'NextJS',
-  'MongoDB',
-  'PostgreSQL',
-  'SQLite',
-  'GraphQL',
-  'GRPC',
-  'Microservices',
+const backendJS: SkillKey[] = [
+  'JS',
   'TS',
-  'Documentation',
+  ..._databases,
+  ..._generalIt,
+  ..._jsBackendFrameworks,
 ];
 
-const backendCSharp: Skill['key'][] = [
+const backendCSharp: SkillKey[] = [
   'DotNet',
   'CSharp',
-  'PostgreSQL',
-  'MongoDB',
-  'SQLite',
-  'Microservices',
-  'Documentation',
+  ..._databases,
+  ..._generalIt,
 ];
 
-const csharpFullstack: Skill['key'][] = [
+const deployment: SkillKey[] = ['Docker', 'Linux', 'VPS', ..._cloudServices];
+
+const fullstackJS: SkillKey[] = [...frontendJS, ...backendJS, ...deployment];
+
+const csharpFullstack: SkillKey[] = [
   ...backendCSharp,
+  ...deployment,
   'Blazor',
   'AntDBlazor',
-  'Bootstrap',
-  'TS',
   'Leaflet',
+  'TS',
 ];
 
-const fullstackJS: Skill['key'][] = [...frontendJS, ...backendJS];
-
-const deploy: Skill['key'][] = ['Docker', 'Linux', 'AWS', 'GCP', 'VPS'];
-
-const plcProgrammer: Skill['key'][] = [
+const plcProgrammer: SkillKey[] = [
   'TiaPortal',
   'PLCProgramming',
   'FactoryIO',
@@ -78,8 +102,9 @@ const plcProgrammer: Skill['key'][] = [
   'LAD',
 ];
 
-const mechatronics: Skill['key'][] = [
+const mechatronics: SkillKey[] = [
   ...plcProgrammer,
+  ..._generalIt,
   'J5',
   'IQRF',
   'Eagle',
@@ -89,7 +114,6 @@ const mechatronics: Skill['key'][] = [
   'Fanuc',
   'Kuka',
   'Print3D',
-  'Documentation',
 ];
 
 export const profileSkills: ProfileSeedData[] = [
@@ -141,7 +165,7 @@ export const profileSkills: ProfileSeedData[] = [
   {
     slug: ProfileSlug.Deploy,
     orderNumber: 5,
-    skills: deploy,
+    skills: deployment,
     translations: {
       pl: 'DevOps / Deployment',
       en: 'DevOps / Deployment',

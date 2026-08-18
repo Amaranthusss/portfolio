@@ -1,9 +1,10 @@
 import { createEmptyEditorState } from '@/utils/createEmptyEditorState';
+import { isPopulatedSkill } from './isPopulatedSkill';
 import { mapSkill } from './mapSkill';
 
 import type { DefaultTypedEditorState } from '@payloadcms/richtext-lexical';
-import type { Project, Skill } from '../../../payload-types';
 import type { ProjectDTO } from '@/models/projectDto';
+import type { Project } from '../../../payload-types';
 
 export function mapProject(project: Project): ProjectDTO {
   return {
@@ -38,10 +39,4 @@ function parseLexicalContent(
   }
 
   return content as DefaultTypedEditorState;
-}
-
-function isPopulatedSkill(
-  skill: number | Skill | null | undefined
-): skill is Skill {
-  return typeof skill !== 'number' && skill !== null && skill !== undefined;
 }

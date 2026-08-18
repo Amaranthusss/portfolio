@@ -1,7 +1,9 @@
+import { isPopulatedSkill } from './isPopulatedSkill';
+import { isPopulatedDuty } from './isPopulatedDuty';
 import { mapSkill } from './mapSkill';
 
-import type { ExperienceStep, Skill } from '../../../payload-types';
 import type { ExperienceStepDTO } from '@/models/experienceStepDto';
+import type { ExperienceStep } from '../../../payload-types';
 
 export function mapExperienceStep(step: ExperienceStep): ExperienceStepDTO {
   return {
@@ -19,16 +21,4 @@ export function mapExperienceStep(step: ExperienceStep): ExperienceStepDTO {
     duties: step.duties?.filter(isPopulatedDuty).map((d) => d.value) ?? [],
     skills: step.skills?.filter(isPopulatedSkill).map(mapSkill) ?? [],
   };
-}
-
-function isPopulatedDuty(
-  duty: NonNullable<ExperienceStep['duties']>[number]
-): duty is { value: string } {
-  return duty != null;
-}
-
-function isPopulatedSkill(
-  skill: number | Skill | null | undefined
-): skill is Skill {
-  return typeof skill !== 'number' && skill !== null && skill !== undefined;
 }

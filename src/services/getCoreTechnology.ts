@@ -1,4 +1,4 @@
-import { createEmptyEditorState } from '@/utils/createEmptyEditorState';
+import { mapCoreTechnologies } from '@/lib/mappers/mapCoreTechnologies';
 import { unstable_cache } from 'next/cache';
 import { getPayload } from 'payload';
 
@@ -14,7 +14,7 @@ import config from '@payload-config';
 export async function getCoreTechnologies(
   locale: Locale
 ): Promise<CoreTechnologiesDTO> {
-  const coreTechnologies: CoreTechnology = await unstable_cache(
+  const coreTechnology: CoreTechnology = await unstable_cache(
     async () => {
       const payload: BasePayload = await getPayload({ config });
 
@@ -31,8 +31,5 @@ export async function getCoreTechnologies(
     }
   )();
 
-  return {
-    title: coreTechnologies.title,
-    content: coreTechnologies.content ?? createEmptyEditorState(),
-  };
+  return mapCoreTechnologies(coreTechnology);
 }

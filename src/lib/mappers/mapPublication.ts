@@ -1,7 +1,10 @@
+import { isPopulatedKeyword } from './isPopulatedKeyword';
+import { isPopulatedPerson } from './isPopulatedPerson';
+import { isPopulatedSkill } from './isPopulatedSkill';
 import { mapSkill } from './mapSkill';
 
-import type { Publication, Person, Skill } from '../../../payload-types';
 import type { PublicationDTO } from '@/models/publicationDto';
+import type { Publication } from '../../../payload-types';
 
 export function mapPublication(publication: Publication): PublicationDTO {
   return {
@@ -18,32 +21,14 @@ export function mapPublication(publication: Publication): PublicationDTO {
       [],
 
     authors:
-      publication.authors?.filter(isPopulatedPerson).map((person) => ({
-        id: person.id,
-        name: person.name,
-        surname: person.surname,
+      publication.authors?.filter(isPopulatedPerson).map((p) => ({
+        id: p.id,
+        name: p.name,
+        surname: p.surname,
         publicationId: publication.id,
-        academicDegree: person.academicDegree ?? undefined,
+        academicDegree: p.academicDegree ?? undefined,
       })) ?? [],
 
     skills: publication.skills?.filter(isPopulatedSkill).map(mapSkill) ?? [],
   };
-}
-
-function isPopulatedKeyword(
-  keyword: NonNullable<Publication['keywords']>[number]
-): keyword is { value: string } {
-  return keyword != null;
-}
-
-function isPopulatedPerson(
-  person: number | Person | null | undefined
-): person is Person {
-  return typeof person !== 'number' && person !== null && person !== undefined;
-}
-
-function isPopulatedSkill(
-  skill: number | Skill | null | undefined
-): skill is Skill {
-  return typeof skill !== 'number' && skill !== null && skill !== undefined;
 }

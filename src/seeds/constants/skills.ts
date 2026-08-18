@@ -1,16 +1,6 @@
-import type { Skill } from '../../../payload-types';
+import type { SkillSeedData } from '../interfaces/skillSeedData';
 
-type SkillLocaleData = Pick<Skill, 'name' | 'shortName' | 'description'>;
-
-export type SkillSeed = {
-  key: Skill['key'];
-  translations: {
-    pl: SkillLocaleData;
-    en: SkillLocaleData;
-  };
-};
-
-export const skills: SkillSeed[] = [
+export const skills: SkillSeedData[] = [
   {
     key: 'AGV',
     translations: {
@@ -125,6 +115,19 @@ export const skills: SkillSeed[] = [
     },
   },
   {
+    key: 'CMS',
+    translations: {
+      pl: {
+        name: 'System Zarządzania Treścią (CMS)',
+        shortName: 'CMS',
+      },
+      en: {
+        name: 'Content Management System (CMS)',
+        shortName: 'CMS',
+      },
+    },
+  },
+  {
     key: 'CPlusPlus',
     translations: {
       pl: {
@@ -169,6 +172,30 @@ export const skills: SkillSeed[] = [
       en: {
         name: 'Internet protocol suite',
         shortName: 'TCP/IP',
+      },
+    },
+  },
+  {
+    key: 'Cypress',
+    translations: {
+      pl: {
+        name: 'Cypress',
+      },
+      en: {
+        name: 'Cypress',
+      },
+    },
+  },
+  {
+    key: 'DB',
+    translations: {
+      pl: {
+        name: 'Database',
+        shortName: 'DB',
+      },
+      en: {
+        name: 'Baza danych',
+        shortName: 'DB',
       },
     },
   },
@@ -228,6 +255,17 @@ export const skills: SkillSeed[] = [
       },
       en: {
         name: 'Documentation',
+      },
+    },
+  },
+  {
+    key: 'Drizzle',
+    translations: {
+      pl: {
+        name: 'Drizzle ORM',
+      },
+      en: {
+        name: 'Drizzle ORM',
       },
     },
   },
@@ -306,6 +344,17 @@ export const skills: SkillSeed[] = [
     },
   },
   {
+    key: 'Git',
+    translations: {
+      pl: {
+        name: 'GIT',
+      },
+      en: {
+        name: 'GIT',
+      },
+    },
+  },
+  {
     key: 'GRPC',
     translations: {
       pl: {
@@ -365,6 +414,30 @@ export const skills: SkillSeed[] = [
     },
   },
   {
+    key: 'Jest',
+    translations: {
+      pl: {
+        name: 'Jest',
+      },
+      en: {
+        name: 'Jest',
+      },
+    },
+  },
+  {
+    key: 'JS',
+    translations: {
+      pl: {
+        name: 'JavaScript',
+        shortName: 'JS',
+      },
+      en: {
+        name: 'JavaScript',
+        shortName: 'JS',
+      },
+    },
+  },
+  {
     key: 'Kuka',
     translations: {
       pl: {
@@ -411,6 +484,19 @@ export const skills: SkillSeed[] = [
     },
   },
   {
+    key: 'LESS',
+    translations: {
+      pl: {
+        name: 'Leaner CSS (LESS)',
+        shortName: 'LESS',
+      },
+      en: {
+        name: 'Leaner CSS (LESS)',
+        shortName: 'LESS',
+      },
+    },
+  },
+  {
     key: 'Linux',
     translations: {
       pl: {
@@ -422,15 +508,13 @@ export const skills: SkillSeed[] = [
     },
   },
   {
-    key: 'MMF2Dev',
+    key: 'Lodash',
     translations: {
       pl: {
-        name: 'Multimedia Fusion Developer 2',
-        shortName: 'MMF2 Dev',
+        name: 'Lodash',
       },
       en: {
-        name: 'Multimedia Fusion Developer 2',
-        shortName: 'MMF2 Dev',
+        name: 'Lodash',
       },
     },
   },
@@ -481,6 +565,30 @@ export const skills: SkillSeed[] = [
     },
   },
   {
+    key: 'MMF2Dev',
+    translations: {
+      pl: {
+        name: 'Multimedia Fusion Developer 2',
+        shortName: 'MMF2 Dev',
+      },
+      en: {
+        name: 'Multimedia Fusion Developer 2',
+        shortName: 'MMF2 Dev',
+      },
+    },
+  },
+  {
+    key: 'MySQL',
+    translations: {
+      pl: {
+        name: 'MySQL',
+      },
+      en: {
+        name: 'MySQL',
+      },
+    },
+  },
+  {
     key: 'NestJS',
     translations: {
       pl: {
@@ -514,15 +622,26 @@ export const skills: SkillSeed[] = [
     },
   },
   {
-    key: 'PLCProgramming',
+    key: 'ORM',
     translations: {
       pl: {
-        name: 'Programowanie PLC',
-        shortName: 'PLC',
+        name: 'Mapowanie Obiektowo-Relacyjne (ORM)',
+        shortName: 'ORM',
       },
       en: {
-        name: 'PLC programming',
-        shortName: 'PLC',
+        name: 'Object-Relational Mapping (ORM)',
+        shortName: 'ORM',
+      },
+    },
+  },
+  {
+    key: 'PayloadCMS',
+    translations: {
+      pl: {
+        name: 'Payload CMS',
+      },
+      en: {
+        name: 'Payload CMS',
       },
     },
   },
@@ -534,6 +653,19 @@ export const skills: SkillSeed[] = [
       },
       en: {
         name: 'PdfMake',
+      },
+    },
+  },
+  {
+    key: 'PLCProgramming',
+    translations: {
+      pl: {
+        name: 'Programowanie PLC',
+        shortName: 'PLC',
+      },
+      en: {
+        name: 'PLC programming',
+        shortName: 'PLC',
       },
     },
   },
@@ -556,6 +688,17 @@ export const skills: SkillSeed[] = [
       },
       en: {
         name: '3D printing',
+      },
+    },
+  },
+  {
+    key: 'Prisma',
+    translations: {
+      pl: {
+        name: 'Prisma',
+      },
+      en: {
+        name: 'Prisma',
       },
     },
   },
@@ -593,6 +736,19 @@ export const skills: SkillSeed[] = [
     },
   },
   {
+    key: 'SASS',
+    translations: {
+      pl: {
+        name: 'Syntactically Awesome Style Sheets (SASS)',
+        shortName: 'SASS',
+      },
+      en: {
+        name: 'Syntactically Awesome Style Sheets (SASS)',
+        shortName: 'SASS',
+      },
+    },
+  },
+  {
     key: 'SCL',
     translations: {
       pl: {
@@ -600,6 +756,17 @@ export const skills: SkillSeed[] = [
       },
       en: {
         name: 'SCL',
+      },
+    },
+  },
+  {
+    key: 'SocketIO',
+    translations: {
+      pl: {
+        name: 'Socket.io',
+      },
+      en: {
+        name: 'Socket.io',
       },
     },
   },
@@ -628,15 +795,15 @@ export const skills: SkillSeed[] = [
     },
   },
   {
-    key: 'Sanity',
+    key: 'SanityCMS',
     translations: {
       pl: {
         name: 'Sanity CMS',
-        shortName: 'Sanity',
+        shortName: 'Sanity CMS',
       },
       en: {
         name: 'Sanity CMS',
-        shortName: 'Sanity',
+        shortName: 'Sanity CMS',
       },
     },
   },
@@ -689,6 +856,17 @@ export const skills: SkillSeed[] = [
     },
   },
   {
+    key: 'TypeORM',
+    translations: {
+      pl: {
+        name: 'TypeORM',
+      },
+      en: {
+        name: 'TypeORM',
+      },
+    },
+  },
+  {
     key: 'VPS',
     translations: {
       pl: {
@@ -709,6 +887,19 @@ export const skills: SkillSeed[] = [
       },
       en: {
         name: 'Vite',
+      },
+    },
+  },
+  {
+    key: 'WS',
+    translations: {
+      pl: {
+        name: 'WebSocket',
+        shortName: 'WS',
+      },
+      en: {
+        name: 'WebSocket',
+        shortName: 'WS',
       },
     },
   },

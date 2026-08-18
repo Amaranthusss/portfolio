@@ -1,9 +1,9 @@
+import { isPopulatedSkill } from './isPopulatedSkill';
 import { mapSkill } from './mapSkill';
 
 import type { EducationStepDTO } from '@/models/educationStepDto';
 import type { EducationStep } from '../../../payload-types';
 import type { SkillDTO } from '@/models/skillDto';
-import type { Skill } from '../../../payload-types';
 
 export function mapEducationStep(step: EducationStep): EducationStepDTO {
   const skills: SkillDTO[] =
@@ -24,10 +24,4 @@ export function mapEducationStep(step: EducationStep): EducationStepDTO {
     description: step.description ?? undefined,
     skills,
   };
-}
-
-function isPopulatedSkill(
-  skill: number | Skill | null | undefined
-): skill is Skill {
-  return typeof skill !== 'number' && skill !== null && skill !== undefined;
 }

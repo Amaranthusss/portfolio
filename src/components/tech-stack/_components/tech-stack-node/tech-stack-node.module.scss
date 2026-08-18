@@ -1,0 +1,64 @@
+.node {
+  flex: 0 0 var(--hex-size);
+
+  width: var(--hex-size);
+  height: calc(var(--hex-size) * 1.1547);
+
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+
+  background: var(--tech-stack-node-border, #4f4f4f);
+
+  padding: 2px;
+
+  position: relative;
+
+  transition:
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+.node:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.15);
+}
+
+.inner {
+  width: 100%;
+  height: 100%;
+
+  clip-path: inherit;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  padding: 8px;
+
+  background: var(--tech-stack-node-background, #202020);
+}
+
+.icon {
+  width: clamp(22px, calc(var(--hex-size) * 0.3), 34px);
+
+  height: auto;
+
+  object-fit: contain;
+}
+
+.title {
+  max-width: 90%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  text-align: center;
+
+  font-size: clamp(0.6rem, calc(var(--hex-size) * 0.09), 0.8rem);
+
+  line-height: 1.1;
+
+  color: var(--tech-stack-node-color, #fff);
+}

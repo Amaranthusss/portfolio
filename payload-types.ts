@@ -193,68 +193,85 @@ export interface Media {
 export interface Skill {
   id: number;
   key:
-    | 'TS'
+    | 'AI'
+    | 'DB'
+    | 'Git'
+    | 'CMS'
+    | 'ORM'
+    | 'WS'
+    | 'GraphQL'
+    | 'Print3D'
+    | 'Documentation'
+    | 'SalesSupport'
+    | 'Microservices'
     | 'LabView'
+    | 'JS'
     | 'Python'
     | 'CSharp'
     | 'CPlusPlus'
     | 'Java'
     | 'MMF2Dev'
-    | 'CADCAM'
-    | 'SCL'
-    | 'STL'
-    | 'LAD'
-    | 'DotNet'
-    | 'Blazor'
-    | 'Angular'
     | 'ReactJS'
     | 'CRA'
     | 'Vite'
     | 'NextJS'
-    | 'ExpressJS'
-    | 'NestJS'
-    | 'NodeJS'
-    | 'Leaflet'
-    | 'Sanity'
+    | 'TS'
+    | 'DevExtremeReact'
+    | 'AntDReact'
+    | 'MaterialUI'
+    | 'Bootstrap'
     | 'ThreeJS'
+    | 'Leaflet'
     | 'PdfMake'
     | 'YukaJS'
     | 'Zustand'
     | 'Redux'
-    | 'J5'
+    | 'Lodash'
+    | 'SocketIO'
     | 'Zod'
-    | 'AntDReact'
-    | 'AntDBlazor'
-    | 'Bootstrap'
-    | 'MaterialUI'
-    | 'DevExtremeReact'
+    | 'SASS'
+    | 'LESS'
+    | 'Cypress'
+    | 'Jest'
+    | 'PayloadCMS'
+    | 'SanityCMS'
+    | 'Angular'
     | 'DevExtremeAngular'
+    | 'ExpressJS'
+    | 'NestJS'
+    | 'NodeJS'
+    | 'J5'
+    | 'DotNet'
+    | 'Blazor'
+    | 'AntDBlazor'
     | 'PostgreSQL'
     | 'MongoDB'
     | 'SQLite'
+    | 'MySQL'
+    | 'Drizzle'
+    | 'TypeORM'
+    | 'Prisma'
     | 'AWS'
     | 'GCP'
     | 'GRPC'
-    | 'GraphQL'
     | 'VPS'
     | 'Docker'
     | 'Linux'
+    | 'AGV'
+    | 'CADCAM'
+    | 'LAD'
+    | 'SCL'
+    | 'STL'
     | 'TiaPortal'
     | 'PLCProgramming'
     | 'FactoryIO'
     | 'CommunicationTCPIP'
     | 'ModbusProtocol'
     | 'IQRF'
-    | 'Eagle'
-    | 'Fusion360'
-    | 'AGV'
     | 'Fanuc'
     | 'Kuka'
-    | 'AI'
-    | 'Print3D'
-    | 'Documentation'
-    | 'SalesSupport'
-    | 'Microservices';
+    | 'Eagle'
+    | 'Fusion360';
   name: string;
   shortName?: string | null;
   description?: string | null;
@@ -829,6 +846,18 @@ export interface CoreTechnology {
     };
     [k: string]: unknown;
   } | null;
+  groups: {
+    slug: string;
+    title: string;
+    nodes: {
+      icon: number | Media;
+      title: string;
+      skills?: (number | Skill)[] | null;
+      id?: string | null;
+    }[];
+    references?: string[] | null;
+    id?: string | null;
+  }[];
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -890,6 +919,22 @@ export interface PortfolioDocumentationSelect<T extends boolean = true> {
 export interface CoreTechnologiesSelect<T extends boolean = true> {
   title?: T;
   content?: T;
+  groups?:
+    | T
+    | {
+        slug?: T;
+        title?: T;
+        nodes?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              skills?: T;
+              id?: T;
+            };
+        references?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
