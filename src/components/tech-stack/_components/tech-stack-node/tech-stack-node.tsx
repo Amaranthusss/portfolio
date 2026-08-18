@@ -5,20 +5,35 @@ import type { TechStackNodeProps } from './tech-stack-node.interface';
 import styles from './tech-stack-node.module.scss';
 
 export function TechStackNode({ node }: TechStackNodeProps): React.ReactNode {
-  return (
-    <div className={styles.node}>
-      <div className={styles.inner}>
-        <Image
-          src={node.icon.url}
-          alt={node.title}
-          className={styles.icon}
-          width={32}
-          height={32}
-          loading="lazy"
-        />
+  const isInteractive = Array.isArray(node.skills) && node.skills.length > 0;
 
-        <span className={styles.title}>{node.title}</span>
-      </div>
-    </div>
+  const content = (
+    <>
+      <span className={styles.node__iconWrapper}>
+        <Image
+          className={styles.node__icon}
+          src={node.icon.url}
+          alt=""
+          width={48}
+          height={48}
+        />
+      </span>
+
+      <span className={styles.node__title}>{node.title}</span>
+    </>
+  );
+
+  if (!isInteractive) {
+    return <div className={styles.node}>{content}</div>;
+  }
+
+  return (
+    <button
+      className={styles.node}
+      type="button"
+      aria-label={`${node.title}. ${node.skills?.join(', ')}`}
+    >
+      {content}
+    </button>
   );
 }

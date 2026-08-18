@@ -1,5 +1,5 @@
 import type { CoreTechnologiesGroupDTO } from '@/models/coreTechnologiesGroupDto';
 
-export interface GroupNodeProps {
+export interface TechStackGroupProps {
   group: CoreTechnologiesGroupDTO;
 }
