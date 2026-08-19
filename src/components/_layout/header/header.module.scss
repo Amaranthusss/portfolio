@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-columns: 130px 1fr 130px;
-  gap: 16px;
+  gap: var(--space-4);
   width: 100%;
   z-index: var(--z-index-layout);
   justify-content: center;
@@ -17,44 +17,8 @@
     align-items: center;
   }
 
-  > .logo {
-    @include border-side(center);
-    pointer-events: none;
-    user-select: none;
-    flex-direction: column;
-    text-wrap: nowrap;
-    text-shadow: 0px 0px 2px black;
-    color: var(--layout-text-color);
-
-    :last-child {
-      font-style: italic;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-  }
-
   > .right_side {
     @include border-side(flex-end);
     color: var(--layout-text-color);
-  }
-}
-
-.dropdown > div > button {
-  width: 100%;
-}
-
-.settings_popover {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-
-  > div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    > select {
-      flex: 1;
-    }
   }
 }

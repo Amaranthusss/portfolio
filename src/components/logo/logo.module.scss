@@ -1,0 +1,16 @@
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  flex-direction: column;
+  text-wrap: nowrap;
+  text-shadow: 0px 0px 2px black;
+  color: var(--layout-text-color);
+
+  :last-child {
+    font-style: italic;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+}
