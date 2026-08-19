@@ -18,14 +18,14 @@ $more-btn-min-width: 80px;
     background: linear-gradient(
       to right,
       transparent 0%,
-      var(--container-bg-color) 50%
+      var(--container-bg-color) 5%
     );
 
-    transition: width 500ms ease;
+    transition: width 0.8s ease;
   }
 
   &.loading::after {
-    width: calc($more-btn-min-width * 3);
+    width: 100%;
   }
 
   > .item {

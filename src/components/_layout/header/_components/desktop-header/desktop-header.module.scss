@@ -1,0 +1,35 @@
+.header {
+  display: grid;
+  grid-template-columns: 130px 1fr 130px;
+  gap: var(--space-4);
+  width: 100%;
+  z-index: var(--z-index-layout);
+  padding-block: 12px;
+  padding-inline: 24px;
+  border-bottom: solid 1px var(--border-color);
+  background-color: var(--layout-bg-color);
+
+  > .right_side {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: var(--layout-text-color);
+  }
+
+  .menu_items {
+    min-height: var(--control-height);
+    color: var(--layout-text-color);
+
+    @media (min-width: 1553px) {
+      justify-content: center;
+
+      &::after {
+        width: 0px !important;
+      }
+    }
+  }
+}
+
+.dropdown .nav_button {
+  text-wrap: nowrap;
+}

@@ -1,3 +1,11 @@
+.full_app_settings_button {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-4);
+  justify-content: center;
+  align-items: center;
+}
+
 .settings_popover {
   display: flex;
   flex-direction: column;

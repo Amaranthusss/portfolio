@@ -1,0 +1,18 @@
+import { defaultSvgProps } from '../../icon.config';
+
+export function HamburgerIcon(
+  props: React.SVGProps<SVGSVGElement>
+): React.ReactNode {
+  return (
+    <svg
+      {...defaultSvgProps}
+      strokeWidth="0"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path fill="none" d="M0 0h24v24H0z"></path>
+      <path d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"></path>
+    </svg>
+  );
+}

@@ -1,19 +1,20 @@
 import { AccessibilityIcon } from './_components/accessibility-icon/accessibility-icon';
 import { CertificationIcon } from './_components/certification-icon/certification-icon';
 import { PublicationIcon } from './_components/publication-icon/publication-icon';
+import { HamburgerIcon } from './_components/hamburger-icon/hamburger-icon';
 import { HandshakeIcon } from './_components/handshake-icon/handshake-icon';
 import { TechStackIcon } from './_components/tech-stack-icon/tech-stack-icon';
 import { EducationIcon } from './_components/education-icon/education-icon';
 import { SettingsIcon } from './_components/settings-icon/settings-icon';
 import { FeatherIcon } from './_components/feather-icon/feather-icon';
 import { ProjectIcon } from './_components/project-icon/project-icon';
+import { UnlockIcon } from './_components/unlock-icon/unlock-icon';
 import { SearchIcon } from './_components/search-icon/search-icon';
 import { CloseIcon } from './_components/close-icon/close-icon';
 import { HomeIcon } from './_components/home-icon/home-icon';
+import { LockIcon } from './_components/lock-icon/lock-icon';
 
 import type { ComponentType, SVGProps } from 'react';
-import { LockIcon } from './_components/lock-icon/lock-icon';
-import { UnlockIcon } from './_components/unlock-icon/unlock-icon';
 
 export enum IconName {
   Accessibility = 'accessibility',
@@ -29,7 +30,8 @@ export enum IconName {
   Search = 'search',
   Close = 'close',
   Lock = 'lock',
-  Unlock = 'unlock'
+  Unlock = 'unlock',
+  Hamburger = 'hamburger',
 }
 
 export const iconConfig: Record<
@@ -49,11 +51,12 @@ export const iconConfig: Record<
   [IconName.Search]: SearchIcon,
   [IconName.Close]: CloseIcon,
   [IconName.Lock]: LockIcon,
-  [IconName.Unlock]: UnlockIcon
+  [IconName.Unlock]: UnlockIcon,
+  [IconName.Hamburger]: HamburgerIcon,
 };
 
 export const defaultSvgProps: SVGProps<SVGSVGElement> = {
   stroke: 'currentColor',
   fill: 'currentColor',
-  height: 'var(--font-size-lg)'
+  height: 'var(--font-size-lg)',
 };

@@ -1,24 +1,13 @@
-.header {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-columns: 130px 1fr 130px;
-  gap: var(--space-4);
-  width: 100%;
-  z-index: var(--z-index-layout);
-  justify-content: center;
-  padding-block: 12px;
-  padding-inline: 24px;
-  border-bottom: solid 1px var(--border-color);
-  background-color: var(--layout-bg-color);
+.mobile {
+  display: none;
+}
 
-  @mixin border-side($justify-content) {
-    display: flex;
-    justify-content: $justify-content;
-    align-items: center;
+@media (max-width: 768px) {
+  .desktop {
+    display: none;
   }
 
-  > .right_side {
-    @include border-side(flex-end);
-    color: var(--layout-text-color);
+  .mobile {
+    display: grid;
   }
 }

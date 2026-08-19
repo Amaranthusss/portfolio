@@ -1,0 +1,22 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-4);
+  width: 100%;
+  z-index: var(--z-index-layout);
+  justify-content: center;
+  padding-block: 12px;
+  padding-inline: 24px;
+  border-bottom: solid 1px var(--border-color);
+  background-color: var(--layout-bg-color);
+}
+
+.menu_modal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  > * {
+    width: 100%;
+  }
+}
