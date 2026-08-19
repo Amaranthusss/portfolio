@@ -42,11 +42,6 @@ export function NavMenu(): React.ReactNode {
       icon: IconName.TechStack,
     },
     {
-      route: Route.CodeStyle,
-      text: 'code-style',
-      icon: IconName.Feather,
-    },
-    {
       route: Route.Publications,
       text: 'publications',
       icon: IconName.Publication,
@@ -69,10 +64,7 @@ export function NavMenu(): React.ReactNode {
     >
       {menuItems.map(({ route, icon, text, decorated }) => {
         const extraProps: Partial<ButtonProps> = decorated
-          ? {
-              mode: 'primary',
-              style: { textTransform: 'uppercase' },
-            }
+          ? { mode: 'primary' }
           : {};
 
         return (
@@ -80,11 +72,12 @@ export function NavMenu(): React.ReactNode {
             key={text}
             {...extraProps}
             centerContent
+            className={styles.nav_button}
             active={route === pathname}
             aria-label={`navigation-button-${route.replace('/', '')}`}
             onClick={(): void => router.push(route)}
           >
-            <Icon icon={icon} style={{ marginRight: 'var(--space-4)' }} />
+            <Icon icon={icon} />
             {t(text)}
           </Button>
         );
