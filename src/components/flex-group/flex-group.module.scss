@@ -70,5 +70,9 @@ $more-btn-min-width: 80px;
   > .dropdownItem {
     padding: var(--space-2) var(--space-4);
     cursor: pointer;
+    
+    > * {
+      width: 100%;
+    }
   }
 }

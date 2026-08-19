@@ -2,3 +2,7 @@
   min-height: var(--control-height);
   color: var(--layout-text-color);
 }
+
+.dropdown .nav_button {
+  text-wrap: nowrap;
+}
