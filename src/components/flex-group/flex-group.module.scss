@@ -7,12 +7,12 @@ $more-btn-min-width: 80px;
   overflow: hidden;
   justify-content: flex-start;
 
-  &.loading::after {
+  &::after {
     content: '';
     position: absolute;
     top: 0;
     right: 0;
-    width: calc($more-btn-min-width * 2);
+    width: 0;
     height: 100%;
     pointer-events: none;
     background: linear-gradient(
@@ -20,6 +20,12 @@ $more-btn-min-width: 80px;
       transparent 0%,
       var(--container-bg-color) 50%
     );
+
+    transition: width 500ms ease;
+  }
+
+  &.loading::after {
+    width: calc($more-btn-min-width * 3);
   }
 
   > .item {
@@ -70,7 +76,7 @@ $more-btn-min-width: 80px;
   > .dropdownItem {
     padding: var(--space-2) var(--space-4);
     cursor: pointer;
-    
+
     > * {
       width: 100%;
     }
