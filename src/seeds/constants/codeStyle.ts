@@ -1,4 +1,4 @@
-import { createEmptyEditorState } from '@/utils/createEmptyEditorState';
+import { codeStyleContentEN, codeStyleContentPL } from './codeStyleContent';
 
 import type { CodeStyleDTO } from '@/models/codeStyleDto';
 import type { Locale } from '@/i18n/locale';
@@ -6,13 +6,11 @@ import type { Locale } from '@/i18n/locale';
 export const codeStyle: { [locale in Locale]: CodeStyleDTO } = {
   pl: {
     title: 'Styl prowadzenia kodu',
-
-    content: createEmptyEditorState(),
+    content: codeStyleContentPL,
   },
 
   en: {
     title: 'Code Style',
-
-    content: createEmptyEditorState(),
+    content: codeStyleContentEN,
   },
 };

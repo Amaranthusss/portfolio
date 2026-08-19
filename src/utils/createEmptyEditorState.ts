@@ -4,11 +4,21 @@ export function createEmptyEditorState(): DefaultTypedEditorState {
   return {
     root: {
       type: 'root',
-      children: [],
-      direction: null,
       format: '',
       indent: 0,
       version: 1,
+      direction: null,
+      children: [
+        {
+          type: 'paragraph',
+          format: '',
+          indent: 0,
+          version: 1,
+          direction: null,
+          textFormat: 0,
+          children: [],
+        },
+      ],
     },
   };
 }
