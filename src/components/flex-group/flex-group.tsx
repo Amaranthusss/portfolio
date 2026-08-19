@@ -5,14 +5,12 @@ import { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { useClassName } from '@/hooks/useClassName';
 
 import { createPortal } from 'react-dom';
+
 import { Children } from 'react';
 
-import type { FlexGroupProps } from './flex-group.interface';
-import type { CSSProperties } from 'react';
+import type { FlexGroupItems, FlexGroupProps } from './flex-group.interface';
 
 import styles from './flex-group.module.scss';
-
-type Items = Array<Exclude<React.ReactNode, boolean | null | undefined>>;
 
 export const FlexGroup = ({
   gap = 8,
@@ -21,9 +19,9 @@ export const FlexGroup = ({
   containerBgColor,
   dropdownClassName,
   dropdownTopMargin = 12,
-  updateDropdownOnScroll = true
+  updateDropdownOnScroll = true,
 }: FlexGroupProps): React.ReactNode => {
-  const items: Items = Children.toArray(children);
+  const items: FlexGroupItems = Children.toArray(children);
   const [visibleCount, setVisibleCount] = useState<number>(items.length);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [open, setOpen] = useState<boolean>(false);
@@ -31,15 +29,23 @@ export const FlexGroup = ({
   const [dropdownAttributes, setDropdownAttributes] =
     useState<React.CSSProperties | null>(null);
 
-  const { cn, boolToClass } = useClassName();
-
   const moreButtonRef = useRef<HTMLButtonElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const measureRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<Array<HTMLDivElement | null>>([]);
 
+  const visibleItems: FlexGroupItems = items.slice(0, visibleCount);
+  const overflowItems: FlexGroupItems = items.slice(visibleCount);
+
+  const style: CustomCSSProperties = {
+    '--container-bg-color': containerBgColor,
+    gap,
+  };
+
   const MORE_WIDTH = 80;
+
+  const { cn, boolToClass } = useClassName();
 
   const measure = (): void => {
     const container: HTMLDivElement | null = containerRef.current;
@@ -72,18 +78,6 @@ export const FlexGroup = ({
     setIsLoading(false);
   };
 
-  useLayoutEffect(() => {
-    measure();
-
-    const resizeObserver: ResizeObserver = new ResizeObserver(measure);
-
-    if (containerRef.current != null) {
-      resizeObserver.observe(containerRef.current);
-    }
-
-    return () => resizeObserver.disconnect();
-  }, [children]);
-
   const computeDropdownPosition = (rect: DOMRect): React.CSSProperties => {
     const PADDING = 24;
     const viewportWidth: number = window.innerWidth;
@@ -105,7 +99,7 @@ export const FlexGroup = ({
       left: safeLeft,
       maxHeight,
       maxWidth,
-      transform: 'translateX(-50%)'
+      transform: 'translateX(-50%)',
     };
   };
 
@@ -133,7 +127,23 @@ export const FlexGroup = ({
     setDropdownAttributes(null);
   };
 
-  useEffect(() => {
+  const setItemRef = (el: HTMLDivElement | null, i: number): void => {
+    itemRefs.current[i] = el;
+  };
+
+  useLayoutEffect((): (() => void) => {
+    measure();
+
+    const resizeObserver: ResizeObserver = new ResizeObserver(measure);
+
+    if (containerRef.current != null) {
+      resizeObserver.observe(containerRef.current);
+    }
+
+    return () => resizeObserver.disconnect();
+  }, [children]);
+
+  useEffect((): (() => void) => {
     const onMouseDown = (e: MouseEvent): void => {
       const target = e.target as Node;
 
@@ -172,28 +182,22 @@ export const FlexGroup = ({
     };
   }, [updateDropdownOnScroll]);
 
-  const visibleItems: Items = items.slice(0, visibleCount);
-  const overflowItems: Items = items.slice(visibleCount);
-
-  const style: CSSProperties = {
-    '--container-bg-color': containerBgColor,
-    gap
-  } as CSSProperties;
-
   return (
     <>
       <div ref={measureRef} className={styles.measure} style={{ gap }}>
-        {items.map((child, i) => (
-          <div
-            key={i}
-            ref={(el) => {
-              itemRefs.current[i] = el;
-            }}
-            className={styles.item}
-          >
-            {child}
-          </div>
-        ))}
+        {items.map(
+          (child: FlexGroupItems[number], i: number): React.ReactNode => {
+            return (
+              <div
+                key={i}
+                className={styles.item}
+                ref={(el) => setItemRef(el, i)}
+              >
+                {child}
+              </div>
+            );
+          }
+        )}
 
         <div className={styles.moreMeasure} />
       </div>
@@ -207,11 +211,15 @@ export const FlexGroup = ({
           boolToClass(isLoading, styles.loading)
         )}
       >
-        {(!isLoading ? visibleItems : items).map((child, i) => (
-          <div key={i} className={styles.item}>
-            {child}
-          </div>
-        ))}
+        {(!isLoading ? visibleItems : items).map(
+          (child: FlexGroupItems[number], i: number): React.ReactNode => {
+            return (
+              <div key={i} className={styles.item}>
+                {child}
+              </div>
+            );
+          }
+        )}
 
         {!isLoading && overflowItems.length > 0 && (
           <Button
@@ -234,13 +242,15 @@ export const FlexGroup = ({
             style={dropdownAttributes}
             className={cn(styles.dropdown, dropdownClassName)}
           >
-            {overflowItems.map((child, i) => {
-              return (
-                <div key={i} className={styles.dropdownItem}>
-                  {child}
-                </div>
-              );
-            })}
+            {overflowItems.map(
+              (child: FlexGroupItems[number], i: number): React.ReactNode => {
+                return (
+                  <div key={i} className={styles.dropdownItem}>
+                    {child}
+                  </div>
+                );
+              }
+            )}
           </div>,
           document.body
         )}

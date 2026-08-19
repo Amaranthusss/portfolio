@@ -8,3 +8,7 @@ export interface FlexGroupProps extends PropsWithChildren {
   dropdownTopMargin?: number;
   gap?: number;
 }
+
+export type FlexGroupItems = Array<
+  Exclude<React.ReactNode, boolean | null | undefined>
+>;

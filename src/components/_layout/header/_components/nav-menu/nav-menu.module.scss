@@ -1,6 +1,14 @@
 .menu_items {
   min-height: var(--control-height);
   color: var(--layout-text-color);
+
+  @media (min-width: 1553px) {
+    justify-content: center;
+
+    &::after {
+      width: 0px !important;
+    }
+  }
 }
 
 .dropdown .nav_button {
