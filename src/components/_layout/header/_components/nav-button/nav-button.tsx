@@ -20,7 +20,6 @@ export function NavButton({
   return (
     <Button
       key={text}
-      centerContent
       className={className}
       active={route === pathname}
       mode={decorated ? 'primary' : undefined}

@@ -15,7 +15,8 @@
     width: 100%;
     height: auto;
     min-height: var(--control-height);
-    padding: var(--space-2);
+    padding-block: var(--space-2);
+    padding-inline: var(--space-4);
     box-sizing: border-box;
     gap: var(--space-4);
     pointer-events: none;
@@ -127,7 +128,10 @@
   }
 
   &.square {
-    min-width: var(--control-height);
+    > .button_content {
+      min-width: var(--control-height);
+      padding: var(--space-2);
+    }
   }
 
   &.center_content > .button_content {

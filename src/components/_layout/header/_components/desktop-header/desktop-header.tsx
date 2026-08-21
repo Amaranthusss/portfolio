@@ -38,7 +38,7 @@ export function DesktopHeader({
 
       <div className={styles.right_side}>
         <AdvancedSearch />
-        <AppSettings style={{ marginLeft: 'var(--space-2)' }} />
+        <AppSettings />
       </div>
     </header>
   );

@@ -31,7 +31,7 @@ export function AppSettings({
     children,
     style,
     square: true,
-    centerContent: true,
+    centerContent: iconOnly,
     name: 'app-settings',
     'aria-label': 'app-settings-popover',
   };
