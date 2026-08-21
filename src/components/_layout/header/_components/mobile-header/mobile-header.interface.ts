@@ -7,3 +7,7 @@ export interface MobileHeaderProps {
   >[];
   className: string;
 }
+
+export interface MobileHeaderClientProps extends MobileHeaderProps {
+  advancedSearch: React.ReactNode;
+}

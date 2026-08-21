@@ -60,6 +60,15 @@
   }
 }
 
+.full_advanced_search_button {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-4);
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
 .advanced_search_modal_footer > .footer {
   width: 100%;
 }

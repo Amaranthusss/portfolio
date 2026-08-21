@@ -1,5 +1,5 @@
 import { DesktopHeader } from './_components/desktop-header/desktop-header';
-import { MobileHeader } from './_components/mobile-header/mobile-header';
+import { MobileHeader } from './_components/mobile-header/mobile-header.server';
 
 import type { _Translator, Messages } from 'next-intl';
 import type { NavMenuItem } from './header.interface';

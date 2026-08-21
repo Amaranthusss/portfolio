@@ -1,7 +1,13 @@
+import type { CSSProperties } from 'react';
 import type { ProfileDTO } from '@/models/profileDto';
 import type { SkillDTO } from '@/models/skillDto';
 
-export interface AdvancedSearchClientProps {
+export interface AdvancedSearchProps {
+  style?: CSSProperties;
+  iconOnly?: boolean;
+}
+
+export interface AdvancedSearchClientProps extends AdvancedSearchProps {
   skills: SkillDTO[];
   profiles: ProfileDTO[];
 }

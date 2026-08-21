@@ -16,14 +16,14 @@ export function AppSettings({
   style,
   iconOnly = true,
 }: AppSettingsProps): React.ReactNode {
-  const t = useTranslations('layout.header');
+  const t = useTranslations('common.app-settings');
 
   const children: React.ReactNode = iconOnly ? (
     <Icon icon={Icon.All.Settings} />
   ) : (
     <span className={styles.full_app_settings_button}>
       <Icon icon={Icon.All.Settings} />
-      {t('app-settings')}
+      {t('menu-title')}
     </span>
   );
 

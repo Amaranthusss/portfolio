@@ -11,15 +11,16 @@ import { useTranslations } from 'next-intl';
 import { useClassName } from '@/hooks/useClassName';
 import { useRef } from 'react';
 
-import type { MobileHeaderProps } from './mobile-header.interface';
+import type { MobileHeaderClientProps } from './mobile-header.interface';
 import type { ModalHandle } from '@/components/modal/modal.interface';
 
 import styles from './mobile-header.module.scss';
 
-export function MobileHeader({
+export function MobileHeaderClient({
+  advancedSearch,
   menuItems,
   className,
-}: MobileHeaderProps): React.ReactNode {
+}: MobileHeaderClientProps): React.ReactNode {
   const t = useTranslations('layout.header');
   const { cn } = useClassName();
 
@@ -57,7 +58,8 @@ export function MobileHeader({
         ))}
 
         <Divider />
-
+        
+        {advancedSearch}
         <AppSettings iconOnly={false} />
       </Modal>
     </header>
