@@ -59,6 +59,7 @@
   --control-bg-color: #ffffff;
   --control-disable-color: #b6b6b6;
   --control-disable-color-2: #555555;
+  --control-disable-text-color: #888888;
   --control-box-shadow: 0px 0px 4px 0px rgba(191, 191, 191, 0.5);
   --control-box-shadow-active: 0px 0px 4px 2px var(--primary-color);
   --popup-box-shadow: 0px 0px 6px 0px rgba(0, 143, 238, 1);
@@ -93,6 +94,7 @@
   --control-bg-color: #1a2347;
   --control-disable-color: #555555;
   --control-disable-color-2: #272727;
+  --control-disable-text-color: #7e7e7e;
   --control-box-shadow: unset;
   --control-box-shadow-active: 0px 0px 4px 2px var(--primary-color);
   --popup-box-shadow: 0px 0px 6px 0px rgba(37, 46, 61, 0.5);
@@ -126,6 +128,8 @@
 
   --control-bg-color: #000000;
   --control-disable-color: #000000;
+  --control-disable-color-2: #000000;
+  --control-disable-text-color: #e2e2e2;
   --control-box-shadow: unset;
   --control-box-shadow-active: unset;
   --popup-box-shadow: unset;
