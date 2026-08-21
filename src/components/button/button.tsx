@@ -9,8 +9,8 @@ export const Button = ({
   square,
   animated,
   children,
-  centerContent,
   className,
+  contentStyle,
   centerVertical,
   mode = 'default',
   ...buttonProps
@@ -24,13 +24,14 @@ export const Button = ({
     boolToClass(active, styles.active),
     boolToClass(square, styles.square),
     boolToClass(animated, styles.animated),
-    boolToClass(centerContent, styles.center_content),
     boolToClass(centerVertical, styles.center_vertical)
   );
 
   return (
     <button {...buttonProps} className={classNames}>
-      <span className={styles.button_content}>{children ?? ''}</span>
+      <span style={contentStyle} className={styles.button_content}>
+        {children ?? ''}
+      </span>
     </button>
   );
 };

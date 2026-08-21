@@ -1,3 +1,12 @@
+.advanced_search_modal {
+  width: calc(100vw - 2 * var(--space-5));
+  max-width: 600px;
+
+  .advanced_search_modal_body > .configuration {
+    min-width: 240px !important;
+  }
+}
+
 @media screen and (min-width: 875px) {
   .advanced_search_modal_body {
     display: grid;
@@ -42,6 +51,10 @@
         margin-top: var(--space-4);
         overflow: hidden;
         height: 100%;
+      }
+
+      > .profile_buttons > .profile_button_list {
+        padding-right: unset;
       }
     }
   }

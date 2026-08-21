@@ -1,4 +1,6 @@
-import type { ComponentPropsWithRef, PropsWithChildren } from 'react';
+import type { ComponentPropsWithRef } from 'react';
+import type { PropsWithChildren } from 'react';
+import type { CSSProperties } from 'react';
 
 export interface ButtonProps
   extends PropsWithChildren, ComponentPropsWithRef<'button'> {
@@ -7,5 +9,5 @@ export interface ButtonProps
   square?: boolean;
   active?: boolean;
   centerVertical?: boolean;
-  centerContent?: boolean;
+  contentStyle?: CSSProperties;
 }

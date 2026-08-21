@@ -31,7 +31,7 @@ export function AppSettings({
     children,
     style,
     square: true,
-    centerContent: iconOnly,
+    contentStyle: !iconOnly ? { justifyContent: 'flex-start' } : undefined,
     name: 'app-settings',
     'aria-label': 'app-settings-popover',
   };

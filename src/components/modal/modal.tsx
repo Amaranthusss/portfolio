@@ -27,7 +27,8 @@ export function Modal({
   bodyClassName,
   footerClassName,
   toolbarClassName,
-  attachToBody = true
+  toolbarOptionsClassName,
+  attachToBody = true,
 }: WithRef<ModalProps, ModalHandle>): React.ReactNode {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -81,7 +82,7 @@ export function Modal({
           <span className={styles.title}>{title}</span>
         )}
 
-        <div>
+        <div className={cn(styles.options, toolbarOptionsClassName)}>
           {toolbar && toolbar}
 
           <Button

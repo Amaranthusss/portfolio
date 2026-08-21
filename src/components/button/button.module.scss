@@ -11,6 +11,7 @@
   > .button_content {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
     width: 100%;
     height: auto;
@@ -20,6 +21,11 @@
     box-sizing: border-box;
     gap: var(--space-4);
     pointer-events: none;
+  }
+
+  &.square > .button_content {
+    min-width: var(--control-height);
+    padding: var(--space-2);
   }
 
   &:not(.active) {
@@ -125,21 +131,6 @@
         background-color: transparent;
       }
     }
-  }
-
-  &.square {
-    > .button_content {
-      min-width: var(--control-height);
-      padding: var(--space-2);
-    }
-  }
-
-  &.center_content > .button_content {
-    justify-content: center;
-  }
-
-  &.center_vertical > .button_content {
-    align-items: center;
   }
 
   &.animated {

@@ -23,6 +23,7 @@ export function NavButton({
       className={className}
       active={route === pathname}
       mode={decorated ? 'primary' : undefined}
+      contentStyle={{ justifyContent: 'flex-start' }}
       aria-label={`navigation-button-${route.replace('/', '')}`}
       onClick={(): void => router.push(route)}
     >

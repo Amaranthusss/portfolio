@@ -33,7 +33,6 @@ export function MobileHeader({
 
       <Button
         square
-        centerContent
         mode={'text'}
         title={t('menu-title')}
         aria-label={t('menu-title')}
@@ -46,7 +45,8 @@ export function MobileHeader({
       <Modal
         ref={modalRef}
         title={t('menu-title')}
-        bodyClassName={styles.menu_modal}
+        className={styles.menu_modal}
+        bodyClassName={styles.menu_modal_body}
       >
         {menuItems.map((menuItem): React.ReactNode => (
           <NavButton

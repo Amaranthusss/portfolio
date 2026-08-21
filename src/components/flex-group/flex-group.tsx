@@ -224,7 +224,6 @@ export const FlexGroup = ({
         {!isLoading && overflowItems.length > 0 && (
           <Button
             ref={moreButtonRef}
-            centerContent
             className={styles.more}
             aria-label={'show-more-hidden-flex-group-elements'}
             onClick={toggleDropdown}

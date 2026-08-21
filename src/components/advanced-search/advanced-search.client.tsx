@@ -66,12 +66,7 @@ export function AdvancedSearchClient({
 
   return (
     <>
-      <Button
-        square
-        centerContent
-        aria-label={'open-advanced-search'}
-        onClick={open}
-      >
+      <Button square aria-label={'open-advanced-search'} onClick={open}>
         <Icon icon={Icon.All.Search} />
       </Button>
 
@@ -80,13 +75,15 @@ export function AdvancedSearchClient({
         title={t('title')}
         footer={footer}
         toolbar={toolbar}
-        footerClassName={styles.advanced_search_modal_footer}
+        className={styles.advanced_search_modal}
         bodyClassName={styles.advanced_search_modal_body}
+        footerClassName={styles.advanced_search_modal_footer}
       >
         <div className={styles.configuration}>
           <ProfileButtons
             profiles={profiles}
             className={styles.profile_buttons}
+            profileButtonListClassName={styles.profile_button_list}
             isActiveProfile={isActiveProfile}
             isActiveExactProfile={isActiveExactProfile}
             onToggleProfile={onToggleProfile}
