@@ -11,7 +11,7 @@ export async function MobileHeader({
     <MobileHeaderClient
       menuItems={menuItems}
       className={className}
-      advancedSearch={<AdvancedSearch />}
+      advancedSearch={<AdvancedSearch iconOnly={false} />}
     />
   );
 }

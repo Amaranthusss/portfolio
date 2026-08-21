@@ -19,8 +19,7 @@ import styles from './advanced-search.client.module.scss';
 export function AdvancedSearchClient({
   skills,
   profiles,
-  style,
-  iconOnly,
+  iconOnly = true,
 }: AdvancedSearchClientProps): React.ReactNode {
   const t = useTranslations('common.advanced-search');
   const modalRef = useRef<ModalHandle>(null);
@@ -68,12 +67,7 @@ export function AdvancedSearchClient({
 
   return (
     <>
-      <Button
-        square
-        style={style}
-        aria-label={'open-advanced-search'}
-        onClick={open}
-      >
+      <Button square aria-label={'open-advanced-search'} onClick={open}>
         {iconOnly ? (
           <Icon icon={Icon.All.Search} />
         ) : (

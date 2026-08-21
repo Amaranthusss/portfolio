@@ -10,7 +10,6 @@ import type { SkillDTO } from '@/models/skillDto';
 import type { Locale } from '@/i18n/locale';
 
 export async function AdvancedSearch({
-  style,
   iconOnly,
 }: AdvancedSearchProps): Promise<React.ReactNode> {
   const locale: Locale = await getLocale();
@@ -24,7 +23,6 @@ export async function AdvancedSearch({
     <AdvancedSearchClient
       skills={skills}
       profiles={profiles}
-      style={style}
       iconOnly={iconOnly}
     />
   );
