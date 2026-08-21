@@ -29,7 +29,7 @@ export function MobileHeader({
 
   return (
     <header className={cn(styles.header, className)}>
-      <Logo />
+      <Logo className={styles.logo} />
 
       <Button
         square
@@ -37,6 +37,7 @@ export function MobileHeader({
         mode={'text'}
         title={t('menu-title')}
         aria-label={t('menu-title')}
+        className={styles.menu_button}
         onClick={showMenu}
       >
         <Icon icon={Icon.All.Hamburger} />
