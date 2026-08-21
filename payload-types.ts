@@ -312,6 +312,7 @@ export interface Project {
     [k: string]: unknown;
   } | null;
   skills?: (number | Skill)[] | null;
+  coreSkills?: (number | Skill)[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -650,6 +651,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   description?: T;
   content?: T;
   skills?: T;
+  coreSkills?: T;
   updatedAt?: T;
   createdAt?: T;
 }

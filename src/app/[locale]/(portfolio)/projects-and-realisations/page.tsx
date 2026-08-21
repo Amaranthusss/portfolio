@@ -22,8 +22,6 @@ export default async function ProjectsAndRealisations(): Promise<React.ReactNode
     return p2Time.getTime() - p1Time.getTime();
   };
 
-  console.log(projects)
-
   return (
     <ListModule>
       <Title>{t('header')}</Title>

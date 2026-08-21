@@ -17,5 +17,6 @@ export interface ProjectDTO {
   description?: string;
   content: DefaultTypedEditorState;
   skills: SkillDTO[];
+  coreSkills: SkillDTO[];
   links: LinkDTO[];
 }

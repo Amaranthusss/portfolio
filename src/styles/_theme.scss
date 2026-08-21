@@ -41,7 +41,7 @@
 @mixin light-theme {
   --primary-color: #3c9eee;
   --primary-color-2: #091c52;
-  --primary-hover-color: #7cc1fa;
+  --primary-hover-color: #4da3e9;
   --primary-border-color: #7cc1fa;
   --primary-contrast-color: #ffffff;
 
@@ -49,13 +49,14 @@
   --secondary-text-color: #464646;
   --placeholder-color: #bfbfbf;
   --header-color: white;
-  --border-color: #161b2e;
+  --border-color: #f0f0f0;
 
   --body-bg-color: #ffffff;
   --footer-bg-color: #ebebeb;
   --layout-bg-color: #161b2e;
   --layout-text-color: white;
-  --infill-bg-color: #242b3d;
+  --infill-bg-color: #f7f7f7;
+  --infill-darker-bg-color: #f7f7f7;
 
   --control-bg-color: #ffffff;
   --control-disable-color: #b6b6b6;
@@ -91,7 +92,8 @@
   --footer-bg-color: #0a0d18;
   --layout-bg-color: #101424;
   --layout-text-color: white;
-  --infill-bg-color: #252C3E;
+  --infill-bg-color: #252c3e;
+  --infill-darker-bg-color: #171c29;
 
   --control-bg-color: #1a2347;
   --control-disable-color: #555555;
@@ -128,6 +130,7 @@
   --layout-bg-color: #000000;
   --layout-text-color: white;
   --infill-bg-color: #000000;
+  --infill-darker-bg-color: #000000;
 
   --control-bg-color: #000000;
   --control-disable-color: #000000;

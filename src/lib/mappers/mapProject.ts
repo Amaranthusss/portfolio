@@ -35,5 +35,7 @@ export function mapProject(project: Project): ProjectDTO {
     content: parseLexicalContent(project.content),
     links: project.links?.filter(isPopulatedLink).map(mapLink) ?? [],
     skills: project.skills?.filter(isPopulatedSkill).map(mapSkill) ?? [],
+    coreSkills:
+      project.coreSkills?.filter(isPopulatedSkill).map(mapSkill) ?? [],
   };
 }

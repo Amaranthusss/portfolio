@@ -1,13 +1,12 @@
 import { DisplayDateRange } from '../display-date-range/display-date-range';
 import { NavToProject } from './_components/nav-to-project/nav-to-project';
+import { SkillTagList } from './_components/skill-tag-list/skill-tag-list';
 import { Button } from '../button/button';
 import { Icon } from '../icon/icon';
 import { Card } from '../card/card';
-import { Tag } from '../tag/tag';
 import Image from 'next/image';
 
 import type { ProjectCardProps } from './project-card.interface';
-import type { SkillDTO } from '@/models/skillDto';
 import type { LinkDTO } from '@/models/linkDto';
 
 import styles from './project-card.module.scss';
@@ -61,11 +60,11 @@ export async function ProjectCard({
         {project.description && project.description}
       </div>
 
-      <div className={styles.skills}>
-        {project.skills.map((skill: SkillDTO): React.ReactNode => (
-          <Tag key={skill.key}>{skill.name}</Tag>
-        ))}
-      </div>
+      <SkillTagList
+        skills={project.skills}
+        coreSkills={project.coreSkills}
+        className={styles.skills}
+      />
 
       <div className={styles.toolbar}>
         {project.links.map((link: LinkDTO): React.ReactNode => (

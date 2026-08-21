@@ -1,10 +1,8 @@
 import { revalidateProjectsAfterDelete } from '@/services/cache/revalidateProjects';
 import { revalidateProjects } from '@/services/cache/revalidateProjects';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
-import { validateUrl } from '@/lib/validators/validateUrl';
 
 import type { CollectionConfig } from 'payload';
-import { IconName } from '@/components/icon/icon.config';
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
@@ -105,6 +103,25 @@ export const Projects: CollectionConfig = {
       type: 'relationship',
       relationTo: 'skills',
       hasMany: true,
+    },
+
+    {
+      name: 'coreSkills',
+      type: 'relationship',
+      relationTo: 'skills',
+      hasMany: true,
+      filterOptions: ({ siblingData }) => {
+        if (
+          typeof siblingData !== 'object' ||
+          siblingData == null ||
+          !('skills' in siblingData) ||
+          !Array.isArray(siblingData.skills)
+        ) {
+          return { id: { in: [] } };
+        }
+
+        return { id: { in: siblingData.skills } };
+      },
     },
   ],
 };

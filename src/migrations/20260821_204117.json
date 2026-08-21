@@ -5145,7 +5145,8 @@
         "unlock",
         "hamburger",
         "build",
-        "link"
+        "link",
+        "read"
       ]
     }
   },
@@ -5159,6 +5160,6 @@
     "tables": {},
     "columns": {}
   },
-  "id": "401825df-6f51-4fc8-b96a-f0668a3ec3b1",
+  "id": "90afc847-39e8-4a50-b1d8-151ea2ed643a",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }
