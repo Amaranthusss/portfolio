@@ -23,5 +23,17 @@ export function diffYearsMonths(
   if (years > 0) parts.push(dateToWord(years, 'year', locale));
   if (months > 0) parts.push(dateToWord(months, 'month', locale));
 
+  if (years === 0 && months === 0) {
+    const millisecondsPerDay: number = 1000 * 60 * 60 * 24;
+
+    let days: number = Math.round(
+      (endDate.getTime() - startDate.getTime()) / millisecondsPerDay
+    );
+
+    if (days === 0) days = 1;
+
+    parts.push(dateToWord(days, 'day', locale));
+  }
+
   return parts.join(' ');
 }

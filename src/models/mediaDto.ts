@@ -5,4 +5,6 @@ export interface MediaDTO {
   extension: string;
   mimeType: string;
   size: number;
+  width: number;
+  height: number;
 }

@@ -1,6 +1,6 @@
 import type { Locale } from '@/i18n/locale';
 
-type Unit = 'year' | 'month';
+type Unit = 'year' | 'month' | 'day';
 
 interface WordDictionary {
   one: string;
@@ -31,13 +31,13 @@ export function dateToWord(value: number, unit: Unit, locale: Locale): string {
       ? {
           one: 'rok',
           few: 'lata',
-          many: 'lat'
+          many: 'lat',
         }
       : locale == 'en'
         ? {
             one: 'year',
             few: 'years',
-            many: 'years'
+            many: 'years',
           }
         : null;
 
@@ -46,17 +46,32 @@ export function dateToWord(value: number, unit: Unit, locale: Locale): string {
       ? {
           one: 'miesiąc',
           few: 'miesiące',
-          many: 'miesięcy'
+          many: 'miesięcy',
         }
       : locale == 'en'
         ? {
             one: 'month',
             few: 'months',
-            many: 'months'
+            many: 'months',
           }
         : null;
 
-  if (yearWordDict == null || monthWordDict == null) {
+  const dayWordDict: WordDictionary | null =
+    locale === 'pl'
+      ? {
+          one: 'dzień',
+          few: 'dni',
+          many: 'dni',
+        }
+      : locale == 'en'
+        ? {
+            one: 'day',
+            few: 'days',
+            many: 'days',
+          }
+        : null;
+
+  if (yearWordDict == null || monthWordDict == null || dayWordDict == null) {
     console.error(
       'Met undefined locale, there is missing word dictionary definition'
     );
@@ -67,7 +82,9 @@ export function dateToWord(value: number, unit: Unit, locale: Locale): string {
   const word: string =
     unit === 'year'
       ? toWord(value, yearWordDict)
-      : toWord(value, monthWordDict);
+      : unit === 'month'
+        ? toWord(value, monthWordDict)
+        : toWord(value, dayWordDict);
 
   return `${value} ${word}`;
 }

@@ -7,8 +7,7 @@ import { useRouter } from '@/i18n/navigation';
 import type { NavToProjectProps } from './nav-to-project.interface';
 
 import { Route } from '@/constants/Route';
-
-import styles from './nav-to-project.module.scss';
+import { Icon } from '@/components/icon/icon';
 
 export function NavToProject({ project }: NavToProjectProps): React.ReactNode {
   const router = useRouter();
@@ -21,12 +20,9 @@ export function NavToProject({ project }: NavToProjectProps): React.ReactNode {
   };
 
   return (
-    <Button
-      name={`read-more-about-project-${project.slug}`}
-      className={styles.read_more}
-      onClick={onClick}
-    >
+    <Button name={`read-more-about-project-${project.slug}`} onClick={onClick}>
       {t('read-more')}
+      <Icon icon={Icon.All.Read} />
     </Button>
   );
 }

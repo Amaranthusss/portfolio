@@ -11,8 +11,11 @@ import { ProjectIcon } from './_components/project-icon/project-icon';
 import { UnlockIcon } from './_components/unlock-icon/unlock-icon';
 import { SearchIcon } from './_components/search-icon/search-icon';
 import { CloseIcon } from './_components/close-icon/close-icon';
+import { BuildIcon } from './_components/build-icon/build-icon';
 import { HomeIcon } from './_components/home-icon/home-icon';
 import { LockIcon } from './_components/lock-icon/lock-icon';
+import { LinkIcon } from './_components/link-icon/link-icon';
+import { ReadIcon } from './_components/read-icon/read-icon';
 
 import type { ComponentType, SVGProps } from 'react';
 
@@ -32,6 +35,9 @@ export enum IconName {
   Lock = 'lock',
   Unlock = 'unlock',
   Hamburger = 'hamburger',
+  Build = 'build',
+  Link = 'link',
+  Read = 'read',
 }
 
 export const iconConfig: Record<
@@ -53,6 +59,9 @@ export const iconConfig: Record<
   [IconName.Lock]: LockIcon,
   [IconName.Unlock]: UnlockIcon,
   [IconName.Hamburger]: HamburgerIcon,
+  [IconName.Build]: BuildIcon,
+  [IconName.Link]: LinkIcon,
+  [IconName.Read]: ReadIcon,
 };
 
 export const defaultSvgProps: SVGProps<SVGSVGElement> = {

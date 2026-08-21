@@ -16,6 +16,7 @@ import { Persons } from '@/collections/Persons';
 import { Skills } from '@/collections/Skills';
 import { Media } from '@/collections/Media';
 import { Users } from '@/collections/Users';
+import { Links } from '@/collections/Links';
 
 import { PortfolioDocumentation } from '@/globals/PortfolioDocumentation';
 import { CoreTechnologies } from '@/globals/CoreTechnologies';
@@ -38,6 +39,7 @@ export default buildConfig({
     Publications,
     Persons,
     Profiles,
+    Links,
   ],
   globals: [AboutMe, PortfolioDocumentation, CoreTechnologies, CodeStyle],
   localization: { locales: localesAsString, defaultLocale, fallback: true },

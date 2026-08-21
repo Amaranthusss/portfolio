@@ -1,22 +1,88 @@
 .card {
   display: flex;
   flex-direction: column;
+  gap: var(--space-4);
 
-  > .date_range,
-  > .types,
-  > .location {
-    color: var(--secondary-text-color);
+  > .header {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-4);
+
+    > .icon {
+      $size: calc(var(--font-size-lg) + var(--font-size-lg));
+
+      display: grid;
+      place-items: center;
+      color: var(--text-color);
+      background-color: var(--infill-bg-color);
+      border-radius: var(--border-radius);
+      width: $size;
+      height: $size;
+    }
+
+    > .titles {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      > .project_name {
+        font-size: var(--font-size-lg);
+        margin-block: unset;
+      }
+
+      > .additional_info {
+        font-size: var(--font-size-sm);
+
+        > .date_range {
+          color: var(--secondary-text-color);
+        }
+      }
+    }
   }
 
-  > .project_title {
-    text-align: justify;
+  > .preview {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    border-style: solid;
+    border-width: var(--border-width);
+    border-color: var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+
+    > .preview_image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
   }
 
   > .description {
     text-align: justify;
   }
 
-  > :nth-last-child(2) {
-    margin-bottom: var(--space-2);
+  > .skills {
+    display: flex;
+    flex-direction: row;
+    margin-top: auto;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    border-top-style: solid;
+    border-top-width: var(--border-width);
+    border-top-color: var(--border-color);
+    padding-top: var(--space-4);
+  }
+
+  > .toolbar {
+    grid-area: toolbar;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+
+    > * {
+      flex: 1;
+      text-wrap: nowrap;
+    }
   }
 }

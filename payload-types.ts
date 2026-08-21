@@ -77,6 +77,7 @@ export interface Config {
     publications: Publication;
     persons: Person;
     profiles: Profile;
+    links: Link;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -94,6 +95,7 @@ export interface Config {
     publications: PublicationsSelect<false> | PublicationsSelect<true>;
     persons: PersonsSelect<false> | PersonsSelect<true>;
     profiles: ProfilesSelect<false> | ProfilesSelect<true>;
+    links: LinksSelect<false> | LinksSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -288,6 +290,8 @@ export interface Project {
   slug: string;
   subname?: string | null;
   category: 'Mechatronics' | 'Hobby' | 'IT';
+  thumbnail?: (number | null) | Media;
+  links?: (number | Link)[] | null;
   startDate?: string | null;
   endDate?: string | null;
   isCurrent?: boolean | null;
@@ -308,6 +312,40 @@ export interface Project {
     [k: string]: unknown;
   } | null;
   skills?: (number | Skill)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "links".
+ */
+export interface Link {
+  id: number;
+  key: string;
+  label: string;
+  url: string;
+  icon?:
+    | (
+        | 'accessibility'
+        | 'certification'
+        | 'education'
+        | 'feather'
+        | 'handshake'
+        | 'home'
+        | 'project'
+        | 'publication'
+        | 'settings'
+        | 'tech-stack'
+        | 'search'
+        | 'close'
+        | 'lock'
+        | 'unlock'
+        | 'hamburger'
+        | 'build'
+        | 'link'
+        | 'read'
+      )
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -497,6 +535,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'profiles';
         value: number | Profile;
+      } | null)
+    | ({
+        relationTo: 'links';
+        value: number | Link;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -600,6 +642,8 @@ export interface ProjectsSelect<T extends boolean = true> {
   slug?: T;
   subname?: T;
   category?: T;
+  thumbnail?: T;
+  links?: T;
   startDate?: T;
   endDate?: T;
   isCurrent?: T;
@@ -713,6 +757,18 @@ export interface ProfilesSelect<T extends boolean = true> {
   slug?: T;
   orderNumber?: T;
   skills?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "links_select".
+ */
+export interface LinksSelect<T extends boolean = true> {
+  key?: T;
+  label?: T;
+  url?: T;
+  icon?: T;
   updatedAt?: T;
   createdAt?: T;
 }

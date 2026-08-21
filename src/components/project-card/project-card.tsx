@@ -1,41 +1,82 @@
 import { DisplayDateRange } from '../display-date-range/display-date-range';
-import { DisplaySkills } from '../display-skills/display-skills';
 import { NavToProject } from './_components/nav-to-project/nav-to-project';
+import { Button } from '../button/button';
+import { Icon } from '../icon/icon';
 import { Card } from '../card/card';
-
-import { getTranslations } from 'next-intl/server';
+import { Tag } from '../tag/tag';
+import Image from 'next/image';
 
 import type { ProjectCardProps } from './project-card.interface';
+import type { SkillDTO } from '@/models/skillDto';
+import type { LinkDTO } from '@/models/linkDto';
 
 import styles from './project-card.module.scss';
 
 export async function ProjectCard({
   project,
 }: ProjectCardProps): Promise<React.ReactNode> {
-  const t = await getTranslations('common');
-
   return (
     <Card key={project.id} slug={project.slug} className={styles.card}>
-      <strong className={styles.project_title}>{project.name}</strong>
+      <div className={styles.header}>
+        <div className={styles.icon}>
+          <Icon icon={Icon.All.Project} />
+        </div>
 
-      <span className={styles.category}>
-        {t('category')}: {project.category}
-      </span>
+        <div className={styles.titles}>
+          <h1 className={styles.project_name}>{project.name}</h1>
 
-      <DisplayDateRange
-        startDate={project.startDate}
-        endDate={project.endDate}
-        isCurrent={project.isCurrent}
-        className={styles.date_range}
-      />
+          <div className={styles.additional_info}>
+            {project.subname && project.subname.length > 0 && (
+              <>
+                <span>{project.subname}</span>
+                &nbsp;
+              </>
+            )}
 
-      {project.description && (
-        <span className={styles.description}>{project.description}</span>
-      )}
+            <DisplayDateRange
+              startDate={project.startDate}
+              endDate={project.endDate}
+              isCurrent={project.isCurrent}
+              className={styles.date_range}
+            />
+          </div>
+        </div>
+      </div>
 
-      <DisplaySkills skills={project.skills} />
+      <div className={styles.preview}>
+        {project.thumbnail && (
+          <Image
+            src={project.thumbnail.url}
+            alt={project.name}
+            loading={'eager'}
+            width={project.thumbnail.width}
+            height={project.thumbnail.height}
+            sizes={'(max-width: 768px) 100vw, 50vw'}
+            className={styles.preview_image}
+          />
+        )}
+      </div>
 
-      <NavToProject project={project} />
+      <div className={styles.description}>
+        {project.description && project.description}
+      </div>
+
+      <div className={styles.skills}>
+        {project.skills.map((skill: SkillDTO): React.ReactNode => (
+          <Tag key={skill.key}>{skill.name}</Tag>
+        ))}
+      </div>
+
+      <div className={styles.toolbar}>
+        {project.links.map((link: LinkDTO): React.ReactNode => (
+          <Button key={link.label}>
+            {link.label}
+            {link.icon && <Icon icon={link.icon} />}
+          </Button>
+        ))}
+
+        <NavToProject project={project} />
+      </div>
     </Card>
   );
 }

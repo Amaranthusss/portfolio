@@ -1,8 +1,10 @@
 import { revalidateProjectsAfterDelete } from '@/services/cache/revalidateProjects';
 import { revalidateProjects } from '@/services/cache/revalidateProjects';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { validateUrl } from '@/lib/validators/validateUrl';
 
 import type { CollectionConfig } from 'payload';
+import { IconName } from '@/components/icon/icon.config';
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
@@ -54,6 +56,19 @@ export const Projects: CollectionConfig = {
         { label: 'Hobby', value: 'Hobby' },
         { label: 'IT', value: 'IT' },
       ],
+    },
+
+    {
+      name: 'thumbnail',
+      type: 'upload',
+      relationTo: 'media',
+    },
+
+    {
+      name: 'links',
+      type: 'relationship',
+      relationTo: 'links',
+      hasMany: true,
     },
 
     {

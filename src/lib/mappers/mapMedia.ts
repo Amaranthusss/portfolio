@@ -16,6 +16,8 @@ export function mapMedia(media: Media | number | null | undefined): MediaDTO {
         mimeType: media.mimeType ?? 'application/octet-stream',
         size: media.filesize ?? 0,
         url: media.url ?? '/images/unknown.png',
+        width: media.width ?? 0,
+        height: media.height ?? 0,
       }
     : {
         id: -1,
@@ -24,5 +26,7 @@ export function mapMedia(media: Media | number | null | undefined): MediaDTO {
         fileName: 'unknown.png',
         mimeType: 'image/png',
         url: '/images/unknown.png',
+        width: 512,
+        height: 512,
       };
 }
