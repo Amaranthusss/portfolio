@@ -2,8 +2,7 @@ import type { ComponentPropsWithRef } from 'react';
 import type { PropsWithChildren } from 'react';
 import type { CSSProperties } from 'react';
 
-export interface ButtonProps
-  extends PropsWithChildren, ComponentPropsWithRef<'button'> {
+export interface ButtonBaseProps extends PropsWithChildren {
   mode?: 'primary' | 'default' | 'text';
   animated?: boolean;
   square?: boolean;
@@ -11,3 +10,5 @@ export interface ButtonProps
   centerVertical?: boolean;
   contentStyle?: CSSProperties;
 }
+
+export type ButtonProps = ButtonBaseProps & ComponentPropsWithRef<'button'>;

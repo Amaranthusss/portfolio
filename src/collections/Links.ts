@@ -41,6 +41,12 @@ export const Links: CollectionConfig = {
     },
 
     {
+      name: 'isExternal',
+      type: 'checkbox',
+      required: true,
+    },
+
+    {
       name: 'icon',
       type: 'select',
       options: Object.values(IconName),

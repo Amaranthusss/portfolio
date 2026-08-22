@@ -36,7 +36,6 @@ export function SkillTagList({
 
   const toggleShowMore = (): void => {
     if (showAll) return setIsClosing(true);
-
     setShowAll(true);
   };
 
@@ -49,9 +48,7 @@ export function SkillTagList({
 
     const container: HTMLDivElement | null = skillTagListRef.current;
 
-    if (container === null) {
-      return (): void => undefined;
-    }
+    if (container == null) return (): void => undefined;
 
     const closingSkills: HTMLElement[] = Array.from(
       container.querySelectorAll<HTMLElement>(`.${styles.skill_closing}`)
@@ -60,7 +57,7 @@ export function SkillTagList({
     const lastSkill: HTMLElement | undefined =
       closingSkills[closingSkills.length - 1];
 
-    if (lastSkill === undefined) {
+    if (lastSkill == null) {
       setShowAll(false);
       setIsClosing(false);
 

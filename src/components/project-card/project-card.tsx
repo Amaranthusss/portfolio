@@ -1,19 +1,25 @@
 import { DisplayDateRange } from '../display-date-range/display-date-range';
-import { NavToProject } from './_components/nav-to-project/nav-to-project';
 import { SkillTagList } from './_components/skill-tag-list/skill-tag-list';
-import { Button } from '../button/button';
+import { AnchorButton } from '../button/_components/anchor-button/anchor-button';
 import { Icon } from '../icon/icon';
 import { Card } from '../card/card';
 import Image from 'next/image';
 
+import { useTranslations } from 'next-intl';
+
 import type { ProjectCardProps } from './project-card.interface';
 import type { LinkDTO } from '@/models/linkDto';
+
+import { IconName } from '../icon/icon.config';
+import { Route } from '@/constants/Route';
 
 import styles from './project-card.module.scss';
 
 export async function ProjectCard({
   project,
 }: ProjectCardProps): Promise<React.ReactNode> {
+  const t = useTranslations('common');
+
   return (
     <Card key={project.id} slug={project.slug} className={styles.card}>
       <div className={styles.header}>
@@ -68,13 +74,23 @@ export async function ProjectCard({
 
       <div className={styles.toolbar}>
         {project.links.map((link: LinkDTO): React.ReactNode => (
-          <Button key={link.label}>
+          <AnchorButton
+            key={link.key}
+            href={link.url}
+            target={link.isExternal ? '_blank' : undefined}
+          >
             {link.label}
             {link.icon && <Icon icon={link.icon} />}
-          </Button>
+          </AnchorButton>
         ))}
 
-        <NavToProject project={project} />
+        <AnchorButton
+          href={Route.ProjectsAndRealisations + '/' + project.slug}
+          aria-label={`read-more-about-project-${project.slug}`}
+        >
+          {t('read-more')}
+          <Icon icon={IconName.Read} />
+        </AnchorButton>
       </div>
     </Card>
   );

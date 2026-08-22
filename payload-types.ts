@@ -325,6 +325,7 @@ export interface Link {
   key: string;
   label: string;
   url: string;
+  isExternal: boolean;
   icon?:
     | (
         | 'accessibility'
@@ -770,6 +771,7 @@ export interface LinksSelect<T extends boolean = true> {
   key?: T;
   label?: T;
   url?: T;
+  isExternal?: T;
   icon?: T;
   updatedAt?: T;
   createdAt?: T;

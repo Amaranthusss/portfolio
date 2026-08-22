@@ -1,12 +1,10 @@
-import { AnchorButton } from './_components/anchor-button/anchor-button';
+import { useButtonClassNames } from '../../_hooks/useButtonClassNames';
 
-import { useButtonClassNames } from './_hooks/useButtonClassNames';
+import type { ButtonProps } from './anchor-button.interface';
 
-import type { ButtonProps } from './button.interface';
+import styles from '../../button.module.scss';
 
-import styles from './button.module.scss';
-
-export const Button = ({
+export const AnchorButton = ({
   active,
   square,
   animated,
@@ -15,7 +13,7 @@ export const Button = ({
   contentStyle,
   centerVertical,
   mode = 'default',
-  ...buttonProps
+  ...anchorButtonProps
 }: ButtonProps): React.ReactNode => {
   const { classNames } = useButtonClassNames(
     mode,
@@ -27,12 +25,10 @@ export const Button = ({
   );
 
   return (
-    <button {...buttonProps} className={classNames}>
+    <a {...anchorButtonProps} className={classNames}>
       <span style={contentStyle} className={styles.button_content}>
         {children ?? ''}
       </span>
-    </button>
+    </a>
   );
 };
-
-Button.AnchorButton = AnchorButton;
