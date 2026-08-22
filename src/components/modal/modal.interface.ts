@@ -7,7 +7,7 @@ export interface ModalHandle {
 
 export interface ModalProps extends PropsWithChildren {
   attachToBody?: boolean;
-  title?: string;
+  title: string;
   className?: string;
   bodyClassName?: string;
   footerClassName?: string;

@@ -33,7 +33,7 @@ export function Modal({
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const modalRef = useRef<HTMLDivElement | null>(null);
-  const toolbarRef = useRef<HTMLDivElement | null>(null);
+  const titleRef = useRef<HTMLDivElement | null>(null);
   const { cn, boolToClass } = useClassName();
 
   const open = useCallback((): void => {
@@ -55,7 +55,7 @@ export function Modal({
     boolToClass(footer != null, styles.with_footer)
   );
 
-  useDragAndDrop(isVisible, modalRef, toolbarRef);
+  useDragAndDrop(isVisible, modalRef, titleRef);
   useCloseShortcut(isOpen, close);
   useOpenAnimations(isOpen, isVisible, modalRef, setIsVisible);
 
@@ -77,9 +77,11 @@ export function Modal({
       role={'dialog'}
       aria-labelledby={title}
     >
-      <div ref={toolbarRef} className={cn(styles.toolbar, toolbarClassName)}>
+      <div className={cn(styles.toolbar, toolbarClassName)}>
         {title != null && title.length > 0 && (
-          <span className={styles.title}>{title}</span>
+          <span ref={titleRef} className={styles.title}>
+            {title}
+          </span>
         )}
 
         <div className={cn(styles.options, toolbarOptionsClassName)}>

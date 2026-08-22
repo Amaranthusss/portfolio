@@ -7,7 +7,7 @@ import type { RefObject } from 'react';
 export const useDragAndDrop = (
   isVisible: boolean,
   modalRef: RefObject<HTMLDivElement | null>,
-  toolbarRef: RefObject<HTMLDivElement | null>
+  titleRef: RefObject<HTMLDivElement | null>
 ): void => {
   const draggable = useRef<Draggable | null>(null);
 
@@ -19,9 +19,9 @@ export const useDragAndDrop = (
     if (isVisible) {
       draggable.current = Draggable.create(modalRef.current, {
         type: 'x,y',
-        trigger: toolbarRef.current,
+        trigger: titleRef.current,
         inertia: true,
-        bounds: window
+        bounds: window,
       })?.[0];
 
       window.addEventListener('resize', onWindowResize);
@@ -31,5 +31,5 @@ export const useDragAndDrop = (
       window.removeEventListener('resize', onWindowResize);
       draggable.current?.kill();
     };
-  }, [isVisible, modalRef, toolbarRef, onWindowResize]);
+  }, [isVisible, modalRef, titleRef, onWindowResize]);
 };
