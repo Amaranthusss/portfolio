@@ -7,6 +7,7 @@ import Image from 'next/image';
 
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getCertifications } from '@/services/getCertifications';
+import { sortByDate } from '@/utils/sortByDate';
 
 import type { CertificationDTO } from '@/models/certificationDto';
 import type { Locale } from '@/i18n/locale';
@@ -24,7 +25,7 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
 
       <div className={styles.cards_layout}>
         {certifications
-          .sort((c1, c2) => c2.issueDate.getTime() - c1.issueDate.getTime())
+          .sort((c1, c2) => sortByDate('issueDate', c1, c2))
           .map((c) => (
             <Card key={c.id} slug={c.slug} className={styles.card}>
               <Image

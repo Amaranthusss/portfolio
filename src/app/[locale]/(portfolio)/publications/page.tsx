@@ -6,6 +6,7 @@ import { Card } from '@/components/card/card';
 
 import { createAuthorFormatter } from '@/utils/createAuthorFormatter';
 import { getPublications } from '@/services/getPublications';
+import { sortByDate } from '@/utils/sortByDate';
 import { getLocale } from 'next-intl/server';
 
 import type { PublicationDTO } from '@/models/publicationDto';
@@ -24,7 +25,7 @@ export default async function Publications(): Promise<React.ReactNode> {
 
       <div className={styles.cards_layout}>
         {publications
-          .sort((p) => p.publishDate.getTime())
+          .sort((p1, p2) => sortByDate('publishDate', p1, p2))
           .map((p) => (
             <Card key={p.id} slug={p.slug} className={styles.card}>
               <div className={styles.caption}>

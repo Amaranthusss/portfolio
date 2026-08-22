@@ -7,6 +7,7 @@ import { Card } from '@/components/card/card';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getExperienceSteps } from '@/services/getExperienceSteps';
 import { getEducationSteps } from '@/services/getEducationSteps';
+import { sortByDate } from '@/utils/sortByDate';
 
 import type { ExperienceStepDTO } from '@/models/experienceStepDto';
 import type { EducationStepDTO } from '@/models/educationStepDto';
@@ -26,7 +27,7 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
 
       <div className={styles.cards_layout}>
         {experienceSteps
-          .sort((e) => e.endDate?.getTime?.() ?? new Date().getTime())
+          .sort((e1, e2) => sortByDate('endDate', e1, e2))
           .map((e) => (
             <Card key={e.id} slug={e.slug} className={styles.card}>
               <strong className={styles.title}>{e.position}</strong>
@@ -71,7 +72,7 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
 
       <div className={styles.cards_layout}>
         {educationSteps
-          .sort((e) => e.endDate?.getTime?.() ?? new Date().getTime())
+          .sort((e1, e2) => sortByDate('endDate', e1, e2))
           .map((e) => (
             <Card key={e.id} slug={e.slug} className={styles.card}>
               <strong className={styles.title}>
