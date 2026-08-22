@@ -1,6 +1,5 @@
 import { revalidateProjectsAfterDelete } from '@/services/cache/revalidateProjects';
 import { revalidateProjects } from '@/services/cache/revalidateProjects';
-import { validateUrl } from '@/lib/validators/validateUrl';
 
 import type { CollectionConfig } from 'payload';
 
@@ -37,7 +36,6 @@ export const Links: CollectionConfig = {
       type: 'text',
       required: true,
       localized: true,
-      validate: validateUrl,
     },
 
     {

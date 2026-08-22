@@ -289,7 +289,7 @@ export interface Project {
   name: string;
   slug: string;
   subname?: string | null;
-  category: 'Mechatronics' | 'Hobby' | 'IT';
+  category: 'Mechatronics' | 'Education' | 'Hobby' | 'IT';
   thumbnail?: (number | null) | Media;
   links?: (number | Link)[] | null;
   startDate?: string | null;

@@ -36,6 +36,11 @@ export async function ProjectCard({
             icon: IconName.Mechatronics,
             title: 'mechatronics',
           }
+      : project.category === 'Education'
+        ? {
+            icon: IconName.Education,
+            title: 'education',
+          }
         : project.category === 'Hobby'
           ? {
               icon: IconName.Hobby,

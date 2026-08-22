@@ -1,5 +1,5 @@
 'use client';
-import { SearchCategory } from './search-catergory/search-category';
+import { SearchCategory } from './search-category/search-category';
 import { Divider } from '@/components/divider/divider';
 
 import { useTranslations } from 'next-intl';

@@ -51,6 +51,7 @@ export const Projects: CollectionConfig = {
       required: true,
       options: [
         { label: 'Mechatronics', value: 'Mechatronics' },
+        { label: 'Education', value: 'Education' },
         { label: 'Hobby', value: 'Hobby' },
         { label: 'IT', value: 'IT' },
       ],
