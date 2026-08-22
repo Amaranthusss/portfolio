@@ -1,0 +1,27 @@
+.tooltip {
+  position: fixed;
+  z-index: var(--z-index-tooltip);
+  max-width: min(320px, calc(100vw - 16px));
+  padding: var(--space-2) var(--space-3);
+  border-style: solid;
+  border-width: var(--border-width);
+  border-color: var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--layout-bg-color);
+  color: var(--text-color);
+  font-size: var(--font-size-sm);
+  box-shadow: var(--box-shadow);
+  animation: tooltip-in var(--animation-time) ease-out;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+@keyframes tooltip-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

@@ -1,3 +1,8 @@
 {
-  "header": "Projects and Realisations"
+  "header": "Projects and Realisations",
+  "read-details": "Read details",
+  "it": "IT",
+  "mechatronics": "Mechatronics",
+  "hobby": "Hobby",
+  "project": "Project"
 }

@@ -1,6 +1,7 @@
 import { DisplayDateRange } from '../display-date-range/display-date-range';
 import { SkillTagList } from './_components/skill-tag-list/skill-tag-list';
 import { AnchorButton } from '../button/_components/anchor-button/anchor-button';
+import { Tooltip } from '../tooltip/tooltip';
 import { Icon } from '../icon/icon';
 import { Card } from '../card/card';
 import Image from 'next/image';
@@ -8,6 +9,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import type { ProjectCardProps } from './project-card.interface';
+import type { Messages } from '../../../i18n';
 import type { LinkDTO } from '@/models/linkDto';
 
 import { IconName } from '../icon/icon.config';
@@ -18,14 +20,38 @@ import styles from './project-card.module.scss';
 export async function ProjectCard({
   project,
 }: ProjectCardProps): Promise<React.ReactNode> {
-  const t = useTranslations('common');
+  const t = useTranslations('projects-and-realisations');
+
+  const categoryData: {
+    icon: IconName;
+    title: keyof Messages['projects-and-realisations'];
+  } =
+    project.category === 'IT'
+      ? {
+          icon: IconName.It,
+          title: 'it',
+        }
+      : project.category === 'Mechatronics'
+        ? {
+            icon: IconName.Mechatronics,
+            title: 'mechatronics',
+          }
+        : project.category === 'Hobby'
+          ? {
+              icon: IconName.Hobby,
+              title: 'hobby',
+            }
+          : {
+              icon: IconName.Project,
+              title: 'project',
+            };
 
   return (
     <Card key={project.id} slug={project.slug} className={styles.card}>
       <div className={styles.header}>
-        <div className={styles.icon}>
-          <Icon icon={Icon.All.Project} />
-        </div>
+        <Tooltip title={t(categoryData.title)} className={styles.icon}>
+          <Icon icon={categoryData.icon} height={'var(--font-size-xxl)'} />
+        </Tooltip>
 
         <div className={styles.titles}>
           <h1 className={styles.project_name}>{project.name}</h1>
@@ -80,16 +106,18 @@ export async function ProjectCard({
             target={link.isExternal ? '_blank' : undefined}
           >
             {link.label}
-            {link.icon && <Icon icon={link.icon} />}
+            {link.icon && (
+              <Icon icon={link.icon} height={'var(--font-size-xl)'} />
+            )}
           </AnchorButton>
         ))}
 
         <AnchorButton
           href={Route.ProjectsAndRealisations + '/' + project.slug}
-          aria-label={`read-more-about-project-${project.slug}`}
+          aria-label={`read-details-about-project-${project.slug}`}
         >
-          {t('read-more')}
-          <Icon icon={IconName.Read} />
+          {t('read-details')}
+          <Icon icon={IconName.Read} height={'var(--font-size-xl)'} />
         </AnchorButton>
       </div>
     </Card>

@@ -346,6 +346,11 @@ export interface Link {
         | 'build'
         | 'link'
         | 'read'
+        | 'mechatronics'
+        | 'it'
+        | 'github'
+        | 'bulb'
+        | 'hobby'
       )
     | null;
   updatedAt: string;
