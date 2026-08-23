@@ -60,6 +60,7 @@ async function seedExperienceStep(
     isCurrent: experienceStep.isCurrent,
     locationType: experienceStep.locationType,
     employmentType: experienceStep.employmentType,
+    icon: experienceStep.icon,
     skills: skillIds,
   };
 

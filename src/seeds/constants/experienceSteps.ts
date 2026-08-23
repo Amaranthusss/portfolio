@@ -1,3 +1,4 @@
+import { IconName } from '@/components/icon/icon.config';
 import type { ExperienceStepSeedData } from '../interfaces/experienceStepSeedData';
 
 import { ExperienceStepSlug } from './experienceStepSlug';
@@ -5,6 +6,7 @@ import { ExperienceStepSlug } from './experienceStepSlug';
 export const experienceSteps: ExperienceStepSeedData[] = [
   {
     slug: ExperienceStepSlug.AiutFrontendProgrammer,
+    icon: IconName.SoftwareProgramming,
     startDate: '2021-07-01',
     isCurrent: true,
     locationType: 'Hybrid',
@@ -76,6 +78,7 @@ export const experienceSteps: ExperienceStepSeedData[] = [
 
   {
     slug: ExperienceStepSlug.AiutPlcProgrammer,
+    icon: IconName.PlcProgramming,
     startDate: '2018-07-01',
     endDate: '2021-07-01',
     isCurrent: false,

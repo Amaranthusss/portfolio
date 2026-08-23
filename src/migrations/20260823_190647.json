@@ -1025,6 +1025,13 @@
           "primaryKey": true,
           "notNull": true
         },
+        "icon": {
+          "name": "icon",
+          "type": "enum_experience_steps_icon",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
         "slug": {
           "name": "slug",
           "type": "varchar",
@@ -5105,6 +5112,38 @@
         "IT"
       ]
     },
+    "public.enum_experience_steps_icon": {
+      "name": "enum_experience_steps_icon",
+      "schema": "public",
+      "values": [
+        "accessibility",
+        "certification",
+        "education",
+        "feather",
+        "handshake",
+        "home",
+        "project",
+        "publication",
+        "settings",
+        "tech-stack",
+        "search",
+        "close",
+        "lock",
+        "unlock",
+        "hamburger",
+        "build",
+        "link",
+        "read",
+        "mechatronics",
+        "it",
+        "github",
+        "bulb",
+        "hobby",
+        "work-station",
+        "software-programming",
+        "plc-programming"
+      ]
+    },
     "public.enum_experience_steps_employment_type": {
       "name": "enum_experience_steps_employment_type",
       "schema": "public",
@@ -5166,7 +5205,9 @@
         "github",
         "bulb",
         "hobby",
-        "work-station"
+        "work-station",
+        "software-programming",
+        "plc-programming"
       ]
     }
   },
@@ -5180,6 +5221,6 @@
     "tables": {},
     "columns": {}
   },
-  "id": "0e00836f-258b-4e0f-abf5-abef5362df82",
+  "id": "5b74f04e-e3f8-464e-baaa-cde79faad6b5",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }

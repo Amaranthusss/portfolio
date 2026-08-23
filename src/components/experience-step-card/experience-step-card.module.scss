@@ -1,0 +1,56 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+
+  > .header {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-4);
+
+    > .icon {
+      $size: calc(var(--font-size-lg) + var(--font-size-lg));
+
+      display: grid;
+      place-items: center;
+      color: var(--text-color);
+      background-color: var(--infill-bg-color);
+      border-radius: var(--border-radius);
+      width: $size;
+      height: $size;
+    }
+
+    > .titles {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      > .position {
+        font-size: var(--font-size-lg);
+        margin-block: unset;
+      }
+
+      > .additional_info {
+        display: flex;
+        flex-direction: column;
+        font-size: var(--font-size-sm);
+
+        > .date_range {
+          color: var(--secondary-text-color);
+        }
+      }
+    }
+  }
+
+  > .description {
+    text-align: justify;
+  }
+
+  > .duty_list {
+    color: var(--secondary-text-color);
+
+    > .duty {
+      margin-left: var(--space-9);
+    }
+  }
+}

@@ -13,6 +13,7 @@
     "seed:links": "payload run src/seeds/runSeedLinks.ts",
     "seed:projects": "payload run src/seeds/runSeedProjects.ts",
     "seed:certifications": "payload run src/seeds/runSeedCertifications.ts",
+    "seed:experience-steps": "payload run src/seeds/runSeedExperienceSteps.ts",
     "seed:core-technologies": "payload run src/seeds/runSeedCoreTechnologies.ts",
     "migrate": "payload migrate:create",
     "reset-db": "pnpm payload migrate:fresh",

@@ -4,5 +4,19 @@
   "grade": "Ocena",
   "thesis": "Praca dyplomowa",
   "duties": "Obowiązki",
-  "diploma-with-distinction": ", dyplom z wyróżnieniem"
+  "diploma-with-distinction": ", dyplom z wyróżnieniem",
+  "employment-type": {
+    "full-time": "Pełen etat",
+    "half-time": "Pół etatu",
+    "quarter-time": "Ćwierć etatu",
+    "self-employed": "Samozatrudnienie",
+    "internship": "Staż",
+    "freelance": "Umowa zlecenie",
+    "apprenticeship": "Praktyki"
+  },
+  "location-type": {
+    "on-site": "Praca stacjonarna",
+    "remote": "Praca zdalna",
+    "hybrid": "Praca hybrydowa"
+  }
 }

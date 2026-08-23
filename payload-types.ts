@@ -353,6 +353,8 @@ export interface Link {
         | 'bulb'
         | 'hobby'
         | 'work-station'
+        | 'software-programming'
+        | 'plc-programming'
       )
     | null;
   updatedAt: string;
@@ -365,6 +367,36 @@ export interface Link {
 export interface ExperienceStep {
   id: number;
   position: string;
+  icon?:
+    | (
+        | 'accessibility'
+        | 'certification'
+        | 'education'
+        | 'feather'
+        | 'handshake'
+        | 'home'
+        | 'project'
+        | 'publication'
+        | 'settings'
+        | 'tech-stack'
+        | 'search'
+        | 'close'
+        | 'lock'
+        | 'unlock'
+        | 'hamburger'
+        | 'build'
+        | 'link'
+        | 'read'
+        | 'mechatronics'
+        | 'it'
+        | 'github'
+        | 'bulb'
+        | 'hobby'
+        | 'work-station'
+        | 'software-programming'
+        | 'plc-programming'
+      )
+    | null;
   slug: string;
   company: string;
   location: string;
@@ -670,6 +702,7 @@ export interface ProjectsSelect<T extends boolean = true> {
  */
 export interface ExperienceStepsSelect<T extends boolean = true> {
   position?: T;
+  icon?: T;
   slug?: T;
   company?: T;
   location?: T;

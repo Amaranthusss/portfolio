@@ -1,3 +1,4 @@
+import { ExperienceStepCard } from '@/components/experience-step-card/experience-step-card';
 import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
 import { DisplaySkills } from '@/components/display-skills/display-skills';
 import { ListModule } from '@/components/list-module/list-module';
@@ -28,43 +29,8 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
       <div className={styles.cards_layout}>
         {experienceSteps
           .sort((e1, e2) => sortByDate('endDate', e1, e2))
-          .map((e) => (
-            <Card key={e.id} slug={e.slug} className={styles.card}>
-              <strong className={styles.title}>{e.position}</strong>
-              {e.company && <span className={styles.company}>{e.company}</span>}
-              {e.location && (
-                <span className={styles.location}>{e.location}</span>
-              )}
-
-              <DisplayDateRange
-                startDate={e.startDate}
-                endDate={e.endDate}
-                isCurrent={e.isCurrent}
-                className={styles.date_range}
-              />
-
-              <span className={styles.types}>
-                {e.employmentType && e.employmentType}
-                {e.locationType && <>, {e.locationType}</>}
-              </span>
-
-              {e.description && (
-                <span className={styles.description}>{e.description}</span>
-              )}
-
-              {e.duties && e.duties.length > 0 && (
-                <ul className={styles.duty_list}>
-                  {t('duties')}:
-                  {e.duties.map((d) => (
-                    <li key={d} className={styles.duty}>
-                      {d}
-                    </li>
-                  ))}
-                </ul>
-              )}
-
-              <DisplaySkills skills={e.skills} />
-            </Card>
+          .map((e: ExperienceStepDTO): React.ReactNode => (
+            <ExperienceStepCard key={e.slug} experienceStep={e} />
           ))}
       </div>
 

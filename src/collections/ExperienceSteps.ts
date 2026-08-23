@@ -3,6 +3,8 @@ import { revalidateExperienceSteps } from '@/services/cache/revalidateExperience
 
 import type { CollectionConfig } from 'payload';
 
+import { IconName } from '@/components/icon/icon.config';
+
 export const ExperienceSteps: CollectionConfig = {
   slug: 'experience-steps',
 
@@ -28,6 +30,12 @@ export const ExperienceSteps: CollectionConfig = {
       type: 'text',
       required: true,
       localized: true,
+    },
+
+    {
+      name: 'icon',
+      type: 'select',
+      options: Object.values(IconName),
     },
 
     {

@@ -4,5 +4,19 @@
   "grade": "Grade",
   "thesis": "Thesis",
   "duties": "Duties",
-  "diploma-with-distinction": ", diploma with distinction"
+  "diploma-with-distinction": ", diploma with distinction",
+  "employment-type": {
+    "full-time": "Full-time",
+    "half-time": "Half-time",
+    "quarter-time": "Quarter-time",
+    "self-employed": "Self-employed",
+    "internship": "Internship",
+    "freelance": "Freelance",
+    "apprenticeship": "Apprenticeship"
+  },
+  "location-type": {
+    "on-site": "On-site",
+    "remote": "Remote",
+    "hybrid": "Hybrid"
+  }
 }

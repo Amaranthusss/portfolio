@@ -1,4 +1,5 @@
 import type { ExperienceStepSlug } from '../constants/experienceStepSlug';
+import type { IconName } from '@/components/icon/icon.config';
 import type { SkillKey } from '@/models/skillKey';
 import type { Locale } from '@/i18n/locale';
 
@@ -12,6 +13,7 @@ export interface ExperienceStepTranslation {
 
 export interface ExperienceStepSeedData {
   slug: ExperienceStepSlug;
+  icon: IconName;
   startDate: string;
   endDate?: string;
   isCurrent: boolean;

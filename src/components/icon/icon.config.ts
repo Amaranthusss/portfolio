@@ -1,3 +1,5 @@
+import { SoftwareProgrammingIcon } from './_components/software-programming/software-programming';
+import { PlcProgrammingIcon } from './_components/plc-programming/plc-programming';
 import { AccessibilityIcon } from './_components/accessibility-icon/accessibility-icon';
 import { CertificationIcon } from './_components/certification-icon/certification-icon';
 import { MechatronicsIcon } from './_components/mechatronics-icon/mechatronics-icon';
@@ -50,6 +52,8 @@ export enum IconName {
   Bulb = 'bulb',
   Hobby = 'hobby',
   WorkStation = 'work-station',
+  SoftwareProgramming = 'software-programming',
+  PlcProgramming = 'plc-programming',
 }
 
 export const iconConfig: Record<
@@ -80,6 +84,8 @@ export const iconConfig: Record<
   [IconName.Bulb]: BulbIcon,
   [IconName.Hobby]: HobbyIcon,
   [IconName.WorkStation]: WorkStationIcon,
+  [IconName.SoftwareProgramming]: SoftwareProgrammingIcon,
+  [IconName.PlcProgramming]: PlcProgrammingIcon,
 };
 
 export const defaultSvgProps: SVGProps<SVGSVGElement> = {
