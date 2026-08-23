@@ -8,6 +8,7 @@ import { certifications } from '../constants/certifications';
 
 export async function seedCertifications(payload: Payload): Promise<void> {
   console.log('== Seeding certifications ==');
+
   let i: number = 1;
 
   for (const certification of certifications) {

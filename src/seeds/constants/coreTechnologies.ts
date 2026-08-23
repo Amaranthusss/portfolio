@@ -13,17 +13,17 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'DevOps',
-        iconFilename: 'devops.png',
+        iconFilename: 'icons/devops.png',
         skills: ['Git'],
       },
       {
         title: 'GitLab',
-        iconFilename: 'gitlab.png',
+        iconFilename: 'icons/gitlab.png',
         skills: ['Git'],
       },
       {
         title: 'GitHub',
-        iconFilename: 'github.png',
+        iconFilename: 'icons/github.png',
         skills: ['Git'],
       },
     ],
@@ -35,11 +35,11 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'Figma',
-        iconFilename: 'figma.png',
+        iconFilename: 'icons/figma.png',
       },
       {
         title: 'Adobe Xd',
-        iconFilename: 'adobe-xd.png',
+        iconFilename: 'icons/adobe-xd.png',
       },
     ],
   },
@@ -50,11 +50,11 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'Jira',
-        iconFilename: 'jira.png',
+        iconFilename: 'icons/jira.png',
       },
       {
         title: 'Confluence',
-        iconFilename: 'confluence.png',
+        iconFilename: 'icons/confluence.png',
       },
     ],
   },
@@ -65,12 +65,12 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'TypeScript',
-        iconFilename: 'ts.jpg',
+        iconFilename: 'icons/typescript.png',
         skills: ['TS'],
       },
       {
         title: 'JavaScript',
-        iconFilename: 'javascript.png',
+        iconFilename: 'icons/javascript.png',
         skills: ['JS', 'NodeJS'],
       },
     ],
@@ -83,12 +83,12 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'React.js',
-        iconFilename: 'react.png',
+        iconFilename: 'icons/react-js.png',
         skills: ['ReactJS'],
       },
       {
         title: 'Angular.js',
-        iconFilename: 'angular.png',
+        iconFilename: 'icons/angular.png',
         skills: ['Angular'],
       },
     ],
@@ -101,12 +101,12 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'SASS',
-        iconFilename: 'sass.svg',
+        iconFilename: 'icons/sass.svg',
         skills: ['SASS'],
       },
       {
         title: 'LESS',
-        iconFilename: 'less.png',
+        iconFilename: 'icons/less.png',
         skills: ['LESS'],
       },
     ],
@@ -119,7 +119,7 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'Cypress',
-        iconFilename: 'cypress.svg',
+        iconFilename: 'icons/cypress.svg',
         skills: ['Cypress'],
       },
     ],
@@ -132,17 +132,17 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'AntDesign',
-        iconFilename: 'ant-design.svg',
+        iconFilename: 'icons/ant-design.svg',
         skills: ['AntDReact', 'AntDBlazor'],
       },
       {
         title: 'DevExtreme',
-        iconFilename: 'dev-extreme.svg',
+        iconFilename: 'icons/dev-extreme.svg',
         skills: ['DevExtremeReact', 'DevExtremeAngular'],
       },
       {
         title: 'Material UI',
-        iconFilename: 'material-ui.png',
+        iconFilename: 'icons/material-ui.png',
         skills: ['MaterialUI'],
       },
     ],
@@ -155,12 +155,12 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'Sanity CMS',
-        iconFilename: 'sanity.png',
+        iconFilename: 'icons/sanity.png',
         skills: ['SanityCMS', 'CMS'],
       },
       {
         title: 'Payload CMS',
-        iconFilename: 'payload-cms.png',
+        iconFilename: 'icons/payload-cms.png',
         skills: ['PayloadCMS', 'CMS'],
       },
     ],
@@ -173,17 +173,17 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'Vite',
-        iconFilename: 'vite.png',
+        iconFilename: 'icons/vite.png',
         skills: ['Vite'],
       },
       {
         title: 'Next.js',
-        iconFilename: 'next.png',
+        iconFilename: 'icons/next-js.png',
         skills: ['NextJS'],
       },
       {
         title: 'Create React App',
-        iconFilename: 'create-react-app.svg',
+        iconFilename: 'icons/create-react-app.svg',
         skills: ['CRA'],
       },
     ],
@@ -196,11 +196,11 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'ESLint',
-        iconFilename: 'eslint.png',
+        iconFilename: 'icons/eslint.png',
       },
       {
         title: 'Prettier',
-        iconFilename: 'prettier.png',
+        iconFilename: 'icons/prettier.png',
       },
     ],
   },
@@ -212,17 +212,17 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'Zustand',
-        iconFilename: 'zustand.svg',
+        iconFilename: 'icons/zustand.svg',
         skills: ['Zustand'],
       },
       {
         title: 'Redux Toolkit',
-        iconFilename: 'redux-toolkit.svg',
+        iconFilename: 'icons/redux-toolkit.svg',
         skills: ['Redux'],
       },
       {
         title: 'Jotai',
-        iconFilename: 'jotai.png',
+        iconFilename: 'icons/jotai.png',
       },
     ],
   },
@@ -234,22 +234,22 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'Leaflet',
-        iconFilename: 'leaflet.png',
+        iconFilename: 'icons/leaflet.png',
         skills: ['Leaflet'],
       },
       {
         title: 'Three.js',
-        iconFilename: 'three.png',
+        iconFilename: 'icons/three.png',
         skills: ['ThreeJS'],
       },
       {
         title: 'Lodash',
-        iconFilename: 'lodash.png',
+        iconFilename: 'icons/lodash.png',
         skills: ['Lodash'],
       },
       {
         title: 'Socket.io',
-        iconFilename: 'socket-io.svg',
+        iconFilename: 'icons/socket-io.svg',
         skills: ['SocketIO', 'WS'],
       },
     ],
@@ -262,12 +262,12 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'Nest.js',
-        iconFilename: 'nest.svg',
+        iconFilename: 'icons/nest-js.svg',
         skills: ['NestJS'],
       },
       {
         title: 'Express.js',
-        iconFilename: 'express.svg',
+        iconFilename: 'icons/express.svg',
         skills: ['ExpressJS'],
       },
     ],
@@ -280,7 +280,7 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'Jest.js',
-        iconFilename: 'jest.png',
+        iconFilename: 'icons/jest.png',
         skills: ['Jest'],
       },
     ],
@@ -293,17 +293,17 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'Prisma',
-        iconFilename: 'prisma.svg',
+        iconFilename: 'icons/prisma.svg',
         skills: ['Prisma', 'ORM'],
       },
       {
         title: 'TypeORM',
-        iconFilename: 'type-orm.png',
+        iconFilename: 'icons/type-orm.png',
         skills: ['TypeORM', 'ORM'],
       },
       {
         title: 'Drizzle ORM',
-        iconFilename: 'drizzle.png',
+        iconFilename: 'icons/drizzle.png',
         skills: ['Drizzle', 'ORM'],
       },
     ],
@@ -316,22 +316,22 @@ const groups: CoreTechnologiesGroupSeedData[] = [
     nodes: [
       {
         title: 'PostgreSQL',
-        iconFilename: 'postgresql.png',
+        iconFilename: 'icons/postgresql.png',
         skills: ['PostgreSQL', 'DB'],
       },
       {
         title: 'SQLite',
-        iconFilename: 'sqlite.svg',
+        iconFilename: 'icons/sqlite.svg',
         skills: ['SQLite', 'DB'],
       },
       {
         title: 'MySQL',
-        iconFilename: 'mysql.png',
+        iconFilename: 'icons/mysql.png',
         skills: ['MySQL', 'DB'],
       },
       {
         title: 'MongoDB',
-        iconFilename: 'mongo-db.svg',
+        iconFilename: 'icons/mongo-db.svg',
         skills: ['MongoDB', 'DB'],
       },
     ],

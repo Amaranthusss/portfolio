@@ -9,6 +9,11 @@
     "start": "next start",
     "lint": "eslint",
     "seed": "payload run src/seeds/_run.ts",
+    "seed:media": "payload run src/seeds/runSeedMedia.ts",
+    "seed:links": "payload run src/seeds/runSeedLinks.ts",
+    "seed:projects": "payload run src/seeds/runSeedProjects.ts",
+    "seed:certifications": "payload run src/seeds/runSeedCertifications.ts",
+    "seed:core-technologies": "payload run src/seeds/runSeedCoreTechnologies.ts",
     "migrate": "payload migrate:create",
     "reset-db": "pnpm payload migrate:fresh",
     "generate": "payload generate:types"

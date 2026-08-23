@@ -9,7 +9,7 @@ export const certifications: CertificationSeedData[] = [
     url: 'https://www.udemy.com/certificate/UC-eaa0812d-ce13-4fca-afe3-0f05d4a359f1/',
     credentialID: 'UC-eaa0812d-ce13-4fca-afe3-0f05d4a359f1',
 
-    image: 'udemy.jpg',
+    image: 'icons/next-js.png',
 
     skills: ['NextJS', 'ReactJS', 'PostgreSQL', 'Zod', 'TS'],
 
@@ -41,7 +41,7 @@ export const certifications: CertificationSeedData[] = [
     url: 'https://www.udemy.com/certificate/UC-9ef640b6-39b5-40b6-ac04-171756e6eebb/',
     credentialID: 'UC-9ef640b6-39b5-40b6-ac04-171756e6eebb',
 
-    image: 'udemy.jpg',
+    image: 'icons/nest-js.svg',
 
     skills: [
       'NestJS',
@@ -82,7 +82,7 @@ export const certifications: CertificationSeedData[] = [
     url: 'https://www.udemy.com/certificate/UC-c7beeb38-645f-447a-910a-b8388c1bf355/',
     credentialID: 'UC-c7beeb38-645f-447a-910a-b8388c1bf355',
 
-    image: 'udemy.jpg',
+    image: 'icons/nest-js.svg',
 
     skills: ['NestJS', 'PostgreSQL', 'Docker', 'TS'],
 
@@ -111,7 +111,7 @@ export const certifications: CertificationSeedData[] = [
     url: 'https://www.udemy.com/certificate/UC-22caa334-e40c-4e8e-96b8-d4bf617b7e98/',
     credentialID: 'UC-22caa334-e40c-4e8e-96b8-d4bf617b7e98',
 
-    image: 'udemy.jpg',
+    image: 'icons/blazor.png',
 
     skills: ['Blazor', 'CSharp', 'DotNet'],
 
@@ -143,7 +143,7 @@ export const certifications: CertificationSeedData[] = [
     url: 'https://www.udemy.com/certificate/UC-9ca9ca52-cf3b-4dfa-b192-7767788e60b2/',
     credentialID: 'UC-9ca9ca52-cf3b-4dfa-b192-7767788e60b2',
 
-    image: 'udemy.jpg',
+    image: 'icons/node-js.svg',
 
     skills: ['TS', 'NodeJS', 'Docker', 'VPS'],
 
@@ -173,7 +173,7 @@ export const certifications: CertificationSeedData[] = [
     url: 'https://ude.my/UC-68bca8f0-67ad-437d-803b-2e34de5e33a4',
     credentialID: 'UC-68bca8f0-67ad-437d-803b2e34de5e33a4',
 
-    image: 'udemy.jpg',
+    image: 'icons/postgresql.png',
 
     skills: ['PostgreSQL'],
 
@@ -201,7 +201,7 @@ export const certifications: CertificationSeedData[] = [
     issueDate: '2022-02-02',
     credentialID: 'CERT61FAEFFB86876',
 
-    image: 'ts.jpg',
+    image: 'icons/node-js.svg',
 
     skills: ['NodeJS'],
 
@@ -229,7 +229,7 @@ export const certifications: CertificationSeedData[] = [
     issueDate: '2021-09-26',
     credentialID: 'CERT6150D21240D7D',
 
-    image: 'ts.jpg',
+    image: 'icons/react-js.png',
 
     skills: ['ReactJS'],
 
@@ -257,7 +257,7 @@ export const certifications: CertificationSeedData[] = [
     issueDate: '2020-05-07',
     credentialID: '47155',
 
-    image: 'emtSystems.jpg',
+    image: 'icons/tia-portal.png',
 
     skills: ['PLCProgramming', 'TiaPortal', 'SCL', 'STL', 'LAD'],
 
@@ -286,7 +286,7 @@ export const certifications: CertificationSeedData[] = [
     slug: CertificationSlug.ModernMethodsOfPlcProgramming,
     issueDate: '2019-04-09',
 
-    image: 'b-and-r.jpg',
+    image: 'icons/b-and-r.jpg',
 
     skills: ['PLCProgramming', 'SCL', 'LAD'],
 
@@ -313,7 +313,7 @@ export const certifications: CertificationSeedData[] = [
     slug: CertificationSlug.IqrfWirelessProgramming,
     issueDate: '2018-11-28',
 
-    image: 'iqrf.jpg',
+    image: 'icons/iqrf.jpg',
 
     skills: ['IQRF'],
 
@@ -343,7 +343,7 @@ export const certifications: CertificationSeedData[] = [
     slug: CertificationSlug.PLCProgrammingAndDesigningProcessVisualizations,
     issueDate: '2018-04-17',
 
-    image: 'aiut.jpg',
+    image: 'icons/tia-portal.png',
 
     skills: ['PLCProgramming', 'TiaPortal', 'STL', 'LAD'],
 
@@ -374,7 +374,7 @@ export const certifications: CertificationSeedData[] = [
     slug: CertificationSlug.ProgrammingMachineToolsInMTSSystemCNC,
     issueDate: '2015-06-26',
 
-    image: 'mts.jpg',
+    image: 'icons/mts.jpg',
 
     skills: ['CADCAM'],
 
@@ -403,7 +403,7 @@ export const certifications: CertificationSeedData[] = [
     slug: CertificationSlug.HowToEarnFromWebsites,
     issueDate: '2022-02-12',
 
-    image: 'ts.jpg',
+    image: 'icons/free-lancer.png',
 
     skills: ['Documentation', 'SalesSupport'],
 

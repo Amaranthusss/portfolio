@@ -12,11 +12,7 @@ async function seedSkill(
 ): Promise<void> {
   const existingSkill: PaginatedDocs<Skill> = await payload.find({
     collection: 'skills',
-    where: {
-      key: {
-        equals: skill.key,
-      },
-    },
+    where: { key: { equals: skill.key } },
     limit: 1,
     depth: 0,
     locale: 'all',

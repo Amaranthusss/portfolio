@@ -7,5 +7,11 @@ export const Media: CollectionConfig = {
 
   upload: { mimeTypes: ['image/*'] },
 
-  fields: [],
+  fields: [
+    {
+      name: 'prefix',
+      type: 'text',
+      admin: { hidden: true },
+    },
+  ],
 };

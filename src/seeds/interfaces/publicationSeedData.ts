@@ -1,17 +1,12 @@
 import type { PublicationSlug } from '../constants/publicationSlug';
 import type { SkillKey } from '@/models/skillKey';
 import type { Locale } from '@/i18n/locale';
+import type { Person } from '../../../payload-types';
 
 export interface PublicationAuthorSeedData {
   name: string;
   surname: string;
-  academicDegree:
-    | 'Engineer'
-    | 'MasterOfScienceInEngineering'
-    | 'DoctorInEngineering'
-    | 'HabilitatedDoctorInEngineering'
-    | 'UniversityProfessor'
-    | 'Professor';
+  academicDegree: NonNullable<Person['academicDegree']>;
 }
 
 export interface PublicationTranslationSeedData {

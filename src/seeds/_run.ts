@@ -6,11 +6,13 @@ import { seedCertifications } from './helpers/seedCertifications';
 import { seedEducationSteps } from './helpers/seedEducationSteps';
 import { seedPublications } from './helpers/seedPublications';
 import { seedCodeStyle } from './helpers/seedCodeStyle';
+import { seedProjects } from './helpers/seedProjects';
 import { seedProfiles } from './helpers/seedProfiles';
 import { seedAboutMe } from './helpers/seedAboutMe';
 import { getPayload } from 'payload';
 import { seedSkills } from './helpers/seedSkills';
 import { seedMedia } from './helpers/seedMedia';
+import { seedLinks } from './helpers/seedLinks';
 
 import type { BasePayload } from 'payload';
 
@@ -27,7 +29,9 @@ async function seed(): Promise<void> {
     // * Collections
     await seedSkills(payload);
     await seedMedia(payload);
+    await seedLinks(payload);
     await seedProfiles(payload);
+    await seedProjects(payload);
     await seedCertifications(payload);
     await seedEducationSteps(payload);
     await seedExperienceSteps(payload);

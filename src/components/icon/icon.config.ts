@@ -1,6 +1,7 @@
 import { AccessibilityIcon } from './_components/accessibility-icon/accessibility-icon';
 import { CertificationIcon } from './_components/certification-icon/certification-icon';
 import { MechatronicsIcon } from './_components/mechatronics-icon/mechatronics-icon';
+import { WorkStationIcon } from './_components/work-station-icon/work-station-icon';
 import { PublicationIcon } from './_components/publication-icon/publication-icon';
 import { HamburgerIcon } from './_components/hamburger-icon/hamburger-icon';
 import { HandshakeIcon } from './_components/handshake-icon/handshake-icon';
@@ -48,6 +49,7 @@ export enum IconName {
   Github = 'github',
   Bulb = 'bulb',
   Hobby = 'hobby',
+  WorkStation = 'work-station',
 }
 
 export const iconConfig: Record<
@@ -77,6 +79,7 @@ export const iconConfig: Record<
   [IconName.Github]: GithubIcon,
   [IconName.Bulb]: BulbIcon,
   [IconName.Hobby]: HobbyIcon,
+  [IconName.WorkStation]: WorkStationIcon,
 };
 
 export const defaultSvgProps: SVGProps<SVGSVGElement> = {
