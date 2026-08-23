@@ -6,7 +6,7 @@ import { Icon } from '../icon/icon';
 import { Card } from '../card/card';
 import Image from 'next/image';
 
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import type { ProjectCardProps } from './project-card.interface';
 import type { Messages } from '../../../i18n';
@@ -20,7 +20,7 @@ import styles from './project-card.module.scss';
 export async function ProjectCard({
   project,
 }: ProjectCardProps): Promise<React.ReactNode> {
-  const t = useTranslations('projects-and-realisations');
+  const t = await getTranslations('projects-and-realisations');
 
   const categoryData: {
     icon: IconName;
@@ -36,20 +36,20 @@ export async function ProjectCard({
             icon: IconName.Mechatronics,
             title: 'mechatronics',
           }
-      : project.category === 'Education'
-        ? {
-            icon: IconName.Education,
-            title: 'education',
-          }
-        : project.category === 'Hobby'
+        : project.category === 'Education'
           ? {
-              icon: IconName.Hobby,
-              title: 'hobby',
+              icon: IconName.Education,
+              title: 'education',
             }
-          : {
-              icon: IconName.Project,
-              title: 'project',
-            };
+          : project.category === 'Hobby'
+            ? {
+                icon: IconName.Hobby,
+                title: 'hobby',
+              }
+            : {
+                icon: IconName.Project,
+                title: 'project',
+              };
 
   return (
     <Card key={project.id} slug={project.slug} className={styles.card}>
