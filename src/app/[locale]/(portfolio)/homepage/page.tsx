@@ -1,5 +1,5 @@
+import { HomepageExtraCard } from '@/components/homepage-extra-card/homepage-extra-card';
 import { RichTextContent } from '@/components/rich-text-content/rich-text-content';
-import { Button } from '@/components/button/button';
 import { Title } from '@/components/title/title';
 import Image from 'next/image';
 
@@ -13,8 +13,6 @@ import type { AboutMeDTO } from '@/models/aboutMeDto';
 import type { Locale } from '@/i18n/locale';
 
 import styles from './page.module.scss';
-import { ContactForm } from '@/components/contact-form/contact-form';
-import { Divider } from '@/components/divider/divider';
 
 export default async function Homepage(): Promise<React.ReactNode> {
   const t = await getTranslations('homepage');
@@ -65,16 +63,10 @@ export default async function Homepage(): Promise<React.ReactNode> {
         </p>
       </div>
 
-      <div className={`${styles.shortcuts}`}>
-        I build complex, performant and user-friendly web applications.
-        <div>
-          <Button mode={'primary'}>{portfolioDocumentation.title}</Button>
-          <Button mode={'default'}>Get in Touch</Button>
-        </div>
-        <RichTextContent content={portfolioDocumentation.content} />
-        <Divider />
-        <ContactForm />
-      </div>
+      <HomepageExtraCard
+        className={styles.extra_card}
+        portfolioDocumentation={portfolioDocumentation}
+      />
     </section>
   );
 }

@@ -11,7 +11,7 @@ $z-index-elements: 3;
   padding-block: var(--space-10);
   grid-template-areas:
     'welcome welcome'
-    'about-me shortcuts';
+    'about-me extra_card';
 
   > .welcome {
     grid-area: welcome;
@@ -88,33 +88,25 @@ $z-index-elements: 3;
   }
 
   > .shortcuts {
-    grid-area: shortcuts;
+    grid-area: extra-card;
     padding-right: var(--space-10);
-    transition: padding-inline var(--animation-time);
-
-    > div {
-      display: flex;
-      flex-direction: row;
-      gap: var(--space-4);
-      margin-top: var(--space-4);
-    }
   }
 
   @media screen and (max-width: 750px) {
     grid-template-areas:
       'welcome welcome'
       'about-me about-me'
-      'shortcuts shortcuts';
+      'extra-card extra-card';
 
     > .about_me,
-    > .shortcuts {
+    > .extra_card {
       padding-inline: var(--space-10);
     }
   }
 
   @media screen and (max-width: 550px) {
     > .about_me,
-    > .shortcuts {
+    > .extra_card {
       padding-inline: var(--space-0);
     }
   }
