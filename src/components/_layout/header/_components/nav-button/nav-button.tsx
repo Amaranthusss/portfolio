@@ -10,12 +10,18 @@ import type { NavButtonProps } from './nav-button.interface';
 export function NavButton({
   menuItem,
   className,
+  onNavigate,
 }: NavButtonProps): React.ReactNode {
   const t = useTranslations('layout.header');
   const router = useRouter();
   const pathname: string = usePathname();
 
   const { text, icon, route, decorated } = menuItem;
+
+  const onClick = (): void => {
+    router.push(route);
+    onNavigate?.();
+  };
 
   return (
     <Button
@@ -25,7 +31,7 @@ export function NavButton({
       mode={decorated ? 'primary' : undefined}
       contentStyle={{ justifyContent: 'flex-start' }}
       aria-label={`navigation-button-${route.replace('/', '')}`}
-      onClick={(): void => router.push(route)}
+      onClick={onClick}
     >
       <Icon icon={icon} />
       {t(text)}

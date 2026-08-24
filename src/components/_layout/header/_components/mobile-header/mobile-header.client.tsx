@@ -27,6 +27,7 @@ export function MobileHeaderClient({
   const modalRef = useRef<ModalHandle>(null);
 
   const showMenu = (): void => modalRef.current?.open();
+  const onNavigate = (): void => modalRef.current?.close();
 
   return (
     <header className={cn(styles.header, className)}>
@@ -54,11 +55,12 @@ export function MobileHeaderClient({
             key={menuItem.text}
             menuItem={menuItem}
             className={styles.nav_button}
+            onNavigate={onNavigate}
           />
         ))}
 
         <Divider />
-        
+
         {advancedSearch}
         <AppSettings iconOnly={false} />
       </Modal>
