@@ -36,5 +36,39 @@
   },
   "app-settings": {
     "menu-title": "App Settings"
+  },
+  "contact-form": {
+    "subject": "Subject",
+    "subject-placeholder": "What would you like to talk about?",
+    "request-type": "Request type",
+    "hire-me": "Hire me",
+    "ask-question": "Ask a question",
+    "commission-project": "Commision a project",
+    "other": "Other",
+    "message": "Message",
+    "message-placeholder": "Tell me more about your request...",
+    "email": "E-mail",
+    "email-placeholder": " your@email.com",
+    "phone": "Phone number",
+    "phone-placeholder": "+48 000 000 000",
+    "error": {
+      "api-responsed-with-error": "Unable to send your message. Please try again later.",
+      "api-response-error": "Unable to send your message. Please try again later or contact me directly by email.",
+      "submit-error-affix": "You can also contact me directly by email."
+    },
+    "status": {
+      "sending": "Sending...",
+      "try-send": "Send message"
+    },
+    "validation": {
+      "title-min-length": "Subject must contain at least {min} characters.",
+      "title-max-length": "Subject cannot exceed {max} characters.",
+      "request-type-invalid": "Please select a valid message category.",
+      "message-min-length": "Message must contain at least {min} characters.",
+      "message-max-length": "Message cannot exceed {max} characters.",
+      "email-required": "Email is required.",
+      "email-invalid": "Please enter a valid email address.",
+      "phone-max-length": "Phone number cannot exceed {max} characters."
+    }
   }
 }

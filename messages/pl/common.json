@@ -36,5 +36,39 @@
   },
   "app-settings": {
     "menu-title": "Ustawienia aplikacji"
+  },
+  "contact-form": {
+    "subject": "Temat",
+    "subject-placeholder": "Czego dotyczy wiadomość?",
+    "request-type": "Kategoria wiadomości",
+    "hire-me": "Współpraca",
+    "ask-question": "Pytanie",
+    "commission-project": "Zlecenie projektu",
+    "other": "Inne",
+    "message": "Wiadomość",
+    "message-placeholder": "Napisz kilka słów o tym, w czym mogę Ci pomóc...",
+    "email": "E-mail",
+    "email-placeholder": "twoj@email.com",
+    "phone": "Telefon kontaktowy",
+    "phone-placeholder": "+48 000 000 000",
+    "error": {
+      "api-responsed-with-error": "Nie udało się wysłać wiadomości. Spróbuj ponownie później.",
+      "api-response-error": "Nie udało się wysłać wiadomości. Spróbuj ponownie później lub skontaktuj się ze mną bezpośrednio przez e-mail.",
+      "submit-error-affix": "Możesz również skontaktować się ze mną bezpośrednio przez e-mail."
+    },
+    "status": {
+      "sending": "Wysyłanie...",
+      "try-send": "Wyślij wiadomość"
+    },
+    "validation": {
+      "title-min-length": "Temat musi zawierać przynajmniej {min} znaki.",
+      "title-max-length": "Temat nie może przekraczać {max} znaków.",
+      "request-type-invalid": "Wybierz prawidłową kategorię wiadomości.",
+      "message-min-length": "Wiadomość musi zawierać przynajmniej {min} znaków.",
+      "message-max-length": "Wiadomość nie może przekraczać {max} znaków.",
+      "email-required": "E-mail jest wymagany.",
+      "email-invalid": "Podaj prawidłowy adres e-mail.",
+      "phone-max-length": "Numer telefonu nie może przekraczać {max} znaków."
+    }
   }
 }

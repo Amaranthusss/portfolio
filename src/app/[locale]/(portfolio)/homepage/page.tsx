@@ -13,6 +13,8 @@ import type { AboutMeDTO } from '@/models/aboutMeDto';
 import type { Locale } from '@/i18n/locale';
 
 import styles from './page.module.scss';
+import { ContactForm } from '@/components/contact-form/contact-form';
+import { Divider } from '@/components/divider/divider';
 
 export default async function Homepage(): Promise<React.ReactNode> {
   const t = await getTranslations('homepage');
@@ -70,6 +72,8 @@ export default async function Homepage(): Promise<React.ReactNode> {
           <Button mode={'default'}>Get in Touch</Button>
         </div>
         <RichTextContent content={portfolioDocumentation.content} />
+        <Divider />
+        <ContactForm />
       </div>
     </section>
   );

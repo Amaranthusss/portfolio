@@ -50,7 +50,7 @@
   --secondary-text-color: #464646;
   --placeholder-color: #bfbfbf;
   --header-color: white;
-  --border-color: #f0f0f0;
+  --border-color: #dadada;
 
   --body-bg-color: #ffffff;
   --footer-bg-color: #ebebeb;
@@ -60,12 +60,18 @@
   --infill-darker-bg-color: #f7f7f7;
 
   --control-bg-color: #ffffff;
+  --control-bg-color-transparent: rgba(241, 241, 241, 0.65);
   --control-disable-color: #b6b6b6;
   --control-disable-color-2: #555555;
   --control-disable-text-color: #888888;
   --control-box-shadow: 0px 0px 4px 0px rgba(191, 191, 191, 0.5);
   --control-box-shadow-active: 0px 0px 4px 2px var(--primary-color);
   --popup-box-shadow: 0px 0px 6px 0px rgba(0, 143, 238, 1);
+
+  --success-color: #02bd11;
+  --success-shadow-color: rgba(94, 224, 82, 0.15);
+  --error-color: #b80000;
+  --error-shadow-color: rgba(224, 82, 82, 0.35);
 
   --sb-bg-color: #eef3fb;
   --sb-track-color: #f7f9fc;
@@ -96,13 +102,19 @@
   --infill-bg-color: #252c3e;
   --infill-darker-bg-color: #171c29;
 
-  --control-bg-color: #1a2347;
+  --control-bg-color: #0b0f1d;
+  --control-bg-color-transparent: rgba(11, 15, 29, 0.30);
   --control-disable-color: #555555;
   --control-disable-color-2: #272727;
   --control-disable-text-color: #7e7e7e;
   --control-box-shadow: unset;
   --control-box-shadow-active: 0px 0px 4px 2px var(--primary-color);
   --popup-box-shadow: 0px 0px 6px 0px rgba(37, 46, 61, 0.5);
+
+  --success-color: #2edb3c;
+  --success-shadow-color: rgba(94, 224, 82, 0.15);
+  --error-color: #e43a3a;
+  --error-shadow-color: rgba(224, 82, 82, 0.35);
 
   --sb-bg-color: #101b41;
   --sb-track-color: #161d35;
@@ -134,12 +146,18 @@
   --infill-darker-bg-color: #000000;
 
   --control-bg-color: #000000;
+  --control-bg-color-transparent: rgba(0, 0, 0, 0.65);
   --control-disable-color: #000000;
   --control-disable-color-2: #000000;
   --control-disable-text-color: #e2e2e2;
   --control-box-shadow: unset;
   --control-box-shadow-active: unset;
   --popup-box-shadow: unset;
+
+  --success-color: #00ff15;
+  --success-shadow-color: rgba(22, 255, 1, 0.35);
+  --error-color: #ff0000;
+  --error-shadow-color: rgba(255, 1, 1, 0.35);
 
   --sb-bg-color: #000000;
   --sb-track-color: #000000;

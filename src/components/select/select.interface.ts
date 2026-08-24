@@ -8,6 +8,7 @@ export interface SelectProps<TValue extends ValueExtension> extends StrictOmit<
 > {
   value?: TValue;
   label?: string;
+  error?: string;
   options?: SelectOption<TValue>[];
   onChange?: (value: TValue) => void;
 }
