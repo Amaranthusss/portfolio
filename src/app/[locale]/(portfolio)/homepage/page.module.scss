@@ -11,7 +11,7 @@ $z-index-elements: 3;
   padding-block: var(--space-10);
   grid-template-areas:
     'welcome welcome'
-    'about-me extra_card';
+    'about-me extra-card';
 
   > .welcome {
     grid-area: welcome;
@@ -87,7 +87,7 @@ $z-index-elements: 3;
     transition: padding-inline var(--animation-time);
   }
 
-  > .shortcuts {
+  > .extra_card {
     grid-area: extra-card;
     padding-right: var(--space-10);
   }
