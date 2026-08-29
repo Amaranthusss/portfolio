@@ -1,5 +1,5 @@
 import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
-import { DisplaySkills } from '@/components/display-skills/display-skills';
+import { SkillTagList } from '@/components/skill-tag-list/skill-tag-list';
 import { ListModule } from '@/components/list-module/list-module';
 import { Title } from '@/components/title/title';
 import { Card } from '@/components/card/card';
@@ -46,7 +46,7 @@ export default async function Publications(): Promise<React.ReactNode> {
                   Keywords: {p.keywords.join(' | ')}
                 </span>
 
-                <DisplaySkills skills={p.skills} />
+                <SkillTagList skills={p.skills} />
               </div>
             </Card>
           ))}

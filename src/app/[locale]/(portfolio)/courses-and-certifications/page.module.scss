@@ -48,6 +48,11 @@
 
       > .credential_id {
         color: var(--secondary-text-color);
+        font-style: italic;
+      }
+
+      > .skill_tag_list {
+        margin-top: var(--space-2);
       }
     }
   }

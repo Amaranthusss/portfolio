@@ -1,6 +1,6 @@
 import { ExperienceStepCard } from '@/components/experience-step-card/experience-step-card';
 import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
-import { DisplaySkills } from '@/components/display-skills/display-skills';
+import { SkillTagList } from '@/components/skill-tag-list/skill-tag-list';
 import { ListModule } from '@/components/list-module/list-module';
 import { Title } from '@/components/title/title';
 import { Card } from '@/components/card/card';
@@ -71,7 +71,7 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
                 <span className={styles.description}>{e.description}</span>
               )}
 
-              <DisplaySkills skills={e.skills} />
+              <SkillTagList skills={e.skills} />
             </Card>
           ))}
       </div>

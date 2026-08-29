@@ -1,5 +1,5 @@
 import { DisplayDateRange } from '../display-date-range/display-date-range';
-import { SkillTagList } from './_components/skill-tag-list/skill-tag-list';
+import { SkillTagList } from '../skill-tag-list/skill-tag-list';
 import { AnchorButton } from '../button/_components/anchor-button/anchor-button';
 import { Tooltip } from '../tooltip/tooltip';
 import { Icon } from '../icon/icon';

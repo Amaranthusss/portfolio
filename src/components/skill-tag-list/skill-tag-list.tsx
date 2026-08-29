@@ -11,10 +11,13 @@ import styles from './skill-tag-list.module.scss';
 
 export function SkillTagList({
   skills,
-  coreSkills,
+  coreSkills = [],
   className,
 }: SkillTagListProps): React.ReactNode {
-  const [showAll, setShowAll] = useState<boolean>(false);
+  const [showAll, setShowAll] = useState<boolean>(
+    coreSkills.length === 0 || false
+  );
+
   const [isClosing, setIsClosing] = useState<boolean>(false);
 
   const skillTagListRef: React.RefObject<HTMLDivElement | null> =
@@ -79,7 +82,11 @@ export function SkillTagList({
   return (
     <div
       ref={skillTagListRef}
-      className={cn(styles.skill_tag_list, className)}
+      className={cn(
+        styles.skill_tag_list,
+        boolToClass(coreSkills.length === 0, styles.without_core_skills),
+        className
+      )}
       style={style}
     >
       {skillsToDisplay.map((skill: SkillDTO): React.ReactNode => (
@@ -97,7 +104,7 @@ export function SkillTagList({
         </div>
       ))}
 
-      {skills.length > coreSkills.length && (
+      {coreSkills.length > 0 && skills.length > coreSkills.length && (
         <button
           type={'button'}
           className={styles.toggle_button}

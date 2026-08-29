@@ -1,5 +1,5 @@
 import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
-import { DisplaySkills } from '@/components/display-skills/display-skills';
+import { SkillTagList } from '@/components/skill-tag-list/skill-tag-list';
 import { ListModule } from '@/components/list-module/list-module';
 import { Title } from '@/components/title/title';
 import { Card } from '@/components/card/card';
@@ -13,6 +13,7 @@ import type { CertificationDTO } from '@/models/certificationDto';
 import type { Locale } from '@/i18n/locale';
 
 import styles from './page.module.scss';
+import { Divider } from '@/components/divider/divider';
 
 export default async function CoursesAndCertifications(): Promise<React.ReactNode> {
   const locale: Locale = await getLocale();
@@ -53,7 +54,10 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
                   </span>
                 )}
 
-                <DisplaySkills skills={c.skills} />
+                <SkillTagList
+                  skills={c.skills}
+                  className={styles.skill_tag_list}
+                />
               </div>
             </Card>
           ))}

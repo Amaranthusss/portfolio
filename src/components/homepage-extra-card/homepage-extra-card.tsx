@@ -29,20 +29,20 @@ export function HomepageExtraCard({
       <div className={styles.menu_buttons}>
         <Button
           mode={'primary'}
+          active={currentMenuItem === MenuItem.GetInTouch}
+          onClick={(): void => setCurrentMenuItem(MenuItem.GetInTouch)}
+        >
+          Get in Touch
+        </Button>
+
+        <Button
+          mode={'default'}
           active={currentMenuItem === MenuItem.ApplicationDescrition}
           onClick={(): void =>
             setCurrentMenuItem(MenuItem.ApplicationDescrition)
           }
         >
-          {portfolioDocumentation.title}
-        </Button>
-
-        <Button
-          mode={'default'}
-          active={currentMenuItem === MenuItem.GetInTouch}
-          onClick={(): void => setCurrentMenuItem(MenuItem.GetInTouch)}
-        >
-          Get in Touch
+          About Portfolio Application
         </Button>
       </div>
       <Divider />

@@ -1,5 +1,6 @@
 .extra_card {
   transition: padding-inline var(--animation-time);
+  text-align: justify;
 
   > .menu_buttons {
     display: flex;

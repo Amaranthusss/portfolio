@@ -37,7 +37,7 @@ $animation-delay: 40ms;
     }
   }
 
-  @for $i from 1 through 20 {
+  @for $i from 1 through 25 {
     > .skill:nth-child(#{$i + 1}) {
       animation-delay: $i * $animation-delay;
     }

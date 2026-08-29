@@ -1,5 +1,5 @@
 import { DisplayDateRange } from '../display-date-range/display-date-range';
-import { DisplaySkills } from '../display-skills/display-skills';
+import { SkillTagList } from '../skill-tag-list/skill-tag-list';
 import { Divider } from '../divider/divider';
 import { Icon } from '../icon/icon';
 import { Card } from '../card/card';
@@ -86,7 +86,7 @@ export async function ExperienceStepCard({
         </ul>
       )}
 
-      <DisplaySkills skills={experienceStep.skills} />
+      <SkillTagList skills={experienceStep.skills} />
     </Card>
   );
 }
