@@ -10,5 +10,5 @@ export async function getTheme(): Promise<Theme> {
   const theme: string | undefined = cookieStore.get(Cookie.Theme)?.value;
 
   if (theme === Theme.Light || theme === Theme.Dark) return theme;
-  return Theme.Dark;
+  return Theme.Light;
 }

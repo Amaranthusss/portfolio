@@ -5,9 +5,9 @@ import { Title } from '@/components/title/title';
 
 import { getPortfolioDocumentation } from '@/services/getPortfolioDocumentation';
 import { getTranslations } from 'next-intl/server';
-import { getTheme } from '@/utils/getTheme';
 import { getAboutMe } from '@/services/getAboutMe';
 import { getLocale } from 'next-intl/server';
+import { getTheme } from '@/utils/getTheme';
 
 import type { PortfolioDocumentationDTO } from '@/models/portfolioDocumentationDto';
 import type { AboutMeDTO } from '@/models/aboutMeDto';

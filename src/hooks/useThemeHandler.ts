@@ -2,9 +2,9 @@
 import { useRouter } from 'next/navigation';
 import { useCookie } from './useCookie';
 
-import type { SystemThemeCookieValue } from '@/models/systemThemeCookieValue';
 import type { ConstrastCookieValue } from '@/constants/ContrastCookieValue';
 import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import type { SystemThemeFlag } from '@/models/systemThemeFlag';
 
 import { constrastCookieValue } from '@/constants/ContrastCookieValue';
 import { ThemeOption } from '@/constants/ThemeOption';
@@ -34,7 +34,7 @@ export function useThemeHandler() {
 
   const getThemeOption = (): ThemeOption => {
     const isSystemTheme: boolean =
-      getCookie<SystemThemeCookieValue>(Cookie.SystemTheme) === 'true';
+      getCookie<SystemThemeFlag>(Cookie.SystemTheme) === 'true';
 
     if (isSystemTheme) return ThemeOption.System;
 
@@ -57,7 +57,7 @@ export function useThemeHandler() {
       document.cookie = `${Cookie.SystemTheme}=true; path=/;`;
       document.documentElement.dataset.theme = systemTheme;
       document.documentElement.dataset.systemTheme =
-        'true' satisfies SystemThemeCookieValue;
+        'true' satisfies SystemThemeFlag;
     } else {
       document.cookie = `${Cookie.Theme}=${themeOption}; path=/;`;
       document.cookie = `${Cookie.SystemTheme}=; path=/; max-age=0`;
