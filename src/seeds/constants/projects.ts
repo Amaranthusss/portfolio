@@ -330,7 +330,7 @@ export const projects: ProjectSeedData[] = [
     startDate: '2018-09-01',
     endDate: '2020-01-23',
     thumbnail:
-      'project-banners/automatisation-of-production-systems-with-usage-of-agv-hmi.png',
+      'project-banners/automatisation-of-production-systems-with-usage-of-agv-banner.jpg',
 
     skills: [
       'AGV',
