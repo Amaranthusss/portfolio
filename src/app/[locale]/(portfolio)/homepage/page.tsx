@@ -64,6 +64,7 @@ export default async function Homepage(): Promise<React.ReactNode> {
       </div>
 
       <HomepageExtraCard
+        aboutMe={aboutMe}
         className={styles.extra_card}
         portfolioDocumentation={portfolioDocumentation}
       />

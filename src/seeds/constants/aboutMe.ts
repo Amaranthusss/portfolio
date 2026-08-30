@@ -8,6 +8,40 @@ export const aboutMe: { [locale in Locale]: AboutMeDTO } = {
     mobile: '(+48) 789 268 680',
     linkedin: 'https://www.linkedin.com/in/oskar-szkur%C5%82at-597782305',
 
+    welcome: {
+      root: {
+        type: 'root',
+        format: '',
+        indent: 0,
+        version: 1,
+
+        children: [
+          {
+            type: 'paragraph',
+            format: '',
+            indent: 0,
+            version: 1,
+
+            children: [
+              {
+                mode: 'normal',
+                text: 'Podoba Ci się to, co widzisz? Porozmawiajmy lub poznaj bliżej moje portfolio.',
+                type: 'text',
+                style: '',
+                detail: 0,
+                format: 0,
+                version: 1,
+              },
+            ],
+            direction: null,
+            textStyle: '',
+            textFormat: 0,
+          },
+        ],
+        direction: null,
+      },
+    },
+
     content: {
       root: {
         type: 'root',
@@ -126,6 +160,40 @@ export const aboutMe: { [locale in Locale]: AboutMeDTO } = {
     email: 'oskar.szkurlat@gmail.com',
     mobile: '(+48) 789 268 680',
     linkedin: 'https://www.linkedin.com/in/oskar-szkur%C5%82at-597782305',
+
+    welcome: {
+      root: {
+        type: 'root',
+        format: '',
+        indent: 0,
+        version: 1,
+
+        children: [
+          {
+            type: 'paragraph',
+            format: '',
+            indent: 0,
+            version: 1,
+
+            children: [
+              {
+                mode: 'normal',
+                text: "Like what you see? Let's talk or explore the rest of my portfolio.",
+                type: 'text',
+                style: '',
+                detail: 0,
+                format: 0,
+                version: 1,
+              },
+            ],
+            direction: null,
+            textStyle: '',
+            textFormat: 0,
+          },
+        ],
+        direction: null,
+      },
+    },
 
     content: {
       root: {

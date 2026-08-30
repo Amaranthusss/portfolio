@@ -18,11 +18,5 @@ export const PortfolioDocumentation: GlobalConfig = {
       localized: true,
       editor: lexicalEditor(),
     },
-    {
-      name: 'content',
-      type: 'richText',
-      localized: true,
-      editor: lexicalEditor(),
-    },
   ],
 };

@@ -5,5 +5,6 @@ export interface AboutMeDTO {
   email: string;
   mobile: string;
   linkedin: string;
+  welcome: DefaultTypedEditorState;
   content: DefaultTypedEditorState;
 }

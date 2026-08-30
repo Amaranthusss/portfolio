@@ -867,6 +867,21 @@ export interface AboutMe {
   email: string;
   mobile: string;
   linkedin: string;
+  welcome?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   content?: {
     root: {
       type: string;
@@ -893,21 +908,6 @@ export interface PortfolioDocumentation {
   id: number;
   title: string;
   description?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  content?: {
     root: {
       type: string;
       children: {
@@ -996,6 +996,7 @@ export interface AboutMeSelect<T extends boolean = true> {
   email?: T;
   mobile?: T;
   linkedin?: T;
+  welcome?: T;
   content?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1008,7 +1009,6 @@ export interface AboutMeSelect<T extends boolean = true> {
 export interface PortfolioDocumentationSelect<T extends boolean = true> {
   title?: T;
   description?: T;
-  content?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

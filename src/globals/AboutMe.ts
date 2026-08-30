@@ -31,6 +31,12 @@ export const AboutMe: GlobalConfig = {
       required: true,
     },
     {
+      name: 'welcome',
+      type: 'richText',
+      localized: true,
+      editor: lexicalEditor(),
+    },
+    {
       name: 'content',
       type: 'richText',
       localized: true,

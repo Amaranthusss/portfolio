@@ -34,6 +34,5 @@ export async function getPortfolioDocumentation(
   return {
     title: portfolioDocumentation.title,
     description: portfolioDocumentation.description ?? createEmptyEditorState(),
-    content: portfolioDocumentation.content ?? createEmptyEditorState(),
   };
 }

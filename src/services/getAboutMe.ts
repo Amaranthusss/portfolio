@@ -34,6 +34,7 @@ export async function getAboutMe(locale: Locale): Promise<AboutMeDTO> {
     email: aboutMe.email,
     mobile: aboutMe.mobile,
     linkedin: aboutMe.linkedin,
+    welcome: aboutMe.welcome ?? createEmptyEditorState(),
     content: aboutMe.content ?? createEmptyEditorState(),
   };
 }

@@ -1,6 +1,8 @@
 import type { PortfolioDocumentationDTO } from '@/models/portfolioDocumentationDto';
+import type { AboutMeDTO } from '@/models/aboutMeDto';
 
 export interface HomepageExtraCardProps {
+  aboutMe: AboutMeDTO;
   portfolioDocumentation: PortfolioDocumentationDTO;
   className?: string;
 }
