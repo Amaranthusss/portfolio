@@ -1,17 +1,13 @@
 'use client';
 import Image from 'next/image';
 
-import { useThemeHandler } from '@/hooks/useThemeHandler';
+import type { HomepageImageProps } from './homepage-image.interface';
 
 import { Theme } from '@/constants/Theme';
 
 import styles from './homepage-image.module.scss';
 
-export function HomepageImage(): React.ReactNode {
-  const { getFinalTheme } = useThemeHandler();
-
-  const theme: Theme.Dark | Theme.Light = getFinalTheme();
-
+export function HomepageImage({ theme }: HomepageImageProps): React.ReactNode {
   const src =
     theme === Theme.Dark
       ? '/images/homepage-dark.png'
@@ -20,9 +16,9 @@ export function HomepageImage(): React.ReactNode {
   return (
     <Image
       priority
-      className={styles.welcome_image}
       src={src}
       alt={'Homepage background image'}
+      className={styles.welcome_image}
       loading={'eager'}
       quality={100}
       width={1219}

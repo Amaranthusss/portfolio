@@ -5,12 +5,14 @@ import { Title } from '@/components/title/title';
 
 import { getPortfolioDocumentation } from '@/services/getPortfolioDocumentation';
 import { getTranslations } from 'next-intl/server';
+import { getTheme } from '@/utils/getTheme';
 import { getAboutMe } from '@/services/getAboutMe';
 import { getLocale } from 'next-intl/server';
 
 import type { PortfolioDocumentationDTO } from '@/models/portfolioDocumentationDto';
 import type { AboutMeDTO } from '@/models/aboutMeDto';
 import type { Locale } from '@/i18n/locale';
+import type { Theme } from '@/constants/Theme';
 
 import styles from './page.module.scss';
 
@@ -18,6 +20,7 @@ export default async function Homepage(): Promise<React.ReactNode> {
   const t = await getTranslations('homepage');
   const locale: Locale = await getLocale();
   const aboutMe: AboutMeDTO = await getAboutMe(locale);
+  const theme: Theme = await getTheme();
   const portfolioDocumentation: PortfolioDocumentationDTO =
     await getPortfolioDocumentation(locale);
 
@@ -40,17 +43,17 @@ export default async function Homepage(): Promise<React.ReactNode> {
           </h2>
         </div>
 
-        <HomepageImage />
+        <HomepageImage theme={theme} />
       </div>
 
-      <div className={`${styles.about_me}`}>
+      <div className={styles.about_me}>
         <Title>{aboutMe.title}</Title>
 
         <RichTextContent content={aboutMe.content} />
 
         <p>📫 Email: {aboutMe.email}</p>
         <p>
-          💼 LinkedIn: <a href={aboutMe.linkedin}>Oskar Szkurłat</a>{' '}
+          💼 LinkedIn: <a href={aboutMe.linkedin}>Oskar Szkurłat</a>
         </p>
       </div>
 

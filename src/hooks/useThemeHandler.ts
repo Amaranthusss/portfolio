@@ -2,10 +2,12 @@
 import { useRouter } from 'next/navigation';
 import { useCookie } from './useCookie';
 
+import type { SystemThemeCookieValue } from '@/models/systemThemeCookieValue';
 import type { ConstrastCookieValue } from '@/constants/ContrastCookieValue';
 import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 
 import { constrastCookieValue } from '@/constants/ContrastCookieValue';
+import { ThemeOption } from '@/constants/ThemeOption';
 import { Cookie } from '@/constants/Cookie';
 import { Theme } from '@/constants/Theme';
 
@@ -30,39 +32,41 @@ export function useThemeHandler() {
     document.documentElement.dataset.contrast = datasetValue;
   };
 
-  const getTheme = (): Theme => {
-    return getCookie<Theme>(Cookie.Theme) ?? Theme.System;
+  const getThemeOption = (): ThemeOption => {
+    const isSystemTheme: boolean =
+      getCookie<SystemThemeCookieValue>(Cookie.SystemTheme) === 'true';
+
+    if (isSystemTheme) return ThemeOption.System;
+
+    const theme: Theme | undefined = getCookie<Theme>(Cookie.Theme);
+
+    if (theme === Theme.Dark) return ThemeOption.Dark;
+    if (theme === Theme.Light) return ThemeOption.Light;
+    return ThemeOption.System;
   };
 
-  const getFinalTheme = (): Theme.Dark | Theme.Light => {
-    const theme: Theme = getTheme();
+  const setTheme = (themeOption: ThemeOption): void => {
+    if (themeOption === ThemeOption.System) {
+      const mediaQuery: MediaQueryList = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      );
 
-    if (theme === Theme.Dark || theme === Theme.Light) return theme;
+      const systemTheme: Theme = mediaQuery.matches ? Theme.Dark : Theme.Light;
 
-    const mediaQuery: MediaQueryList = window.matchMedia(
-      '(prefers-color-scheme: dark)'
-    );
-
-    return mediaQuery.matches ? Theme.Dark : Theme.Light;
-  };
-
-  const setTheme = (theme: Theme): void => {
-    if (theme === Theme.System) {
-      document.cookie = `${Cookie.Theme}=; path=/; max-age=0`;
-      document.documentElement.dataset.theme = undefined;
+      document.cookie = `${Cookie.Theme}=${systemTheme}; path=/;`;
+      document.cookie = `${Cookie.SystemTheme}=true; path=/;`;
+      document.documentElement.dataset.theme = systemTheme;
+      document.documentElement.dataset.systemTheme =
+        'true' satisfies SystemThemeCookieValue;
     } else {
-      document.cookie = `${Cookie.Theme}=${theme}; path=/;`;
-      document.documentElement.dataset.theme = theme;
+      document.cookie = `${Cookie.Theme}=${themeOption}; path=/;`;
+      document.cookie = `${Cookie.SystemTheme}=; path=/; max-age=0`;
+      delete document.documentElement.dataset.systemTheme;
+      document.documentElement.dataset.theme = themeOption;
     }
 
     router.refresh();
   };
 
-  return {
-    getTheme,
-    setTheme,
-    getFinalTheme,
-    isContrastTheme,
-    setContrastTheme,
-  };
+  return { getThemeOption, setTheme, isContrastTheme, setContrastTheme };
 }
