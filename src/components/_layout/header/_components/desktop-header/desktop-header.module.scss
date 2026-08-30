@@ -8,6 +8,7 @@
   padding-inline: 24px;
   border-bottom: solid 1px var(--border-color);
   background-color: var(--layout-bg-color);
+  box-shadow: var(--control-box-shadow);
 
   > .right_side {
     display: flex;

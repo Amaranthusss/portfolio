@@ -1,7 +1,7 @@
 'use client';
 import { Switch } from '../switch/switch';
 
-import { useThemeSetter } from '@/hooks/useThemeSetter';
+import { useThemeHandler } from '@/hooks/useThemeHandler';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 
@@ -9,9 +9,9 @@ import type { ContrastThemeSwitchProps } from './contrast-theme-switch.interface
 import type { ChangeEvent } from 'react';
 
 export function ContrastThemeSwitch({
-  showLabel = true
+  showLabel = true,
 }: ContrastThemeSwitchProps): React.ReactNode {
-  const { isContrastTheme, setContrastTheme } = useThemeSetter();
+  const { isContrastTheme, setContrastTheme } = useThemeHandler();
   const [checked, setChecked] = useState<boolean>(isContrastTheme());
   const t = useTranslations('common.themes');
 

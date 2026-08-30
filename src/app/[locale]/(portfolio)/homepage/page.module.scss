@@ -29,7 +29,6 @@ $z-index-elements: 3;
       gap: var(--space-4);
       font-weight: 600;
       z-index: $z-index-elements;
-      text-shadow: 5px 5px 10px black;
       color: var(--layout-text-color);
       max-height: 100%;
 
@@ -64,16 +63,6 @@ $z-index-elements: 3;
           display: none;
         }
       }
-    }
-
-    > .welcome_image {
-      pointer-events: none;
-      border-style: solid;
-      border-width: var(--border-width);
-      border-color: var(--border-color);
-      border-radius: var(--border-radius-lg);
-      width: 100%;
-      height: auto;
     }
   }
 
@@ -123,9 +112,9 @@ $z-index-elements: 3;
     pointer-events: none;
     background: radial-gradient(
       circle,
-      rgba(0, 7, 68, 0.45) 0%,
-      rgba(0, 140, 255, 0.2) 25%,
-      rgba(0, 140, 255, 0.08) 50%,
+      var(--body-bg-gradient-color-1) 0%,
+      var(--body-bg-gradient-color-2) 25%,
+      var(--body-bg-gradient-color-3) 50%,
       transparent 60%
     );
   }

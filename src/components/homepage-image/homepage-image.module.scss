@@ -1,0 +1,9 @@
+.welcome_image {
+  pointer-events: none;
+  border-style: solid;
+  border-width: var(--border-width);
+  border-color: var(--border-color);
+  border-radius: var(--border-radius-lg);
+  width: 100%;
+  height: auto;
+}

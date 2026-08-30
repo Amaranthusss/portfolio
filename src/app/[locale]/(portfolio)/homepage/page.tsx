@@ -1,7 +1,7 @@
 import { HomepageExtraCard } from '@/components/homepage-extra-card/homepage-extra-card';
 import { RichTextContent } from '@/components/rich-text-content/rich-text-content';
+import { HomepageImage } from '@/components/homepage-image/homepage-image';
 import { Title } from '@/components/title/title';
-import Image from 'next/image';
 
 import { getPortfolioDocumentation } from '@/services/getPortfolioDocumentation';
 import { getTranslations } from 'next-intl/server';
@@ -40,16 +40,7 @@ export default async function Homepage(): Promise<React.ReactNode> {
           </h2>
         </div>
 
-        <Image
-          className={styles.welcome_image}
-          src={'/images/homepage.png'}
-          alt={'Homepage background image'}
-          loading={'eager'}
-          quality={100}
-          width={1219}
-          height={756}
-          priority
-        />
+        <HomepageImage />
       </div>
 
       <div className={`${styles.about_me}`}>
