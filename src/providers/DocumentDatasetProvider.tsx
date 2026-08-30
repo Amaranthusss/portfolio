@@ -17,7 +17,8 @@ export function DocumentDatasetProvider({ children }: PropsWithChildren) {
     const themeCookie: Theme | undefined = getCookie<Theme>(Cookie.Theme);
 
     const systemTheme: SystemThemeCookieValue =
-      getCookie<SystemThemeCookieValue>(Cookie.SystemTheme);
+      getCookie<SystemThemeCookieValue>(Cookie.SystemTheme) ??
+      (themeCookie == null ? 'true' : undefined);
 
     const theme: Theme.Dark | Theme.Light =
       themeCookie === Theme.Dark || themeCookie === Theme.Light
