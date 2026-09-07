@@ -13,16 +13,42 @@ export function HomepageImage({ theme }: HomepageImageProps): React.ReactNode {
       ? '/images/homepage-dark.png'
       : '/images/homepage-light.png';
 
+  const quality = 100;
+  const width = 1219;
+  const height = 756;
+  const loading = 'eager' satisfies 'eager' | 'lazy';
+
+  if (theme === Theme.System) {
+    return (
+      <picture>
+        <source
+          media={'(prefers-color-scheme: dark)'}
+          srcSet={'/images/homepage-dark.png'}
+        />
+        <Image
+          priority
+          src={'/images/homepage-light.png'}
+          alt={'Homepage background image'}
+          className={styles.welcome_image}
+          loading={loading}
+          quality={quality}
+          width={width}
+          height={height}
+        />
+      </picture>
+    );
+  }
+
   return (
     <Image
       priority
       src={src}
       alt={'Homepage background image'}
       className={styles.welcome_image}
-      loading={'eager'}
-      quality={100}
-      width={1219}
-      height={756}
+      loading={loading}
+      quality={quality}
+      width={width}
+      height={height}
     />
   );
 }

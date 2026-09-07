@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 import type { ConstrastCookieValue } from '@/constants/ContrastCookieValue';
 import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import type { PropsWithChildren } from 'react';
-import type { SystemThemeFlag } from '@/models/systemThemeFlag';
 import type { AppFontSize } from '@/constants/AppFontSize';
 
 import { Cookie } from '@/constants/Cookie';
@@ -19,14 +18,10 @@ export function DocumentDatasetProvider({
   const router: AppRouterInstance = useRouter();
   const { getCookie } = useCookie();
 
-  const setDataset = (
-    theme: Theme.Dark | Theme.Light,
-    systemThemeFlag: SystemThemeFlag
-  ): void => {
+  const setDataset = (theme: Theme.Dark | Theme.Light): void => {
     const dataset: Map<Cookie, string | undefined> = new Map();
 
     dataset.set(Cookie.Theme, theme);
-    dataset.set(Cookie.SystemTheme, systemThemeFlag);
     dataset.set(Cookie.AppFontSize, getCookie<AppFontSize>(Cookie.AppFontSize));
     dataset.set(
       Cookie.Contrast,
@@ -51,11 +46,8 @@ export function DocumentDatasetProvider({
       '(prefers-color-scheme: dark)'
     );
 
-    const systemThemeFlag: SystemThemeFlag =
-      getCookie<SystemThemeFlag>(Cookie.SystemTheme) ??
-      (themeCookie == null ? 'true' : undefined);
-
-    const isSystemTheme: boolean = systemThemeFlag === 'true';
+    const isSystemTheme: boolean =
+      themeCookie == null || themeCookie === Theme.System;
 
     const theme: Theme.Dark | Theme.Light = isSystemTheme
       ? getSystemTheme(mediaQuery)
@@ -63,7 +55,7 @@ export function DocumentDatasetProvider({
         ? Theme.Dark
         : Theme.Light;
 
-    setDataset(theme, systemThemeFlag);
+    setDataset(theme);
 
     if (!isSystemTheme) return;
 
@@ -71,7 +63,7 @@ export function DocumentDatasetProvider({
       const theme: Theme.Dark | Theme.Light = getSystemTheme(mediaQuery);
 
       document.cookie = `${Cookie.Theme}=${theme}; path=/;`;
-      setDataset(theme, systemThemeFlag);
+      setDataset(theme);
       router.refresh();
     };
 

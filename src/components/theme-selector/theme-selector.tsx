@@ -8,22 +8,22 @@ import { useState } from 'react';
 import type { ThemeSelectorProps } from './theme-selector.interface';
 import type { SelectOption } from '../select/select.interface';
 
-import { ThemeOption } from '@/constants/ThemeOption';
+import { Theme } from '@/constants/Theme';
 
 export function ThemeSelector({
   showLabel = true,
 }: ThemeSelectorProps): React.ReactNode {
-  const { getThemeOption, setTheme } = useThemeHandler();
-  const [value, setValue] = useState<ThemeOption>(getThemeOption());
+  const { getTheme, setTheme } = useThemeHandler();
+  const [value, setValue] = useState<Theme>(getTheme());
   const t = useTranslations('common.themes');
 
-  const options: SelectOption<ThemeOption>[] = [
-    { value: ThemeOption.Light, label: t('light') },
-    { value: ThemeOption.Dark, label: t('dark') },
-    { value: ThemeOption.System, label: t('system') },
+  const options: SelectOption<Theme>[] = [
+    { value: Theme.Light, label: t('light') },
+    { value: Theme.Dark, label: t('dark') },
+    { value: Theme.System, label: t('system') },
   ];
 
-  const onChange = (theme: ThemeOption): void => {
+  const onChange = (theme: Theme): void => {
     setValue(theme);
     setTheme(theme);
   };
@@ -34,7 +34,7 @@ export function ThemeSelector({
         <span style={{ marginRight: 'var(--space-4)' }}>{t('selector')}</span>
       )}
 
-      <Select<ThemeOption>
+      <Select<Theme>
         value={value}
         options={options}
         onChange={onChange}

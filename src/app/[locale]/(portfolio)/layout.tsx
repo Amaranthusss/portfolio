@@ -3,6 +3,7 @@ import { Layout } from '@/components/_layout/layout';
 import { DocumentDatasetProvider } from '@/providers/DocumentDatasetProvider';
 import { NextIntlClientProvider } from 'next-intl';
 
+import { getTheme } from '@/utils/getTheme';
 import { notFound } from 'next/navigation';
 import { isLocale } from '@/i18n/locale';
 
@@ -22,19 +23,19 @@ export const viewport: Viewport = {
   initialScale: 1,
   minimumScale: 1,
   maximumScale: 5,
-  userScalable: true
+  userScalable: true,
 };
 
 export const metadata: Metadata = {
   title: 'Oskar Szkurłat Portfolio',
-  description: 'Portfolio Web Application'
+  description: 'Portfolio Web Application',
 };
 
 export const revalidate: Revalidate = false;
 
 export default async function RootLayout({
   params,
-  children
+  children,
 }: Readonly<{
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
@@ -45,8 +46,10 @@ export default async function RootLayout({
 
   if (!isLocale(typedLocale)) notFound();
 
+  const theme = await getTheme();
+
   return (
-    <html lang={typedLocale}>
+    <html lang={typedLocale} data-theme={theme}>
       <body className={magnatFont.className}>
         <NextIntlClientProvider>
           <DocumentDatasetProvider>
