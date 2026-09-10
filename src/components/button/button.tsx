@@ -1,3 +1,4 @@
+import { Tooltip } from '../tooltip/tooltip';
 import { AnchorButton } from './_components/anchor-button/anchor-button';
 
 import { useButtonClassNames } from './_hooks/useButtonClassNames';
@@ -9,6 +10,7 @@ import styles from './button.module.scss';
 export const Button = ({
   active,
   square,
+  tooltip,
   animated,
   children,
   className,
@@ -28,9 +30,13 @@ export const Button = ({
 
   return (
     <button {...buttonProps} className={classNames}>
-      <span style={contentStyle} className={styles.button_content}>
+      <Tooltip
+        title={tooltip}
+        style={contentStyle}
+        className={styles.button_content}
+      >
         {children ?? ''}
-      </span>
+      </Tooltip>
     </button>
   );
 };

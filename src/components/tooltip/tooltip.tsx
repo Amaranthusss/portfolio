@@ -112,6 +112,10 @@ export function Tooltip({
     };
   }, [isOpen]);
 
+  if (title == null || title.length === 0) {
+    return <span {...spanProps}>{children}</span>;
+  }
+
   return (
     <>
       <span

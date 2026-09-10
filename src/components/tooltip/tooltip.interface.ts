@@ -1,7 +1,7 @@
 import type { ComponentPropsWithRef } from 'react';
 
 export interface TooltipProps extends ComponentPropsWithRef<'span'> {
-  title: string;
+  title?: string;
   placement?: TooltipPlacement;
 }
 

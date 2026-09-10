@@ -7,6 +7,7 @@ export interface ButtonBaseProps extends PropsWithChildren {
   animated?: boolean;
   square?: boolean;
   active?: boolean;
+  tooltip?: string
   centerVertical?: boolean;
   contentStyle?: CSSProperties;
 }
