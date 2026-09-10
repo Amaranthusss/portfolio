@@ -27,17 +27,74 @@ export function calculatePosition(
     };
   }
 
-  if (fitsViewport(preferred, tooltip, viewportWidth, viewportHeight)) {
-    return preferred;
+  const adjustedPreferred: Position = adjustToViewport(
+    preferred,
+    tooltip,
+    placement,
+    viewportWidth,
+    viewportHeight
+  );
+
+  if (fitsViewport(adjustedPreferred, tooltip, viewportWidth, viewportHeight)) {
+    return adjustedPreferred;
   }
 
   for (const candidate of positions.slice(1)) {
-    if (fitsViewport(candidate, tooltip, viewportWidth, viewportHeight)) {
-      return candidate;
-    }
+    const adjustedCandidate: Position = adjustToViewport(
+      candidate,
+      tooltip,
+      placement,
+      viewportWidth,
+      viewportHeight
+    );
+
+    const isFitForViewport: boolean = fitsViewport(
+      adjustedCandidate,
+      tooltip,
+      viewportWidth,
+      viewportHeight
+    );
+
+    if (isFitForViewport) return adjustedCandidate;
   }
 
   return clampToViewport(preferred, tooltip, viewportWidth, viewportHeight);
+}
+
+function adjustToViewport(
+  position: Position,
+  tooltip: TooltipSize,
+  placement: TooltipPlacement,
+  viewportWidth: number,
+  viewportHeight: number
+): Position {
+  const isHorizontalPlacement: boolean =
+    placement === TooltipPlacement.Top ||
+    placement === TooltipPlacement.TopStart ||
+    placement === TooltipPlacement.TopEnd ||
+    placement === TooltipPlacement.Bottom ||
+    placement === TooltipPlacement.BottomStart ||
+    placement === TooltipPlacement.BottomEnd;
+
+  if (isHorizontalPlacement) {
+    return {
+      top: position.top,
+      left: clamp(
+        position.left,
+        VIEWPORT_PADDING,
+        viewportWidth - tooltip.width - VIEWPORT_PADDING
+      ),
+    };
+  }
+
+  return {
+    top: clamp(
+      position.top,
+      VIEWPORT_PADDING,
+      viewportHeight - tooltip.height - VIEWPORT_PADDING
+    ),
+    left: position.left,
+  };
 }
 
 function getPlacementPositions(
@@ -267,19 +324,19 @@ function clampToViewport(
   viewportHeight: number
 ): Position {
   return {
-    left: Math.min(
-      Math.max(position.left, VIEWPORT_PADDING),
-      Math.max(
-        VIEWPORT_PADDING,
-        viewportWidth - tooltip.width - VIEWPORT_PADDING
-      )
+    left: clamp(
+      position.left,
+      VIEWPORT_PADDING,
+      viewportWidth - tooltip.width - VIEWPORT_PADDING
     ),
-    top: Math.min(
-      Math.max(position.top, VIEWPORT_PADDING),
-      Math.max(
-        VIEWPORT_PADDING,
-        viewportHeight - tooltip.height - VIEWPORT_PADDING
-      )
+    top: clamp(
+      position.top,
+      VIEWPORT_PADDING,
+      viewportHeight - tooltip.height - VIEWPORT_PADDING
     ),
   };
+}
+
+function clamp(value: number, minimum: number, maximum: number): number {
+  return Math.min(Math.max(value, minimum), Math.max(minimum, maximum));
 }
