@@ -1,5 +1,5 @@
-import { Tooltip } from '../tooltip/tooltip';
 import { AnchorButton } from './_components/anchor-button/anchor-button';
+import { Tooltip } from '../tooltip/tooltip';
 
 import { useButtonClassNames } from './_hooks/useButtonClassNames';
 

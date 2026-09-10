@@ -12,7 +12,7 @@ import { useTranslations } from 'next-intl';
 import { useRef } from 'react';
 
 import type { AdvancedSearchClientProps } from './advanced-search.client.interface';
-import type { ModalHandle } from '../modal/modal.interface';
+import type { ModalHandle, ModalProps } from '../modal/modal.interface';
 
 import styles from './advanced-search.client.module.scss';
 
@@ -39,11 +39,23 @@ export function AdvancedSearchClient({
 
   const open = (): void => modalRef.current?.open();
 
+  const toggleCloseOnNavigateTooltip = t(
+    closeOnNavigate
+      ? 'hold-modal-open-when-navigating'
+      : 'close-modal-when-navigating'
+  );
+
+  const closeButtonProps: ModalProps['closeButtonProps'] = {
+    tooltip: t('close-modal'),
+    'aria-label': t('close-modal'),
+  };
+
   const toolbar: React.ReactNode = (
     <Button
       mode={'text'}
       onClick={onToggleCloseOnNavigate}
-      aria-label={'toggle-close-modal-on-navigate'}
+      tooltip={toggleCloseOnNavigateTooltip}
+      aria-label={toggleCloseOnNavigateTooltip}
     >
       {closeOnNavigate ? (
         <Icon icon={Icon.All.Unlock} />
@@ -83,6 +95,7 @@ export function AdvancedSearchClient({
         title={t('title')}
         footer={footer}
         toolbar={toolbar}
+        closeButtonProps={closeButtonProps}
         className={styles.advanced_search_modal}
         bodyClassName={styles.advanced_search_modal_body}
         footerClassName={styles.advanced_search_modal_footer}

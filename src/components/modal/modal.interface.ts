@@ -1,4 +1,5 @@
 import type { PropsWithChildren, ReactNode } from 'react';
+import type { ButtonProps } from '../button/button.interface';
 
 export interface ModalHandle {
   open: () => void;
@@ -8,13 +9,14 @@ export interface ModalHandle {
 export interface ModalProps extends PropsWithChildren {
   attachToBody?: boolean;
   title: string;
+  footer?: ReactNode;
+  toolbar?: ReactNode;
   className?: string;
   bodyClassName?: string;
   footerClassName?: string;
   toolbarClassName?: string;
   toolbarOptionsClassName?: string;
+  closeButtonProps?: Omit<ButtonProps, 'children'>;
   onOpen?: () => void;
   onClose?: () => void;
-  toolbar?: ReactNode;
-  footer?: ReactNode;
 }

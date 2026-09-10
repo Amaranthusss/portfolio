@@ -32,7 +32,10 @@
     "education": "Edukacja",
     "experience": "Doświadczenie",
     "projects-and-realisations": "Projekty i realizacje",
-    "publications": "Publikacje"
+    "publications": "Publikacje",
+    "close-modal": "Zamknij wyszukiwarkę",
+    "close-modal-when-navigating": "Zamykaj okno podczas nawigacji",
+    "hold-modal-open-when-navigating": "Nie zamykaj okna podczas nawigacji"
   },
   "app-settings": {
     "menu-title": "Ustawienia aplikacji"

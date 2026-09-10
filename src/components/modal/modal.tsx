@@ -12,21 +12,23 @@ import { useClassName } from '@/hooks/useClassName';
 import { createPortal } from 'react-dom';
 
 import type { ModalHandle, ModalProps } from './modal.interface';
+import type { MouseEvent } from 'react';
 
 import styles from './modal.module.scss';
 
 export function Modal({
   ref,
   title,
+  footer,
   onOpen,
   onClose,
+  toolbar,
   children,
   className,
-  footer,
-  toolbar,
   bodyClassName,
   footerClassName,
   toolbarClassName,
+  closeButtonProps,
   toolbarOptionsClassName,
   attachToBody = true,
 }: WithRef<ModalProps, ModalHandle>): React.ReactNode {
@@ -35,6 +37,12 @@ export function Modal({
   const modalRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
   const { cn, boolToClass } = useClassName();
+
+  const classNames: string = cn(
+    className,
+    styles.modal,
+    boolToClass(footer != null, styles.with_footer)
+  );
 
   const open = useCallback((): void => {
     if (isOpen) return;
@@ -49,10 +57,12 @@ export function Modal({
     onClose?.();
   }, [isOpen, onClose]);
 
-  const classNames: string = cn(
-    className,
-    styles.modal,
-    boolToClass(footer != null, styles.with_footer)
+  const closeHandler = useCallback(
+    (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>): void => {
+      closeButtonProps?.onClick?.(e);
+      close();
+    },
+    [close, closeButtonProps]
   );
 
   useDragAndDrop(isVisible, modalRef, titleRef);
@@ -91,7 +101,8 @@ export function Modal({
             mode={'text'}
             centerVertical
             aria-label={'close-modal'}
-            onClick={close}
+            {...closeButtonProps}
+            onClick={closeHandler}
           >
             <Icon icon={Icon.All.Close} />
           </Button>
