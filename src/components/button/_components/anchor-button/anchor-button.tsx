@@ -1,5 +1,6 @@
 import { Tooltip } from '@/components/tooltip/tooltip';
 
+import { useButtonDefaultAriaLabel } from '../../_hooks/useButtonDefaultAriaLabel';
 import { useButtonClassNames } from '../../_hooks/useButtonClassNames';
 
 import type { ButtonProps } from './anchor-button.interface';
@@ -27,8 +28,13 @@ export const AnchorButton = ({
     centerVertical
   );
 
+  const { ariaLabel } = useButtonDefaultAriaLabel(
+    anchorButtonProps['aria-label'],
+    tooltip
+  );
+
   return (
-    <a {...anchorButtonProps} className={classNames}>
+    <a {...anchorButtonProps} aria-label={ariaLabel} className={classNames}>
       <Tooltip
         title={tooltip}
         style={contentStyle}
