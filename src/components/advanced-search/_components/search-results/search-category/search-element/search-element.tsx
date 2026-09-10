@@ -1,5 +1,4 @@
 'use client';
-import { Button } from '@/components/button/button';
 import { Link } from '@/i18n/navigation';
 
 import { useEffect, useRef } from 'react';
@@ -69,15 +68,14 @@ export function SearchElement({
 
   return (
     <li className={styles.list_element}>
-      <Button mode={'text'} aria-label={slug} className={styles.button}>
-        <Link
-          href={href}
-          onClick={triggerElementHighlight}
-          className={styles.link}
-        >
-          {text}
-        </Link>
-      </Button>
+      <Link
+        href={href}
+        onClick={triggerElementHighlight}
+        aria-label={slug}
+        className={styles.link}
+      >
+        {text}
+      </Link>
     </li>
   );
 }

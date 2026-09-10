@@ -1,19 +1,38 @@
+$font-size: var(--font-size-md);
+
 .list_element {
   display: flex;
-  margin-bottom: var(--space-2);
-
-  > .button {
-    text-align: left;
-    padding: var(--space-0);
-    min-height: unset;
-
-    .link {
-      color: inherit;
-    }
-  }
+  align-items: flex-start;
+  margin-inline: var(--space-2);
 
   &::before {
     content: '•';
+    flex: 0 0 auto;
+    font-size: $font-size;
+    line-height: 1.2;
+    margin-top: var(--space-2);
     margin-right: var(--space-2);
+    transition: color var(--animation-time);
+  }
+
+  &:hover::before {
+    color: var(--primary-hover-color);
+  }
+
+  > .link {
+    color: inherit;
+    font-size: $font-size;
+    font-weight: 500;
+    padding-block: var(--space-2);
+    transition: color var(--animation-time);
+
+    &:hover {
+      color: var(--primary-hover-color);
+    }
+
+    &:focus-visible {
+      outline: var(--border-width) solid var(--primary-color);
+      outline-offset: var(--space-1);
+    }
   }
 }
