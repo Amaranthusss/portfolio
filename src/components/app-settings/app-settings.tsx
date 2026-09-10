@@ -33,7 +33,7 @@ export function AppSettings({
     square: true,
     contentStyle: !iconOnly ? { justifyContent: 'flex-start' } : undefined,
     name: 'app-settings',
-    'aria-label': 'app-settings-popover',
+    tooltip: t('menu-title'),
   };
 
   return (

@@ -47,7 +47,6 @@ export function AdvancedSearchClient({
 
   const closeButtonProps: ModalProps['closeButtonProps'] = {
     tooltip: t('close-modal'),
-    'aria-label': t('close-modal'),
   };
 
   const toolbar: React.ReactNode = (
@@ -55,7 +54,6 @@ export function AdvancedSearchClient({
       mode={'text'}
       onClick={onToggleCloseOnNavigate}
       tooltip={toggleCloseOnNavigateTooltip}
-      aria-label={toggleCloseOnNavigateTooltip}
     >
       {closeOnNavigate ? (
         <Icon icon={Icon.All.Unlock} />
@@ -71,7 +69,7 @@ export function AdvancedSearchClient({
       onClick={search}
       className={styles.footer}
       disabled={selectedSkillKeys.size === 0}
-      aria-label={'search-data-for-selected-skills'}
+      tooltip={t('search-data-for-selected-skills')}
     >
       {t('search')}
     </Button>
@@ -79,7 +77,7 @@ export function AdvancedSearchClient({
 
   return (
     <>
-      <Button square aria-label={'open-advanced-search'} onClick={open}>
+      <Button square tooltip={t('open-advanced-search')} onClick={open}>
         {iconOnly ? (
           <Icon icon={Icon.All.Search} />
         ) : (

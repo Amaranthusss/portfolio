@@ -35,7 +35,9 @@
     "publications": "Publications",
     "close-modal": "Close search",
     "close-modal-when-navigating": "Close the window when navigating",
-    "hold-modal-open-when-navigating": "Keep the window open when navigating"
+    "hold-modal-open-when-navigating": "Keep the window open when navigating",
+    "search-data-for-selected-skills": "Search data for selected skills",
+    "open-advanced-search": "Open advanced search"
   },
   "app-settings": {
     "menu-title": "App Settings"

@@ -35,7 +35,9 @@
     "publications": "Publikacje",
     "close-modal": "Zamknij wyszukiwarkę",
     "close-modal-when-navigating": "Zamykaj okno podczas nawigacji",
-    "hold-modal-open-when-navigating": "Nie zamykaj okna podczas nawigacji"
+    "hold-modal-open-when-navigating": "Nie zamykaj okna podczas nawigacji",
+    "search-data-for-selected-skills": "Wyszukaj dane dla wybranych umiejętności",
+    "open-advanced-search": "Otwórz wyszukiwanie zaawansowane"
   },
   "app-settings": {
     "menu-title": "Ustawienia aplikacji"
