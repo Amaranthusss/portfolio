@@ -32,6 +32,19 @@ $more-btn-min-width: 80px;
     flex: 0 0 auto;
   }
 
+  > .active_indicator {
+    position: absolute;
+    bottom: -12px;
+    height: 1px;
+    pointer-events: none;
+    background-color: var(--border-indicator-color);
+    box-shadow: 0 0 0.45rem var(--border-indicator-shadow-color);
+    z-index: var(--z-index-layout-active-indicator);
+    transition:
+      left var(--animation-time) ease,
+      width var(--animation-time) ease;
+  }
+
   > .more {
     flex: 1;
     min-width: $more-btn-min-width;

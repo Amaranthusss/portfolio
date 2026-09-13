@@ -21,6 +21,7 @@ export function DesktopHeader({
       <Logo />
 
       <FlexGroup
+        activeIndicator
         dropdownTopMargin={24}
         dropdownClassName={styles.dropdown}
         className={styles.menu_items}

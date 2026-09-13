@@ -1,6 +1,7 @@
 import type { CSSProperties, PropsWithChildren } from 'react';
 
 export interface FlexGroupProps extends PropsWithChildren {
+  activeIndicator?: boolean;
   updateDropdownOnScroll?: boolean;
   dropdownClassName?: string;
   containerBgColor?: CSSProperties['background'];

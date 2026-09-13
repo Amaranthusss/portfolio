@@ -19,6 +19,7 @@ export const FlexGroup = ({
   containerBgColor,
   dropdownClassName,
   dropdownTopMargin = 12,
+  activeIndicator = false,
   updateDropdownOnScroll = true,
 }: FlexGroupProps): React.ReactNode => {
   const items: FlexGroupItems = Children.toArray(children);
@@ -27,6 +28,9 @@ export const FlexGroup = ({
   const [open, setOpen] = useState<boolean>(false);
 
   const [dropdownAttributes, setDropdownAttributes] =
+    useState<React.CSSProperties | null>(null);
+
+  const [activeIndicatorStyle, setActiveIndicatorStyle] =
     useState<React.CSSProperties | null>(null);
 
   const moreButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -46,6 +50,26 @@ export const FlexGroup = ({
   const MORE_WIDTH = 80;
 
   const { cn, boolToClass } = useClassName();
+
+  const updateActiveIndicator = (): void => {
+    const container: HTMLDivElement | null = containerRef.current;
+
+    if (!activeIndicator || container == null) return;
+
+    const activeButton: HTMLElement | null = container.querySelector(
+      '[data-nav-active="true"]'
+    );
+
+    if (activeButton == null) return setActiveIndicatorStyle(null);
+
+    const containerRect: DOMRect = container.getBoundingClientRect();
+    const activeButtonRect: DOMRect = activeButton.getBoundingClientRect();
+
+    setActiveIndicatorStyle({
+      left: activeButtonRect.left - containerRect.left,
+      width: activeButtonRect.width,
+    });
+  };
 
   const measure = (): void => {
     const container: HTMLDivElement | null = containerRef.current;
@@ -142,8 +166,28 @@ export const FlexGroup = ({
       resizeObserver.observe(containerRef.current);
     }
 
-    return () => resizeObserver.disconnect();
-  }, [children]);
+    const mutationObserver: MutationObserver = new MutationObserver(
+      updateActiveIndicator
+    );
+
+    if (activeIndicator && containerRef.current != null) {
+      mutationObserver.observe(containerRef.current, {
+        attributes: true,
+        attributeFilter: ['data-nav-active'],
+        subtree: true,
+      });
+      updateActiveIndicator();
+    }
+
+    return () => {
+      resizeObserver.disconnect();
+      mutationObserver.disconnect();
+    };
+  }, [activeIndicator, children]);
+
+  useLayoutEffect((): void => {
+    updateActiveIndicator();
+  }, [activeIndicator, visibleCount]);
 
   useEffect((): (() => void) => {
     const onMouseDown = (e: MouseEvent): void => {
@@ -162,8 +206,14 @@ export const FlexGroup = ({
       if (e.key === 'Escape') setOpen(false);
     };
 
-    const onResize = (): void => updatePosition();
-    const onScroll = (): void => updatePosition();
+    const onResize = (): void => {
+      updatePosition();
+      updateActiveIndicator();
+    };
+    const onScroll = (): void => {
+      updatePosition();
+      updateActiveIndicator();
+    };
 
     window.addEventListener('mousedown', onMouseDown);
     window.addEventListener('keydown', onKeyDown);
@@ -221,6 +271,14 @@ export const FlexGroup = ({
               </div>
             );
           }
+        )}
+
+        {activeIndicator && activeIndicatorStyle != null && (
+          <span
+            aria-hidden="true"
+            className={styles.active_indicator}
+            style={activeIndicatorStyle}
+          />
         )}
 
         {!isLoading && overflowItems.length > 0 && (
