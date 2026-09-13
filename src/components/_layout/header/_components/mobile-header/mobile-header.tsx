@@ -1,4 +1,5 @@
 'use client';
+import { AdvancedSearchClient } from '@/components/advanced-search/advanced-search.client';
 import { AppSettings } from '@/components/app-settings/app-settings';
 import { NavButton } from '../nav-button/nav-button';
 import { Divider } from '@/components/divider/divider';
@@ -11,16 +12,17 @@ import { useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { useClassName } from '@/hooks/useClassName';
 
-import type { MobileHeaderClientProps } from './mobile-header.interface';
+import type { MobileHeaderProps } from './mobile-header.interface';
 import type { ModalHandle } from '@/components/modal/modal.interface';
 
 import styles from './mobile-header.module.scss';
 
-export function MobileHeaderClient({
-  advancedSearch,
+export function MobileHeader({
+  skills,
+  profiles,
   menuItems,
   className,
-}: MobileHeaderClientProps): React.ReactNode {
+}: MobileHeaderProps): React.ReactNode {
   const t = useTranslations('layout.header');
   const { cn } = useClassName();
 
@@ -30,10 +32,10 @@ export function MobileHeaderClient({
   const showMenu = (): void => modalRef.current?.open();
   const onNavigate = (): void => modalRef.current?.close();
 
-  useEffect((): (() => void) => {
+  useEffect((): (() => void) | void => {
     const header: HTMLElement | null = headerRef.current;
 
-    if (header == null) return () => {};
+    if (header == null) return;
 
     const resizeObserver: ResizeObserver = new ResizeObserver((): void => {
       if (header.clientWidth === 0) modalRef.current?.close();
@@ -76,7 +78,12 @@ export function MobileHeaderClient({
 
         <Divider />
 
-        {advancedSearch}
+        <AdvancedSearchClient
+          profiles={profiles}
+          skills={skills}
+          iconOnly={false}
+          onNavigate={onNavigate}
+        />
         <AppSettings iconOnly={false} />
       </Modal>
     </header>

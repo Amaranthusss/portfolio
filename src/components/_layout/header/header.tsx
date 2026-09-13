@@ -1,5 +1,9 @@
 import { DesktopHeader } from './_components/desktop-header/desktop-header';
-import { MobileHeader } from './_components/mobile-header/mobile-header.server';
+import { MobileHeader } from './_components/mobile-header/mobile-header';
+
+import { getProfiles } from '@/services/getProfiles';
+import { getSkills } from '@/services/getSkills';
+import { getLocale } from 'next-intl/server';
 
 import type { _Translator, Messages } from 'next-intl';
 import type { NavMenuItem } from './header.interface';
@@ -7,9 +11,20 @@ import type { NavMenuItem } from './header.interface';
 import { IconName } from '@/components/icon/icon.config';
 import { Route } from '@/constants/Route';
 
+import type { ProfileDTO } from '@/models/profileDto';
+import type { SkillDTO } from '@/models/skillDto';
+import type { Locale } from '@/i18n/locale';
+
 import styles from './header.module.scss';
 
-export const Header = (): React.ReactNode => {
+export const Header = async (): Promise<React.ReactNode> => {
+  const locale: Locale = await getLocale();
+
+  const [profiles, skills]: [ProfileDTO[], SkillDTO[]] = await Promise.all([
+    getProfiles(locale),
+    getSkills(locale),
+  ]);
+
   const menuItems: NavMenuItem<
     Parameters<_Translator<Messages, 'layout.header'>>[0]
   >[] = [
@@ -50,7 +65,13 @@ export const Header = (): React.ReactNode => {
   return (
     <>
       <DesktopHeader menuItems={menuItems} className={styles.desktop} />
-      <MobileHeader menuItems={menuItems} className={styles.mobile} />
+
+      <MobileHeader
+        menuItems={menuItems}
+        profiles={profiles}
+        skills={skills}
+        className={styles.mobile}
+      />
     </>
   );
 };

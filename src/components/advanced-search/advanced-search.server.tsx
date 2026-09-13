@@ -11,6 +11,7 @@ import type { Locale } from '@/i18n/locale';
 
 export async function AdvancedSearch({
   iconOnly,
+  onNavigate,
 }: AdvancedSearchProps): Promise<React.ReactNode> {
   const locale: Locale = await getLocale();
 
@@ -24,6 +25,7 @@ export async function AdvancedSearch({
       skills={skills}
       profiles={profiles}
       iconOnly={iconOnly}
+      onNavigate={onNavigate}
     />
   );
 }
