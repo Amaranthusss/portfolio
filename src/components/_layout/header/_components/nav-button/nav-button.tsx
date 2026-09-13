@@ -31,6 +31,7 @@ export function NavButton({
       mode={decorated ? 'primary' : undefined}
       contentStyle={{ justifyContent: 'flex-start' }}
       aria-label={`navigation-button-${route.replace('/', '')}`}
+      data-nav-active={route === pathname ? 'true' : undefined}
       onClick={onClick}
     >
       <Icon icon={icon} />

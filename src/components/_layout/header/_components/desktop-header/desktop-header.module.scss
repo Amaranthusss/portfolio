@@ -21,6 +21,24 @@
   .menu_items {
     min-height: var(--control-height);
     color: var(--layout-text-color);
+    overflow: visible;
+
+    .nav_button[data-nav-active='true'] {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: -13px;
+        left: 0;
+        height: 1px;
+        background-color: var(--primary-color);
+        box-shadow: 0 0 0.45rem var(--primary-color);
+        pointer-events: none;
+        z-index: 2;
+      }
+    }
 
     @media (min-width: 1553px) {
       justify-content: center;
@@ -34,4 +52,13 @@
 
 .dropdown .nav_button {
   text-wrap: nowrap;
+
+  &[data-nav-active='true'] {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0.45rem var(--primary-color);
+
+    &::after {
+      display: none;
+    }
+  }
 }
