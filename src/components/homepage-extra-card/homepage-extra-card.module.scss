@@ -2,6 +2,10 @@
   transition: padding-inline var(--animation-time);
   text-align: justify;
 
+  @media screen and (max-width: 550px) {
+    text-align: center;
+  }
+
   > .menu_buttons {
     display: flex;
     flex-direction: row;
