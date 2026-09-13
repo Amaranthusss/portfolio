@@ -13,7 +13,6 @@ import type { CertificationDTO } from '@/models/certificationDto';
 import type { Locale } from '@/i18n/locale';
 
 import styles from './page.module.scss';
-import { Divider } from '@/components/divider/divider';
 
 export default async function CoursesAndCertifications(): Promise<React.ReactNode> {
   const locale: Locale = await getLocale();

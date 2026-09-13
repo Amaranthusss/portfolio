@@ -76,14 +76,17 @@ export async function ExperienceStepCard({
       )}
 
       {experienceStep.duties && experienceStep.duties.length > 0 && (
-        <ul className={styles.duty_list}>
-          {t('duties')}:
-          {experienceStep.duties.map((d: string): React.ReactNode => (
-            <li key={d} className={styles.duty}>
-              {d}
-            </li>
-          ))}
-        </ul>
+        <>
+          <span>{t('duties')}:</span>
+
+          <ul className={styles.duty_list}>
+            {experienceStep.duties.map((d: string): React.ReactNode => (
+              <li key={d} className={styles.duty}>
+                {d}
+              </li>
+            ))}
+          </ul>
+        </>
       )}
 
       <SkillTagList skills={experienceStep.skills} />
