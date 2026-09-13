@@ -46,8 +46,8 @@
       color var(--animation-time);
 
     &:hover {
-      color: var(--primary-hover-color);
-      border-color: var(--primary-hover-color);
+      color: var(--text-hover-color);
+      border-color: var(--border-hover-color);
     }
   }
 
@@ -57,7 +57,7 @@
     transition: color var(--animation-time);
 
     &:hover {
-      color: var(--primary-hover-color);
+      color: var(--text-hover-color);
     }
   }
 
@@ -100,16 +100,17 @@
         var(--primary-color-2)
       );
       border-radius: inherit;
-      transition: opacity 0.3s ease;
+      transition: opacity var(--animation-time) ease;
     }
 
     &:hover {
       color: var(--primary-hover-color);
+      border-color: var(--primary-hover-color);
       background-color: transparent;
-    }
 
-    &:hover::before {
-      opacity: 0;
+      &::before {
+        opacity: 0.5;
+      }
     }
 
     &:disabled {
