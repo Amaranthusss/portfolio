@@ -55,6 +55,8 @@ export const FlexGroup = ({
 
     const containerWidth: number = container.clientWidth;
 
+    if (containerWidth === 0) closeDropdown();
+
     const widths: number[] = Array.from(itemRefs.current).map(
       (el: HTMLDivElement | null): number => el?.offsetWidth ?? 0
     );
