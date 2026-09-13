@@ -70,6 +70,7 @@ export function SearchElement({
     <li className={styles.list_element}>
       <Link
         href={href}
+        scroll={false}
         onClick={triggerElementHighlight}
         aria-label={slug}
         className={styles.link}

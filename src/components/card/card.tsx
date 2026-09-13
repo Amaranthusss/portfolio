@@ -23,9 +23,20 @@ export function Card({
   const highlightTime = 2000;
 
   const scrollToCard = (): void => {
-    cardRef.current?.scrollIntoView({
+    const card: HTMLDivElement | null = cardRef.current;
+    const scrollContainer: HTMLElement | null = card?.closest('main') ?? null;
+
+    if (card == null || scrollContainer == null) return;
+
+    const cardRect: DOMRect = card.getBoundingClientRect();
+    const containerRect: DOMRect = scrollContainer.getBoundingClientRect();
+
+    const scrollTop: number =
+      scrollContainer.scrollTop + cardRect.top - containerRect.top;
+
+    scrollContainer.scrollTo({
+      top: Math.max(0, scrollTop - 16),
       behavior: 'smooth',
-      block: 'start'
     });
   };
 
