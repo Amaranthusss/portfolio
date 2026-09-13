@@ -7,9 +7,9 @@ import { Modal } from '@/components/modal/modal';
 import { Logo } from '@/components/logo/logo';
 import { Icon } from '@/components/icon/icon';
 
+import { useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { useClassName } from '@/hooks/useClassName';
-import { useRef } from 'react';
 
 import type { MobileHeaderClientProps } from './mobile-header.interface';
 import type { ModalHandle } from '@/components/modal/modal.interface';
@@ -24,13 +24,28 @@ export function MobileHeaderClient({
   const t = useTranslations('layout.header');
   const { cn } = useClassName();
 
+  const headerRef = useRef<HTMLElement | null>(null);
   const modalRef = useRef<ModalHandle>(null);
 
   const showMenu = (): void => modalRef.current?.open();
   const onNavigate = (): void => modalRef.current?.close();
 
+  useEffect((): (() => void) => {
+    const header: HTMLElement | null = headerRef.current;
+
+    if (header == null) return () => {};
+
+    const resizeObserver: ResizeObserver = new ResizeObserver((): void => {
+      if (header.clientWidth === 0) modalRef.current?.close();
+    });
+
+    resizeObserver.observe(header);
+
+    return (): void => resizeObserver.disconnect();
+  }, []);
+
   return (
-    <header className={cn(styles.header, className)}>
+    <header ref={headerRef} className={cn(styles.header, className)}>
       <Logo className={styles.logo} />
 
       <Button
