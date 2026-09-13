@@ -130,6 +130,25 @@ export function Popover({
     };
   }, [actualOpen]);
 
+  useEffect((): (() => void) | void => {
+    const trigger: HTMLButtonElement | null = triggerRef.current;
+
+    if (trigger == null) return;
+
+    const resizeObserver: ResizeObserver = new ResizeObserver((): void => {
+      if (trigger.clientWidth !== 0) return;
+
+      setIsClosing(false);
+      setIsPositioned(false);
+      setIsMounted(false);
+      setOpenState(false);
+    });
+
+    resizeObserver.observe(trigger);
+
+    return (): void => resizeObserver.disconnect();
+  }, []);
+
   const trigger = (
     <Button
       {...triggerProps}
