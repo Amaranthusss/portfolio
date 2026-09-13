@@ -1,7 +1,8 @@
 'use client';
 import { Button } from '../button/button';
 
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
+import { useEffect, useId, useRef } from 'react';
 import { useClassName } from '@/hooks/useClassName';
 import { usePosition } from './_hooks/usePosition';
 
@@ -11,6 +12,8 @@ import type { PopoverProps } from './popover.interface';
 
 import styles from './popover.module.scss';
 
+const animationDuration = 180;
+
 export function Popover({
   children,
   triggerProps,
@@ -18,32 +21,48 @@ export function Popover({
   defaultOpen = false,
   onOpenChange,
   popoverClassName,
-  placement = 'bottom'
+  placement = 'bottom',
 }: PopoverProps) {
   const [popoverAttributes, setPopoverAttributes] =
-    useState<React.CSSProperties>({ display: 'none' });
+    useState<React.CSSProperties>({});
 
-  const [open, setOpen] = useState<boolean>(defaultOpen);
+  const [isPositioned, setIsPositioned] = useState<boolean>(false);
+  const [isMounted, setIsMounted] = useState<boolean>(defaultOpen);
+  const [isClosing, setIsClosing] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(defaultOpen);
 
+  const { cn, boolToClass } = useClassName();
   const { getPosition } = usePosition();
-  const { cn } = useClassName();
-
-  const isControlled: boolean = controlledOpen !== undefined;
-  const actualOpen: boolean = isControlled ? (controlledOpen ?? false) : open;
 
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
 
-  const setOpenState = (v: boolean) => {
-    if (!isControlled) setOpen(v);
-    onOpenChange?.(v);
+  const triggerId: string = useId();
+  const triggerElementId: string = triggerProps.id ?? triggerId;
+  const contentId: string = `${triggerElementId}-popover`;
+  const isControlled: boolean = controlledOpen !== undefined;
+  const actualOpen: boolean = isControlled ? (controlledOpen ?? false) : isOpen;
+
+  const setOpenState = (value: boolean) => {
+    if (!isControlled) setIsOpen(value);
+    onOpenChange?.(value);
   };
 
-  useLayoutEffect(() => {
-    if (!actualOpen) return;
+  useLayoutEffect((): void => {
+    if (actualOpen) {
+      setIsMounted(true);
+      setIsClosing(false);
+      setIsPositioned(false);
+    } else if (isMounted) {
+      setIsClosing(true);
+    }
+  }, [actualOpen]);
+
+  useLayoutEffect((): (() => void) | void => {
+    if (!actualOpen || !isMounted) return;
     if (!triggerRef.current || !contentRef.current) return;
 
-    const update = () => {
+    const update = (): void => {
       if (!triggerRef.current || !contentRef.current) return;
 
       const { top, left } = getPosition(
@@ -53,46 +72,59 @@ export function Popover({
       );
 
       setPopoverAttributes({ top, left });
+      setIsPositioned(true);
     };
 
-    requestAnimationFrame(update);
-
-    const raf2 = requestAnimationFrame(update);
-
+    const frame: number = requestAnimationFrame(update);
     window.addEventListener('scroll', update, true);
     window.addEventListener('resize', update);
 
-    return () => {
-      cancelAnimationFrame(raf2);
+    return (): void => {
+      cancelAnimationFrame(frame);
       window.removeEventListener('scroll', update, true);
       window.removeEventListener('resize', update);
     };
-  }, [actualOpen, placement]);
+  }, [actualOpen, isMounted, placement]);
 
-  useEffect(() => {
+  useEffect((): (() => void) | void => {
+    if (actualOpen || !isMounted) return;
+
+    const timeout: number = window.setTimeout((): void => {
+      setIsMounted(false);
+      setIsPositioned(false);
+    }, animationDuration);
+
+    return () => window.clearTimeout(timeout);
+  }, [actualOpen, isMounted]);
+
+  useEffect((): (() => void) | void => {
     if (!actualOpen) return;
 
-    const onClick = (e: MouseEvent) => {
-      const target = e.target as Node;
+    const onClick = (event: MouseEvent) => {
+      const target: Node = event.target as Node;
 
-      if (
-        triggerRef.current?.contains(target) ||
-        contentRef.current?.contains(target)
-      ) {
-        return;
-      }
+      const isContained: boolean =
+        (triggerRef.current?.contains(target) ||
+          contentRef.current?.contains(target)) ??
+        false;
+
+      if (isContained) return;
 
       setOpenState(false);
     };
 
-    const onKey = (e: KeyboardEvent): void => {
-      if (e.key === 'Escape') setOpenState(false);
+    const onKey = (event: KeyboardEvent): void => {
+      if (event.key !== 'Escape') return;
+
+      event.preventDefault();
+      setOpenState(false);
+      triggerRef.current?.focus();
     };
 
     document.addEventListener('mousedown', onClick);
     window.addEventListener('keydown', onKey);
 
-    return () => {
+    return (): void => {
       document.removeEventListener('mousedown', onClick);
       window.removeEventListener('keydown', onKey);
     };
@@ -100,28 +132,43 @@ export function Popover({
 
   const trigger = (
     <Button
-      ref={triggerRef}
-      onClick={(): void => setOpenState(true)}
       {...triggerProps}
+      ref={triggerRef}
+      id={triggerElementId}
+      aria-controls={contentId}
+      aria-expanded={actualOpen}
+      aria-haspopup={'dialog'}
+      onClick={(): void => setOpenState(!actualOpen)}
     />
   );
-
-  if (!actualOpen) return trigger;
 
   return (
     <>
       {trigger}
 
-      {createPortal(
-        <div
-          ref={contentRef}
-          className={cn(styles.popover_content, popoverClassName)}
-          style={{ top: popoverAttributes.top, left: popoverAttributes.left }}
-        >
-          {children}
-        </div>,
-        document.body
-      )}
+      {isMounted && typeof document !== 'undefined'
+        ? createPortal(
+            <div
+              ref={contentRef}
+              id={contentId}
+              role={'dialog'}
+              aria-labelledby={triggerElementId}
+              className={cn(
+                popoverClassName,
+                styles.popover_content,
+                boolToClass(isPositioned && !isClosing, styles.is_open),
+                boolToClass(isClosing, styles.is_closing)
+              )}
+              style={{
+                ...popoverAttributes,
+                visibility: isPositioned ? 'visible' : 'hidden',
+              }}
+            >
+              {children}
+            </div>,
+            document.body
+          )
+        : null}
     </>
   );
 }

@@ -15,4 +15,49 @@
   max-height: calc(100vh - 48px);
   overflow: auto;
   color: var(--layout-text-color);
+  opacity: 0;
+  transform: translateY(-4px) scale(0.98);
+  transform-origin: top center;
+  pointer-events: none;
+  will-change: opacity, transform;
+
+  &.is_open {
+    animation: popover-enter 180ms cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    pointer-events: auto;
+  }
+
+  &.is_closing {
+    animation: popover-exit 180ms cubic-bezier(0.4, 0, 1, 1) forwards;
+  }
+}
+
+@keyframes popover-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes popover-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .popover_content {
+    animation-duration: 1ms;
+    transition-duration: 1ms;
+  }
 }

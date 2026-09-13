@@ -4,7 +4,7 @@ import type { ButtonProps } from '../button/button.interface';
 export interface PopoverProps extends PropsWithChildren {
   triggerProps: Omit<ButtonProps, 'onClick' | 'ref'>;
   open?: boolean;
-	popoverClassName?: string
+  popoverClassName?: string;
   defaultOpen?: boolean;
   placement?: 'top' | 'bottom' | 'left' | 'right';
   onOpenChange?: (open: boolean) => void;
