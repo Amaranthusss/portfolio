@@ -10,6 +10,7 @@ import type { NavButtonProps } from './nav-button.interface';
 export function NavButton({
   menuItem,
   className,
+  onNavigate,
 }: NavButtonProps): React.ReactNode {
   const t = useTranslations('layout.header');
   const router: ReturnType<typeof useRouter> = useRouter();
@@ -19,7 +20,10 @@ export function NavButton({
 
   const isActive: boolean = route === pathname;
 
-  const onClick = (): void => router.push(route);
+  const onClick = (): void => {
+    router.push(route);
+    onNavigate?.(menuItem);
+  };
 
   return (
     <Button

@@ -72,7 +72,7 @@ export function MobileHeader({
             key={menuItem.text}
             menuItem={menuItem}
             className={styles.nav_button}
-            onNavigated={onNavigate}
+            onNavigate={onNavigate}
           />
         ))}
 
