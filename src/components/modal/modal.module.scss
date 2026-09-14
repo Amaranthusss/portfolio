@@ -10,7 +10,7 @@ $text-block-gap: var(--space-4);
   transform: translate(-50%, -50%);
   width: fit-content;
   max-width: calc(100vw - 2 * var(--space-6));
-  max-height: 75vh;
+  max-height: calc(100vh - 2 * var(--space-6));
   background-color: var(--body-bg-color);
   border-radius: var(--border-radius);
   -webkit-box-shadow: var(--popup-box-shadow);
