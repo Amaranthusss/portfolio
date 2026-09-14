@@ -2,11 +2,11 @@
 import { FlexGroup } from '@/components/flex-group/flex-group';
 import { NavButton } from '../../../nav-button/nav-button';
 
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import { usePathname } from '@/i18n/navigation';
 
 import type { DesktopNavButtonsProps } from './desktop-nav-buttons.interface';
 import type { FlexGroupHandle } from '@/components/flex-group/flex-group.interface';
-import type { HeaderMenuItem } from '@/components/_layout/header/header.interface';
 
 import navButtonStyles from '@/components/button/button.module.scss';
 import styles from './desktop-nav-buttons.module.scss';
@@ -14,16 +14,20 @@ import styles from './desktop-nav-buttons.module.scss';
 export function DesktopNavButtons({
   menuItems,
 }: DesktopNavButtonsProps): React.ReactNode {
+  const pathname: string = usePathname();
+  const lastPathname = useRef<string>(pathname);
   const flexGroupRef = useRef<FlexGroupHandle>(null);
 
   const getActiveElement = (container: HTMLDivElement): HTMLElement | null => {
     return container.querySelector(`.${navButtonStyles.active}`);
   };
 
-  const onNavigate = (_menuItem: HeaderMenuItem): void => {
+  useEffect((): void => {
+    if (lastPathname.current === pathname) return;
+
+    lastPathname.current = pathname;
     flexGroupRef.current?.updateActiveIndicator();
-    // ToDo Naprawic zaznaczenie w popover od FlexGroup i Modal dla MobileHeader
-  };
+  }, [pathname]);
 
   return (
     <FlexGroup
@@ -40,7 +44,6 @@ export function DesktopNavButtons({
           key={menuItem.text}
           menuItem={menuItem}
           className={styles.nav_button}
-          onNavigated={onNavigate}
         />
       ))}
     </FlexGroup>

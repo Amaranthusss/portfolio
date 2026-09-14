@@ -15,8 +15,12 @@
   text-wrap: nowrap;
 
   &[data-active] {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0.45rem var(--primary-color);
+    border-color: var(--border-indicator-color);
+    box-shadow: 0 0 0.45rem var(--border-indicator-shadow-color);
+
+    &:hover {
+      color: var(--border-indicator-color);
+    }
 
     &::after {
       display: none;
