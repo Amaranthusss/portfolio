@@ -11,6 +11,7 @@ import styles from './button.module.scss';
 export const Button = ({
   active,
   square,
+  mobile,
   tooltip,
   animated,
   children,
@@ -37,7 +38,7 @@ export const Button = ({
   return (
     <button {...buttonProps} aria-label={ariaLabel} className={classNames}>
       <Tooltip
-        title={tooltip}
+        title={!mobile ? tooltip : undefined}
         style={contentStyle}
         className={styles.button_content}
       >

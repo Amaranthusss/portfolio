@@ -52,9 +52,9 @@ export function MobileHeader({
 
       <Button
         square
+        mobile
         mode={'text'}
-        title={t('menu-title')}
-        aria-label={t('menu-title')}
+        tooltip={t('menu-title')}
         className={styles.menu_button}
         onClick={showMenu}
       >
@@ -79,12 +79,14 @@ export function MobileHeader({
         <Divider />
 
         <AdvancedSearchClient
+          mobile
           profiles={profiles}
           skills={skills}
           iconOnly={false}
           onNavigate={onNavigate}
         />
-        <AppSettings iconOnly={false} />
+
+        <AppSettings mobile iconOnly={false} />
       </Modal>
     </header>
   );

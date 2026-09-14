@@ -3,6 +3,7 @@ import type { SkillDTO } from '@/models/skillDto';
 
 export interface AdvancedSearchProps {
   iconOnly?: boolean;
+  mobile?: boolean;
   onNavigate?: (closeOnNavigate: boolean) => void;
 }
 

@@ -19,6 +19,7 @@ import styles from './advanced-search.client.module.scss';
 export function AdvancedSearchClient({
   skills,
   profiles,
+  mobile = false,
   iconOnly = true,
   onNavigate: onNavigateHandler,
 }: AdvancedSearchClientProps): React.ReactNode {
@@ -78,7 +79,12 @@ export function AdvancedSearchClient({
 
   return (
     <>
-      <Button square tooltip={t('open-advanced-search')} onClick={open}>
+      <Button
+        square
+        mobile={mobile}
+        tooltip={t('open-advanced-search')}
+        onClick={open}
+      >
         {iconOnly ? (
           <Icon icon={Icon.All.Search} />
         ) : (

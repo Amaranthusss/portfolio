@@ -14,6 +14,7 @@ import styles from './app-settings.module.scss';
 
 export function AppSettings({
   style,
+  mobile = false,
   iconOnly = true,
 }: AppSettingsProps): React.ReactNode {
   const t = useTranslations('common.app-settings');
@@ -28,8 +29,9 @@ export function AppSettings({
   );
 
   const settingsPopoverProps: PopoverProps['triggerProps'] = {
-    children,
     style,
+    mobile,
+    children,
     square: true,
     contentStyle: !iconOnly ? { justifyContent: 'flex-start' } : undefined,
     name: 'app-settings',
