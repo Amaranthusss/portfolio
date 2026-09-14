@@ -5,6 +5,7 @@ import { useLocale } from 'next-intl';
 import { startTransition } from 'react';
 import { findBySkills } from '@/services/findBySkills';
 
+import type { AdvancedSearchProps } from '../advanced-search.client.interface';
 import type { SkillAggregateDTO } from '@/models/skillAggregateDto';
 import type { ModalHandle } from '@/components/modal/modal.interface';
 import type { ProfileDTO } from '@/models/profileDto';
@@ -17,19 +18,14 @@ import { searchResultsId } from '../advanced-search.config';
 
 export function useFindBySkills(
   modalRef: RefObject<ModalHandle | null>,
-  defaultSelectedProfile: ProfileDTO | undefined
+  initialSkillKeys: SkillKey[],
+  onSelectedSkillKeysChange: AdvancedSearchProps['onSelectedSkillKeysChange']
 ) {
   const [results, setResults] = useState<SkillAggregateDTO | null>(null);
 
   const [selectedSkillKeys, setSelectedSkillKeys] = useState<Set<SkillKey>>(
-    new Set(
-      defaultSelectedProfile?.skills.map(
-        (skill: SkillDTO): SkillKey => skill.key
-      )
-    )
+    new Set(initialSkillKeys)
   );
-
-  console.log(Array.from(selectedSkillKeys))
 
   const activeProfile = useRef<ProfileDTO>(null);
 
@@ -103,6 +99,16 @@ export function useFindBySkills(
       ?.querySelector(`[id="${searchResultsId}"]`)
       ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, [results, modalRef]);
+
+  useEffect((): void => {
+    const skillKeyArray: SkillKey[] = Array.from(selectedSkillKeys);
+
+    if (JSON.stringify(skillKeyArray) === JSON.stringify(initialSkillKeys)) {
+      return;
+    }
+
+    onSelectedSkillKeysChange?.(skillKeyArray);
+  }, [selectedSkillKeys]);
 
   return {
     search,

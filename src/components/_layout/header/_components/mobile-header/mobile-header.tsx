@@ -14,6 +14,11 @@ import { useClassName } from '@/hooks/useClassName';
 
 import type { MobileHeaderProps } from './mobile-header.interface';
 import type { ModalHandle } from '@/components/modal/modal.interface';
+import type { ProfileDTO } from '@/models/profileDto';
+import type { SkillDTO } from '@/models/skillDto';
+import type { SkillKey } from '@/models/skillKey';
+
+import { ProfileSlug } from '@/seeds/constants/profileSlug';
 
 import styles from './mobile-header.module.scss';
 
@@ -26,11 +31,28 @@ export function MobileHeader({
   const t = useTranslations('layout.header');
   const { cn } = useClassName();
 
+  const selectedSkillKeys = useRef<SkillKey[] | null>(null);
   const headerRef = useRef<HTMLElement | null>(null);
   const modalRef = useRef<ModalHandle>(null);
 
+  const defaultSelectedProfile: ProfileDTO | undefined = profiles.find(
+    (profile: ProfileDTO): boolean => profile.slug === ProfileSlug.FullstackJS
+  );
+
+  const defaultSkillKeys: SkillKey[] =
+    defaultSelectedProfile?.skills.map(
+      (skill: SkillDTO): SkillKey => skill.key
+    ) ?? [];
+
+  const getDefaultSkillKeys = (): SkillKey[] =>
+    selectedSkillKeys.current ?? defaultSkillKeys;
+
   const showMenu = (): void => modalRef.current?.open();
   const onNavigate = (): void => modalRef.current?.close();
+
+  const onSelectedSkillKeysChange = (skillKeys: SkillKey[]): void => {
+    selectedSkillKeys.current = skillKeys;
+  };
 
   useEffect((): (() => void) | void => {
     const header: HTMLElement | null = headerRef.current;
@@ -80,10 +102,13 @@ export function MobileHeader({
 
         <AdvancedSearchClient
           mobile
-          profiles={profiles}
-          skills={skills}
           iconOnly={false}
+          skills={skills}
+          profiles={profiles}
+          defaultSkillKeys={defaultSkillKeys}
+          getInitialSkillKeys={getDefaultSkillKeys}
           onNavigate={onNavigate}
+          onSelectedSkillKeysChange={onSelectedSkillKeysChange}
         />
 
         <AppSettings mobile iconOnly={false} />

@@ -13,6 +13,7 @@ import { useRef } from 'react';
 
 import type { AdvancedSearchClientProps } from './advanced-search.client.interface';
 import type { ModalHandle, ModalProps } from '../modal/modal.interface';
+import type { SkillKey } from '@/models/skillKey';
 
 import styles from './advanced-search.client.module.scss';
 
@@ -21,11 +22,17 @@ export function AdvancedSearchClient({
   profiles,
   mobile = false,
   iconOnly = true,
-  defaultSelectedProfile,
+  defaultSkillKeys,
+  getInitialSkillKeys,
+  onSelectedSkillKeysChange,
   onNavigate: onNavigateHandler,
 }: AdvancedSearchClientProps): React.ReactNode {
   const t = useTranslations('common.advanced-search');
+
   const modalRef = useRef<ModalHandle>(null);
+
+  const initialSkillKeys: SkillKey[] =
+    getInitialSkillKeys?.() ?? defaultSkillKeys;
 
   const {
     search,
@@ -35,7 +42,7 @@ export function AdvancedSearchClient({
     isActiveProfile,
     selectedSkillKeys,
     isActiveExactProfile,
-  } = useFindBySkills(modalRef, defaultSelectedProfile);
+  } = useFindBySkills(modalRef, initialSkillKeys, onSelectedSkillKeysChange);
 
   const { closeOnNavigate, onNavigate, onToggleCloseOnNavigate } =
     useModalAutoClose(modalRef, onNavigateHandler);
