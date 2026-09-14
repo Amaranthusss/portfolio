@@ -34,8 +34,11 @@ export function Modal({
 }: WithRef<ModalProps, ModalHandle>): React.ReactNode {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(false);
+
   const modalRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
+  const bodyRef = useRef<HTMLDivElement | null>(null);
+
   const { cn, boolToClass } = useClassName();
 
   const classNames: string = cn(
@@ -74,7 +77,11 @@ export function Modal({
     modalRef.current?.focus();
   }, [isOpen]);
 
-  useImperativeHandle(ref, () => ({ open, close }), [open, close]);
+  useImperativeHandle(ref, () => ({ bodyRef, open, close }), [
+    bodyRef,
+    close,
+    open,
+  ]);
 
   if (!isVisible) return null;
 
@@ -109,7 +116,9 @@ export function Modal({
         </div>
       </div>
 
-      <div className={cn(styles.modal_body, bodyClassName)}>{children}</div>
+      <div ref={bodyRef} className={cn(styles.modal_body, bodyClassName)}>
+        {children}
+      </div>
 
       {footer && (
         <div className={cn(styles.modal_footer, footerClassName)}>{footer}</div>

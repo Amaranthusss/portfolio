@@ -1,7 +1,8 @@
-import type { PropsWithChildren, ReactNode } from 'react';
+import type { PropsWithChildren, ReactNode, RefObject } from 'react';
 import type { ButtonProps } from '../button/button.interface';
 
 export interface ModalHandle {
+  bodyRef: RefObject<HTMLDivElement | null>;
   open: () => void;
   close: () => void;
 }

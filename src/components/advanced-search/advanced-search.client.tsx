@@ -34,7 +34,7 @@ export function AdvancedSearchClient({
     isActiveProfile,
     selectedSkillKeys,
     isActiveExactProfile,
-  } = useFindBySkills();
+  } = useFindBySkills(modalRef);
 
   const { closeOnNavigate, onNavigate, onToggleCloseOnNavigate } =
     useModalAutoClose(modalRef, onNavigateHandler);

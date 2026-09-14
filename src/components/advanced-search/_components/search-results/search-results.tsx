@@ -3,7 +3,6 @@ import { SearchCategory } from './search-category/search-category';
 import { Divider } from '@/components/divider/divider';
 
 import { useTranslations } from 'next-intl';
-import { useClassName } from '@/hooks/useClassName';
 
 import type { SearchResultsProps } from './search-results.interface';
 import type { ExperienceStepDTO } from '@/models/experienceStepDto';
@@ -12,6 +11,7 @@ import type { EducationStepDTO } from '@/models/educationStepDto';
 import type { PublicationDTO } from '@/models/publicationDto';
 import type { ProjectDTO } from '@/models/projectDto';
 
+import { searchResultsId } from '../../advanced-search.config';
 import { Route } from '@/constants/Route';
 
 import styles from './search-results.module.scss';
@@ -21,7 +21,6 @@ export function SearchResults({
   onNavigate,
 }: SearchResultsProps): React.ReactNode {
   const t = useTranslations('common.advanced-search');
-  const { cn } = useClassName();
 
   const joinAndHandleEmpty = (elements: string[]): string => {
     return elements.length === 0 ? '' : elements.join(', ');
@@ -57,7 +56,7 @@ export function SearchResults({
     );
 
   return (
-    <div className={cn(styles.search_results)}>
+    <div id={searchResultsId} className={styles.search_results}>
       <Divider />
 
       <div className={styles.results_content}>

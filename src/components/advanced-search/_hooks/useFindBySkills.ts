@@ -1,18 +1,23 @@
 'use client';
+import { useEffect, useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
-import { useRef, useState } from 'react';
 
 import { startTransition } from 'react';
 import { findBySkills } from '@/services/findBySkills';
 
 import type { SkillAggregateDTO } from '@/models/skillAggregateDto';
+import type { ModalHandle } from '@/components/modal/modal.interface';
 import type { ProfileDTO } from '@/models/profileDto';
+import type { RefObject } from 'react';
 import type { SkillDTO } from '@/models/skillDto';
 import type { SkillKey } from '@/models/skillKey';
 import type { Locale } from '@/i18n/locale';
 
-export function useFindBySkills() {
+import { searchResultsId } from '../advanced-search.config';
+
+export function useFindBySkills(modalRef: RefObject<ModalHandle | null>) {
   const [results, setResults] = useState<SkillAggregateDTO | null>(null);
+
   const [selectedSkillKeys, setSelectedSkillKeys] = useState<Set<SkillKey>>(
     new Set()
   );
@@ -81,6 +86,14 @@ export function useFindBySkills() {
     activeProfile.current = profile;
     setSelectedSkillKeys(new Set(profileSkillKeys));
   };
+
+  useEffect((): void => {
+    if (results == null) return;
+
+    modalRef.current?.bodyRef.current
+      ?.querySelector(`[id="${searchResultsId}"]`)
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [results, modalRef]);
 
   return {
     search,
