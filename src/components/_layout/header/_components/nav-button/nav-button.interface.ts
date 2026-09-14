@@ -1,8 +1,7 @@
-import type { _Translator, Messages } from 'next-intl';
-import type { NavMenuItem } from '../../header.interface';
+import type { HeaderMenuItem } from '../../header.interface';
 
 export interface NavButtonProps {
-  menuItem: NavMenuItem<Parameters<_Translator<Messages, 'layout.header'>>[0]>;
-  onNavigate?: () => void;
+  menuItem: HeaderMenuItem;
   className?: string;
+  onNavigated?: (menuItem: HeaderMenuItem) => void;
 }

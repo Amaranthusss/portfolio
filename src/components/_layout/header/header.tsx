@@ -5,8 +5,7 @@ import { getProfiles } from '@/services/getProfiles';
 import { getSkills } from '@/services/getSkills';
 import { getLocale } from 'next-intl/server';
 
-import type { _Translator, Messages } from 'next-intl';
-import type { NavMenuItem } from './header.interface';
+import type { HeaderMenuItem } from './header.interface';
 
 import { IconName } from '@/components/icon/icon.config';
 import { Route } from '@/constants/Route';
@@ -25,9 +24,7 @@ export const Header = async (): Promise<React.ReactNode> => {
     getSkills(locale),
   ]);
 
-  const menuItems: NavMenuItem<
-    Parameters<_Translator<Messages, 'layout.header'>>[0]
-  >[] = [
+  const menuItems: HeaderMenuItem[] = [
     { route: Route.Homepage, text: 'homepage', icon: IconName.Home },
     {
       route: Route.ExperienceAndEducation,

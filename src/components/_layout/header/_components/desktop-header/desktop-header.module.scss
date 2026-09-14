@@ -1,6 +1,6 @@
 .header {
   display: grid;
-  grid-template-columns: 130px 1fr 130px;
+  grid-template-columns: 130px minmax(0, 1fr) 130px;
   gap: var(--space-4);
   width: 100%;
   z-index: var(--z-index-layout);
@@ -16,32 +16,6 @@
     justify-content: flex-end;
     color: var(--layout-text-color);
     gap: var(--space-2);
-  }
-
-  .menu_items {
-    min-height: var(--control-height);
-    color: var(--layout-text-color);
-    overflow: visible;
-
-    @media (min-width: 1553px) {
-      justify-content: center;
-
-      &::after {
-        width: 0px !important;
-      }
-    }
-  }
-}
-
-.dropdown .nav_button {
-  text-wrap: nowrap;
-
-  &[data-nav-active='true'] {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0.45rem var(--primary-color);
-
-    &::after {
-      display: none;
-    }
+    min-width: 0;
   }
 }

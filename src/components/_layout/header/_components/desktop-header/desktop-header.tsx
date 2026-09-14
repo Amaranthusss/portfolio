@@ -1,7 +1,6 @@
+import { DesktopNavButtons } from './_components/desktop-nav-buttons/desktop-nav-buttons';
 import { AdvancedSearch } from '@/components/advanced-search/advanced-search.server';
 import { AppSettings } from '@/components/app-settings/app-settings';
-import { FlexGroup } from '@/components/flex-group/flex-group';
-import { NavButton } from '../nav-button/nav-button';
 import { Logo } from '@/components/logo/logo';
 
 import { useClassName } from '@/hooks/useClassName';
@@ -19,23 +18,7 @@ export function DesktopHeader({
   return (
     <header className={cn(styles.header, className)}>
       <Logo />
-
-      <FlexGroup
-        activeIndicator
-        dropdownTopMargin={24}
-        dropdownClassName={styles.dropdown}
-        className={styles.menu_items}
-        containerBgColor={'var(--layout-bg-color)'}
-        updateDropdownOnScroll={false}
-      >
-        {menuItems.map((menuItem): React.ReactNode => (
-          <NavButton
-            key={menuItem.text}
-            menuItem={menuItem}
-            className={styles.nav_button}
-          />
-        ))}
-      </FlexGroup>
+      <DesktopNavButtons menuItems={menuItems} />
 
       <div className={styles.right_side}>
         <AdvancedSearch />

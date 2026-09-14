@@ -1,31 +1,36 @@
 'use client';
 import { Button } from '../button/button';
 
-import { useLayoutEffect, useRef, useState, useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { useImperativeHandle, useLayoutEffect } from 'react';
 import { useClassName } from '@/hooks/useClassName';
 
 import { createPortal } from 'react-dom';
 
 import { Children } from 'react';
 
-import type { FlexGroupItems, FlexGroupProps } from './flex-group.interface';
+import type { FlexGroupHandle } from './flex-group.interface';
+import type { FlexGroupProps } from './flex-group.interface';
+import type { FlexGroupItems } from './flex-group.interface';
 
 import styles from './flex-group.module.scss';
 
 export const FlexGroup = ({
+  ref,
   gap = 8,
   children,
   className,
   containerBgColor,
+  getActiveElement,
   dropdownClassName,
   dropdownTopMargin = 12,
-  activeIndicator = false,
   updateDropdownOnScroll = true,
-}: FlexGroupProps): React.ReactNode => {
+}: WithRef<FlexGroupProps, FlexGroupHandle>): React.ReactNode => {
   const items: FlexGroupItems = Children.toArray(children);
+
   const [visibleCount, setVisibleCount] = useState<number>(items.length);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [open, setOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const [dropdownAttributes, setDropdownAttributes] =
     useState<React.CSSProperties | null>(null);
@@ -42,6 +47,8 @@ export const FlexGroup = ({
   const visibleItems: FlexGroupItems = items.slice(0, visibleCount);
   const overflowItems: FlexGroupItems = items.slice(visibleCount);
 
+  const isActiveIndicator: boolean = getActiveElement != null;
+
   const style: CustomCSSProperties = {
     '--container-bg-color': containerBgColor,
     gap,
@@ -51,14 +58,12 @@ export const FlexGroup = ({
 
   const { cn, boolToClass } = useClassName();
 
-  const updateActiveIndicator = (): void => {
+  const updateActiveIndicator = useCallback((): void => {
     const container: HTMLDivElement | null = containerRef.current;
 
-    if (!activeIndicator || container == null) return;
+    if (getActiveElement == null || container == null) return;
 
-    const activeButton: HTMLElement | null = container.querySelector(
-      '[data-nav-active="true"]'
-    );
+    const activeButton: HTMLElement | null = getActiveElement(container);
 
     if (activeButton == null) return setActiveIndicatorStyle(null);
 
@@ -69,9 +74,9 @@ export const FlexGroup = ({
       left: activeButtonRect.left - containerRect.left,
       width: activeButtonRect.width,
     });
-  };
+  }, [getActiveElement]);
 
-  const measure = (): void => {
+  const measure = useCallback((): void => {
     const container: HTMLDivElement | null = containerRef.current;
     const measureBox: HTMLDivElement | null = measureRef.current;
 
@@ -79,7 +84,12 @@ export const FlexGroup = ({
 
     const containerWidth: number = container.clientWidth;
 
-    if (containerWidth === 0) closeDropdown();
+    if (containerWidth === 0) {
+      setIsOpen(false);
+      setDropdownAttributes(null);
+
+      return;
+    }
 
     const widths: number[] = Array.from(itemRefs.current).map(
       (el: HTMLDivElement | null): number => el?.offsetWidth ?? 0
@@ -102,7 +112,7 @@ export const FlexGroup = ({
 
     setVisibleCount(count);
     setIsLoading(false);
-  };
+  }, [gap]);
 
   const computeDropdownPosition = (rect: DOMRect): React.CSSProperties => {
     const PADDING = 24;
@@ -139,17 +149,17 @@ export const FlexGroup = ({
   };
 
   const toggleDropdown = (): void => {
-    if (open) closeDropdown();
+    if (isOpen) closeDropdown();
     else openDropdown();
   };
 
   const openDropdown = (): void => {
-    setOpen(true);
+    setIsOpen(true);
     updatePosition();
   };
 
   const closeDropdown = (): void => {
-    setOpen(false);
+    setIsOpen(false);
     setDropdownAttributes(null);
   };
 
@@ -166,28 +176,18 @@ export const FlexGroup = ({
       resizeObserver.observe(containerRef.current);
     }
 
-    const mutationObserver: MutationObserver = new MutationObserver(
-      updateActiveIndicator
-    );
-
-    if (activeIndicator && containerRef.current != null) {
-      mutationObserver.observe(containerRef.current, {
-        attributes: true,
-        attributeFilter: ['data-nav-active'],
-        subtree: true,
-      });
+    if (isActiveIndicator) {
       updateActiveIndicator();
     }
 
     return () => {
       resizeObserver.disconnect();
-      mutationObserver.disconnect();
     };
-  }, [activeIndicator, children]);
+  }, [children, isActiveIndicator, measure, updateActiveIndicator]);
 
   useLayoutEffect((): void => {
     updateActiveIndicator();
-  }, [activeIndicator, visibleCount]);
+  }, [isActiveIndicator, updateActiveIndicator, visibleCount]);
 
   useEffect((): (() => void) => {
     const onMouseDown = (e: MouseEvent): void => {
@@ -199,11 +199,11 @@ export const FlexGroup = ({
       const clickedMore: boolean =
         moreButtonRef.current?.contains(target) ?? false;
 
-      if (!clickedInsideDropdown && !clickedMore) setOpen(false);
+      if (!clickedInsideDropdown && !clickedMore) setIsOpen(false);
     };
 
     const onKeyDown = (e: KeyboardEvent): void => {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key === 'Escape') setIsOpen(false);
     };
 
     const onResize = (): void => {
@@ -232,7 +232,11 @@ export const FlexGroup = ({
         window.removeEventListener('scroll', onScroll, true);
       }
     };
-  }, [updateDropdownOnScroll]);
+  }, [updateActiveIndicator, updateDropdownOnScroll]);
+
+  useImperativeHandle(ref, () => ({ updateActiveIndicator }), [
+    updateActiveIndicator,
+  ]);
 
   return (
     <>
@@ -273,7 +277,7 @@ export const FlexGroup = ({
           }
         )}
 
-        {activeIndicator && activeIndicatorStyle != null && (
+        {isActiveIndicator && activeIndicatorStyle != null && (
           <span
             aria-hidden="true"
             className={styles.active_indicator}
@@ -293,7 +297,7 @@ export const FlexGroup = ({
         )}
       </div>
 
-      {open &&
+      {isOpen &&
         dropdownAttributes != null &&
         overflowItems.length > 0 &&
         createPortal(

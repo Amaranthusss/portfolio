@@ -36,7 +36,7 @@
     flex-direction: column;
     gap: var(--space-4);
 
-    .nav_button[data-nav-active='true'] {
+    .nav_button[data-active] {
       border-color: var(--primary-color);
       box-shadow: 0 0 0.45rem var(--primary-color);
     }
