@@ -49,13 +49,15 @@ export function AdvancedSearchClient({
 
   const closeButtonProps: ModalProps['closeButtonProps'] = {
     tooltip: t('close-modal'),
+    mobile,
   };
 
-  const toolbar: React.ReactNode = (
+  const toolbar: React.ReactNode = !mobile && (
     <Button
       mode={'text'}
-      onClick={onToggleCloseOnNavigate}
+      mobile={mobile}
       tooltip={toggleCloseOnNavigateTooltip}
+      onClick={onToggleCloseOnNavigate}
     >
       {closeOnNavigate ? (
         <Icon icon={Icon.All.Unlock} />
@@ -67,11 +69,12 @@ export function AdvancedSearchClient({
 
   const footer: React.ReactNode = (
     <Button
+      mobile={mobile}
       mode={'primary'}
-      onClick={search}
       className={styles.footer}
       disabled={selectedSkillKeys.size === 0}
       tooltip={t('search-data-for-selected-skills')}
+      onClick={search}
     >
       {t('search')}
     </Button>
