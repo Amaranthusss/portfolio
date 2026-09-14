@@ -13,9 +13,9 @@ import styles from './profile-buttons.module.scss';
 export function ProfileButtons({
   profiles,
   className,
-  profileButtonListClassName,
   isActiveProfile,
   isActiveExactProfile,
+  profileButtonListClassName,
   onToggleProfile,
 }: ProfileButtonsProps): React.ReactNode {
   const { cn } = useClassName();

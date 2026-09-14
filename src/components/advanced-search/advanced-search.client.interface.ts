@@ -10,4 +10,5 @@ export interface AdvancedSearchProps {
 export interface AdvancedSearchClientProps extends AdvancedSearchProps {
   skills: SkillDTO[];
   profiles: ProfileDTO[];
+  defaultSelectedProfile: ProfileDTO | undefined;
 }

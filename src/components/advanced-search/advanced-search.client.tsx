@@ -21,6 +21,7 @@ export function AdvancedSearchClient({
   profiles,
   mobile = false,
   iconOnly = true,
+  defaultSelectedProfile,
   onNavigate: onNavigateHandler,
 }: AdvancedSearchClientProps): React.ReactNode {
   const t = useTranslations('common.advanced-search');
@@ -34,7 +35,7 @@ export function AdvancedSearchClient({
     isActiveProfile,
     selectedSkillKeys,
     isActiveExactProfile,
-  } = useFindBySkills(modalRef);
+  } = useFindBySkills(modalRef, defaultSelectedProfile);
 
   const { closeOnNavigate, onNavigate, onToggleCloseOnNavigate } =
     useModalAutoClose(modalRef, onNavigateHandler);

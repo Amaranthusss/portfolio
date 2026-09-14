@@ -15,12 +15,21 @@ import type { Locale } from '@/i18n/locale';
 
 import { searchResultsId } from '../advanced-search.config';
 
-export function useFindBySkills(modalRef: RefObject<ModalHandle | null>) {
+export function useFindBySkills(
+  modalRef: RefObject<ModalHandle | null>,
+  defaultSelectedProfile: ProfileDTO | undefined
+) {
   const [results, setResults] = useState<SkillAggregateDTO | null>(null);
 
   const [selectedSkillKeys, setSelectedSkillKeys] = useState<Set<SkillKey>>(
-    new Set()
+    new Set(
+      defaultSelectedProfile?.skills.map(
+        (skill: SkillDTO): SkillKey => skill.key
+      )
+    )
   );
+
+  console.log(Array.from(selectedSkillKeys))
 
   const activeProfile = useRef<ProfileDTO>(null);
 

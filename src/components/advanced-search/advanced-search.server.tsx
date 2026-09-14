@@ -9,6 +9,8 @@ import type { ProfileDTO } from '@/models/profileDto';
 import type { SkillDTO } from '@/models/skillDto';
 import type { Locale } from '@/i18n/locale';
 
+import { ProfileSlug } from '@/seeds/constants/profileSlug';
+
 export async function AdvancedSearch({
   iconOnly,
   onNavigate,
@@ -20,11 +22,16 @@ export async function AdvancedSearch({
     getSkills(locale),
   ]);
 
+  const defaultSelectedProfile: ProfileDTO | undefined = profiles.find(
+    (profile: ProfileDTO): boolean => profile.slug === ProfileSlug.FullstackJS
+  );
+
   return (
     <AdvancedSearchClient
       skills={skills}
       profiles={profiles}
       iconOnly={iconOnly}
+      defaultSelectedProfile={defaultSelectedProfile}
       onNavigate={onNavigate}
     />
   );
