@@ -16,7 +16,7 @@
       color: var(--text-color);
       background-color: var(--infill-bg-color);
       border-radius: var(--border-radius);
-      width: $size;
+      min-width: $size;
       height: $size;
     }
 

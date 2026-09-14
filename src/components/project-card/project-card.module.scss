@@ -20,7 +20,7 @@
       border-width: var(--border-width);
       border-color: var(--border-color);
       border-radius: var(--border-radius);
-      width: $size;
+      min-width: $size;
       height: $size;
     }
 
