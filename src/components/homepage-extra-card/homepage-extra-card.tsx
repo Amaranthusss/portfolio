@@ -34,7 +34,7 @@ export function HomepageExtraCard({
 
   return (
     <div className={cn(className, styles.extra_card)}>
-      <RichTextContent content={aboutMe.welcome} />
+      <RichTextContent className={styles.welcome} content={aboutMe.welcome} />
 
       <div className={styles.menu_buttons}>
         <Button

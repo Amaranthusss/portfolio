@@ -3,7 +3,9 @@
   text-align: justify;
 
   @media screen and (max-width: 550px) {
-    text-align: center;
+    > .welcome {
+      text-align: center;
+    }
   }
 
   > .menu_buttons {
