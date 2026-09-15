@@ -1,5 +1,9 @@
 import type { ContactRequestType } from '@/constants/ContactRequestType';
 
+export interface ContactFormProps {
+  className?: string;
+}
+
 export interface ContactRequest {
   title: string;
   requestType: ContactRequestType;

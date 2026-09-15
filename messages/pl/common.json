@@ -43,6 +43,7 @@
     "menu-title": "Ustawienia aplikacji"
   },
   "contact-form": {
+    "caption":"Formularz kontaktowy",
     "subject": "Temat",
     "subject-placeholder": "Czego dotyczy wiadomość?",
     "request-type": "Kategoria wiadomości",

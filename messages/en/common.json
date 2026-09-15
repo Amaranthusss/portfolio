@@ -43,6 +43,7 @@
     "menu-title": "App Settings"
   },
   "contact-form": {
+    "caption":"Contact Form",
     "subject": "Subject",
     "subject-placeholder": "What would you like to talk about?",
     "request-type": "Request type",

@@ -4,6 +4,7 @@ import { Button } from '@/components/button/button';
 import { Input } from '@/components/input/input';
 
 import { useTranslations } from 'next-intl';
+import { useClassName } from '@/hooks/useClassName';
 import { useState } from 'react';
 
 import { isContactRequestType } from '@/utils/isContactRequestType';
@@ -11,6 +12,7 @@ import { validateForm } from './_utils/validateForm';
 
 import type { ContactFormResponse } from './contact-form.interface';
 import type { ContactFormErrors } from './contact-form.interface';
+import type { ContactFormProps } from './contact-form.interface';
 import type { ContactFormData } from './contact-form.interface';
 import type { SelectOption } from '../select/select.interface';
 
@@ -23,7 +25,9 @@ import { INITIAL_FORM } from './contact-form.config';
 
 import styles from './contact-form.module.scss';
 
-export const ContactForm = (): React.ReactNode => {
+export const ContactForm = ({
+  className,
+}: ContactFormProps): React.ReactNode => {
   const [form, setForm] = useState<ContactFormData>(INITIAL_FORM);
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -31,6 +35,8 @@ export const ContactForm = (): React.ReactNode => {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const t = useTranslations('common.contact-form');
+
+  const { cn } = useClassName();
 
   const requestTypeOptions: SelectOption<ContactRequestType>[] = [
     { label: t('hire-me'), value: ContactRequestType.HireMe },
@@ -99,7 +105,11 @@ export const ContactForm = (): React.ReactNode => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} noValidate>
+    <form
+      className={cn(styles.form, className)}
+      onSubmit={handleSubmit}
+      noValidate
+    >
       <Input
         required
         type={'text'}
