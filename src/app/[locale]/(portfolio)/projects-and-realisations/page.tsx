@@ -20,6 +20,8 @@ export default async function ProjectsAndRealisations(): Promise<React.ReactNode
     <ListModule>
       <Title>{t('header')}</Title>
 
+      <p className={styles.limited_projects}>{t('limited-projects')}</p>
+
       <div className={styles.cards_layout}>
         {projects
           .sort((p1, p2) => sortByDate('endDate', p1, p2))
