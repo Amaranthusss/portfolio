@@ -69,8 +69,9 @@ export function Card({
   const handleHighlight = (event: Event): void => {
     const customEvent = event as CustomEvent<string>;
 
-    isTarget.current = false;
     if (customEvent.detail !== slug) return;
+
+    isTarget.current = true;
     highlight();
   };
 
