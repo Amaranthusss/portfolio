@@ -23,6 +23,13 @@ $text-block-gap: var(--space-4);
   touch-action: pan-y;
   overscroll-behavior: contain;
 
+  @supports (height: 100dvh) {
+    max-height: calc(
+      100dvh - 2 *
+        var(--space-6) - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+  }
+
   &.with_footer {
     grid-template-rows: 48px 1fr auto;
   }
