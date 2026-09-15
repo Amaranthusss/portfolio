@@ -58,7 +58,13 @@ export function Select<TValue extends ValueExtension = string>({
           ): void => {
             const selectedValue: string = event.target.value;
 
-            onChange?.(selectedValue as TValue);
+            const selectedOption: SelectOption<TValue> | undefined =
+              options.find(
+                ({ value }: SelectOption<TValue>): boolean =>
+                  value?.toString() === selectedValue
+              );
+
+            if (selectedOption != null) onChange?.(selectedOption.value);
           }}
         >
           {options.map(

@@ -5,13 +5,13 @@ import type { ContactFormData } from '../contact-form.interface';
 import type { _Translator } from 'next-intl';
 import type { Messages } from '../../../../i18n';
 
-import { MIN_MESSAGE_LENGTH } from '../contract-form.config';
-import { MAX_MESSAGE_LENGTH } from '../contract-form.config';
-import { MAX_EMAIL_LENGTH } from '../contract-form.config';
-import { MAX_PHONE_LENGTH } from '../contract-form.config';
-import { MAX_TITLE_LENGTH } from '../contract-form.config';
-import { MIN_TITLE_LENGTH } from '../contract-form.config';
-import { EMAIL_PATTERN } from '../contract-form.config';
+import { MIN_MESSAGE_LENGTH } from '../contact-form.config';
+import { MAX_MESSAGE_LENGTH } from '../contact-form.config';
+import { MAX_EMAIL_LENGTH } from '../contact-form.config';
+import { MAX_PHONE_LENGTH } from '../contact-form.config';
+import { MAX_TITLE_LENGTH } from '../contact-form.config';
+import { MIN_TITLE_LENGTH } from '../contact-form.config';
+import { EMAIL_PATTERN } from '../contact-form.config';
 
 export function validateForm(
   form: ContactFormData,

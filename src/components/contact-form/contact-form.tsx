@@ -15,11 +15,11 @@ import type { ContactFormData } from './contact-form.interface';
 import type { SelectOption } from '../select/select.interface';
 
 import { ContactRequestType } from '@/constants/ContactRequestType';
-import { MAX_MESSAGE_LENGTH } from './contract-form.config';
-import { MAX_EMAIL_LENGTH } from './contract-form.config';
-import { MAX_PHONE_LENGTH } from './contract-form.config';
-import { MAX_TITLE_LENGTH } from './contract-form.config';
-import { INITIAL_FORM } from './contract-form.config';
+import { MAX_MESSAGE_LENGTH } from './contact-form.config';
+import { MAX_EMAIL_LENGTH } from './contact-form.config';
+import { MAX_PHONE_LENGTH } from './contact-form.config';
+import { MAX_TITLE_LENGTH } from './contact-form.config';
+import { INITIAL_FORM } from './contact-form.config';
 
 import styles from './contact-form.module.scss';
 
