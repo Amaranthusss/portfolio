@@ -9,6 +9,7 @@ import { HamburgerIcon } from './_components/hamburger-icon/hamburger-icon';
 import { HandshakeIcon } from './_components/handshake-icon/handshake-icon';
 import { TechStackIcon } from './_components/tech-stack-icon/tech-stack-icon';
 import { EducationIcon } from './_components/education-icon/education-icon';
+import { OSzkurlatIcon } from './_components/oszkurlat-icon/oszkurlat-icon';
 import { SettingsIcon } from './_components/settings-icon/settings-icon';
 import { FeatherIcon } from './_components/feather-icon/feather-icon';
 import { ProjectIcon } from './_components/project-icon/project-icon';
@@ -54,6 +55,7 @@ export enum IconName {
   WorkStation = 'work-station',
   SoftwareProgramming = 'software-programming',
   PlcProgramming = 'plc-programming',
+  OSzkurlat = 'oszkurlat',
 }
 
 export const iconConfig: Record<
@@ -86,6 +88,7 @@ export const iconConfig: Record<
   [IconName.WorkStation]: WorkStationIcon,
   [IconName.SoftwareProgramming]: SoftwareProgrammingIcon,
   [IconName.PlcProgramming]: PlcProgrammingIcon,
+  [IconName.OSzkurlat]: OSzkurlatIcon,
 };
 
 export const defaultSvgProps: SVGProps<SVGSVGElement> = {

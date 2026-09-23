@@ -1,16 +1,28 @@
 .logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 1fr 1fr;
   user-select: none;
-  flex-direction: column;
   text-wrap: nowrap;
   color: var(--layout-text-color);
+  place-items: center;
+  gap: var(--space-0) var(--space-2);
+  grid-template-areas:
+    'logo name'
+    'logo app';
 
-  :last-child {
-    font-style: italic;
+  > .image {
+    grid-area: logo;
+    height: 1.85rem;
+  }
+
+  > .name {
+    grid-area: name;
+  }
+
+  > .app {
+    grid-area: app;
     font-weight: 800;
-    color: var(--primary-color);
     text-transform: uppercase;
   }
 }

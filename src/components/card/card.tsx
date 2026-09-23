@@ -20,7 +20,7 @@ export function Card({
   const cardRef = useRef<HTMLDivElement>(null);
 
   const classNames: string = cn(className, styles.card);
-  const highlightTime = 2000;
+  const highlightTime = 5000;
 
   const scrollToCard = (): void => {
     const card: HTMLDivElement | null = cardRef.current;

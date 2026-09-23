@@ -1,3 +1,5 @@
+import { Icon } from '../icon/icon';
+
 import { Route } from '@/constants/Route';
 
 import { useClassName } from '@/hooks/useClassName';
@@ -15,8 +17,9 @@ export function Logo({ className }: LogoProps): React.ReactNode {
       className={cn(styles.logo, className)}
       aria-label={'portfolio-logo'}
     >
-      <span>Oskar Szkurłat</span>
-      <span>Portfolio</span>
+      <Icon icon={Icon.All.OSzkurlat} className={styles.image} />
+      <span className={styles.name}>Oskar Szkurłat</span>
+      <span className={styles.app}>Portfolio</span>
     </a>
   );
 }
