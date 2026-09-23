@@ -355,6 +355,7 @@ export interface Link {
         | 'work-station'
         | 'software-programming'
         | 'plc-programming'
+        | 'oszkurlat'
       )
     | null;
   updatedAt: string;
@@ -395,6 +396,7 @@ export interface ExperienceStep {
         | 'work-station'
         | 'software-programming'
         | 'plc-programming'
+        | 'oszkurlat'
       )
     | null;
   slug: string;
