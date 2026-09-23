@@ -1,6 +1,6 @@
 .header {
   display: grid;
-  grid-template-columns: 130px minmax(0, 1fr) 130px;
+  grid-template-columns: max-content minmax(0, 1fr) max-content;
   gap: var(--space-4);
   width: 100%;
   z-index: var(--z-index-layout);
