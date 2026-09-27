@@ -1,22 +1,26 @@
 import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
 import { SkillTagList } from '@/components/skill-tag-list/skill-tag-list';
 import { ListModule } from '@/components/list-module/list-module';
+import { Image } from '@/components/image/image';
 import { Title } from '@/components/title/title';
 import { Card } from '@/components/card/card';
-import Image from 'next/image';
 
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getCertifications } from '@/services/getCertifications';
 import { sortByDate } from '@/utils/sortByDate';
+import { getTheme } from '@/utils/getTheme';
 
 import type { CertificationDTO } from '@/models/certificationDto';
 import type { Locale } from '@/i18n/locale';
+
+import { Theme } from '@/constants/Theme';
 
 import styles from './page.module.scss';
 
 export default async function CoursesAndCertifications(): Promise<React.ReactNode> {
   const locale: Locale = await getLocale();
   const certifications: CertificationDTO[] = await getCertifications(locale);
+  const theme: Theme = await getTheme();
   const t = await getTranslations('courses-and-certifications');
 
   return (
@@ -33,7 +37,9 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
                 alt={c.title}
                 width={64}
                 height={64}
+                theme={theme}
                 className={styles.icon}
+                darkThemeSrc={c.imageDarkTheme?.url}
               />
 
               <div className={styles.caption}>

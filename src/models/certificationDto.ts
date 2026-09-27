@@ -7,6 +7,7 @@ export interface CertificationDTO {
   credentialID?: string;
   issueDate: Date;
   image: MediaDTO;
+  imageDarkTheme?: MediaDTO;
   url?: string;
   title: string;
   description: string;

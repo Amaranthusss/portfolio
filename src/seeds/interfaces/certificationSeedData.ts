@@ -14,6 +14,7 @@ export interface CertificationSeedData {
   url?: string;
   credentialID?: string;
   image: string;
+  imageDarkTheme?: string;
   skills: Skill['key'][];
   translations: { [locale in Locale]: CertificationTranslation };
 }

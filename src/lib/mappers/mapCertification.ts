@@ -12,6 +12,11 @@ export function mapCertification(
 ): CertificationDTO {
   const image: MediaDTO = mapMedia(certification.image);
 
+  const imageDarkTheme: MediaDTO | undefined =
+    certification.imageDarkTheme == null
+      ? undefined
+      : mapMedia(certification.imageDarkTheme);
+
   const skills: SkillDTO[] =
     certification.skills?.filter(isPopulatedSkill).map(mapSkill) ?? [];
 
@@ -25,6 +30,7 @@ export function mapCertification(
     description: certification.description ?? '',
     provider: certification.provider ?? '',
     skills,
+    imageDarkTheme,
     image,
   };
 }

@@ -424,7 +424,8 @@ export interface Certification {
   credentialID?: string | null;
   issueDate: string;
   url?: string | null;
-  image?: (number | null) | Media;
+  image: number | Media;
+  imageDarkTheme?: (number | null) | Media;
   skills?: (number | Skill)[] | null;
   updatedAt: string;
   createdAt: string;
@@ -729,6 +730,7 @@ export interface CertificationsSelect<T extends boolean = true> {
   issueDate?: T;
   url?: T;
   image?: T;
+  imageDarkTheme?: T;
   skills?: T;
   updatedAt?: T;
   createdAt?: T;

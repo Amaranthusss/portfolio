@@ -143,7 +143,7 @@ export const certifications: CertificationSeedData[] = [
     url: 'https://www.udemy.com/certificate/UC-9ca9ca52-cf3b-4dfa-b192-7767788e60b2/',
     credentialID: 'UC-9ca9ca52-cf3b-4dfa-b192-7767788e60b2',
 
-    image: 'icons/node-js.svg',
+    image: 'icons/node-js.png',
 
     skills: ['TS', 'NodeJS', 'Docker', 'VPS'],
 
@@ -201,7 +201,7 @@ export const certifications: CertificationSeedData[] = [
     issueDate: '2022-02-02',
     credentialID: 'CERT61FAEFFB86876',
 
-    image: 'icons/node-js.svg',
+    image: 'icons/node-js.png',
 
     skills: ['NodeJS'],
 
@@ -286,7 +286,8 @@ export const certifications: CertificationSeedData[] = [
     slug: CertificationSlug.ModernMethodsOfPlcProgramming,
     issueDate: '2019-04-09',
 
-    image: 'icons/b-and-r.jpg',
+    image: 'icons/b-and-r.png',
+    imageDarkTheme: 'icons/b-and-r.dark-theme.png',
 
     skills: ['PLCProgramming', 'SCL', 'LAD'],
 
@@ -313,7 +314,8 @@ export const certifications: CertificationSeedData[] = [
     slug: CertificationSlug.IqrfWirelessProgramming,
     issueDate: '2018-11-28',
 
-    image: 'icons/iqrf.jpg',
+    image: 'icons/iqrf.png',
+    imageDarkTheme: 'icons/iqrf.dark-theme.png',
 
     skills: ['IQRF'],
 
@@ -374,7 +376,7 @@ export const certifications: CertificationSeedData[] = [
     slug: CertificationSlug.ProgrammingMachineToolsInMTSSystemCNC,
     issueDate: '2015-06-26',
 
-    image: 'icons/mts.jpg',
+    image: 'icons/mts.png',
 
     skills: ['CADCAM'],
 
