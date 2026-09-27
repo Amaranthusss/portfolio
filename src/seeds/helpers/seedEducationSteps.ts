@@ -1,7 +1,11 @@
-import type { BasePayload, PaginatedDocs } from 'payload';
+import { getMediaId } from './getMediaId';
+
+import type { RequiredDataFromCollectionSlug } from 'payload';
+import type { EducationStep, Media, Skill } from '../../../payload-types';
 import type { EducationStepTranslation } from '../interfaces/educationStepSeedData';
 import type { EducationStepSeedData } from '../interfaces/educationStepSeedData';
-import type { EducationStep, Skill } from '../../../payload-types';
+import type { PaginatedDocs } from 'payload';
+import type { BasePayload } from 'payload';
 import type { SkillKey } from '@/models/skillKey';
 
 import { educationSteps } from '../constants/educationSteps';
@@ -12,13 +16,14 @@ async function seedEducationStep(
   educationStep: EducationStepSeedData,
   i: number
 ): Promise<void> {
-  const existingEducationStep = await payload.find({
-    collection: 'education-steps',
-    where: { slug: { equals: educationStep.slug } },
-    limit: 1,
-    depth: 0,
-    locale: 'all',
-  });
+  const existingEducationStep: PaginatedDocs<EducationStep> =
+    await payload.find({
+      collection: 'education-steps',
+      where: { slug: { equals: educationStep.slug } },
+      limit: 1,
+      depth: 0,
+      locale: 'all',
+    });
 
   if (existingEducationStep.docs.length > 0) {
     return console.log(
@@ -41,6 +46,8 @@ async function seedEducationStep(
     Skill['id']
   >(skillsResult.docs.map((skill) => [skill.key, skill.id]));
 
+  const mediaId: Media['id'] = await getMediaId(payload, educationStep.image);
+
   const skillIds: Skill['id'][] = uniqueSkillKeys.map(
     (key: SkillKey): Skill['id'] => {
       const id: Skill['id'] | undefined = skillMap.get(key);
@@ -57,37 +64,38 @@ async function seedEducationStep(
 
   const plTranslation: EducationStepTranslation = educationStep.translations.pl;
 
+  const data: RequiredDataFromCollectionSlug<'education-steps'> = {
+    slug: educationStep.slug,
+    image: mediaId,
+    isCurrent: educationStep.isCurrent,
+    startDate: educationStep.startDate,
+    institution: plTranslation.institution,
+    ...(educationStep.endDate !== undefined && {
+      endDate: educationStep.endDate,
+    }),
+    ...(educationStep.grade !== undefined && {
+      grade: educationStep.grade,
+    }),
+    ...(educationStep.withHonors !== undefined && {
+      withHonors: educationStep.withHonors,
+    }),
+    ...(plTranslation.fieldOfStudy !== undefined && {
+      fieldOfStudy: plTranslation.fieldOfStudy,
+    }),
+    ...(plTranslation.projectTitle !== undefined && {
+      projectTitle: plTranslation.projectTitle,
+    }),
+    ...(plTranslation.description !== undefined && {
+      description: plTranslation.description,
+    }),
+    skills: skillIds,
+  };
+
   const createdEducationStep: EducationStep = await payload.create({
     collection: 'education-steps',
-    data: {
-      slug: educationStep.slug,
-      startDate: educationStep.startDate,
-      ...(educationStep.endDate !== undefined && {
-        endDate: educationStep.endDate,
-      }),
-      ...(educationStep.grade !== undefined && {
-        grade: educationStep.grade,
-      }),
-      ...(educationStep.withHonors !== undefined && {
-        withHonors: educationStep.withHonors,
-      }),
-      institution: plTranslation.institution,
-      ...(plTranslation.degree !== undefined && {
-        degree: plTranslation.degree,
-      }),
-      ...(plTranslation.fieldOfStudy !== undefined && {
-        fieldOfStudy: plTranslation.fieldOfStudy,
-      }),
-      ...(plTranslation.projectTitle !== undefined && {
-        projectTitle: plTranslation.projectTitle,
-      }),
-      ...(plTranslation.description !== undefined && {
-        description: plTranslation.description,
-      }),
-      skills: skillIds,
-    },
     locale: 'pl',
     depth: 0,
+    data,
   });
 
   for (const locale of locales) {

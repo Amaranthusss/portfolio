@@ -1,9 +1,7 @@
 import { ExperienceStepCard } from '@/components/experience-step-card/experience-step-card';
-import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
-import { SkillTagList } from '@/components/skill-tag-list/skill-tag-list';
+import { EducationStepCard } from '@/components/education-step-card/education-step-card';
 import { ListModule } from '@/components/list-module/list-module';
 import { Title } from '@/components/title/title';
-import { Card } from '@/components/card/card';
 
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getExperienceSteps } from '@/services/getExperienceSteps';
@@ -39,40 +37,8 @@ export default async function ExperienceAndEducation(): Promise<React.ReactNode>
       <div className={styles.cards_layout}>
         {educationSteps
           .sort((e1, e2) => sortByDate('endDate', e1, e2))
-          .map((e) => (
-            <Card key={e.id} slug={e.slug} className={styles.card}>
-              <strong className={styles.title}>
-                {e.degree ?? e.projectTitle}
-              </strong>
-
-              {e.institution && (
-                <span className={styles.institution}>{e.institution}</span>
-              )}
-
-              <DisplayDateRange
-                startDate={e.startDate}
-                endDate={e.endDate}
-                isCurrent={e.isCurrent}
-                className={styles.date_range}
-              />
-
-              {e.grade && (
-                <span className={styles.description}>
-                  {t('grade')}: {e.grade}
-                  {e.withHonors && t('diploma-with-distinction')}
-                </span>
-              )}
-              {e.projectTitle && (
-                <span className={styles.projectTitle}>
-                  {t('thesis')}: {e.projectTitle}
-                </span>
-              )}
-              {e.description && (
-                <span className={styles.description}>{e.description}</span>
-              )}
-
-              <SkillTagList skills={e.skills} />
-            </Card>
+          .map((e: EducationStepDTO): React.ReactNode => (
+            <EducationStepCard key={e.slug} educationStep={e} />
           ))}
       </div>
     </ListModule>

@@ -12,9 +12,11 @@ export interface EducationStepTranslation {
 
 export interface EducationStepSeedData {
   slug: EducationStepSlug;
+  image: string;
   startDate: string;
   endDate?: string;
   grade?: number;
+  isCurrent?: boolean;
   withHonors?: boolean;
   skills: Skill['key'][];
   translations: { [locale in Locale]: EducationStepTranslation };

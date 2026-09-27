@@ -1,12 +1,12 @@
 import type { EmploymentType } from './employmentType';
 import type { LocationType } from './locationType';
-import type { IconName } from '@/components/icon/icon.config';
 import type { SkillDTO } from './skillDto';
+import type { MediaDTO } from './mediaDto';
 
 export interface ExperienceStepDTO {
   id: number;
   slug: string;
-  icon?: IconName;
+  image: MediaDTO;
   startDate: Date;
   endDate?: Date;
   isCurrent: boolean;

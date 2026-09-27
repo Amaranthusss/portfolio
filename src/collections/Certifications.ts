@@ -10,6 +10,7 @@ export const Certifications: CollectionConfig = {
     afterChange: [revalidateCertifications],
     afterDelete: [revalidateCertificationsAfterDelete],
   },
+
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'provider', 'issueDate'],

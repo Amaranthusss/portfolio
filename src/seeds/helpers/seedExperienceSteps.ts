@@ -1,10 +1,13 @@
+import { getMediaId } from './getMediaId';
+
+import type { ExperienceStep, Media, Skill } from '../../../payload-types';
 import type { BasePayload, PaginatedDocs } from 'payload';
-import type { ExperienceStep, Skill } from '../../../payload-types';
+import type { ExperienceStepTranslation } from '../interfaces/experienceStepSeedData';
+import type { ExperienceStepUpdateData } from '../interfaces/experienceStepSeedData';
 import type { SkillKey } from '@/models/skillKey';
 
 import { experienceSteps } from '../constants/experienceSteps';
 import { locales } from '@/i18n/locale';
-import { ExperienceStepTranslation } from '../interfaces/experienceStepSeedData';
 
 async function getSkillMap(
   payload: BasePayload,
@@ -43,6 +46,8 @@ async function seedExperienceStep(
     .map((skillKey) => skillMap.get(skillKey))
     .filter((id): id is number => id != null);
 
+  const mediaId: Media['id'] = await getMediaId(payload, experienceStep.image);
+
   if (skillIds.length !== experienceStep.skills.length) {
     const missingSkills: SkillKey[] = experienceStep.skills.filter(
       (skillKey) => !skillMap.has(skillKey)
@@ -53,14 +58,14 @@ async function seedExperienceStep(
     );
   }
 
-  const data = {
+  const data: ExperienceStepUpdateData = {
     slug: experienceStep.slug,
     startDate: experienceStep.startDate,
     endDate: experienceStep.endDate,
     isCurrent: experienceStep.isCurrent,
     locationType: experienceStep.locationType,
     employmentType: experienceStep.employmentType,
-    icon: experienceStep.icon,
+    image: mediaId,
     skills: skillIds,
   };
 

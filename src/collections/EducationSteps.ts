@@ -38,6 +38,13 @@ export const EducationSteps: CollectionConfig = {
     },
 
     {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
+    },
+
+    {
       name: 'degree',
       type: 'text',
       localized: true,

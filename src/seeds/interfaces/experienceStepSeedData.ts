@@ -1,5 +1,5 @@
+import type { RequiredDataFromCollectionSlug } from 'payload';
 import type { ExperienceStepSlug } from '../constants/experienceStepSlug';
-import type { IconName } from '@/components/icon/icon.config';
 import type { SkillKey } from '@/models/skillKey';
 import type { Locale } from '@/i18n/locale';
 
@@ -13,7 +13,7 @@ export interface ExperienceStepTranslation {
 
 export interface ExperienceStepSeedData {
   slug: ExperienceStepSlug;
-  icon: IconName;
+  image: string;
   startDate: string;
   endDate?: string;
   isCurrent: boolean;
@@ -22,3 +22,8 @@ export interface ExperienceStepSeedData {
   skills: SkillKey[];
   translations: { [locale in Locale]: ExperienceStepTranslation };
 }
+
+export type ExperienceStepUpdateData = Omit<
+  RequiredDataFromCollectionSlug<'experience-steps'>,
+  keyof ExperienceStepTranslation
+>;

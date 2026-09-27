@@ -33,9 +33,10 @@ export const ExperienceSteps: CollectionConfig = {
     },
 
     {
-      name: 'icon',
-      type: 'select',
-      options: Object.values(IconName),
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+      required: true,
     },
 
     {

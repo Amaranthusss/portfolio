@@ -368,37 +368,7 @@ export interface Link {
 export interface ExperienceStep {
   id: number;
   position: string;
-  icon?:
-    | (
-        | 'accessibility'
-        | 'certification'
-        | 'education'
-        | 'feather'
-        | 'handshake'
-        | 'home'
-        | 'project'
-        | 'publication'
-        | 'settings'
-        | 'tech-stack'
-        | 'search'
-        | 'close'
-        | 'lock'
-        | 'unlock'
-        | 'hamburger'
-        | 'build'
-        | 'link'
-        | 'read'
-        | 'mechatronics'
-        | 'it'
-        | 'github'
-        | 'bulb'
-        | 'hobby'
-        | 'work-station'
-        | 'software-programming'
-        | 'plc-programming'
-        | 'oszkurlat'
-      )
-    | null;
+  image: number | Media;
   slug: string;
   company: string;
   location: string;
@@ -427,6 +397,7 @@ export interface EducationStep {
   id: number;
   institution: string;
   slug: string;
+  image: number | Media;
   degree?: string | null;
   projectTitle?: string | null;
   fieldOfStudy?: string | null;
@@ -704,7 +675,7 @@ export interface ProjectsSelect<T extends boolean = true> {
  */
 export interface ExperienceStepsSelect<T extends boolean = true> {
   position?: T;
-  icon?: T;
+  image?: T;
   slug?: T;
   company?: T;
   location?: T;
@@ -731,6 +702,7 @@ export interface ExperienceStepsSelect<T extends boolean = true> {
 export interface EducationStepsSelect<T extends boolean = true> {
   institution?: T;
   slug?: T;
+  image?: T;
   degree?: T;
   projectTitle?: T;
   fieldOfStudy?: T;

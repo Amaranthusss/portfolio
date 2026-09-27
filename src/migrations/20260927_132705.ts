@@ -1,13 +1,14 @@
-import { type MigrateUpArgs, type MigrateDownArgs, sql } from '@payloadcms/db-postgres'
+import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
    CREATE TYPE "public"."_locales" AS ENUM('pl', 'en');
-  CREATE TYPE "public"."enum_skills_key" AS ENUM('TS', 'LabView', 'Python', 'CSharp', 'CPlusPlus', 'Java', 'MMF2Dev', 'CADCAM', 'SCL', 'STL', 'LAD', 'DotNet', 'Blazor', 'Angular', 'ReactJS', 'CRA', 'Vite', 'NextJS', 'ExpressJS', 'NestJS', 'NodeJS', 'Leaflet', 'Sanity', 'ThreeJS', 'PdfMake', 'YukaJS', 'Zustand', 'Redux', 'J5', 'Zod', 'AntDReact', 'AntDBlazor', 'Bootstrap', 'MaterialUI', 'DevExtremeReact', 'DevExtremeAngular', 'PostgreSQL', 'MongoDB', 'SQLite', 'AWS', 'GCP', 'GRPC', 'GraphQL', 'VPS', 'Docker', 'Linux', 'TiaPortal', 'PLCProgramming', 'FactoryIO', 'CommunicationTCPIP', 'ModbusProtocol', 'IQRF', 'Eagle', 'Fusion360', 'AGV', 'Fanuc', 'Kuka', 'AI', 'Print3D', 'Documentation', 'SalesSupport', 'Microservices');
-  CREATE TYPE "public"."enum_projects_category" AS ENUM('Mechatronics', 'Hobby', 'IT');
+  CREATE TYPE "public"."enum_skills_key" AS ENUM('AI', 'DB', 'Git', 'CMS', 'ORM', 'WS', 'GraphQL', 'Print3D', 'Documentation', 'SalesSupport', 'Microservices', 'LabView', 'JS', 'Python', 'CSharp', 'CPlusPlus', 'Java', 'MMF2Dev', 'ReactJS', 'CRA', 'Vite', 'NextJS', 'TS', 'DevExtremeReact', 'AntDReact', 'MaterialUI', 'Bootstrap', 'ThreeJS', 'Leaflet', 'PdfMake', 'YukaJS', 'Zustand', 'Redux', 'Lodash', 'SocketIO', 'Zod', 'SASS', 'LESS', 'Cypress', 'Jest', 'PayloadCMS', 'SanityCMS', 'Angular', 'DevExtremeAngular', 'ExpressJS', 'NestJS', 'NodeJS', 'J5', 'DotNet', 'Blazor', 'AntDBlazor', 'PostgreSQL', 'MongoDB', 'SQLite', 'MySQL', 'Drizzle', 'TypeORM', 'Prisma', 'AWS', 'GCP', 'GRPC', 'VPS', 'Docker', 'Linux', 'AGV', 'CADCAM', 'LAD', 'SCL', 'STL', 'TiaPortal', 'PLCProgramming', 'FactoryIO', 'CommunicationTCPIP', 'ModbusProtocol', 'IQRF', 'Fanuc', 'Kuka', 'Eagle', 'Fusion360');
+  CREATE TYPE "public"."enum_projects_category" AS ENUM('Mechatronics', 'Education', 'Hobby', 'IT');
   CREATE TYPE "public"."enum_experience_steps_employment_type" AS ENUM('FullTime', 'HalfTime', 'QuarterTime', 'SelfEmployed', 'Internship', 'Freelance', 'Apprenticeship');
   CREATE TYPE "public"."enum_experience_steps_location_type" AS ENUM('OnSite', 'Remote', 'Hybrid');
   CREATE TYPE "public"."enum_persons_academic_degree" AS ENUM('Engineer', 'MasterOfScienceInEngineering', 'DoctorInEngineering', 'HabilitatedDoctorInEngineering', 'UniversityProfessor', 'Professor');
+  CREATE TYPE "public"."enum_links_icon" AS ENUM('accessibility', 'certification', 'education', 'feather', 'handshake', 'home', 'project', 'publication', 'settings', 'tech-stack', 'search', 'close', 'lock', 'unlock', 'hamburger', 'build', 'link', 'read', 'mechatronics', 'it', 'github', 'bulb', 'hobby', 'work-station', 'software-programming', 'plc-programming', 'oszkurlat');
   CREATE TABLE "users_sessions" (
   	"_order" integer NOT NULL,
   	"_parent_id" integer NOT NULL,
@@ -31,6 +32,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "media" (
   	"id" serial PRIMARY KEY NOT NULL,
+  	"prefix" varchar,
   	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
   	"url" varchar,
@@ -64,6 +66,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"id" serial PRIMARY KEY NOT NULL,
   	"slug" varchar NOT NULL,
   	"category" "enum_projects_category" NOT NULL,
+  	"thumbnail_id" integer,
   	"start_date" timestamp(3) with time zone,
   	"end_date" timestamp(3) with time zone,
   	"is_current" boolean DEFAULT false,
@@ -86,6 +89,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"order" integer,
   	"parent_id" integer NOT NULL,
   	"path" varchar NOT NULL,
+  	"links_id" integer,
   	"skills_id" integer
   );
   
@@ -99,6 +103,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   
   CREATE TABLE "experience_steps" (
   	"id" serial PRIMARY KEY NOT NULL,
+  	"image_id" integer NOT NULL,
   	"slug" varchar NOT NULL,
   	"start_date" timestamp(3) with time zone NOT NULL,
   	"end_date" timestamp(3) with time zone,
@@ -130,6 +135,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE TABLE "education_steps" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"slug" varchar NOT NULL,
+  	"image_id" integer NOT NULL,
   	"start_date" timestamp(3) with time zone NOT NULL,
   	"end_date" timestamp(3) with time zone,
   	"is_current" boolean,
@@ -253,6 +259,23 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"skills_id" integer
   );
   
+  CREATE TABLE "links" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"key" varchar NOT NULL,
+  	"is_external" boolean DEFAULT false NOT NULL,
+  	"icon" "enum_links_icon",
+  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+  );
+  
+  CREATE TABLE "links_locales" (
+  	"label" varchar NOT NULL,
+  	"url" varchar NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
   CREATE TABLE "payload_kv" (
   	"id" serial PRIMARY KEY NOT NULL,
   	"key" varchar NOT NULL,
@@ -280,7 +303,8 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"certifications_id" integer,
   	"publications_id" integer,
   	"persons_id" integer,
-  	"profiles_id" integer
+  	"profiles_id" integer,
+  	"links_id" integer
   );
   
   CREATE TABLE "payload_preferences" (
@@ -307,15 +331,123 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
   
+  CREATE TABLE "about_me" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"email" varchar NOT NULL,
+  	"mobile" varchar NOT NULL,
+  	"linkedin" varchar NOT NULL,
+  	"updated_at" timestamp(3) with time zone,
+  	"created_at" timestamp(3) with time zone
+  );
+  
+  CREATE TABLE "about_me_locales" (
+  	"title" varchar NOT NULL,
+  	"welcome" jsonb,
+  	"content" jsonb,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "portfolio_documentation" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"updated_at" timestamp(3) with time zone,
+  	"created_at" timestamp(3) with time zone
+  );
+  
+  CREATE TABLE "portfolio_documentation_locales" (
+  	"title" varchar NOT NULL,
+  	"description" jsonb,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "core_technologies_groups_nodes" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" varchar NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"icon_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "core_technologies_groups_nodes_locales" (
+  	"title" varchar NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "core_technologies_groups" (
+  	"_order" integer NOT NULL,
+  	"_parent_id" integer NOT NULL,
+  	"id" varchar PRIMARY KEY NOT NULL,
+  	"slug" varchar NOT NULL
+  );
+  
+  CREATE TABLE "core_technologies_groups_locales" (
+  	"title" varchar NOT NULL,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" varchar NOT NULL
+  );
+  
+  CREATE TABLE "core_technologies" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"updated_at" timestamp(3) with time zone,
+  	"created_at" timestamp(3) with time zone
+  );
+  
+  CREATE TABLE "core_technologies_locales" (
+  	"title" varchar NOT NULL,
+  	"content" jsonb,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
+  CREATE TABLE "core_technologies_texts" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"order" integer NOT NULL,
+  	"parent_id" integer NOT NULL,
+  	"path" varchar NOT NULL,
+  	"text" varchar
+  );
+  
+  CREATE TABLE "core_technologies_rels" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"order" integer,
+  	"parent_id" integer NOT NULL,
+  	"path" varchar NOT NULL,
+  	"skills_id" integer
+  );
+  
+  CREATE TABLE "code_style" (
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"updated_at" timestamp(3) with time zone,
+  	"created_at" timestamp(3) with time zone
+  );
+  
+  CREATE TABLE "code_style_locales" (
+  	"title" varchar NOT NULL,
+  	"content" jsonb,
+  	"id" serial PRIMARY KEY NOT NULL,
+  	"_locale" "_locales" NOT NULL,
+  	"_parent_id" integer NOT NULL
+  );
+  
   ALTER TABLE "users_sessions" ADD CONSTRAINT "users_sessions_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "skills_locales" ADD CONSTRAINT "skills_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."skills"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "projects" ADD CONSTRAINT "projects_thumbnail_id_media_id_fk" FOREIGN KEY ("thumbnail_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "projects_locales" ADD CONSTRAINT "projects_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."projects"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "projects_rels" ADD CONSTRAINT "projects_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."projects"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "projects_rels" ADD CONSTRAINT "projects_rels_links_fk" FOREIGN KEY ("links_id") REFERENCES "public"."links"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "projects_rels" ADD CONSTRAINT "projects_rels_skills_fk" FOREIGN KEY ("skills_id") REFERENCES "public"."skills"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "experience_steps_duties" ADD CONSTRAINT "experience_steps_duties_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."experience_steps"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "experience_steps" ADD CONSTRAINT "experience_steps_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "experience_steps_locales" ADD CONSTRAINT "experience_steps_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."experience_steps"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "experience_steps_rels" ADD CONSTRAINT "experience_steps_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."experience_steps"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "experience_steps_rels" ADD CONSTRAINT "experience_steps_rels_skills_fk" FOREIGN KEY ("skills_id") REFERENCES "public"."skills"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "education_steps" ADD CONSTRAINT "education_steps_image_id_media_id_fk" FOREIGN KEY ("image_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "education_steps_locales" ADD CONSTRAINT "education_steps_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."education_steps"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "education_steps_rels" ADD CONSTRAINT "education_steps_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."education_steps"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "education_steps_rels" ADD CONSTRAINT "education_steps_rels_skills_fk" FOREIGN KEY ("skills_id") REFERENCES "public"."skills"("id") ON DELETE cascade ON UPDATE no action;
@@ -331,6 +463,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "profiles_locales" ADD CONSTRAINT "profiles_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."profiles"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "profiles_rels" ADD CONSTRAINT "profiles_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."profiles"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "profiles_rels" ADD CONSTRAINT "profiles_rels_skills_fk" FOREIGN KEY ("skills_id") REFERENCES "public"."skills"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "links_locales" ADD CONSTRAINT "links_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."links"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."payload_locked_documents"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_users_fk" FOREIGN KEY ("users_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_media_fk" FOREIGN KEY ("media_id") REFERENCES "public"."media"("id") ON DELETE cascade ON UPDATE no action;
@@ -342,8 +475,21 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_publications_fk" FOREIGN KEY ("publications_id") REFERENCES "public"."publications"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_persons_fk" FOREIGN KEY ("persons_id") REFERENCES "public"."persons"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_profiles_fk" FOREIGN KEY ("profiles_id") REFERENCES "public"."profiles"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_links_fk" FOREIGN KEY ("links_id") REFERENCES "public"."links"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_preferences_rels" ADD CONSTRAINT "payload_preferences_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."payload_preferences"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "payload_preferences_rels" ADD CONSTRAINT "payload_preferences_rels_users_fk" FOREIGN KEY ("users_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "about_me_locales" ADD CONSTRAINT "about_me_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."about_me"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "portfolio_documentation_locales" ADD CONSTRAINT "portfolio_documentation_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."portfolio_documentation"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "core_technologies_groups_nodes" ADD CONSTRAINT "core_technologies_groups_nodes_icon_id_media_id_fk" FOREIGN KEY ("icon_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
+  ALTER TABLE "core_technologies_groups_nodes" ADD CONSTRAINT "core_technologies_groups_nodes_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."core_technologies_groups"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "core_technologies_groups_nodes_locales" ADD CONSTRAINT "core_technologies_groups_nodes_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."core_technologies_groups_nodes"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "core_technologies_groups" ADD CONSTRAINT "core_technologies_groups_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."core_technologies"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "core_technologies_groups_locales" ADD CONSTRAINT "core_technologies_groups_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."core_technologies_groups"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "core_technologies_locales" ADD CONSTRAINT "core_technologies_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."core_technologies"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "core_technologies_texts" ADD CONSTRAINT "core_technologies_texts_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."core_technologies"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "core_technologies_rels" ADD CONSTRAINT "core_technologies_rels_parent_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."core_technologies"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "core_technologies_rels" ADD CONSTRAINT "core_technologies_rels_skills_fk" FOREIGN KEY ("skills_id") REFERENCES "public"."skills"("id") ON DELETE cascade ON UPDATE no action;
+  ALTER TABLE "code_style_locales" ADD CONSTRAINT "code_style_locales_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."code_style"("id") ON DELETE cascade ON UPDATE no action;
   CREATE INDEX "users_sessions_order_idx" ON "users_sessions" USING btree ("_order");
   CREATE INDEX "users_sessions_parent_id_idx" ON "users_sessions" USING btree ("_parent_id");
   CREATE INDEX "users_updated_at_idx" ON "users" USING btree ("updated_at");
@@ -352,21 +498,23 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "media_updated_at_idx" ON "media" USING btree ("updated_at");
   CREATE INDEX "media_created_at_idx" ON "media" USING btree ("created_at");
   CREATE UNIQUE INDEX "media_filename_idx" ON "media" USING btree ("filename");
-  CREATE UNIQUE INDEX "skills_key_idx" ON "skills" USING btree ("key");
   CREATE INDEX "skills_updated_at_idx" ON "skills" USING btree ("updated_at");
   CREATE INDEX "skills_created_at_idx" ON "skills" USING btree ("created_at");
   CREATE UNIQUE INDEX "skills_locales_locale_parent_id_unique" ON "skills_locales" USING btree ("_locale","_parent_id");
   CREATE UNIQUE INDEX "projects_slug_idx" ON "projects" USING btree ("slug");
+  CREATE INDEX "projects_thumbnail_idx" ON "projects" USING btree ("thumbnail_id");
   CREATE INDEX "projects_updated_at_idx" ON "projects" USING btree ("updated_at");
   CREATE INDEX "projects_created_at_idx" ON "projects" USING btree ("created_at");
   CREATE UNIQUE INDEX "projects_locales_locale_parent_id_unique" ON "projects_locales" USING btree ("_locale","_parent_id");
   CREATE INDEX "projects_rels_order_idx" ON "projects_rels" USING btree ("order");
   CREATE INDEX "projects_rels_parent_idx" ON "projects_rels" USING btree ("parent_id");
   CREATE INDEX "projects_rels_path_idx" ON "projects_rels" USING btree ("path");
+  CREATE INDEX "projects_rels_links_id_idx" ON "projects_rels" USING btree ("links_id");
   CREATE INDEX "projects_rels_skills_id_idx" ON "projects_rels" USING btree ("skills_id");
   CREATE INDEX "experience_steps_duties_order_idx" ON "experience_steps_duties" USING btree ("_order");
   CREATE INDEX "experience_steps_duties_parent_id_idx" ON "experience_steps_duties" USING btree ("_parent_id");
   CREATE INDEX "experience_steps_duties_locale_idx" ON "experience_steps_duties" USING btree ("_locale");
+  CREATE INDEX "experience_steps_image_idx" ON "experience_steps" USING btree ("image_id");
   CREATE UNIQUE INDEX "experience_steps_slug_idx" ON "experience_steps" USING btree ("slug");
   CREATE INDEX "experience_steps_updated_at_idx" ON "experience_steps" USING btree ("updated_at");
   CREATE INDEX "experience_steps_created_at_idx" ON "experience_steps" USING btree ("created_at");
@@ -376,6 +524,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "experience_steps_rels_path_idx" ON "experience_steps_rels" USING btree ("path");
   CREATE INDEX "experience_steps_rels_skills_id_idx" ON "experience_steps_rels" USING btree ("skills_id");
   CREATE UNIQUE INDEX "education_steps_slug_idx" ON "education_steps" USING btree ("slug");
+  CREATE INDEX "education_steps_image_idx" ON "education_steps" USING btree ("image_id");
   CREATE INDEX "education_steps_updated_at_idx" ON "education_steps" USING btree ("updated_at");
   CREATE INDEX "education_steps_created_at_idx" ON "education_steps" USING btree ("created_at");
   CREATE UNIQUE INDEX "education_steps_locales_locale_parent_id_unique" ON "education_steps_locales" USING btree ("_locale","_parent_id");
@@ -415,6 +564,9 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "profiles_rels_parent_idx" ON "profiles_rels" USING btree ("parent_id");
   CREATE INDEX "profiles_rels_path_idx" ON "profiles_rels" USING btree ("path");
   CREATE INDEX "profiles_rels_skills_id_idx" ON "profiles_rels" USING btree ("skills_id");
+  CREATE INDEX "links_updated_at_idx" ON "links" USING btree ("updated_at");
+  CREATE INDEX "links_created_at_idx" ON "links" USING btree ("created_at");
+  CREATE UNIQUE INDEX "links_locales_locale_parent_id_unique" ON "links_locales" USING btree ("_locale","_parent_id");
   CREATE UNIQUE INDEX "payload_kv_key_idx" ON "payload_kv" USING btree ("key");
   CREATE INDEX "payload_locked_documents_global_slug_idx" ON "payload_locked_documents" USING btree ("global_slug");
   CREATE INDEX "payload_locked_documents_updated_at_idx" ON "payload_locked_documents" USING btree ("updated_at");
@@ -432,6 +584,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "payload_locked_documents_rels_publications_id_idx" ON "payload_locked_documents_rels" USING btree ("publications_id");
   CREATE INDEX "payload_locked_documents_rels_persons_id_idx" ON "payload_locked_documents_rels" USING btree ("persons_id");
   CREATE INDEX "payload_locked_documents_rels_profiles_id_idx" ON "payload_locked_documents_rels" USING btree ("profiles_id");
+  CREATE INDEX "payload_locked_documents_rels_links_id_idx" ON "payload_locked_documents_rels" USING btree ("links_id");
   CREATE INDEX "payload_preferences_key_idx" ON "payload_preferences" USING btree ("key");
   CREATE INDEX "payload_preferences_updated_at_idx" ON "payload_preferences" USING btree ("updated_at");
   CREATE INDEX "payload_preferences_created_at_idx" ON "payload_preferences" USING btree ("created_at");
@@ -440,7 +593,24 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "payload_preferences_rels_path_idx" ON "payload_preferences_rels" USING btree ("path");
   CREATE INDEX "payload_preferences_rels_users_id_idx" ON "payload_preferences_rels" USING btree ("users_id");
   CREATE INDEX "payload_migrations_updated_at_idx" ON "payload_migrations" USING btree ("updated_at");
-  CREATE INDEX "payload_migrations_created_at_idx" ON "payload_migrations" USING btree ("created_at");`)
+  CREATE INDEX "payload_migrations_created_at_idx" ON "payload_migrations" USING btree ("created_at");
+  CREATE UNIQUE INDEX "about_me_locales_locale_parent_id_unique" ON "about_me_locales" USING btree ("_locale","_parent_id");
+  CREATE UNIQUE INDEX "portfolio_documentation_locales_locale_parent_id_unique" ON "portfolio_documentation_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "core_technologies_groups_nodes_order_idx" ON "core_technologies_groups_nodes" USING btree ("_order");
+  CREATE INDEX "core_technologies_groups_nodes_parent_id_idx" ON "core_technologies_groups_nodes" USING btree ("_parent_id");
+  CREATE INDEX "core_technologies_groups_nodes_icon_idx" ON "core_technologies_groups_nodes" USING btree ("icon_id");
+  CREATE UNIQUE INDEX "core_technologies_groups_nodes_locales_locale_parent_id_uniq" ON "core_technologies_groups_nodes_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "core_technologies_groups_order_idx" ON "core_technologies_groups" USING btree ("_order");
+  CREATE INDEX "core_technologies_groups_parent_id_idx" ON "core_technologies_groups" USING btree ("_parent_id");
+  CREATE UNIQUE INDEX "core_technologies_groups_slug_idx" ON "core_technologies_groups" USING btree ("slug");
+  CREATE UNIQUE INDEX "core_technologies_groups_locales_locale_parent_id_unique" ON "core_technologies_groups_locales" USING btree ("_locale","_parent_id");
+  CREATE UNIQUE INDEX "core_technologies_locales_locale_parent_id_unique" ON "core_technologies_locales" USING btree ("_locale","_parent_id");
+  CREATE INDEX "core_technologies_texts_order_parent" ON "core_technologies_texts" USING btree ("order","parent_id");
+  CREATE INDEX "core_technologies_rels_order_idx" ON "core_technologies_rels" USING btree ("order");
+  CREATE INDEX "core_technologies_rels_parent_idx" ON "core_technologies_rels" USING btree ("parent_id");
+  CREATE INDEX "core_technologies_rels_path_idx" ON "core_technologies_rels" USING btree ("path");
+  CREATE INDEX "core_technologies_rels_skills_id_idx" ON "core_technologies_rels" USING btree ("skills_id");
+  CREATE UNIQUE INDEX "code_style_locales_locale_parent_id_unique" ON "code_style_locales" USING btree ("_locale","_parent_id");`)
 }
 
 export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
@@ -471,16 +641,33 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TABLE "profiles" CASCADE;
   DROP TABLE "profiles_locales" CASCADE;
   DROP TABLE "profiles_rels" CASCADE;
+  DROP TABLE "links" CASCADE;
+  DROP TABLE "links_locales" CASCADE;
   DROP TABLE "payload_kv" CASCADE;
   DROP TABLE "payload_locked_documents" CASCADE;
   DROP TABLE "payload_locked_documents_rels" CASCADE;
   DROP TABLE "payload_preferences" CASCADE;
   DROP TABLE "payload_preferences_rels" CASCADE;
   DROP TABLE "payload_migrations" CASCADE;
+  DROP TABLE "about_me" CASCADE;
+  DROP TABLE "about_me_locales" CASCADE;
+  DROP TABLE "portfolio_documentation" CASCADE;
+  DROP TABLE "portfolio_documentation_locales" CASCADE;
+  DROP TABLE "core_technologies_groups_nodes" CASCADE;
+  DROP TABLE "core_technologies_groups_nodes_locales" CASCADE;
+  DROP TABLE "core_technologies_groups" CASCADE;
+  DROP TABLE "core_technologies_groups_locales" CASCADE;
+  DROP TABLE "core_technologies" CASCADE;
+  DROP TABLE "core_technologies_locales" CASCADE;
+  DROP TABLE "core_technologies_texts" CASCADE;
+  DROP TABLE "core_technologies_rels" CASCADE;
+  DROP TABLE "code_style" CASCADE;
+  DROP TABLE "code_style_locales" CASCADE;
   DROP TYPE "public"."_locales";
   DROP TYPE "public"."enum_skills_key";
   DROP TYPE "public"."enum_projects_category";
   DROP TYPE "public"."enum_experience_steps_employment_type";
   DROP TYPE "public"."enum_experience_steps_location_type";
-  DROP TYPE "public"."enum_persons_academic_degree";`)
+  DROP TYPE "public"."enum_persons_academic_degree";
+  DROP TYPE "public"."enum_links_icon";`)
 }

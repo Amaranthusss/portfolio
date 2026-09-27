@@ -2,37 +2,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
   gap: var(--space-9);
+  container-type: inline-size;
 
   &:first-of-type {
     padding-bottom: var(--space-9);
-  }
-
-  > .card {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-
-    > .date_range,
-    > .types,
-    > .location {
-      color: var(--secondary-text-color);
-    }
-
-    > .description,
-    .title {
-      text-align: justify;
-    }
-
-    > .institution {
-      font-weight: 600;
-    }
-
-    > .duty_list {
-      color: var(--secondary-text-color);
-
-      > .duty {
-        margin-left: var(--space-9);
-      }
-    }
   }
 }

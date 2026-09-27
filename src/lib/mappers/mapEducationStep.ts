@@ -1,13 +1,17 @@
 import { isPopulatedSkill } from './isPopulatedSkill';
 import { mapSkill } from './mapSkill';
+import { mapMedia } from './mapMedia';
 
 import type { EducationStepDTO } from '@/models/educationStepDto';
 import type { EducationStep } from '../../../payload-types';
 import type { SkillDTO } from '@/models/skillDto';
+import type { MediaDTO } from '@/models/mediaDto';
 
 export function mapEducationStep(step: EducationStep): EducationStepDTO {
   const skills: SkillDTO[] =
     step.skills?.filter(isPopulatedSkill).map(mapSkill) ?? [];
+
+  const image: MediaDTO = mapMedia(step.image);
 
   return {
     id: step.id,
@@ -22,6 +26,7 @@ export function mapEducationStep(step: EducationStep): EducationStepDTO {
     projectTitle: step.projectTitle ?? undefined,
     fieldOfStudy: step.fieldOfStudy ?? undefined,
     description: step.description ?? undefined,
+    image,
     skills,
   };
 }
