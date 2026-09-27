@@ -88,6 +88,7 @@ async function seedEducationStep(
     ...(plTranslation.description !== undefined && {
       description: plTranslation.description,
     }),
+    ...(plTranslation.degree !== undefined && { degree: plTranslation.degree }),
     skills: skillIds,
   };
 
