@@ -14,6 +14,22 @@
     > .icon {
       justify-self: center;
     }
+
+    > .header {
+      > .title {
+        text-align: center;
+        padding-bottom: var(--space-4);
+      }
+
+      > .additional_info {
+        gap: var(--space-1);
+
+        > .institution {
+          text-align: center;
+          padding-bottom: var(--space-2);
+        }
+      }
+    }
   }
 
   > .icon {
@@ -51,7 +67,8 @@
     border-top-color: var(--border-color);
     padding-top: var(--space-2);
 
-    > .description {
+    > .description,
+    > .projectTitle {
       text-align: justify;
     }
 

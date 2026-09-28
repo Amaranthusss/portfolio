@@ -43,6 +43,8 @@ $animation-paddings: 8px;
     height: 1px;
     pointer-events: none;
     background-color: var(--border-indicator-color);
+    -webkit-box-shadow: 0 0 0.45rem var(--border-indicator-shadow-color);
+    -moz-box-shadow: 0 0 0.45rem var(--border-indicator-shadow-color);
     box-shadow: 0 0 0.45rem var(--border-indicator-shadow-color);
     z-index: var(--z-index-layout-active-indicator);
     transition:

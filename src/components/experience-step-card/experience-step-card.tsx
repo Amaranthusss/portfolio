@@ -49,7 +49,7 @@ export async function ExperienceStepCard({
         <h1 className={styles.position}>{experienceStep.position}</h1>
 
         <div className={styles.additional_info}>
-          <div>
+          <div className={styles.location}>
             {experienceStep.company && (
               <span className={styles.company}>
                 {experienceStep.company}
@@ -58,7 +58,7 @@ export async function ExperienceStepCard({
             )}
 
             {experienceStep.location && (
-              <span className={styles.location}>{experienceStep.location}</span>
+              <span className={styles.address}>{experienceStep.location}</span>
             )}
           </div>
 

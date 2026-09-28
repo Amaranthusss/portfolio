@@ -64,7 +64,7 @@ export const publications: PublicationSeedData[] = [
       pl: {
         title:
           'Zastosowanie rozpoznawania gestów do kontroli AGV: Wstępne badania',
-        publisher: 'MDPI',
+        publisher: 'Multidyscyplinarny Instytut Wydawnictw Cyfrowych (MDPI)',
         keywords: [
           'rozpoznawanie gestów',
           'sieci neuronowe',
@@ -78,7 +78,7 @@ export const publications: PublicationSeedData[] = [
       en: {
         title:
           'Using Gesture Recognition for AGV Control: Preliminary Research',
-        publisher: 'MDPI',
+        publisher: 'Multidisciplinary Digital Publishing Institute (MDPI)',
         keywords: [
           'gesture recognition',
           'neural networks',

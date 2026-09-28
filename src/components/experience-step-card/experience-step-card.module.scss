@@ -14,6 +14,22 @@
     > .icon {
       justify-self: center;
     }
+
+    > .header {
+      > .position {
+        text-align: center;
+        padding-bottom: var(--space-4);
+      }
+
+      > .additional_info {
+        gap: var(--space-1);
+
+        > .location {
+          text-align: center;
+          padding-bottom: var(--space-2);
+        }
+      }
+    }
   }
 
   > .icon {
@@ -57,7 +73,7 @@
 
     > .duty_list {
       color: var(--secondary-text-color);
-      text-align: justify;
+      margin-right: var(--font-size-md);
 
       .duty {
         transform: translateX(var(--font-size-md));

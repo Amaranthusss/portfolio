@@ -30,12 +30,17 @@ export default getRequestConfig(async ({ requestLocale }) => {
     await import(`../../messages/${locale}/projects-and-realisations.json`)
   ).default;
 
+  const publications = (
+    await import(`../../messages/${locale}/publications.json`)
+  ).default;
+
   return {
     locale,
     messages: {
       common: common,
       layout: layout,
       homepage: homepage,
+      publications: publications,
       'experience-and-education': experienceAndEducation,
       'projects-and-realisations': projectsAndRealisations,
       'courses-and-certifications': coursesAndCertifications,
