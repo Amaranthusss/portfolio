@@ -1,6 +1,7 @@
 import { HomepageExtraCard } from '@/components/homepage-extra-card/homepage-extra-card';
 import { RichTextContent } from '@/components/rich-text-content/rich-text-content';
 import { HomepageImage } from '@/components/homepage-image/homepage-image';
+import { ContactData } from '@/components/contact-data/contact-data';
 import { Title } from '@/components/title/title';
 
 import { getPortfolioDocumentation } from '@/services/getPortfolioDocumentation';
@@ -15,7 +16,6 @@ import type { Locale } from '@/i18n/locale';
 import type { Theme } from '@/constants/Theme';
 
 import styles from './page.module.scss';
-import { Icon } from '@/components/icon/icon';
 
 export default async function Homepage(): Promise<React.ReactNode> {
   const t = await getTranslations('homepage');
@@ -52,20 +52,11 @@ export default async function Homepage(): Promise<React.ReactNode> {
 
         <RichTextContent content={aboutMe.content} />
 
-        <p className={styles.contact_data}>
-          <Icon icon={Icon.All.Mail} /> E-mail: {aboutMe.email}
-        </p>
-
-        <p className={styles.contact_data}>
-          <Icon icon={Icon.All.Phone} /> {t('mobile')}: {aboutMe.mobile}
-        </p>
-
-        <p className={styles.contact_data}>
-          <Icon icon={Icon.All.LinkedIn} /> LinkedIn:{' '}
-          <a href={aboutMe.linkedin} target={'_blank'}>
-            Oskar Szkurłat
-          </a>
-        </p>
+        <ContactData
+          email={aboutMe.email}
+          mobile={aboutMe.mobile}
+          linkedin={aboutMe.linkedin}
+        />
       </div>
 
       <HomepageExtraCard

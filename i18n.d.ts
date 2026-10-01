@@ -5,6 +5,7 @@ import type enExperienceAndEducation from './messages/en/experience-and-educatio
 import type enPublications from './messages/en/publications.json';
 import type enCodeStyle from './messages/en/code-style.json';
 import type enHomepage from './messages/en/homepage.json';
+import type enHireMe from './messages/en/hire-me.json';
 import type enCommon from './messages/en/common.json';
 import type enLayout from './messages/en/layout.json';
 
@@ -13,6 +14,7 @@ type Messages = {
   layout: typeof enLayout;
   homepage: typeof enHomepage;
   publications: typeof enPublications
+  'hire-me': typeof enHireMe
   'courses-and-certifications': typeof enCoursesAndCertifications;
   'experience-and-education': typeof enExperienceAndEducation;
   'projects-and-realisations': typeof enProjectsAndRealisations;

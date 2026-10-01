@@ -43,7 +43,6 @@
     "menu-title": "App Settings"
   },
   "contact-form": {
-    "caption":"Contact Form",
     "subject": "Subject",
     "subject-placeholder": "What would you like to talk about?",
     "request-type": "Request type",
@@ -76,6 +75,11 @@
       "email-invalid": "Please enter a valid email address.",
       "phone-max-length": "Phone number cannot exceed {max} characters."
     }
+  },
+  "contact-data": {
+    "email": "E-mail",
+    "mobile": "Phone number",
+    "linkedin": "LinkedIn"
   },
   "download-cv": {
     "button": "Download Curriculum Vitae",

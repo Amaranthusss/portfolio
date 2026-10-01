@@ -1,0 +1,20 @@
+.contact_data {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-2);
+  align-items: center;
+  flex-wrap: wrap;
+  padding-block: var(--space-1);
+  overflow: hidden;
+
+  > .caption {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-2);
+    flex-wrap: nowrap;
+
+    svg {
+      color: var(--primary-border-color);
+    }
+  }
+}

@@ -34,6 +34,9 @@ export default getRequestConfig(async ({ requestLocale }) => {
     await import(`../../messages/${locale}/publications.json`)
   ).default;
 
+  const hireMe = (await import(`../../messages/${locale}/hire-me.json`))
+    .default;
+
   return {
     locale,
     messages: {
@@ -41,6 +44,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       layout: layout,
       homepage: homepage,
       publications: publications,
+      'hire-me': hireMe,
       'experience-and-education': experienceAndEducation,
       'projects-and-realisations': projectsAndRealisations,
       'courses-and-certifications': coursesAndCertifications,
