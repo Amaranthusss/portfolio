@@ -51,9 +51,10 @@ export default async function Homepage(): Promise<React.ReactNode> {
 
         <RichTextContent content={aboutMe.content} />
 
-        <p>📫 Email: {aboutMe.email}</p>
+        <p>📫 E-mail: {aboutMe.email}</p>
+        <p>📞 {t('mobile')}: {aboutMe.mobile}</p>
         <p>
-          💼 LinkedIn: <a href={aboutMe.linkedin}>Oskar Szkurłat</a>
+          💼 LinkedIn: <a href={aboutMe.mobile}>Oskar Szkurłat</a>
         </p>
       </div>
 
