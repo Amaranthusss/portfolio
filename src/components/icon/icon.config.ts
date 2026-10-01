@@ -10,6 +10,7 @@ import { HandshakeIcon } from './_components/handshake-icon/handshake-icon';
 import { TechStackIcon } from './_components/tech-stack-icon/tech-stack-icon';
 import { EducationIcon } from './_components/education-icon/education-icon';
 import { OSzkurlatIcon } from './_components/oszkurlat-icon/oszkurlat-icon';
+import { LinkedInIcon } from './_components/linkedin-icon/linkedin-icon';
 import { SettingsIcon } from './_components/settings-icon/settings-icon';
 import { FrontendIcon } from './_components/frontend-icon/frontend-icon';
 import { BackendIcon } from './_components/backend-icon/backend-icon';
@@ -21,11 +22,13 @@ import { SearchIcon } from './_components/search-icon/search-icon';
 import { CloseIcon } from './_components/close-icon/close-icon';
 import { HobbyIcon } from './_components/hobby-icon/hobby-icon';
 import { BuildIcon } from './_components/build-icon/build-icon';
+import { PhoneIcon } from './_components/phone-icon/phone-icon';
 import { HomeIcon } from './_components/home-icon/home-icon';
 import { LockIcon } from './_components/lock-icon/lock-icon';
 import { BulbIcon } from './_components/bulb-icon/bulb-icon';
 import { LinkIcon } from './_components/link-icon/link-icon';
 import { ReadIcon } from './_components/read-icon/read-icon';
+import { MailIcon } from './_components/mail-icon/mail-icon';
 import { ItIcon } from './_components/it-icon/it-icon';
 
 import type { ComponentType, SVGProps } from 'react';
@@ -60,6 +63,9 @@ export enum IconName {
   OSzkurlat = 'oszkurlat',
   Frontend = 'frontend',
   Backend = 'backend',
+  Phone = 'phone',
+  LinkedIn = 'linkedin',
+  Mail = 'mail',
 }
 
 export const iconConfig: Record<
@@ -95,6 +101,9 @@ export const iconConfig: Record<
   [IconName.OSzkurlat]: OSzkurlatIcon,
   [IconName.Frontend]: FrontendIcon,
   [IconName.Backend]: BackendIcon,
+  [IconName.Phone]: PhoneIcon,
+  [IconName.LinkedIn]: LinkedInIcon,
+  [IconName.Mail]: MailIcon,
 };
 
 export const defaultSvgProps: SVGProps<SVGSVGElement> = {

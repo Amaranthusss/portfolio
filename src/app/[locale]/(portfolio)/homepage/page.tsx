@@ -15,6 +15,7 @@ import type { Locale } from '@/i18n/locale';
 import type { Theme } from '@/constants/Theme';
 
 import styles from './page.module.scss';
+import { Icon } from '@/components/icon/icon';
 
 export default async function Homepage(): Promise<React.ReactNode> {
   const t = await getTranslations('homepage');
@@ -51,10 +52,19 @@ export default async function Homepage(): Promise<React.ReactNode> {
 
         <RichTextContent content={aboutMe.content} />
 
-        <p>📫 E-mail: {aboutMe.email}</p>
-        <p>📞 {t('mobile')}: {aboutMe.mobile}</p>
-        <p>
-          💼 LinkedIn: <a href={aboutMe.mobile}>Oskar Szkurłat</a>
+        <p className={styles.contact_data}>
+          <Icon icon={Icon.All.Mail} /> E-mail: {aboutMe.email}
+        </p>
+
+        <p className={styles.contact_data}>
+          <Icon icon={Icon.All.Phone} /> {t('mobile')}: {aboutMe.mobile}
+        </p>
+
+        <p className={styles.contact_data}>
+          <Icon icon={Icon.All.LinkedIn} /> LinkedIn:{' '}
+          <a href={aboutMe.linkedin} target={'_blank'}>
+            Oskar Szkurłat
+          </a>
         </p>
       </div>
 

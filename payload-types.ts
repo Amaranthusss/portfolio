@@ -358,6 +358,9 @@ export interface Link {
         | 'oszkurlat'
         | 'frontend'
         | 'backend'
+        | 'phone'
+        | 'linkedin'
+        | 'mail'
       )
     | null;
   updatedAt: string;
@@ -958,7 +961,10 @@ export interface CoreTechnology {
       | 'plc-programming'
       | 'oszkurlat'
       | 'frontend'
-      | 'backend';
+      | 'backend'
+      | 'phone'
+      | 'linkedin'
+      | 'mail';
     color: string;
     nodes: {
       icon: number | Media;
