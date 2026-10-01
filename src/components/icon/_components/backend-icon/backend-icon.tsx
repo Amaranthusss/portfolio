@@ -1,0 +1,24 @@
+import { defaultSvgProps } from '../../icon.config';
+
+export function BackendIcon(
+  props: React.SVGProps<SVGSVGElement>
+): React.ReactNode {
+  return (
+    <svg
+      {...defaultSvgProps}
+      fill="none"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v2a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3"></path>
+      <path d="M15 20h-9a3 3 0 0 1 -3 -3v-2a3 3 0 0 1 3 -3h12"></path>
+      <path d="M7 8v.01"></path>
+      <path d="M7 16v.01"></path>
+      <path d="M20 15l-2 3h3l-2 3"></path>
+    </svg>
+  );
+}

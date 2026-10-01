@@ -2,6 +2,8 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical';
 
 import type { GlobalConfig } from 'payload';
 
+import { IconName } from '@/components/icon/icon.config';
+
 export const CoreTechnologies: GlobalConfig = {
   slug: 'core-technologies',
 
@@ -34,6 +36,23 @@ export const CoreTechnologies: GlobalConfig = {
           name: 'title',
           type: 'text',
           localized: true,
+          required: true,
+        },
+        {
+          name: 'description',
+          type: 'text',
+          localized: true,
+          required: true,
+        },
+        {
+          name: 'icon',
+          type: 'select',
+          options: Object.values(IconName),
+          required: true,
+        },
+        {
+          name: 'color',
+          type: 'text',
           required: true,
         },
         {

@@ -1,6 +1,6 @@
+import { CoreTechnologiesGraph } from '@/components/icon/_components/core-technologies-graph/core-technologies-graph';
 import { RichTextContent } from '@/components/rich-text-content/rich-text-content';
 import { ListModule } from '@/components/list-module/list-module';
-import { TechStack } from '@/components/tech-stack/tech-stack';
 import { Title } from '@/components/title/title';
 
 import { getCoreTechnologies } from '@/services/getCoreTechnology';
@@ -19,9 +19,9 @@ export default async function CoreTechnologies(): Promise<React.ReactNode> {
     <ListModule>
       <Title>{coreTechnologies.title}</Title>
 
-      <RichTextContent content={coreTechnologies.content} />
+      <CoreTechnologiesGraph groups={coreTechnologies.groups} />
 
-      <TechStack groups={coreTechnologies.groups} />
+      <RichTextContent content={coreTechnologies.content} />
     </ListModule>
   );
 }

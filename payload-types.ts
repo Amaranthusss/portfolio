@@ -356,6 +356,8 @@ export interface Link {
         | 'software-programming'
         | 'plc-programming'
         | 'oszkurlat'
+        | 'frontend'
+        | 'backend'
       )
     | null;
   updatedAt: string;
@@ -926,6 +928,38 @@ export interface CoreTechnology {
   groups: {
     slug: string;
     title: string;
+    description: string;
+    icon:
+      | 'accessibility'
+      | 'certification'
+      | 'education'
+      | 'feather'
+      | 'handshake'
+      | 'home'
+      | 'project'
+      | 'publication'
+      | 'settings'
+      | 'tech-stack'
+      | 'search'
+      | 'close'
+      | 'lock'
+      | 'unlock'
+      | 'hamburger'
+      | 'build'
+      | 'link'
+      | 'read'
+      | 'mechatronics'
+      | 'it'
+      | 'github'
+      | 'bulb'
+      | 'hobby'
+      | 'work-station'
+      | 'software-programming'
+      | 'plc-programming'
+      | 'oszkurlat'
+      | 'frontend'
+      | 'backend';
+    color: string;
     nodes: {
       icon: number | Media;
       title: string;
@@ -1001,6 +1035,9 @@ export interface CoreTechnologiesSelect<T extends boolean = true> {
     | {
         slug?: T;
         title?: T;
+        description?: T;
+        icon?: T;
+        color?: T;
         nodes?:
           | T
           | {

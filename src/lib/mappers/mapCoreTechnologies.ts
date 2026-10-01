@@ -1,5 +1,6 @@
 import { createEmptyEditorState } from '@/utils/createEmptyEditorState';
 import { isPopulatedSkill } from './isPopulatedSkill';
+import { isPopulatedIcon } from './isPopulatedIcon';
 import { mapMedia } from './mapMedia';
 import { mapSkill } from './mapSkill';
 
@@ -9,6 +10,8 @@ import type { CoreTechnologiesDTO } from '@/models/coreTechnologiesDto';
 import type { CoreTechnology } from '../../../payload-types';
 import type { MediaDTO } from '@/models/mediaDto';
 import type { SkillDTO } from '@/models/skillDto';
+
+import { IconName } from '@/components/icon/icon.config';
 
 function mapCoreTechnologiesNode(
   node: CoreTechnology['groups'][number]['nodes'][number]
@@ -30,6 +33,9 @@ export function mapCoreTechnologies(
       return {
         slug: c.slug,
         title: c.title,
+        description: c.description,
+        color: c.color,
+        icon: isPopulatedIcon(c.icon) ? c.icon : IconName.SoftwareProgramming,
         references: c.references ?? [],
         nodes: c.nodes.map((n): CoreTechnologiesNodeDTO => {
           return mapCoreTechnologiesNode(n);

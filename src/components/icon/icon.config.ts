@@ -11,6 +11,8 @@ import { TechStackIcon } from './_components/tech-stack-icon/tech-stack-icon';
 import { EducationIcon } from './_components/education-icon/education-icon';
 import { OSzkurlatIcon } from './_components/oszkurlat-icon/oszkurlat-icon';
 import { SettingsIcon } from './_components/settings-icon/settings-icon';
+import { FrontendIcon } from './_components/frontend-icon/frontend-icon';
+import { BackendIcon } from './_components/backend-icon/backend-icon';
 import { FeatherIcon } from './_components/feather-icon/feather-icon';
 import { ProjectIcon } from './_components/project-icon/project-icon';
 import { UnlockIcon } from './_components/unlock-icon/unlock-icon';
@@ -56,6 +58,8 @@ export enum IconName {
   SoftwareProgramming = 'software-programming',
   PlcProgramming = 'plc-programming',
   OSzkurlat = 'oszkurlat',
+  Frontend = 'frontend',
+  Backend = 'backend',
 }
 
 export const iconConfig: Record<
@@ -89,6 +93,8 @@ export const iconConfig: Record<
   [IconName.SoftwareProgramming]: SoftwareProgrammingIcon,
   [IconName.PlcProgramming]: PlcProgrammingIcon,
   [IconName.OSzkurlat]: OSzkurlatIcon,
+  [IconName.Frontend]: FrontendIcon,
+  [IconName.Backend]: BackendIcon,
 };
 
 export const defaultSvgProps: SVGProps<SVGSVGElement> = {

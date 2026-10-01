@@ -92,8 +92,11 @@ export async function seedCoreTechnologies(
         group: CoreTechnologiesGroupSeedData
       ): CoreTechnology['groups'][number] => ({
         slug: group.slug,
+        icon: group.icon,
         title: group.title,
+        color: group.color,
         references: group.references,
+        description: group.translations[locale].description,
 
         nodes: group.nodes.map(
           (
