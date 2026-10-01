@@ -20,7 +20,7 @@ $z-index-elements: 3;
 
     > .header {
       position: absolute;
-      top: 50%;
+      top: calc(50% - 25px);
       right: clamp(30px, 7vw, 100px);
       max-width: 43%;
       transform: translateY(-50%);
