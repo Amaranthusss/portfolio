@@ -10,8 +10,10 @@ import styles from './card.module.scss';
 
 export function Card({
   slug,
+  header,
   children,
   className,
+  headerProps,
   ...divProps
 }: CardProps): React.ReactNode {
   const { cn } = useClassName();
@@ -88,6 +90,15 @@ export function Card({
 
   return (
     <div {...divProps} ref={cardRef} id={slug} className={classNames}>
+      {header && (
+        <div
+          {...headerProps}
+          className={cn(styles.header, headerProps?.className)}
+        >
+          {header}
+        </div>
+      )}
+
       {children}
     </div>
   );

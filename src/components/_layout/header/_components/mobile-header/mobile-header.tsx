@@ -21,6 +21,7 @@ import type { SkillKey } from '@/models/skillKey';
 import { ProfileSlug } from '@/seeds/constants/profileSlug';
 
 import styles from './mobile-header.module.scss';
+import { DownloadCvButton } from '@/components/download-cv-button/download-cv-button';
 
 export function MobileHeader({
   skills,
@@ -99,6 +100,12 @@ export function MobileHeader({
         ))}
 
         <Divider />
+
+        <DownloadCvButton
+          mobile
+          mode={'default'}
+          className={styles.download_cv_button}
+        />
 
         <AdvancedSearchClient
           mobile

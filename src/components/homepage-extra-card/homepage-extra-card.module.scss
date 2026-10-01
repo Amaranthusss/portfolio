@@ -2,16 +2,24 @@
   transition: padding-inline var(--animation-time);
   text-align: justify;
 
-  @media screen and (max-width: 550px) {
-    > .welcome {
-      text-align: center;
-    }
-  }
-
   > .menu_buttons {
     display: flex;
     flex-direction: row;
     gap: var(--space-4);
     margin-top: var(--space-4);
+  }
+
+  @media screen and (max-width: 550px) {
+    > .welcome {
+      text-align: center;
+    }
+
+    > .menu_buttons {
+      flex-direction: column;
+
+      > .download_cv_button {
+        max-width: unset;
+      }
+    }
   }
 }

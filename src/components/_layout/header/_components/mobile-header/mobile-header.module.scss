@@ -49,5 +49,10 @@
       min-width: $min-menu-modal-width;
       max-width: $max-menu-modal-width;
     }
+
+    > .download_cv_button > span {
+      justify-content: flex-start;
+      padding: var(--space-2);
+    }
   }
 }

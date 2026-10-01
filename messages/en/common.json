@@ -76,5 +76,9 @@
       "email-invalid": "Please enter a valid email address.",
       "phone-max-length": "Phone number cannot exceed {max} characters."
     }
+  },
+  "download-cv": {
+    "button": "Download Curriculum Vitae",
+    "tooltip": "Download CV as PDF file"
   }
 }

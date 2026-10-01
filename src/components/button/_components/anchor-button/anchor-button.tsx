@@ -3,7 +3,7 @@ import { Tooltip } from '@/components/tooltip/tooltip';
 import { useButtonDefaultAriaLabel } from '../../_hooks/useButtonDefaultAriaLabel';
 import { useButtonClassNames } from '../../_hooks/useButtonClassNames';
 
-import type { ButtonProps } from './anchor-button.interface';
+import type { AnchorButtonProps } from './anchor-button.interface';
 
 import styles from '../../button.module.scss';
 
@@ -18,7 +18,7 @@ export const AnchorButton = ({
   centerVertical,
   mode = 'default',
   ...anchorButtonProps
-}: ButtonProps): React.ReactNode => {
+}: AnchorButtonProps): React.ReactNode => {
   const { classNames } = useButtonClassNames(
     mode,
     active,

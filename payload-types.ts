@@ -361,6 +361,7 @@ export interface Link {
         | 'phone'
         | 'linkedin'
         | 'mail'
+        | 'curriculum-vitae'
       )
     | null;
   updatedAt: string;
@@ -964,7 +965,8 @@ export interface CoreTechnology {
       | 'backend'
       | 'phone'
       | 'linkedin'
-      | 'mail';
+      | 'mail'
+      | 'curriculum-vitae';
     color: string;
     nodes: {
       icon: number | Media;

@@ -32,6 +32,7 @@ import { MailIcon } from './_components/mail-icon/mail-icon';
 import { ItIcon } from './_components/it-icon/it-icon';
 
 import type { ComponentType, SVGProps } from 'react';
+import { CurriculumVitaeIcon } from './_components/curriculum-vitae-icon/curriculum-vitae-icon';
 
 export enum IconName {
   Accessibility = 'accessibility',
@@ -66,6 +67,7 @@ export enum IconName {
   Phone = 'phone',
   LinkedIn = 'linkedin',
   Mail = 'mail',
+  CurriculumVitae = 'curriculum-vitae',
 }
 
 export const iconConfig: Record<
@@ -104,6 +106,7 @@ export const iconConfig: Record<
   [IconName.Phone]: PhoneIcon,
   [IconName.LinkedIn]: LinkedInIcon,
   [IconName.Mail]: MailIcon,
+  [IconName.CurriculumVitae]: CurriculumVitaeIcon,
 };
 
 export const defaultSvgProps: SVGProps<SVGSVGElement> = {

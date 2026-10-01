@@ -1,3 +1,4 @@
+import { DownloadCvButton } from '@/components/download-cv-button/download-cv-button';
 import { DesktopNavButtons } from './_components/desktop-nav-buttons/desktop-nav-buttons';
 import { AdvancedSearch } from '@/components/advanced-search/advanced-search.server';
 import { AppSettings } from '@/components/app-settings/app-settings';
@@ -21,6 +22,7 @@ export function DesktopHeader({
       <DesktopNavButtons menuItems={menuItems} />
 
       <div className={styles.right_side}>
+        <DownloadCvButton mode={'default'} showText={false} />
         <AdvancedSearch />
         <AppSettings />
       </div>

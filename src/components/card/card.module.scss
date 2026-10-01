@@ -10,6 +10,14 @@
   &.highlight {
     animation: highlight 4s ease;
   }
+
+  > .header {
+    border-bottom-style: solid;
+    border-bottom-color: var(--border-color);
+    border-bottom-width: var(--border-width);
+    padding-bottom: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
 }
 
 @keyframes highlight {
