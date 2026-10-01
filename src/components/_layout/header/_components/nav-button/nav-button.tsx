@@ -32,7 +32,7 @@ export function NavButton({
       className={className}
       data-active={isActive ? '' : undefined}
       mode={decorated ? 'primary' : undefined}
-      contentStyle={{ justifyContent: 'flex-start' }}
+      contentStyle={{ justifyContent: 'flex-start', textAlign: 'left' }}
       aria-label={`navigation-button-${route.replace('/', '')}`}
       onClick={onClick}
     >
