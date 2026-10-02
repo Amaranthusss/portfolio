@@ -14,10 +14,3 @@
   color: var(--secondary-text-color);
   font-style: italic;
 }
-
-.skill_tag_list {
-  > * {
-    flex: auto;
-    text-align: center;
-  }
-}

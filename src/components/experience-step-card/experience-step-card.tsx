@@ -1,8 +1,7 @@
 import { DisplayDateRange } from '../display-date-range/display-date-range';
 import { SkillTagList } from '../skill-tag-list/skill-tag-list';
-import { Divider } from '../divider/divider';
+import { Image } from '../image/image';
 import { Card } from '../card/card';
-import Image from 'next/image';
 
 import { employmentTypeToString } from '@/utils/employmentTypeToString';
 import { locationTypeToString } from '@/utils/locationTypeToString';
@@ -12,6 +11,7 @@ import type { ExperienceStepCardProps } from './experience-step-card.interface';
 import type { ExperienceStepDTO } from '@/models/experienceStepDto';
 
 import styles from './experience-step-card.module.scss';
+import { CardLayout } from '../card-layout/card-layout';
 
 export async function ExperienceStepCard({
   experienceStep,
@@ -37,30 +37,30 @@ export async function ExperienceStepCard({
 
   return (
     <Card slug={experienceStep.slug} className={styles.card}>
-      <Image
-        src={experienceStep.image.url}
-        alt={getImageAlt(experienceStep)}
-        width={64}
-        height={64}
-        className={styles.icon}
-      />
+      <CardLayout>
+        <CardLayout.Icon>
+          <Image
+            src={experienceStep.image.url}
+            alt={getImageAlt(experienceStep)}
+            width={64}
+            height={64}
+            className={styles.icon}
+          />
+        </CardLayout.Icon>
 
-      <div className={styles.header}>
-        <h1 className={styles.position}>{experienceStep.position}</h1>
+        <CardLayout.Header>
+          <h1>{experienceStep.position}</h1>
 
-        <div className={styles.additional_info}>
-          <div className={styles.location}>
+          <span className={styles.location}>
             {experienceStep.company && (
-              <span className={styles.company}>
+              <>
                 {experienceStep.company}
                 &nbsp;
-              </span>
+              </>
             )}
 
-            {experienceStep.location && (
-              <span className={styles.address}>{experienceStep.location}</span>
-            )}
-          </div>
+            {experienceStep.location && <>{experienceStep.location}</>}
+          </span>
 
           <DisplayDateRange
             startDate={experienceStep.startDate}
@@ -69,37 +69,41 @@ export async function ExperienceStepCard({
             className={styles.date_range}
           />
 
-          <span className={styles.types}>
+          <span>
             {employmentType.length > 0 && employmentType}
             {locationType.length > 0 && <>, {locationType}</>}
           </span>
-        </div>
-      </div>
+        </CardLayout.Header>
 
-      <div className={styles.content}>
-        {experienceStep.description && (
-          <div className={styles.description}>{experienceStep.description}</div>
-        )}
+        <CardLayout.Content>
+          {experienceStep.description && (
+            <div className={styles.description}>
+              {experienceStep.description}
+            </div>
+          )}
 
-        {experienceStep.duties && experienceStep.duties.length > 0 && (
-          <div className={styles.duty_list}>
-            <span>{t('duties')}:</span>
+          {experienceStep.duties && experienceStep.duties.length > 0 && (
+            <div className={styles.duty_list}>
+              <span>{t('duties')}:</span>
 
-            <ul>
-              {experienceStep.duties.map((duty: string): React.ReactNode => (
-                <li key={duty} className={styles.duty}>
-                  {duty}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+              <ul>
+                {experienceStep.duties.map((duty: string): React.ReactNode => (
+                  <li key={duty} className={styles.duty}>
+                    {duty}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </CardLayout.Content>
 
-        <SkillTagList
-          className={styles.skill_list}
-          skills={experienceStep.skills}
-        />
-      </div>
+        <CardLayout.Skills>
+          <SkillTagList
+            className={styles.skill_list}
+            skills={experienceStep.skills}
+          />
+        </CardLayout.Skills>
+      </CardLayout>
     </Card>
   );
 }

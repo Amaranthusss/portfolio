@@ -38,6 +38,11 @@
   > .skills {
     grid-area: skills;
     padding-top: var(--space-2);
+
+    > div > div {
+      flex: auto;
+      text-align: center;
+    }
   }
 
   @container (max-width: 500px) {
@@ -51,9 +56,11 @@
       margin-bottom: var(--space-2);
     }
 
-    > .header :first-child {
+    > .header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
       text-align: center;
-      margin-bottom: var(--space-2);
     }
   }
 }

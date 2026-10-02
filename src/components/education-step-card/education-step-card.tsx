@@ -1,8 +1,8 @@
 import { DisplayDateRange } from '../display-date-range/display-date-range';
 import { SkillTagList } from '../skill-tag-list/skill-tag-list';
 import { CardLayout } from '../card-layout/card-layout';
+import { Image } from '../image/image';
 import { Card } from '../card/card';
-import Image from 'next/image';
 
 import { getTranslations } from 'next-intl/server';
 
@@ -78,10 +78,7 @@ export async function EducationStepCard({
         </CardLayout.Content>
 
         <CardLayout.Skills>
-          <SkillTagList
-            className={styles.skill_tag_list}
-            skills={educationStep.skills}
-          />
+          <SkillTagList skills={educationStep.skills} />
         </CardLayout.Skills>
       </CardLayout>
     </Card>
