@@ -1,9 +1,6 @@
-import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
-import { SkillTagList } from '@/components/skill-tag-list/skill-tag-list';
+import { CertificationCard } from '@/components/certification-card/certification-card';
 import { ListModule } from '@/components/list-module/list-module';
-import { Image } from '@/components/image/image';
 import { Title } from '@/components/title/title';
-import { Card } from '@/components/card/card';
 
 import { getLocale, getTranslations } from 'next-intl/server';
 import { getCertifications } from '@/services/getCertifications';
@@ -31,40 +28,12 @@ export default async function CoursesAndCertifications(): Promise<React.ReactNod
         {certifications
           .sort((c1, c2) => sortByDate('issueDate', c1, c2))
           .map((c) => (
-            <Card key={c.id} slug={c.slug} className={styles.card}>
-              <Image
-                src={c.image.url}
-                alt={c.title}
-                width={64}
-                height={64}
-                theme={theme}
-                className={styles.icon}
-                darkThemeSrc={c.imageDarkTheme?.url}
-              />
-
-              <div className={styles.caption}>
-                <strong>{c.title}</strong>{' '}
-                <DisplayDateRange
-                  endDate={c.issueDate}
-                  className={styles.issue_date}
-                />
-              </div>
-
-              <div className={styles.info}>
-                <span className={styles.provider}>{c.provider}</span>
-                <span className={styles.description}>{c.description}</span>
-                {c.credentialID && (
-                  <span className={styles.credential_id}>
-                    {t('credential-id')}: {c.credentialID}
-                  </span>
-                )}
-
-                <SkillTagList
-                  skills={c.skills}
-                  className={styles.skill_tag_list}
-                />
-              </div>
-            </Card>
+            <CertificationCard
+              t={t}
+              key={c.slug}
+              theme={theme}
+              certification={c}
+            />
           ))}
       </div>
     </ListModule>

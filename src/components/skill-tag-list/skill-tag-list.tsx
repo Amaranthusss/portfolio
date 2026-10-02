@@ -11,11 +11,12 @@ import styles from './skill-tag-list.module.scss';
 
 export function SkillTagList({
   skills,
-  coreSkills = [],
   className,
+  coreSkills = [],
+  defaultShowAll,
 }: SkillTagListProps): React.ReactNode {
   const [showAll, setShowAll] = useState<boolean>(
-    coreSkills.length === 0 || false
+    (defaultShowAll ?? coreSkills.length === 0) || false
   );
 
   const [isClosing, setIsClosing] = useState<boolean>(false);

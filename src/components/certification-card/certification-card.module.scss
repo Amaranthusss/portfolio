@@ -1,0 +1,23 @@
+.issue_date {
+  color: var(--secondary-text-color);
+}
+
+.description {
+  text-align: justify;
+}
+
+.credential_id {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  color: var(--secondary-text-color);
+  font-style: italic;
+}
+
+.skill_tag_list {
+  > * {
+    flex: auto;
+    text-align: center;
+  }
+}
