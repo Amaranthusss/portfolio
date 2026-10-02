@@ -1,8 +1,6 @@
-import { DisplayDateRange } from '@/components/display-date-range/display-date-range';
-import { SkillTagList } from '@/components/skill-tag-list/skill-tag-list';
+import { PublicationCard } from '@/components/publication-card/publication-card';
 import { ListModule } from '@/components/list-module/list-module';
 import { Title } from '@/components/title/title';
-import { Card } from '@/components/card/card';
 
 import { getLocale, getTranslations } from 'next-intl/server';
 import { createAuthorFormatter } from '@/utils/createAuthorFormatter';
@@ -27,35 +25,13 @@ export default async function Publications(): Promise<React.ReactNode> {
       <div className={styles.cards_layout}>
         {publications
           .sort((p1, p2) => sortByDate('publishDate', p1, p2))
-          .map((p) => (
-            <Card key={p.id} slug={p.slug} className={styles.card}>
-              <div className={styles.header}>
-                <h1 className={styles.title}>{p.title}</h1>
-                <span className={styles.separator}>{', '}</span>
-                <DisplayDateRange
-                  endDate={p.publishDate}
-                  className={styles.issue_date}
-                />
-              </div>
-
-              <span className={styles.publisher}>
-                {t('publisher')}: {p.publisher}
-              </span>
-
-              <div className={styles.content}>
-                <span className={styles.description}>{p.description}</span>
-
-                <span className={styles.authors}>
-                  {t('authors')}: {p.authors.map(authorToString).join(' | ')}
-                </span>
-
-                <span className={styles.keywords}>
-                  {t('keywords')}: {p.keywords.join(' | ')}
-                </span>
-
-                <SkillTagList skills={p.skills} />
-              </div>
-            </Card>
+          .map((p: PublicationDTO): React.ReactNode => (
+            <PublicationCard
+              t={t}
+              key={p.slug}
+              publication={p}
+              authorToString={authorToString}
+            />
           ))}
       </div>
     </ListModule>

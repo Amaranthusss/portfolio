@@ -1,6 +1,8 @@
 import type { PropsWithChildren, ReactNode } from 'react';
 
-export interface CardLayoutProps extends PropsWithChildren {}
+export interface CardLayoutProps extends PropsWithChildren {
+  disableIcon?: boolean;
+}
 
 export interface CardLayoutSectionProps extends PropsWithChildren {}
 

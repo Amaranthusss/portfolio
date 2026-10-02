@@ -14,11 +14,7 @@ export function CertificationCard({
   certification,
 }: CertificationCardProps): React.ReactNode {
   return (
-    <Card
-      key={certification.id}
-      slug={certification.slug}
-      className={styles.card}
-    >
+    <Card slug={certification.slug} className={styles.card}>
       <CardLayout>
         <CardLayout.Icon>
           <Image

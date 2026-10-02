@@ -1,0 +1,13 @@
+.publisher {
+  margin-top: var(--space-2);
+}
+
+.issue_date {
+  color: var(--secondary-text-color);
+}
+
+.keywords,
+.authors {
+  color: var(--secondary-text-color);
+  font-style: italic;
+}
