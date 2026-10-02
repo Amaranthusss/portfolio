@@ -1,6 +1,6 @@
 .cards_layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(600px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(500px, 100%), 1fr));
   gap: var(--space-9);
   container-type: inline-size;
 

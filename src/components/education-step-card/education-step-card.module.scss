@@ -1,92 +1,10 @@
-.card {
-  display: grid;
-  grid-template-areas: 'icon header' 'content content';
-  grid-template-columns: 64px 1fr;
-  grid-template-rows: auto 1fr;
-  gap: var(--space-4) var(--space-9);
+.date_range {
+  color: var(--secondary-text-color);
+}
 
-  @container (max-width: 500px) {
-    grid-template-areas: 'icon' 'header' 'content';
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: var(--space-4);
-
-    > .icon {
-      justify-self: center;
-    }
-
-    > .header {
-      > .title {
-        text-align: center;
-        padding-bottom: var(--space-4);
-      }
-
-      > .additional_info {
-        gap: var(--space-1);
-
-        > .institution {
-          text-align: center;
-          padding-bottom: var(--space-2);
-        }
-      }
-    }
-  }
-
-  > .icon {
-    grid-area: icon;
-  }
-
-  > .header {
-    grid-area: header;
-    display: flex;
-    flex-direction: column;
-
-    > .title {
-      font-size: var(--font-size-lg);
-      margin-block: unset;
-    }
-
-    > .additional_info {
-      display: flex;
-      flex-direction: column;
-      font-size: var(--font-size-sm);
-
-      > .date_range {
-        color: var(--secondary-text-color);
-      }
-    }
-  }
-
-  > .content {
-    grid-area: content;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2);
-    border-top-style: solid;
-    border-top-width: var(--border-width-secondary);
-    border-top-color: var(--border-color);
-    padding-top: var(--space-2);
-
-    > .description,
-    > .projectTitle {
-      text-align: justify;
-    }
-
-    > .duty_list {
-      color: var(--secondary-text-color);
-      text-align: justify;
-
-      .duty {
-        transform: translateX(var(--font-size-md));
-      }
-    }
-
-    > .skill_list {
-      margin-top: auto;
-      border-top-style: solid;
-      border-top-width: var(--border-width-secondary);
-      border-top-color: var(--border-color);
-      padding-top: var(--space-2);
-    }
+.skill_tag_list {
+  > * {
+    flex: auto;
+    text-align: center;
   }
 }

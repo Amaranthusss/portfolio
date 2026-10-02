@@ -15,10 +15,10 @@
     flex-direction: column;
     gap: var(--space-0);
     font-size: var(--font-size-sm);
-    text-align: justify;
 
     :first-child {
-      font-size: var(--font-size-md);
+      font-size: var(--font-size-lg);
+      margin-block: var(--space-0);
       font-weight: 700;
     }
   }

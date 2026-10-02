@@ -1,5 +1,6 @@
 import { DisplayDateRange } from '../display-date-range/display-date-range';
 import { SkillTagList } from '../skill-tag-list/skill-tag-list';
+import { CardLayout } from '../card-layout/card-layout';
 import { Card } from '../card/card';
 import Image from 'next/image';
 
@@ -27,20 +28,20 @@ export async function EducationStepCard({
 
   return (
     <Card slug={educationStep.slug} className={styles.card}>
-      <Image
-        src={educationStep.image.url}
-        alt={getImageAlt(educationStep)}
-        width={64}
-        height={64}
-        className={styles.icon}
-      />
+      <CardLayout>
+        <CardLayout.Icon>
+          <Image
+            src={educationStep.image.url}
+            alt={getImageAlt(educationStep)}
+            width={64}
+            height={64}
+            className={styles.icon}
+          />
+        </CardLayout.Icon>
 
-      <div className={styles.header}>
-        <h1 className={styles.title}>
-          {educationStep.degree ?? educationStep.projectTitle}
-        </h1>
+        <CardLayout.Header>
+          <h1>{educationStep.degree ?? educationStep.projectTitle}</h1>
 
-        <div className={styles.additional_info}>
           {educationStep.institution && (
             <span className={styles.institution}>
               {educationStep.institution}
@@ -60,27 +61,29 @@ export async function EducationStepCard({
             isCurrent={educationStep.isCurrent}
             className={styles.date_range}
           />
-        </div>
-      </div>
+        </CardLayout.Header>
 
-      <div className={styles.content}>
-        {educationStep.degree != null && educationStep.projectTitle && (
-          <span className={styles.projectTitle}>
-            {t('thesis')}: {educationStep.projectTitle}
-          </span>
-        )}
+        <CardLayout.Content>
+          {educationStep.degree != null && educationStep.projectTitle && (
+            <span className={styles.projectTitle}>
+              {t('thesis')}: {educationStep.projectTitle}
+            </span>
+          )}
 
-        {educationStep.description && (
-          <span className={styles.description}>
-            {educationStep.description}
-          </span>
-        )}
+          {educationStep.description && (
+            <span className={styles.description}>
+              {educationStep.description}
+            </span>
+          )}
+        </CardLayout.Content>
 
-        <SkillTagList
-          className={styles.skill_list}
-          skills={educationStep.skills}
-        />
-      </div>
+        <CardLayout.Skills>
+          <SkillTagList
+            className={styles.skill_tag_list}
+            skills={educationStep.skills}
+          />
+        </CardLayout.Skills>
+      </CardLayout>
     </Card>
   );
 }
