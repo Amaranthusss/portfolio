@@ -203,7 +203,7 @@ export const certifications: CertificationSeedData[] = [
 
     image: 'icons/node-js.png',
 
-    skills: ['NodeJS'],
+    skills: ['NodeJS', 'MongoDB', 'ExpressJS'],
 
     translations: {
       pl: {

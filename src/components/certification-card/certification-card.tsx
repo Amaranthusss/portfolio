@@ -5,7 +5,6 @@ import { Image } from '../image/image';
 import { Card } from '../card/card';
 
 import type { CertificationCardProps } from './certification-card.interface';
-import type { SkillDTO } from '@/models/skillDto';
 
 import styles from './certification-card.module.scss';
 
@@ -14,12 +13,6 @@ export function CertificationCard({
   theme,
   certification,
 }: CertificationCardProps): React.ReactNode {
-  const coreSkills: SkillDTO[] = [
-    certification.skills[0],
-    certification.skills[1],
-    certification.skills[2],
-  ].filter((s) => s != null);
-
   return (
     <Card
       key={certification.id}
@@ -40,7 +33,7 @@ export function CertificationCard({
         </CardLayout.Icon>
 
         <CardLayout.Header>
-          <span className={styles.caption}>{certification.title}</span>
+          <h1>{certification.title}</h1>
 
           <span className={styles.provider}>{certification.provider}</span>
 
@@ -64,10 +57,7 @@ export function CertificationCard({
         </CardLayout.Content>
 
         <CardLayout.Skills>
-          <SkillTagList
-            skills={certification.skills}
-            className={styles.skill_tag_list}
-          />
+          <SkillTagList skills={certification.skills} />
         </CardLayout.Skills>
       </CardLayout>
     </Card>
