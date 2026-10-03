@@ -3,7 +3,7 @@
   grid-template-areas: 'icon header' 'content content' 'skills skills';
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto auto;
-  gap: var(--space-2) var(--space-8);
+  gap: var(--space-4) var(--space-9);
 
   &.disabled_icon {
     grid-template-areas: 'header header' 'content content' 'skills skills';

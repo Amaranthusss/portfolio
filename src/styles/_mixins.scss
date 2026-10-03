@@ -1,0 +1,14 @@
+@mixin menu-divider($gap) {
+  position: relative;
+
+  ::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: var(--border-width);
+    height: 80%;
+    background-color: var(--border-color);
+    transform: translateX(calc($gap / 2 * -1));
+  }
+}

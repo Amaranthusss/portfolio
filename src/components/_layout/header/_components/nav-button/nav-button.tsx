@@ -6,10 +6,12 @@ import { usePathname, useRouter } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
 import type { NavButtonProps } from './nav-button.interface';
+import type { ButtonProps } from '@/components/button/button.interface';
 
 export function NavButton({
   menuItem,
   className,
+  defaultMode,
   onNavigate,
 }: NavButtonProps): React.ReactNode {
   const t = useTranslations('layout.header');
@@ -20,6 +22,8 @@ export function NavButton({
 
   const isActive: boolean = route === pathname;
 
+  const mode: ButtonProps['mode'] = decorated ? 'primary' : defaultMode;
+
   const onClick = (): void => {
     router.push(route);
     onNavigate?.(menuItem);
@@ -28,10 +32,11 @@ export function NavButton({
   return (
     <Button
       key={text}
+      mode={mode}
       active={isActive}
       className={className}
+      data-mode={mode ?? 'default'}
       data-active={isActive ? '' : undefined}
-      mode={decorated ? 'primary' : undefined}
       contentStyle={{ justifyContent: 'flex-start', textAlign: 'left' }}
       aria-label={`navigation-button-${route.replace('/', '')}`}
       onClick={onClick}

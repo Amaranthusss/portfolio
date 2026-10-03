@@ -5,6 +5,8 @@ export function useCookie() {
   const getCookie = <ExpectedType = string>(
     cookie: Cookie
   ): ExpectedType | undefined => {
+    if (typeof document === 'undefined') return;
+
     return document.cookie
       .split('; ')
       .find((row) => row.startsWith(`${cookie}=`))

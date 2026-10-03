@@ -18,12 +18,16 @@ import styles from './flex-group.module.scss';
 export const FlexGroup = ({
   ref,
   gap = 8,
+  more,
   children,
   className,
+  moreMinWidth = 80,
+  itemClassName,
   containerBgColor,
   getActiveElement,
-  dropdownClassName,
   dropdownTopMargin = 12,
+  dropdownClassName,
+  moreButtonClassName,
   updateDropdownOnScroll = true,
 }: WithRef<FlexGroupProps, FlexGroupHandle>): React.ReactNode => {
   const items: FlexGroupItems = Children.toArray(children);
@@ -53,8 +57,6 @@ export const FlexGroup = ({
     '--container-bg-color': containerBgColor,
     gap,
   };
-
-  const MORE_WIDTH = 80;
 
   const { cn, boolToClass } = useClassName();
 
@@ -100,7 +102,7 @@ export const FlexGroup = ({
 
     for (let i: number = 0; i < widths.length; i++) {
       const remaining: number = widths.length - i - 1;
-      const reserve: 0 | typeof MORE_WIDTH = remaining > 0 ? MORE_WIDTH : 0;
+      const reserve: 0 | typeof moreMinWidth = remaining > 0 ? moreMinWidth : 0;
       const widthWithGap: number = widths[i] + gap;
       const totalWidth: number = used + widthWithGap + reserve;
 
@@ -112,20 +114,20 @@ export const FlexGroup = ({
 
     setVisibleCount(count);
     setIsLoading(false);
-  }, [gap]);
+  }, [gap, moreMinWidth]);
 
   const computeDropdownPosition = (rect: DOMRect): React.CSSProperties => {
     const PADDING = 24;
     const viewportWidth: number = window.innerWidth;
     const viewportHeight: number = window.innerHeight;
-    const left: number = rect.right - MORE_WIDTH / 2;
+    const left: number = rect.right - moreMinWidth / 2;
     const top: number = rect.bottom + dropdownTopMargin;
     const maxHeight: number = viewportHeight - top - PADDING;
     const maxWidth: number = viewportWidth - PADDING * 2;
 
     const safeLeft: number = Math.min(
       Math.max(PADDING, left),
-      viewportWidth - MORE_WIDTH - PADDING
+      viewportWidth - moreMinWidth - PADDING
     );
 
     const safeTop: number = Math.min(top, viewportHeight - PADDING);
@@ -246,7 +248,7 @@ export const FlexGroup = ({
             return (
               <div
                 key={i}
-                className={styles.item}
+                className={cn(styles.item, itemClassName)}
                 ref={(el) => setItemRef(el, i)}
               >
                 {child}
@@ -270,7 +272,7 @@ export const FlexGroup = ({
         {(!isLoading ? visibleItems : items).map(
           (child: FlexGroupItems[number], i: number): React.ReactNode => {
             return (
-              <div key={i} className={styles.item}>
+              <div key={i} className={cn(styles.item, itemClassName)}>
                 {child}
               </div>
             );
@@ -279,7 +281,7 @@ export const FlexGroup = ({
 
         {isActiveIndicator && activeIndicatorStyle != null && (
           <span
-            aria-hidden="true"
+            aria-hidden={'true'}
             className={styles.active_indicator}
             style={activeIndicatorStyle}
           />
@@ -288,11 +290,11 @@ export const FlexGroup = ({
         {!isLoading && overflowItems.length > 0 && (
           <Button
             ref={moreButtonRef}
-            className={styles.more}
+            className={cn(styles.more, moreButtonClassName)}
             aria-label={'show-more-hidden-flex-group-elements'}
             onClick={toggleDropdown}
           >
-            ⋯
+            {more ?? '...'}
           </Button>
         )}
       </div>

@@ -1,4 +1,5 @@
 import { SoftwareProgrammingIcon } from './_components/software-programming/software-programming';
+import { CurriculumVitaeIcon } from './_components/curriculum-vitae-icon/curriculum-vitae-icon';
 import { PlcProgrammingIcon } from './_components/plc-programming/plc-programming';
 import { AccessibilityIcon } from './_components/accessibility-icon/accessibility-icon';
 import { CertificationIcon } from './_components/certification-icon/certification-icon';
@@ -23,6 +24,7 @@ import { CloseIcon } from './_components/close-icon/close-icon';
 import { HobbyIcon } from './_components/hobby-icon/hobby-icon';
 import { BuildIcon } from './_components/build-icon/build-icon';
 import { PhoneIcon } from './_components/phone-icon/phone-icon';
+import { MoreIcon } from './_components/more-icon/more-icon';
 import { HomeIcon } from './_components/home-icon/home-icon';
 import { LockIcon } from './_components/lock-icon/lock-icon';
 import { BulbIcon } from './_components/bulb-icon/bulb-icon';
@@ -32,7 +34,6 @@ import { MailIcon } from './_components/mail-icon/mail-icon';
 import { ItIcon } from './_components/it-icon/it-icon';
 
 import type { ComponentType, SVGProps } from 'react';
-import { CurriculumVitaeIcon } from './_components/curriculum-vitae-icon/curriculum-vitae-icon';
 
 export enum IconName {
   Accessibility = 'accessibility',
@@ -68,6 +69,7 @@ export enum IconName {
   LinkedIn = 'linkedin',
   Mail = 'mail',
   CurriculumVitae = 'curriculum-vitae',
+  More = 'more',
 }
 
 export const iconConfig: Record<
@@ -107,6 +109,7 @@ export const iconConfig: Record<
   [IconName.LinkedIn]: LinkedInIcon,
   [IconName.Mail]: MailIcon,
   [IconName.CurriculumVitae]: CurriculumVitaeIcon,
+  [IconName.More]: MoreIcon,
 };
 
 export const defaultSvgProps: SVGProps<SVGSVGElement> = {

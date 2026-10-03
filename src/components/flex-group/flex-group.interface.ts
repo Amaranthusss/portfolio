@@ -10,6 +10,10 @@ export interface FlexGroupProps extends PropsWithChildren {
   dropdownClassName?: string;
   containerBgColor?: CSSProperties['background'];
   className?: string;
+  itemClassName?: string;
+  more?: React.ReactNode;
+  moreMinWidth?: number;
+  moreButtonClassName?: string;
   dropdownTopMargin?: number;
   gap?: number;
 }

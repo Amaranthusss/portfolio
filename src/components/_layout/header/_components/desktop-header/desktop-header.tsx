@@ -22,7 +22,7 @@ export function DesktopHeader({
       <DesktopNavButtons menuItems={menuItems} />
 
       <div className={styles.right_side}>
-        <DownloadCvButton mode={'default'} showText={false} />
+        <DownloadCvButton square mode={'text'} showText={false} />
         <AdvancedSearch />
         <AppSettings />
       </div>

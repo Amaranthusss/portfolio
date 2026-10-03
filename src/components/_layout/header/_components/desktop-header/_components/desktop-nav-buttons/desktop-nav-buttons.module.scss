@@ -1,6 +1,22 @@
+@use '@/styles/mixins' as *;
+
+$flex-group-gap: 8px;
+
 .menu_items {
   min-height: var(--control-height);
   color: var(--layout-text-color);
+
+  > .menu_item > .nav_button[data-mode='default'] {
+    border: unset;
+  }
+
+  > .menu_item:not(:first-child) > .nav_button[data-mode='default'] {
+    @include menu-divider($flex-group-gap);
+  }
+
+  > .more {
+    border-radius: unset;
+  }
 
   @media (min-width: 1553px) {
     justify-content: center;
