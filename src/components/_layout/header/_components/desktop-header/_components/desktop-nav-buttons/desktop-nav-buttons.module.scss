@@ -8,6 +8,7 @@ $flex-group-gap: 8px;
 
   > .menu_item > .nav_button[data-mode='default'] {
     border: unset;
+    box-shadow: unset;
   }
 
   > .menu_item:not(:first-child) > .nav_button[data-mode='default'] {
@@ -15,6 +16,7 @@ $flex-group-gap: 8px;
   }
 
   > .more {
+    box-shadow: unset;
     border-radius: unset;
   }
 
