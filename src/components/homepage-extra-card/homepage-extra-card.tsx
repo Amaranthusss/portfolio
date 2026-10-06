@@ -1,5 +1,6 @@
 'use client';
 import { LighthouseCategory } from './_components/lighthouse-category/lighthouse-category';
+import { TechStackMarquee } from './_components/tech-stack-marquee/tech-stack-marquee';
 import { RichTextContent } from '../rich-text-content/rich-text-content';
 import { ContactForm } from '../contact-form/contact-form';
 import { Divider } from '../divider/divider';
@@ -75,6 +76,8 @@ export function HomepageExtraCard({
               return <LighthouseCategory key={title} title={title} />;
             })}
           </div>
+
+          <TechStackMarquee />
 
           <RichTextContent content={portfolioDocumentation.description} />
 

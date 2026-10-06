@@ -1,4 +1,4 @@
-import { CoreTechnologiesGraph } from '@/components/icon/_components/core-technologies-graph/core-technologies-graph';
+import { CoreTechnologiesGraph } from '@/components/core-technologies-graph/core-technologies-graph';
 import { RichTextContent } from '@/components/rich-text-content/rich-text-content';
 import { ListModule } from '@/components/list-module/list-module';
 import { Title } from '@/components/title/title';

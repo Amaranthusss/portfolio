@@ -362,6 +362,14 @@ export interface Link {
         | 'linkedin'
         | 'mail'
         | 'curriculum-vitae'
+        | 'react'
+        | 'next-js'
+        | 'drizzle-orm'
+        | 'payload-cms'
+        | 'postgresql'
+        | 'vercel'
+        | 'resend'
+        | 'gsap'
         | 'more'
       )
     | null;
@@ -968,6 +976,14 @@ export interface CoreTechnology {
       | 'linkedin'
       | 'mail'
       | 'curriculum-vitae'
+      | 'react'
+      | 'next-js'
+      | 'drizzle-orm'
+      | 'payload-cms'
+      | 'postgresql'
+      | 'vercel'
+      | 'resend'
+      | 'gsap'
       | 'more';
     color: string;
     nodes: {

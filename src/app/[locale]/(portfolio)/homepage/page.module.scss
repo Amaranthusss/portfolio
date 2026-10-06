@@ -3,7 +3,7 @@ $z-index-elements: 3;
 .homepage {
   display: grid;
   position: relative;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: auto 1fr;
   gap: var(--space-8) var(--space-10);
   grid-auto-flow: row;

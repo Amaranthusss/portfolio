@@ -1,11 +1,14 @@
 import { SoftwareProgrammingIcon } from './_components/software-programming/software-programming';
 import { CurriculumVitaeIcon } from './_components/curriculum-vitae-icon/curriculum-vitae-icon';
-import { PlcProgrammingIcon } from './_components/plc-programming/plc-programming';
+import { PlcProgrammingIcon } from './_components/plc-programming-icon/plc-programming-icon';
 import { AccessibilityIcon } from './_components/accessibility-icon/accessibility-icon';
 import { CertificationIcon } from './_components/certification-icon/certification-icon';
 import { MechatronicsIcon } from './_components/mechatronics-icon/mechatronics-icon';
 import { WorkStationIcon } from './_components/work-station-icon/work-station-icon';
 import { PublicationIcon } from './_components/publication-icon/publication-icon';
+import { PostgresqlIcon } from './_components/postgresql-icon/postgresql-icon';
+import { PayloadCmsIcon } from './_components/payload-cms-icon/payload-cms-icon';
+import { DrizzleOrmIcon } from './_components/drizzle-orm-icon/drizzle-orm-icon';
 import { HamburgerIcon } from './_components/hamburger-icon/hamburger-icon';
 import { HandshakeIcon } from './_components/handshake-icon/handshake-icon';
 import { TechStackIcon } from './_components/tech-stack-icon/tech-stack-icon';
@@ -19,11 +22,15 @@ import { FeatherIcon } from './_components/feather-icon/feather-icon';
 import { ProjectIcon } from './_components/project-icon/project-icon';
 import { UnlockIcon } from './_components/unlock-icon/unlock-icon';
 import { GithubIcon } from './_components/github-icon/github-icon';
+import { NextJsIcon } from './_components/next-js-icon/next-js-icon';
+import { VercelIcon } from './_components/vercel-icon/vercel-icon';
 import { SearchIcon } from './_components/search-icon/search-icon';
+import { ResendIcon } from './_components/resend-icon/resend-icon';
 import { CloseIcon } from './_components/close-icon/close-icon';
 import { HobbyIcon } from './_components/hobby-icon/hobby-icon';
 import { BuildIcon } from './_components/build-icon/build-icon';
 import { PhoneIcon } from './_components/phone-icon/phone-icon';
+import { ReactIcon } from './_components/react-icon/react-icon';
 import { MoreIcon } from './_components/more-icon/more-icon';
 import { HomeIcon } from './_components/home-icon/home-icon';
 import { LockIcon } from './_components/lock-icon/lock-icon';
@@ -31,6 +38,7 @@ import { BulbIcon } from './_components/bulb-icon/bulb-icon';
 import { LinkIcon } from './_components/link-icon/link-icon';
 import { ReadIcon } from './_components/read-icon/read-icon';
 import { MailIcon } from './_components/mail-icon/mail-icon';
+import { GsapIcon } from './_components/gsap-icon/gsap-icon';
 import { ItIcon } from './_components/it-icon/it-icon';
 
 import type { ComponentType, SVGProps } from 'react';
@@ -69,6 +77,14 @@ export enum IconName {
   LinkedIn = 'linkedin',
   Mail = 'mail',
   CurriculumVitae = 'curriculum-vitae',
+  React = 'react',
+  NextJs = 'next-js',
+  DrizzleOrm = 'drizzle-orm',
+  PayloadCms = 'payload-cms',
+  Postgresql = 'postgresql',
+  Vercel = 'vercel',
+  Resend = 'resend',
+  Gsap = 'gsap',
   More = 'more',
 }
 
@@ -110,6 +126,14 @@ export const iconConfig: Record<
   [IconName.Mail]: MailIcon,
   [IconName.CurriculumVitae]: CurriculumVitaeIcon,
   [IconName.More]: MoreIcon,
+  [IconName.React]: ReactIcon,
+  [IconName.NextJs]: NextJsIcon,
+  [IconName.DrizzleOrm]: DrizzleOrmIcon,
+  [IconName.PayloadCms]: PayloadCmsIcon,
+  [IconName.Postgresql]: PostgresqlIcon,
+  [IconName.Vercel]: VercelIcon,
+  [IconName.Resend]: ResendIcon,
+  [IconName.Gsap]: GsapIcon,
 };
 
 export const defaultSvgProps: SVGProps<SVGSVGElement> = {
