@@ -1,4 +1,5 @@
 'use client';
+import { LighthouseCategory } from './_components/lighthouse-category/lighthouse-category';
 import { RichTextContent } from '../rich-text-content/rich-text-content';
 import { ContactForm } from '../contact-form/contact-form';
 import { Divider } from '../divider/divider';
@@ -32,6 +33,13 @@ export function HomepageExtraCard({
   const portfolioDetailsRoute: string =
     Route.ProjectsAndRealisations + '/' + ProjectSlug.PortfolioApplication;
 
+  const lighthouseCategories: string[] = [
+    t('lighthouse-category.performance'),
+    t('lighthouse-category.accessibility'),
+    t('lighthouse-category.best-practices'),
+    t('lighthouse-category.seo'),
+  ];
+
   return (
     <div className={cn(className, styles.extra_card)}>
       <RichTextContent className={styles.welcome} content={aboutMe.welcome} />
@@ -62,6 +70,12 @@ export function HomepageExtraCard({
 
       {currentMenuItem === MenuItem.ApplicationDescrition && (
         <>
+          <div className={styles.lighthouse_categories}>
+            {lighthouseCategories.map((title: string): React.ReactNode => {
+              return <LighthouseCategory key={title} title={title} />;
+            })}
+          </div>
+
           <RichTextContent content={portfolioDocumentation.description} />
 
           <Button.AnchorButton

@@ -4,5 +4,11 @@
   "second-title": "TypeScript Developer",
   "first-description": "Expert in building modern web applications",
   "second-description": "& advanced component libraries",
-  "get-in-touch": "Get in Touch"
+  "get-in-touch": "Get in Touch",
+  "lighthouse-category": {
+    "performance": "Performance",
+    "accessibility": "Accessibility",
+    "best-practices": "Best Practices",
+    "seo": "SEO"
+  }
 }
